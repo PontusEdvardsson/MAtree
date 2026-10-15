@@ -1,0 +1,10 @@
+[
+  {"size":[1366,768],"script":"tests/highschool-tests.js"},
+  {"script":"tests/reviewed-tests.js"},
+  {"script":"tests/question-audit-covered.js"},
+  {"script":"tests/question-audit.js"},
+  {"script":"tests/question-audit-remaining.js","eval":"buildRemainingQuestionAudit()","json_output":"question-audit-remaining.json"},
+  {"eval":"window.remainingEdgeAudit=auditAllVariantEdges()","json_output":"question-audit-all-edges.json"},
+  {"eval":"if(remainingQuestionAudit.errors.length||remainingEdgeAudit.errors.length)throw Error(JSON.stringify([...remainingQuestionAudit.errors,...remainingEdgeAudit.errors]));if(remainingQuestionAudit.previouslyReviewed+remainingQuestionAudit.remaining!==remainingQuestionAudit.total||remainingQuestionAudit.questions!==remainingQuestionAudit.remaining*3)throw Error('Incomplete variant coverage');void 0"},
+  {"eval":"await auditQuestionUI('remaining')","json_output":"remaining-question-ui.json"}
+]

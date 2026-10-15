@@ -214,7 +214,7 @@
     ()=>{const color=pick(['röd','blå']);return choice(`En påse innehåller både röda och blå kulor. Du drar en kula. Hur är händelsen ”kulan är ${color}”?`,'Möjlig men inte säker',['Säker','Omöjlig'],'Både den efterfrågade färgen och andra färger kan dras.');}
   ]);
   add('f-probability gynnsamma-utfall sannolikhet',[
-    ()=>{const a=r(1,6),b=r(1,6);return q(`En påse har ${a} röda och ${b} blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten för röd?`,a/(a+b),'Gynnsamma utfall delat med alla lika sannolika utfall.','','fraction');},
+    ()=>{const a=r(1,6),b=r(1,6);return q(`En påse har ${a} ${a===1?'röd kula':'röda kulor'} och ${b} ${b===1?'blå kula':'blå kulor'}. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?`,a/(a+b),'Gynnsamma utfall delat med alla lika sannolika utfall.','','fraction');},
     ()=>{const sides=pick([4,6,8]),win=r(1,sides-1);return q(`Ett lyckohjul har ${sides} lika stora fält. ${win} fält ger vinst. Vad är sannolikheten för vinst?`,win/sides,'Varje lika stort fält har samma sannolikhet.','','fraction');},
     ()=>{const threshold=r(2,5);return q(`En vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än ${threshold}?`,(threshold-1)/6,'Räkna gynnsamma sidor och dividera med sex.','','fraction');}
   ]);

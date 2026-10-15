@@ -310,6 +310,12 @@
   const stem=q=>q.prompt.split('\n\n')[0];
   const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
   const median=a=>{a=[...a].sort((a,b)=>a-b);return a.length%2?a[(a.length-1)/2]:(a[a.length/2-1]+a[a.length/2])/2;};
+  function partWhole(id,v,q){
+    const n=nums(stem(q));
+    if(v<2&&['f-fraction-count','brak-del-antal','brak'].includes(id))return n[2];
+    if(v<2&&['f-percent','procent-huvud','procent-delen'].includes(id)||id==='procent'&&v===1)return n[1];
+    return null;
+  }
   function fraction(value){
     // Continued fractions keep the alternatives readable while preserving their value.
     const sign=value<0?-1:1;let x=Math.abs(value),h0=0,h1=1,k0=1,k1=0;
@@ -327,6 +333,11 @@
   function candidates(id,v,q){
     const p=stem(q),n=nums(p),[a,b,c,d]=n,result=q.answer,cat=nodes.get(id).category,out=[];
     const push=(...xs)=>out.push(...xs);
+    const whole=partWhole(id,v,q);
+    if(whole!==null){
+      if(['f-fraction-count','brak-del-antal','brak'].includes(id))push(whole-result,whole/b,b,whole,a*whole);
+      else push(whole-result,a,whole/100,whole/10,result*10,whole);
+    }
     if(id==='f-double')push(...(v===1?[a*2,a-2,a,a+2]:[a/2,a+2,a,a*3]));
     if(id==='f-proportion')push(a,b,a+b,a*b,a-b,result*2,result/2);
     if(id==='negativ-exponent')push(...(v===1?[-result,result-1,result+1]:[result*10,result/10,1/result]));
@@ -365,6 +376,10 @@
     }
     if(cat==='statistik'){
       const visual=q.visual;
+      if(visual?.type==='table'&&v===1&&['f-frequency','tabell','frekvenstabell'].includes(id)){
+        const values=visual.values,total=values.reduce((a,b)=>a+b,0);
+        push(Math.max(...values),Math.min(...values),values[0]+values[1],values[1]+values[2],values[0]+values[2],total+Math.max(...values));
+      }
       if(visual?.values){const values=visual.values,total=values.reduce((a,b)=>a+b,0);push(total,total/values.length,median(values),Math.max(...values),Math.min(...values));if(visual.type==='table'){const weighted=values.reduce((sum,x,i)=>sum+x*Number(visual.labels[i]),0);push(weighted,weighted/values.length,Number(visual.labels[0]));}}
       if(visual?.type==='boxplot')push(...visual.stats,visual.stats[4]-visual.stats[0],visual.stats[3]-visual.stats[1]);
       if(visual?.type==='venn')push(visual.left+visual.both+visual.right+2*visual.both,visual.left+visual.right,visual.both,visual.left+visual.both,visual.right+visual.both);
@@ -392,8 +407,11 @@
     return out.filter(Number.isFinite);
   }
   function numericChoice(id,v,q){
-    if(id==='brak-jamfora'){
-      const options=shuffle([...q.prompt.matchAll(/\d+\/\d+/g)].map(m=>m[0])),optionValues=options.map(M.parseAnswer),answer=optionValues.findIndex(x=>near(x,q.answer))+1;
+    const givenNumbers=v<2&&['f-compare','f-decimal-compare','sortera-tal'].includes(id)||v===0&&['f-negative','negativa','negativ-tallinje'].includes(id);
+    if(id==='brak-jamfora'||givenNumbers){
+      // A comparison keeps its stated set: an invented smaller/larger number changes the task.
+      const values=id==='brak-jamfora'?[...q.prompt.matchAll(/\d+\/\d+/g)].map(m=>m[0]):clean(q.prompt).match(/-?\d+(?:[.,]\d+)?/g);
+      const options=shuffle(values),optionValues=options.map(M.parseAnswer),answer=optionValues.findIndex(x=>near(x,q.answer))+1;
       return {...q,prompt:q.prompt+'\n\n'+options.map((s,i)=>`${i+1}. ${s}`).join('\n')+'\n\nVälj ett svar.',answer,answerKind:'choice',options,optionValues};
     }
     const decimalNotation=q.answerKind==='decimal'||/decimalform/.test(q.prompt)||['tiomultiplikation','tiodivision','decimal-multiplikation','decimal-division'].includes(id);
@@ -403,10 +421,12 @@
     const selected=[{text:correct,value:q.answer}],seen=new Set([correct]);
     const probability=nodes.get(id).category==='sannolikhet'&&!Number.isInteger(q.answer);
     const physicalUnits=new Set(['cm','m','mm','dm','km','cm²','m²','cm³','m³','g','kg','liter','l','dl','h','min','sekunder','kr','kr/kg','paket','personer']);
-    const integerOnly=q.answerKind==='integer'&&nodes.get(id).category!=='sannolikhet',nonnegative=q.answer>=0&&(/Hur många|Avrunda|Vilken rest|täljare|nämnare/i.test(q.prompt)||physicalUnits.has(q.unit)),positiveDenominator=/nämnare/.test(q.prompt);
+    const whole=partWhole(id,v,q);
+    const integerOnly=q.answerKind==='integer'&&nodes.get(id).category!=='sannolikhet',nonnegative=q.answer>=0&&(whole!==null||/Hur många|Avrunda|Vilken rest|täljare|nämnare/i.test(q.prompt)||physicalUnits.has(q.unit)),positiveDenominator=/nämnare/.test(q.prompt);
     const decimalPlaces=Math.max(3,(correct.split(',')[1]||'').length);
     for(const value of candidates(id,v,q)){
       if(integerOnly&&!Number.isInteger(value)||nonnegative&&value<0)continue;
+      if(whole!==null&&value>whole)continue;
       if(positiveDenominator&&value===0)continue;
       if(exactDecimal&&Math.abs(value-Number(value.toFixed(decimalPlaces)))>1e-12*Math.max(1e-9,Math.abs(value)))continue;
       if(near(value,q.answer)||probability&&(value<0||value>1))continue;
@@ -414,7 +434,7 @@
       selected.push({text,value});seen.add(text);if(selected.length===4)break;
     }
     for(let delta=3;selected.length<4;delta++){
-      const value=probability?(delta%9+1)/10:q.answer+delta,text=format(value);
+      const value=probability?(delta%9+1)/10:whole!==null?delta%(whole+1):q.answer+delta,text=format(value);
       if(!seen.has(text)&&!near(value,q.answer)){selected.push({text,value});seen.add(text);}
     }
     const options=shuffle(selected),answer=options.findIndex(o=>near(o.value,q.answer))+1;
@@ -477,7 +497,9 @@
     if(['forenkla-termer','distributiva','minus-parentes','tva-parenteser','kvadreringsregel','konjugatregel','faktorisera-uttryck','algebra-brak','skriva-uttryck','monster-regel','aritmetisk','geometrisk-talfoljd'].includes(id))more.push(correct.replace(/-?\d+(?:[.,]\d+)?/,s=>M.fmt(Number(s.replace(',','.'))+1)),correct.replace(/-?\d+(?:[.,]\d+)?/,s=>M.fmt(Number(s.replace(',','.'))+2)));
     if(id==='ekvation-text')more.push(`x − (x + ${a}) = ${b}`);
     if(id==='variabel'&&v===0)more.unshift(`${a} plus ${b} gånger x`);
-    if(id==='linje-ekvation')more.push(`y = 0x + ${correct.includes('−')?'99':'−99'}`);
+    if(id==='linje-ekvation'){
+      more.push(correct.replace(/([−-]?\d+(?:[.,]\d+)?)x/,(_,k)=>`${M.fmt(M.parseAnswer(k)/2)}x`));
+    }
     if(id==='icke-linjart'&&v===0)more.push('y = 4x + 2');
     if(id==='kalkylblad')more.push(v===2?`=A${a}*B${a+1}`:`=A${a}-B${a}`);
     if(['f-reasonable','overslag','problem-rimlighet'].includes(id)){const text=correct.match(/^(\d+(?:,\d+)?) (.+)$/);if(text)more.push(`${Number(text[1].replace(',','.'))*10+1} ${text[2]}`);}

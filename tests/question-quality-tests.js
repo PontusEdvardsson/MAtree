@@ -28,6 +28,21 @@ window.verifyQuestionQuality=()=>{
     Math.random=()=>0;
     check(M.generateReviewed('f-word-add',0).prompt.includes('1 penna.'),'One pencil uses singular Swedish');
     check(M.generateReviewed('f-angle',2).prompt.includes('1 rät vinkel?'),'One right angle uses singular Swedish');
+    check(M.generateReviewed('f-probability',0).prompt.includes('1 röd kula och 1 blå kula'),'One ball of each colour uses singular Swedish');
+    check(M.generateReviewed('f-negative',1).prompt.includes('sjunker 1 grad.'),'A one-degree temperature change uses singular Swedish');
+    check(M.generateReviewed('f-time',0).prompt.includes('1 timme och'),'Basic time conversion uses singular Swedish');
+    check(M.generateReviewed('tid-enheter',0).prompt.includes('1 timme och'),'Decimal time conversion uses singular Swedish');
+    check(M.generateReviewed('recept',0).prompt.includes('för 1 person?'),'Recipe scaling uses singular Swedish');
+    check(M.generateReviewed('experiment-sannolikhet',1).prompt.includes('utfallet 1 gång.'),'A single experimental outcome uses singular Swedish');
+    check(M.generateReviewed('relativ-frekvens',2).prompt.includes('Grupp A förekommer 1 gång och'),'Relative frequency uses singular Swedish');
+    check(M.generateReviewed('vinklar',1).prompt.startsWith('En rak vinkel delas i två vinklar.'),'The two angles are explicitly parts of the same straight angle');
+    const scales=new Set();
+    for(const value of [0,.3,.6,.999999999]){
+      Math.random=()=>value;
+      const q=M.generateReviewed('skala-bestamma',2),lengths=q.prompt.match(/\d+/g).map(Number);
+      check(q.answer===lengths[0]/lengths[1],'Enlargement answer matches the stated lengths');scales.add(q.answer);
+    }
+    check(scales.size===4,'Enlargement questions vary the scale instead of always giving four');
   }finally{Math.random=originalRandom;}
   for(let i=0;i<50;i++){
     const double=M.generate('f-double',i%2);
@@ -68,6 +83,23 @@ window.verifyQuestionQuality=()=>{
     check(M.generateReviewed('f-combinations',0).prompt.includes('ett par byxor'),'Clothing choices count pairs of trousers');
     check(M.generateReviewed('f-combinations',2).prompt.includes('Alla färger finns i varje storlek'),'Inverse combination question states that all combinations exist');
     check(M.generateReviewed('moms',0).prompt.startsWith('Priset utan moms är '),'VAT question uses a complete sentence');
+    for(const id of ['f-compare','f-decimal-compare','sortera-tal','f-negative','negativ-tallinje','negativa'])for(const v of (id.includes('negative')||id.startsWith('negativ')?[0]:[0,1])){
+      const raw=M.generateReviewed(id,v),given=raw.prompt.replace(/[\u00a0\u202f]/g,'').replace(/−/g,'-').match(/-?\d+(?:[.,]\d+)?/g),q=M.toChoice(id,v,raw);
+      check(q.options.length===given.length&&given.every(s=>q.options.includes(s)),'Number comparisons only offer the numbers in the question');
+      check(q.optionValues[q.answer-1]===raw.answer,'Comparison retains the original correct value');
+    }
+    for(const id of ['f-fraction-count','brak-del-antal','brak','f-percent','procent-huvud','procent-delen','procent'])for(const v of id==='procent'?[1]:[0,1]){
+      const raw=M.generateReviewed(id,v),n=raw.prompt.match(/\d+/g).map(Number),whole=n[id.includes('fraction')||id.startsWith('brak')?2:1],q=M.toChoice(id,v,raw);
+      check(q.optionValues.every(x=>Number.isInteger(x)&&x>=0&&x<=whole),'A proper fraction or percentage of a count offers possible nonnegative whole counts');
+    }
+    const line=M.generate('linje-ekvation',0);
+    check(line.options.every(s=>!s.includes('0x')&&!/\+\s*[−-]/.test(s)),'Line alternatives use plausible slopes and ordinary sign notation');
+    const correctLine=line.options[line.answer-1],halfSlope=correctLine.replace(/([−-]?\d+(?:[.,]\d+)?)x/,(_,k)=>`${M.fmt(M.parseAnswer(k)/2)}x`);
+    check(line.options.includes(halfSlope),'Halved-slope alternative preserves the signed intercept');
+    for(const id of ['f-frequency','tabell','frekvenstabell']){
+      const q=M.generate(id,1),total=q.visual.values.reduce((a,b)=>a+b,0);
+      check(q.optionValues.every(x=>x>=0&&x<=2*total),'Frequency totals offer counting mistakes instead of unrelated hundredfold values');
+    }
   }
   const host=document.createElement('div');host.style='position:absolute;left:-10000px;width:500px';document.body.append(host);
   try{

@@ -4,7 +4,40 @@ Granskningen omfattade ursprungligen 289 ID:n. Efter 25 sammanslagningar finns 2
 
 Alla dessa färdigheter använder nu den granskade banken. Den innehåller tre mallvarianter per färdighet, med slumpade tal, omkastade alternativ och olika frågeformer där det passar. Totalt finns 867 generatorvarianter, varav 408 tillkom för åk 8–9. Det är inte 867 fasta frågor: parametrarna ger fler frågor, medan vissa begreppsfrågor har en begränsad mängd meningsfulla varianter.
 
-Av dessa hör 759 varianter till de 253 delmomenten, 33 till elva blandade kontroller och 75 till äldre sammanslagna ID:n. Ungefär hälften av delmomentens varianter i varje område har klickbara svarsalternativ, resten eget numeriskt svar. De numeriska flervalsfrågorna har normalt fyra alternativ med bland annat fel räknesätt, jämförelsebas, skalfaktor, tecken eller avrundningssteg. Vid jämförelse av två givna bråk används just de två bråken. Begreppsliga alternativ utgår från frågans innehåll. Naturliga ja/nej-frågor och vissa frågor med tre kategorier behåller två respektive tre svar. Alternativen och deras ordning sparas så att ett återupptaget pass använder samma fråga och samma facit.
+Av dessa hör 759 varianter till de 253 delmomenten, 33 till elva blandade kontroller och 75 till äldre sammanslagna ID:n. Ungefär hälften av delmomentens varianter i varje område har klickbara svarsalternativ, resten eget numeriskt svar. De numeriska flervalsfrågorna har normalt fyra alternativ med bland annat fel räknesätt, jämförelsebas, skalfaktor, tecken eller avrundningssteg. Vid jämförelse av givna tal eller bråk används just de angivna talen. Begreppsliga alternativ utgår från frågans innehåll. Naturliga ja/nej-frågor och vissa frågor med tre kategorier behåller två respektive tre svar. Alternativen och deras ordning sparas så att ett återupptaget pass använder samma fråga och samma facit.
+
+## Återstående mallvarianter · 2026-10-15
+
+De två föregående stickproven täckte 627 av bankens 867 kombinationer av ID och mallvariant. Denna genomgång omfattade samtliga återstående 240: 132 varianter i delmoment och 108 i blandade kontroller eller äldre sammanslagna ID:n. Därmed har exempel från alla 867 mallvarianter lästs igenom, inklusive frågor som fortfarande kan finnas i äldre profiler.
+
+Varje återstående variant provades med ett reproducerbart slumpfrö och med minsta respektive största möjliga slumptal: sammanlagt 720 parameterfall. Frågetext, alternativ, facit, förklaring och bilddata lästes igenom. Vissa begreppsfrågor och gränsfall ger samma fråga, så detta är inte 720 unika frågetexter. Separata lösningsfunktioner kontrollerade facit från frågornas tal och bilddata. Dessutom kontrollerades min- och maxfall för hela banken, totalt 1 734 facitfall.
+
+Genomgångens rättningar:
+
+- Jämförelsefrågor om heltal, negativa tal och decimaler erbjuder endast talen som nämns i frågan. Ett nytt, ännu mindre eller större tal i alternativlistan kan annars göra urvalet otydligt.
+- Vid beräkning av en riktig bråkdel eller högst 100 procent av ett antal hålls alternativen mellan noll och det hela. Alternativen prövar bland annat förväxling mellan delen, resten och det hela. Detta gäller särskilt angivna mallar; exempelvis procent över 100 och negativa tal behåller sina relevanta värden.
+- Singularformer rättades för kulor, temperaturändringar, timmar, personer i recept och antal inträffade utfall.
+- Vinkeluppgiften anger nu uttryckligen att en rak vinkel delas i två. Förklaringen av grundpotensform anger minst ett och mindre än tio.
+- Förstoringsuppgiften om skalan n:1 varierar nu skalfaktorn mellan två och åtta, i stället för att alltid ha svaret fyra.
+- Linjeekvationer får ett extra alternativ med halverad lutning och oförändrat startvärde. Den tidigare uppenbart orimliga konstantlinjen ersattes.
+- Frekvenstabellernas totalsummor får alternativ som motsvarar enstaka rader, utelämnade rader eller dubbelräkning, i stället för exempelvis 1 100 svar i en liten tabell.
+
+Alla 720 fall skickades genom sidans manuella svarskontroller med både rätt och fel svar, totalt 1 440 rättningskontroller. De 81 bildfrågorna kontrollerades även för klippt SVG-text. Skärmbilder granskades för samtliga 27 återstående bildvarianter och flera min-/maxfall. Elevlägets grafval, jämförelsefrågor, numeriska svar och bråksvar provades med riktiga klick och tangentbord i isolerad Chrome vid laptopstorlek 1366 × 768 och mobilstorlek 390 × 844. Hela regressionstestsviten passerade, inklusive pausade frågor, elevhistorik, utkast och export/import.
+
+Inga matematiska facitfel hittades i dessa prov. Ändringarna påverkar nya frågor; sparade frågor, alternativ, facit och elevresultat behålls. Förkunskaper godkänns inte automatiskt.
+
+Återskapa genomgången:
+
+```powershell
+python tests/run_browser.py
+python tests/ui_preview.py tests/question-audit-remaining.json
+python tests/ui_preview.py tests/question-visual-remaining.json
+python tests/ui_preview.py tests/question-audit-remaining.json https://pontusedvardsson.github.io/MAtree/
+```
+
+`tests/question-audit-covered.js` dokumenterar de 627 tidigare granskade ID-/variantparen. `tests/question-audit-remaining.js` härleder resten från den aktuella banken. Kontrollfallen och resultaten skrivs till `.verification/question-audit-remaining.json`, `.verification/question-audit-all-edges.json` och `.verification/remaining-question-ui.json`. Skärmbilder sparas som `.verification/remaining-*.png`. Inga riktiga elevprofiler används.
+
+Begränsningar: alla mallvarianter är nu representerade i genomläsningen, men inte varje möjlig kombination av slumpade parametrar. Några begreppsfrågor har få meningsfulla formuleringar och vissa felalternativ är fortfarande lätta. Kontrollerna bedömer svar, inte elevens fullständiga metod, och utgör ingen pedagogisk validering.
 
 ## Andra genomgången: 600 andra frågor
 

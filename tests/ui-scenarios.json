@@ -1,0 +1,103 @@
+[
+  {
+    "size": [
+      320,
+      740
+    ],
+    "eval": "await new Promise(r=>setTimeout(r,200));if(document.documentElement.scrollWidth>innerWidth)throw Error('Small page overflows');document.querySelector('#skill-map').scrollIntoView({block:'start'});if(document.querySelector('#skill-map').offsetWidth>document.querySelector('#map-scroll').clientWidth+1)throw Error('Small overview overflows');",
+    "screenshot": "ui-r5-after-small-map.png"
+  },
+  {
+    "size": [
+      768,
+      1024
+    ],
+    "eval": "await new Promise(r=>setTimeout(r,200));scrollTo(0,0);if(document.documentElement.scrollWidth>innerWidth)throw Error('Tablet page overflows')",
+    "screenshot": "ui-r5-after-tablet.png"
+  },
+  {
+    "click": "[data-stage='9']"
+  },
+  {
+    "click": "#adaptive-open",
+    "eval": "if(document.querySelector('#adaptive-start').value!=='9')throw Error('Setup ignores selected year')",
+    "screenshot": "ui-r5-after-setup.png"
+  },
+  {
+    "click": "#adaptive-setup button.primary-button"
+  },
+  {
+    "key": "Escape",
+    "eval": "if(!MATREE_APP.profile().adaptive.active||!document.querySelector('#adaptive-resume'))throw Error('Escape did not pause safely')"
+  },
+  {
+    "eval": "MATREE_APP.profile().adaptive.active.pending={...MATREE.generateReviewed('multiplikation',0),nodeId:'multiplikation',variant:0,reason:'En separat kontroll av tangentbordsinmatning.'};MATREE_APP.save();void 0;"
+  },
+  {
+    "click": "#adaptive-resume"
+  },
+  {
+    "click": "#adaptive-answer"
+  },
+  {
+    "type": "5"
+  },
+  {
+    "key": "Enter",
+    "eval": "if(MATREE_APP.profile().adaptive.active.items.length!==1||MATREE_APP.profile().adaptive.active.items[0].response!=='5')throw Error('Enter did not save the typed answer');"
+  },
+  {
+    "click": "#adaptive-skip"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-finish",
+    "eval": "if(!document.querySelector('#adaptive-dialog').getAttribute('aria-labelledby'))throw Error('Report lacks accessible title')"
+  },
+  {
+    "key": "Escape",
+    "eval": "await new Promise(r=>setTimeout(r,100));if(document.querySelector('#adaptive-dialog').open)throw Error('Escape did not close teacher report');if(MATREE_APP.profile().adaptive.sessions.length!==1)throw Error('Saved report was lost')"
+  },
+  {
+    "click": "#reset-filters"
+  },
+  {
+    "click": "[data-group='numbers']",
+    "eval": "if(document.querySelector('#skill-content h2').id!=='skill-dialog-title')throw Error('Skill dialog has no accessible name')"
+  },
+  {
+    "key": "Escape",
+    "eval": "if(document.activeElement.dataset.group!=='numbers')throw Error('Dialog did not restore keyboard focus')"
+  },
+  {
+    "click": "#search",
+    "type": "zzzzzz",
+    "eval": "if(!document.querySelector('.empty-map').textContent.includes('Rensa filter'))throw Error('Empty state has wrong action')",
+    "screenshot": "ui-r5-after-search-empty.png"
+  },
+  {
+    "click": "#reset-filters"
+  },
+  {
+    "size": [
+      1440,
+      1000
+    ],
+    "eval": "await new Promise(r=>setTimeout(r,200));scrollTo(0,0)",
+    "screenshot": "ui-r5-final-home.png"
+  },
+  {
+    "eval": "document.querySelector('#skill-map').scrollIntoView({block:'start'})",
+    "screenshot": "ui-r5-final-map.png"
+  },
+  {
+    "drag": {
+      "selector": "#map-scroll",
+      "dy": -160
+    },
+    "eval": "if(document.querySelector('#map-scroll').scrollTop<100)throw Error('Left-button panning stopped working');if(document.querySelector('#skill-dialog').open)throw Error('Panning opened a group');",
+    "screenshot": "ui-r5-final-drag.png"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "eval": "await (Promise.all([...document.querySelectorAll('script[src],link[rel=stylesheet]')].map(async e=>{const url=new URL(e.src||e.href);if(!url.pathname.startsWith('/MAtree/'))throw Error('Asset escapes project path');const r=await fetch(url);if(!r.ok)throw Error('Missing asset '+url.pathname);return url.pathname;})).then(files=>({assets:files.length,protocol:location.protocol,skills:MATREE.detailNodes.length})))"
+  },
+  {
+    "eval": "await (Promise.all([...new Map(MATREE.nodes.map(n=>n.source).filter(s=>s.kind!=='curriculum').map(s=>[s.file,s])).values()].map(async s=>{const url=new URL(s.url,location.href);if(!url.pathname.startsWith('/MAtree/')||url.hash!=='#page='+s.page)throw Error('Invalid book URL');const r=await fetch(url,{method:'HEAD'});if(!r.ok||!r.headers.get('content-type').includes('pdf'))throw Error('Missing PDF: '+url.pathname);return {file:s.file,status:r.status};})).then(books=>({books:books.length,allPDFsAvailable:true})))",
+    "json_output": "pages-book-links.json"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('#new-profile').value='Pages test';void 0"
+  },
+  {
+    "click": "#profile-form .primary-button"
+  },
+  {
+    "click": "[data-close=profiles-dialog]"
+  },
+  {
+    "eval": "MATREE_APP.openSkill('brak-forlanga');void 0"
+  },
+  {
+    "click": "#skill-content [data-start]"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile();for(let i=0;i<3;i++){const q=p.quiz.questions[p.quiz.index];document.querySelector('#answer').value=String(q.answer);document.querySelector('#answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));document.querySelector('#next-question').click();}if(MATREE_APP.latest('brak-forlanga').score!==3)throw Error('Manual result not saved');return 'Manual result saved over HTTP';})()",
+    "screenshot": "pages-manual-result.png"
+  },
+  {
+    "click": "[data-close=skill-dialog]"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "eval": "document.querySelector('#adaptive-start').value='7';document.querySelector('#adaptive-category').value='tal';document.querySelector('#adaptive-limit').value='all';document.querySelector('#adaptive-limit').dispatchEvent(new Event('change',{bubbles:true}));void 0",
+    "screenshot": "pages-full-setup.png"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "eval": "document.querySelector('#adaptive-estimate').scrollIntoView({block:'center'});void 0",
+    "screenshot": "pages-area-setup-mobile.png"
+  },
+  {
+    "size": [
+      1366,
+      768
+    ]
+  },
+  {
+    "click": "#adaptive-setup .primary-button"
+  },
+  {
+    "eval": "(()=>{const s=MATREE_APP.profile().adaptive.active,q=s.pending;if(s.mode!=='all'||s.scope!=='7'||s.category!=='tal')throw Error('Wrong selection');const input=document.querySelector('#adaptive-answer');input.value=q.options?'1':'123';input.dispatchEvent(new Event('input',{bubbles:true}));window.pagesDraft=input.value;localStorage.setItem('pages-expected-draft',input.value);return {limit:s.limit,draft:input.value};})()"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "a.brand"
+  },
+  {
+    "eval": "await (new Promise(resolve=>{const timer=setInterval(()=>{if(window.MATREE_APP?.profile().adaptive.active&&document.querySelector('#adaptive-open')){clearInterval(timer);resolve(true);}},30);}))"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "click": "#adaptive-resume",
+    "eval": "(()=>{const p=MATREE_APP.profile();if(p.name!=='Pages test'||MATREE_APP.latest('brak-forlanga').score!==3||p.adaptive.active.mode!=='all'||p.adaptive.active.category!=='tal'||document.querySelector('#adaptive-answer').value!==localStorage.getItem('pages-expected-draft'))throw Error('HTTP reload lost state');return 'Profile, result, full mode and draft survive HTTP reload';})()",
+    "screenshot": "pages-resumed-student.png"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "eval": "await ((()=>{const original=URL.createObjectURL;window.pagesBlob=null;URL.createObjectURL=blob=>{window.pagesBlob=blob;return original(blob);};document.querySelector('#profile-button').click();document.querySelector('#export-button').click();return pagesBlob.text().then(text=>{const data=JSON.parse(text),p=data.profiles.find(p=>p.name==='Pages test');if(!p||p.adaptive.active.mode!=='all'||p.adaptive.active.category!=='tal'||!p.adaptive.active.draft)throw Error('Missing exported state');window.pagesBackup=text;return 'Export works over HTTP';});})())"
+  },
+  {
+    "eval": "await ((()=>{const transfer=new DataTransfer();transfer.items.add(new File([pagesBackup],'backup.json',{type:'application/json'}));const input=document.querySelector('#import-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));return new Promise((resolve,reject)=>setTimeout(()=>{const p=MATREE_APP.profile();if(!p.name.startsWith('Pages test')||p.adaptive.active.mode!=='all'||p.adaptive.active.category!=='tal'||!p.adaptive.active.draft){reject(Error('Import lost full run: '+JSON.stringify({name:p.name,mode:p.adaptive.active?.mode,draft:p.adaptive.active?.draft,message:document.querySelector('#profile-message').textContent})));return;}resolve('Import works over HTTP');},100));})())"
+  },
+  {
+    "click": "[data-close=profiles-dialog]"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "click": "#adaptive-resume"
+  },
+  {
+    "eval": "(()=>{let answers=0;while(MATREE_APP.profile().adaptive.active){document.querySelector('#adaptive-skip').click();if(++answers>200)throw Error('Area run failed to end');}const s=MATREE_APP.profile().adaptive.sessions.at(-1),rows=MATREE_ADAPTIVE.summary(s),e=MATREE_ADAPTIVE.estimateAll('7','tal');if(s.category!=='tal'||s.endReason!=='all-tested'||rows.length!==e.skills||rows.some(r=>r.node.category!=='tal'))throw Error('Area coverage is incorrect');return {area:s.category,skills:rows.length,answers:s.items.length,expectedQuestions:[e.minQuestions,e.maxQuestions]};})()"
+  },
+  {
+    "click": "#adaptive-teacher-report",
+    "eval": "(()=>{if(!document.querySelector('.report-meta').textContent.includes('Tal & räkning')||!document.querySelector('.report-end').textContent.includes('valt område'))throw Error('Report loses area context');return 'Full Tal year 7 report is scoped correctly';})()",
+    "screenshot": "pages-area-complete-report.png"
+  }
+]

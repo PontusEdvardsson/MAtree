@@ -1,0 +1,44 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "script": "tests/improvements-tests.js",
+    "eval": "window.verifyStudentWorkspace()"
+  },
+  {
+    "eval": "window.previewStudent=(id,raw=false,v=0)=>{document.querySelector('#adaptive-dialog').close();const p=MATREE_APP.profile(),s=MATREE_ADAPTIVE.create({limit:30});s.pending={...(raw?MATREE.generateReviewed(id,v):MATREE.generate(id,v)),nodeId:id,variant:v,reason:'Visuell granskning.'};p.adaptive.active=s;MATREE_APP.save();MATREE_APP.render();document.querySelector('#adaptive-open').click();document.querySelector('#adaptive-resume').click();};previewStudent('pythagoras-hyp');void 0",
+    "screenshot": "improve-r2-after-triangle.png"
+  },
+  {
+    "eval": "previewStudent('tabell',false,1);void 0",
+    "screenshot": "improve-r2-after-table.png"
+  },
+  {
+    "eval": "previewStudent('multiplikation',true);void 0",
+    "screenshot": "improve-r2-after-numeric.png"
+  },
+  {
+    "click": "#adaptive-answer",
+    "type": "12",
+    "key": "Enter",
+    "eval": "if(MATREE_APP.profile().adaptive.active.items.length!==1)throw Error('Enter failed');"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "eval": "previewStudent('multiplikation',true);void 0",
+    "screenshot": "improve-r2-after-numeric-mobile.png"
+  },
+  {
+    "eval": "previewStudent('rita-linje');document.querySelector('#student-question-title').textContent+=' Förklara för dig själv hur linjens lutning och startvärde hjälper dig att välja. Du kan använda papper när du räknar.';void 0",
+    "screenshot": "improve-r2-after-long-mobile.png"
+  },
+  {
+    "click": "#adaptive-skip",
+    "eval": "if(!MATREE_APP.profile().adaptive.active.items[0].skipped)throw Error('Skip failed on mobile');"
+  }
+]

@@ -319,10 +319,10 @@
     }
     return null;
   }
-  function label(value,asFraction){
+  function label(value,asFraction,exactDecimal=false){
     if(asFraction){const f=fraction(value);if(f)return f;}
-    const rounded=Math.abs(value)>=.01?Math.round(value*1000)/1000:value;
-    return rounded.toLocaleString('sv-SE',{maximumFractionDigits:12,useGrouping:false});
+    const rounded=!exactDecimal&&Math.abs(value)>=.01?Math.round(value*1000)/1000:value;
+    return (Object.is(rounded,-0)?0:rounded).toLocaleString('sv-SE',{maximumFractionDigits:12,useGrouping:false});
   }
   function candidates(id,v,q){
     const p=stem(q),n=nums(p),[a,b,c,d]=n,result=q.answer,cat=nodes.get(id).category,out=[];
@@ -378,7 +378,12 @@
     return out.filter(Number.isFinite);
   }
   function numericChoice(id,v,q){
-    const asFraction=q.answerKind==='fraction'||['brak','sannolikhet'].includes(nodes.get(id).category)&&!Number.isInteger(q.answer),correct=label(q.answer,asFraction);
+    if(id==='brak-jamfora'){
+      const options=shuffle([...q.prompt.matchAll(/\d+\/\d+/g)].map(m=>m[0])),optionValues=options.map(M.parseAnswer),answer=optionValues.findIndex(x=>near(x,q.answer))+1;
+      return {...q,prompt:q.prompt+'\n\n'+options.map((s,i)=>`${i+1}. ${s}`).join('\n')+'\n\nVälj ett svar.',answer,answerKind:'choice',options,optionValues};
+    }
+    const exactDecimal=q.answerKind==='decimal'||/decimalform/.test(q.prompt)||['tiomultiplikation','tiodivision','decimal-multiplikation','decimal-division'].includes(id);
+    const asFraction=!exactDecimal&&(q.answerKind==='fraction'||['brak','sannolikhet'].includes(nodes.get(id).category)&&!Number.isInteger(q.answer)),correct=label(q.answer,asFraction,exactDecimal);
     const selected=[{text:correct,value:q.answer}],seen=new Set([correct]);
     const probability=nodes.get(id).category==='sannolikhet'&&!Number.isInteger(q.answer);
     const physicalUnits=new Set(['cm','m','mm','dm','km','cm²','m²','cm³','m³','g','kg','liter','l','dl','h','min','sekunder','kr','kr/kg','paket','personer']);
@@ -386,16 +391,16 @@
     for(const value of candidates(id,v,q)){
       if(integerOnly&&!Number.isInteger(value)||nonnegative&&value<0)continue;
       if(near(value,q.answer)||probability&&(value<0||value>1))continue;
-      const text=label(value,asFraction);if(seen.has(text))continue;
+      const text=label(value,asFraction,exactDecimal);if(seen.has(text))continue;
       selected.push({text,value});seen.add(text);if(selected.length===4)break;
     }
     for(let delta=3;selected.length<4;delta++){
-      const value=probability?(delta%9+1)/10:q.answer+delta,text=label(value,asFraction);
+      const value=probability?(delta%9+1)/10:q.answer+delta,text=label(value,asFraction,exactDecimal);
       if(!seen.has(text)&&!near(value,q.answer)){selected.push({text,value});seen.add(text);}
     }
     const options=shuffle(selected),answer=options.findIndex(o=>near(o.value,q.answer))+1;
     let prompt=q.prompt.replace(/Svara med ett bråk\.?/g,'').replace(/Ange bara talet framför %\.?/g,'').trim();
-    if(!asFraction&&Math.abs(q.answer)>=.01&&!near(Math.round(q.answer*1000)/1000,q.answer))prompt+=' Alternativen är avrundade till tre decimaler.';
+    if(!exactDecimal&&!asFraction&&Math.abs(q.answer)>=.01&&!near(Math.round(q.answer*1000)/1000,q.answer))prompt+=' Alternativen är avrundade till tre decimaler.';
     prompt+='\n\n'+options.map((o,i)=>`${i+1}. ${o.text}`).join('\n')+'\n\nVälj ett svar.';
     return {...q,prompt,answer,answerKind:'choice',options:options.map(o=>o.text),optionValues:options.map(o=>o.value)};
   }
@@ -429,7 +434,7 @@
     const correct=parsed[q.answer-1],wrong=parsed.filter((_,i)=>i!==q.answer-1);
     if(parsed.length>=4||natural.has(id)||parsed.length===2&&parsed.every(x=>['Ja','Nej','A','B','Medianen','Medelvärdet'].includes(x)))return {...q,options:parsed};
     const p=stem(q),n=nums(p),[a,b,c]=n,more=[];
-    if(extra[id])more.push(...(id==='formel-omskrivning'?[extra[id][v]]:id==='funktion-begrepp'?[extra[id][v===2?1:0]]:id==='simulering'?[extra[id][v===2?1:0]]:extra[id]));
+    if(extra[id]&&(id!=='primtal'||v===2))more.push(...(id==='formel-omskrivning'?[extra[id][v]]:id==='funktion-begrepp'?[extra[id][v===2?1:0]]:id==='simulering'?[extra[id][v===2?1:0]]:extra[id]));
     if(id==='f-shapes'||id==='former')more.push(...['cirkel','triangel','kvadrat','femhörning','sexhörning'].filter(x=>x!==q.visual?.name&&!(q.visual?.name==='kvadrat'&&x==='rektangel')));
     if(['f-coordinate','koordinater','spegla-koordinat'].includes(id)){const xy=nums(correct);more.push(`(${-xy[0]}, ${-xy[1]})`,`(${xy[1]+1}, ${xy[0]+1})`);}
     if(id==='typvarde')more.push('Inget tal är ett typvärde.');
@@ -472,7 +477,7 @@
   M.expandChoice=expandedChoice;
   M.generate=(id,v)=>{const q=base(id,v);if(q.answerKind==='choice')return expandedChoice(id,v,q);return M.responsePlan[id]?.[((v%3)+3)%3]==='C'?numericChoice(id,v,q):q;};
   M.questionStem=q=>q.options?stem(q):q.prompt;
-  M.answerText=(q,response=q.answer)=>{const index=M.parseAnswer(String(response));return q.options&&Number.isInteger(index)&&index>=1&&index<=q.options.length?q.options[index-1]:String(response===q.answer?M.fmt(q.answer):response);};
-  M.responseAllowed=(q,response)=>{const value=M.parseAnswer(response);return Number.isFinite(value)&&(!q.options||Number.isInteger(value)&&value>=1&&value<=q.options.length);};
+  M.answerText=(q,response=q.answer)=>{const index=M.parseAnswer(String(response));return q.options&&Number.isInteger(index)&&index>=1&&index<=q.options.length?q.options[index-1]:String(response===q.answer?(q.answerKind==='fraction'?fraction(q.answer)||M.fmt(q.answer):M.fmt(q.answer)):response);};
+  M.responseAllowed=(q,response)=>{const value=M.parseAnswer(response);return Number.isFinite(value)&&(!q.options||Number.isInteger(value)&&value>=1&&value<=q.options.length)&&(!q.options&&q.responseFormat==='decimal'?!String(response).includes('/'):true);};
   M.questionFingerprint=item=>{const text=`${stem(item)}|${JSON.stringify(item.visual||null)}`;let hash=2166136261;for(const char of text){hash^=char.charCodeAt(0);hash=Math.imul(hash,16777619);}return (hash>>>0).toString(16).padStart(8,'0');};
 })();

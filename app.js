@@ -291,7 +291,7 @@
     const quiz = profile().quiz;
     if (!quiz || quiz.answers.length > quiz.index) return;
     const value = parseAnswer($('#answer').value);
-    if (!window.MATREE.responseAllowed(quiz.questions[quiz.index],$('#answer').value)) { $('#answer-error').textContent = quiz.questions[quiz.index].options?'Välj ett svarsalternativ.':'Skriv ett giltigt tal eller bråk utan enhet, till exempel −2, 0,5 eller 1/2.'; return; }
+    if (!window.MATREE.responseAllowed(quiz.questions[quiz.index],$('#answer').value)) { const q=quiz.questions[quiz.index];$('#answer-error').textContent = q.options?'Välj ett svarsalternativ.':q.responseFormat==='decimal'?'Skriv svaret i decimalform med komma eller punkt, utan bråkstreck.':'Skriv ett giltigt tal eller bråk utan enhet, till exempel −2, 0,5 eller 1/2.'; return; }
     const expected = quiz.questions[quiz.index].answer;
     const tolerance = expected !== 0 && Math.abs(expected) < .01 ? Math.abs(expected)*.000001 : .000501;
     delete quiz.draft;

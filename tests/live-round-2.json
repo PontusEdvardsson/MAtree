@@ -10,7 +10,7 @@
     "click": "#skill-content [data-start]"
   },
   {
-    "eval": "(()=>{const p=MATREE_APP.profile();p.quiz.questions=[0,1,2].map(v=>MATREE.generateReviewed('f-decimal',0));MATREE_APP.save();MATREE_APP.openSkill('f-decimal');window.liveManualQ=p.quiz.questions[0];return {prompt:liveManualQ.prompt,answer:liveManualQ.answer};})()"
+    "eval": "(()=>{const p=MATREE_APP.profile();p.quiz.questions=[0,1,2].map(v=>MATREE.generateReviewed('f-decimal',1));MATREE_APP.save();MATREE_APP.openSkill('f-decimal');window.liveManualQ=p.quiz.questions[0];return {prompt:liveManualQ.prompt,answer:liveManualQ.answer};})()"
   },
   {
     "click": "#answer",

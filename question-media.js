@@ -3,7 +3,7 @@
   const M=window.MATREE,esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const integer=(x,a,b)=>Number.isInteger(x)&&x>=a&&x<=b;
 
-  M.draftQuestionKey=q=>JSON.stringify([q.prompt,q.answer,q.unit,q.answerKind||null,q.options||null,q.optionValues||null,q.visual||null]);
+  M.draftQuestionKey=q=>JSON.stringify([q.prompt,q.answer,q.unit,q.answerKind||null,q.options||null,q.optionValues||null,q.visual||null,...(q.responseFormat?[q.responseFormat]:[])]);
   M.validateDraft=(q,draft)=>{
     if(draft===undefined||draft===null)return null;
     if(typeof draft!=='object'||typeof draft.questionKey!=='string'||draft.questionKey.length>20000||typeof draft.value!=='string'||draft.value.length>60)throw Error('Ogiltigt svarsutkast.');
@@ -22,13 +22,15 @@
     if(q.options)return 'Välj ett av svarsalternativen.';
     if(q.answerKind==='choice'||q.prompt.includes('alternativets nummer'))return 'Skriv alternativets nummer.';
     if(q.answerKind==='fraction')return 'Skriv ett bråk med snedstreck, till exempel 1/2.';
+    if(/^Avrunda .+ till heltal\./.test(q.prompt))return 'Skriv ett heltal.';
+    if(q.answerKind==='decimal'||/decimalform/.test(q.prompt))return 'Skriv ett decimaltal med komma eller punkt.'+(q.answer!==0&&Math.abs(q.answer)<.01?' Skriv alla decimaler i svaret.':'');
     if(q.answer!==0&&Math.abs(q.answer)<.01)return 'Skriv talet utan avrundning, eller som ett exakt bråk.';
-    if(q.answerKind==='decimal')return 'Skriv ett decimaltal med komma eller punkt.';
     if(q.answerKind==='integer')return 'Skriv ett heltal.';
     return 'Skriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler.';
   };
   M.questionExtras=q=>{
     const out={};
+    if(q.responseFormat!==undefined){if(q.responseFormat!=='decimal')throw Error('Ogiltigt svarsformat.');out.responseFormat=q.responseFormat;}
     if(q.answerKind!==undefined){if(!['integer','number','fraction','decimal','choice'].includes(q.answerKind))throw Error('Ogiltig svarstyp.');out.answerKind=q.answerKind;}
     if(q.templateId!==undefined){if(typeof q.templateId!=='string'||q.templateId.length>100)throw Error('Ogiltig frågemall.');out.templateId=q.templateId;}
     if(q.facet!==undefined){if(!integer(q.facet,0,2))throw Error('Ogiltig frågeaspekt.');out.facet=q.facet;}
@@ -118,7 +120,7 @@
       let grid='',ticks='';
       for(let x=v.xMin;x<=v.xMax+1e-8;x+=v.xStep){grid+=line(X(x),top,X(x),bottom);if(Math.abs(x)>1e-8)ticks+=line(X(x),axisY-3,X(x),axisY+3)+label(X(x),Math.min(bottom+23,axisY+22),M.fmt(x));}
       for(let y=v.yMin;y<=v.yMax+1e-8;y+=v.yStep){grid+=line(left,Y(y),right,Y(y));if(Math.abs(y)>1e-8)ticks+=line(axisX-3,Y(y),axisX+3,Y(y))+label(Math.max(19,axisX-20),Y(y)+5,M.fmt(y));}
-      content='<g stroke="#dee6d6" stroke-width="1">'+grid+'</g><g stroke="#344c40" stroke-width="2">'+line(axisX,top,axisX,bottom)+line(left,axisY,right,axisY)+'</g>'+ticks+label(axisX-12,axisY+21,'0')+label(right+22,axisY+5,'x')+label(axisX+14,top-10,'y');
+      content='<g stroke="#dee6d6" stroke-width="1">'+grid+'</g><g stroke="#344c40" stroke-width="2">'+line(axisX,top,axisX,bottom)+line(left,axisY,right,axisY)+'</g>'+ticks+label(axisX,axisY+21,'0')+label(right+22,axisY+5,'x')+label(axisX+14,top-10,'y');
       content+='<path d="M '+(right-6)+' '+(axisY-4)+' L '+right+' '+axisY+' L '+(right-6)+' '+(axisY+4)+' M '+(axisX-4)+' '+(top+6)+' L '+axisX+' '+top+' L '+(axisX+4)+' '+(top+6)+'" fill="none" stroke="#344c40" stroke-width="2"/>';
       v.series.forEach((series,i)=>{
         const dash=dashes[i]?' stroke-dasharray="'+dashes[i]+'"':'';

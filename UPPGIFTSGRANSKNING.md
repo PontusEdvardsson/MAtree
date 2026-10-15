@@ -4,7 +4,46 @@ Granskningen omfattade ursprungligen 289 ID:n. Efter 25 sammanslagningar finns 2
 
 Alla dessa färdigheter använder nu den granskade banken. Den innehåller tre mallvarianter per färdighet, med slumpade tal, omkastade alternativ och olika frågeformer där det passar. Totalt finns 867 generatorvarianter, varav 408 tillkom för åk 8–9. Det är inte 867 fasta frågor: parametrarna ger fler frågor, medan vissa begreppsfrågor har en begränsad mängd meningsfulla varianter.
 
-Av dessa hör 759 varianter till de 253 delmomenten, 33 till elva blandade kontroller och 75 till äldre sammanslagna ID:n. Ungefär hälften av delmomentens varianter i varje område har klickbara svarsalternativ, resten eget numeriskt svar. De numeriska flervalsfrågorna har fyra alternativ med bland annat fel räknesätt, jämförelsebas, skalfaktor, tecken eller avrundningssteg. Begreppsliga alternativ utgår från frågans innehåll. Naturliga ja/nej-frågor och vissa frågor med tre kategorier behåller två respektive tre svar. Alternativen och deras ordning sparas så att ett återupptaget pass använder samma fråga och samma facit.
+Av dessa hör 759 varianter till de 253 delmomenten, 33 till elva blandade kontroller och 75 till äldre sammanslagna ID:n. Ungefär hälften av delmomentens varianter i varje område har klickbara svarsalternativ, resten eget numeriskt svar. De numeriska flervalsfrågorna har normalt fyra alternativ med bland annat fel räknesätt, jämförelsebas, skalfaktor, tecken eller avrundningssteg. Vid jämförelse av två givna bråk används just de två bråken. Begreppsliga alternativ utgår från frågans innehåll. Naturliga ja/nej-frågor och vissa frågor med tre kategorier behåller två respektive tre svar. Alternativen och deras ordning sparas så att ett återupptaget pass använder samma fråga och samma facit.
+
+## Fem granskningsomgångar 2026-10-15
+
+Den publicerade sidan öppnades i Chrome. Därefter lästes 120 provfrågor per årskursurval med svarsalternativ, facit och bilddata. Facit räknades också fram med separata lösningsfunktioner från frågetexten och bilddata. Varje provfråga skickades genom det manuella svarsformuläret med både ett rätt och ett fel svar: 600 frågor och 1 200 rättningskontroller. Testerna använder isolerade syntetiska elevprofiler.
+
+| Omgång | Årskursurval | Provfrågor | Olika frågor inklusive bilddata | Delmoment | Flerval | Bildfrågor |
+|---|---|---:|---:|---:|---:|---:|
+| 1 | 1–3 | 120 | 118 | 26 | 79 | 12 |
+| 2 | 4–6 | 120 | 120 | 62 | 78 | 7 |
+| 3 | 7 | 120 | 120 | 81 | 72 | 9 |
+| 4 | 8 | 120 | 120 | 94 | 61 | 9 |
+| 5 | 9 | 120 | 120 | 106 | 47 | 11 |
+
+Urvalen täcker tillsammans alla 253 delmoment. Gemensamma färdigheter ingår i flera årskursurval. Två prov i åk 1–3 hade samma fråga i överlappande delmoment; även där granskades över 100 olika frågor. Fördelningen mellan flerval och eget svar i stickprovet skiljer sig från bibliotekets fördelning per mallvariant.
+
+Åtgärder från genomgången:
+
+- **Omgång 1:** Nämnarfrågan anger nu att bråket ska skrivas utan förkortning. Annars kunde exempelvis både 4 och 2 tolkas som nämnare för två färgade fjärdedelar. Bråkmodeller, prickar, former och tabeller granskades visuellt.
+- **Omgång 2:** Decimalomvandlingar får decimalalternativ även inom bråkområdet. Platsvärdesuppgifter avrundas inte till tre decimaler i alternativen. Bråkfacit visas exakt, exempelvis `1/3`, och decimaler i listor skiljs åt med semikolon. Svarshjälpen följer det begärda formatet.
+- **Omgång 3:** Primtalsfrågor blandar inte längre talalternativ med en definitionsmening. Bråkjämförelser behåller de två bråk som faktiskt ska jämföras. Alternativ visar inte negativ nolla.
+- **Omgång 4:** Höga färdhastigheter gäller en bil. Klädval räknar par byxor. En omvänd kombinationsfråga anger uttryckligen att varje färg finns i varje storlek. Sambandstabeller, färdgrafer och sannolikhetsträd kontrollerades.
+- **Omgång 5:** Nollan vid origo flyttades så att `−1` och `0` inte flyter ihop till `−10`. Momsfrågans inledning fick en fullständig mening. Nya uttryckliga decimalomvandlingar tillåter inte att eleven bara skriver av det givna bråket; formatvägledning räknas inte som ett inskickat svar. Det nya formatkravet lagras med frågan och ändrar inte äldre frågors rättning eller utkast.
+
+Skärmbilder granskades för tabeller, bråkmodeller, tallinje, stapel-, linje- och cirkeldiagram, koordinatsystem, flera linjer, Pythagoras, lådagram och sannolikhetsträd. Elevläget testades med verkliga klick och tangentbordsinmatning vid 1366 × 768 och 390 × 844. För de 48 bildfrågorna kontrollerades dessutom att SVG-texterna ryms inom bildytan.
+
+Regressionstesterna kontrollerar de konstaterade felen, exakta äldre alternativ, äldre svarsregler och utkast, samt formatvägledningen i både manuell kontroll och elevläge. Den fullständiga sviten omfattar även 13 005 oberoende facitkontroller, 7 590 blandade svarskontroller, rapporter, paus/återupptagning, profilbyte och export/import.
+
+Återskapa kontrollerna:
+
+```powershell
+python tests/run_browser.py
+python tests/ui_preview.py tests/question-audit.json
+python tests/ui_preview.py tests/question-visual-audit.json
+python tests/ui_preview.py tests/question-audit.json https://pontusedvardsson.github.io/MAtree/
+```
+
+Det reproducerbara stickprovet ligger i `tests/question-audit.js`. Körningen skriver frågor, facit, frö och årskurs till `.verification/question-audit-600.json`; gränssnittsresultat och skärmbilder hamnar också i `.verification/`. Materialet innehåller inga riktiga elevresultat och publiceras inte som en del av appen.
+
+Kvarvarande begränsningar: stickprovet täcker inte varje möjlig slumpvariant eller en elevs resonemang och metod. Vissa felalternativ är fortfarande lätta att utesluta. Bedömning av öppna bråksvar gäller talvärdet och kräver inte en viss förkortning eller skriven metod.
 
 Avrunda heltal och Avrunda och uppskatta heltal är en gemensam nod. Även identiska eller överlappande grundkontroller för positionssystemet, likhetstecknet, bråk av antal, likvärdiga bråk, bråkaddition, decimaler, decimaljämförelse, decimaladdition, räkneordning, enkla ekvationer, former, omkrets, tabellavläsning, frekvens, medelvärde och enkel sannolikhet har sammanförts. Överslagsräkning, negativa koordinater och senare geometri behåller separata moment där innehållet skiljer sig. Gamla resultat raderas inte; den senaste kontrollen på någon av de sammanslagna noderna visas på den gemensamma noden.
 

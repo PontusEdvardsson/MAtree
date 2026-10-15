@@ -103,6 +103,7 @@
       assert(true, window.verifyExpandedMath());
       assert(true, window.verifyReviewedQuestions());
       assert(true, window.verifyMixedQuestions());
+      assert(true, window.verifyQuestionQuality());
       assert(true, window.verifyMixedUI());
       assert(true, window.verifyReportContext());
       assert(true, window.verifyStudentWorkspace());

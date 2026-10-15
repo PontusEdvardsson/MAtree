@@ -128,7 +128,7 @@
   function respond(skip=false){
     const session=state().active;if(!session)return;
     const response=$('#adaptive-answer')?.value||'';
-    if(!A.answer(session,response,skip)){$('#adaptive-error').textContent=session.pending.options?'Välj ett svarsalternativ eller ”Jag vet inte”.':'Skriv ett tal eller bråk. Du kan också välja ”Jag vet inte”.';return;}
+    if(!A.answer(session,response,skip)){$('#adaptive-error').textContent=session.pending.options?'Välj ett svarsalternativ eller ”Jag vet inte”.':session.pending.responseFormat==='decimal'?'Skriv svaret i decimalform med komma eller punkt, utan bråkstreck. Du kan också välja ”Jag vet inte”.':'Skriv ett tal eller bråk. Du kan också välja ”Jag vet inte”.';return;}
     if(session.ended){archive(session,session.endReason);complete();}else{app.save();student(true);}
   }
   function complete(){

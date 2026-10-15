@@ -10,6 +10,7 @@
     try{for(const c of cases){let seed=c.seed||91;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};samples.push({id:c.id,variant:c.v||0,q:M.generate(c.id,c.v||0)});}}
     finally{Math.random=random;}
     const section=document.createElement('section');section.id='question-gallery';section.innerHTML='<div class="gallery-grid">'+samples.map(s=>'<article class="gallery-case" data-sample="'+s.id+'"><h2>'+esc(s.id)+' · variant '+s.variant+'</h2><p class="prompt">'+esc(M.questionStem(s.q))+'</p>'+M.renderQuestionVisual(s.q)+'<p class="audit-answer">Facit: '+esc(M.answerText(s.q))+' '+esc(s.q.unit)+'</p></article>').join('')+'</div>';document.body.append(section);
+    section.querySelectorAll('.gallery-case').forEach((card,i)=>{if(!samples[i].q.options)return;const list=document.createElement('ol');list.className='audit-options';list.style='font-size:16px;line-height:1.5;padding-left:24px';list.innerHTML=samples[i].q.options.map(s=>'<li>'+esc(s)+'</li>').join('');card.querySelector('.audit-answer').before(list);});
     window.gallerySamples=samples;scrollTo(0,0);return samples.map(s=>({id:s.id,prompt:M.questionStem(s.q),answer:M.answerText(s.q),visual:s.q.visual}));
   };
 })();

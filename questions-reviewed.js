@@ -6,7 +6,7 @@
   const r=(a,b)=>a+Math.floor(Math.random()*(b-a+1)), pick=a=>a[r(0,a.length-1)];
   const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=r(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
   const gcd=(a,b)=>b?gcd(b,a%b):a;
-  const q=(prompt,answer,explanation,unit='',answerKind=Number.isInteger(answer)?'integer':'number',visual=null)=>({prompt,answer,explanation,unit,answerKind,...(visual?{visual}: {})});
+  const q=(prompt,answer,explanation,unit='',answerKind=Number.isInteger(answer)?'integer':'number',visual=null)=>({prompt,answer,explanation,unit,answerKind,...(/^Skriv .+ i decimalform\./.test(prompt)&&answerKind!=='choice'?{responseFormat:'decimal'}:{}),...(visual?{visual}: {})});
   const choice=(prompt,correct,wrong,explanation,visual=null)=>{const options=shuffle([correct,...new Set(wrong.filter(x=>x!==correct))]);return q(`${prompt}\n\n${options.map((x,i)=>`${i+1}. ${x}`).join('\n')}\n\nSvara med alternativets nummer.`,options.indexOf(correct)+1,explanation,'','choice',visual);};
   const frac=(n,d)=>`${n}/${d}`;
   const table=(labels,values)=>({type:'table',labels,values});
@@ -93,7 +93,7 @@
   // Bråk: bilder, andelar och beräkningar. Omskrivning får kontrollera båda delarna.
   add('f-half brak-del-hel',[
     id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q('Hur stor andel av figuren är färgad? Svara med ett bråk.',n/d,'Täljaren anger färgade delar och nämnaren alla lika stora delar.','','fraction',fraction(d,n));},
-    id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q(`En helhet har ${d} lika stora delar, varav ${n} är ${n===1?'färgad':'färgade'}. Vad är nämnaren i bråket för den färgade andelen?`,d,'Nämnaren beskriver hela indelningen, inte bara de färgade delarna.');},
+    id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q(`En helhet har ${d} lika stora delar, varav ${n} är ${n===1?'färgad':'färgade'}. Skriv den färgade andelen som ett bråk utan att förkorta det. Vilken är nämnaren?`,d,'Utan förkortning anger nämnaren alla delar i den ursprungliga indelningen.');},
     id=>{const d=id==='f-half'?4:r(3,10),n=r(1,d-1);return q(`Bråket ${n}/${d} beskriver en del av en helhet. Hur många lika stora delar är markerade?`,n,'Täljaren anger antalet valda delar.');}
   ]);
   add('f-fraction-count brak-del-antal brak',[
@@ -161,7 +161,7 @@
   ]);
   add('f-decimal-compare sortera-tal',[
     ()=>{const whole=r(0,8),n=r(1,9);return q(`Vilket tal är störst: ${shuffle([f(whole+n/10),f(whole+n/100)]).join(' eller ')}?`,whole+n/10,'Jämför platsvärden från vänster.','','decimal');},
-    ()=>{const whole=r(0,8),n=r(1,8);return q(`Vilket tal är minst: ${shuffle([f(whole+n/10),f(whole+(n+1)/10),f(whole+n/100)]).join(', ')}?`,whole+n/100,'Fler skrivna decimaler betyder inte automatiskt större tal.','','decimal');},
+    ()=>{const whole=r(0,8),n=r(1,8);return q(`Vilket tal är minst: ${shuffle([f(whole+n/10),f(whole+(n+1)/10),f(whole+n/100)]).join('; ')}?`,whole+n/100,'Fler skrivna decimaler betyder inte automatiskt större tal.','','decimal');},
     ()=>{const a=r(1,8),n=r(1,9);return choice(`Hur förhåller sig ${f(a+n/10)} och ${f(a+n/10)}0 till varandra?`,'De är lika stora.',['Det första är större.','Det andra är större.'],'En nolla sist i decimaldelen ändrar inte värdet.');}
   ]);
   function decimalSum(id,facet){const simple=id==='f-decimal-add',scale=simple?10:100,a=r(1,simple?19:399),b=r(1,simple?19:199),sub=id==='decimal-subtraktion';const larger=Math.max(a,b),smaller=Math.min(a,b);return facet===1?q(`${f(a/scale)} ${sub?'−':'+'} □ = ${f((sub?a-b:a+b)/scale)}. Vilket tal saknas?`,b/scale,'Behåll samma platsvärden när du räknar.','','decimal'):q(`Beräkna ${f((sub?larger:a)/scale)} ${sub?'−':'+'} ${f((sub?smaller:b)/scale)}.`,(sub?larger-smaller:a+b)/scale,'Räkna med motsvarande platsvärden.','','decimal');}

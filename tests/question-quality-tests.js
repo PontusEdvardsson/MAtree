@@ -23,6 +23,40 @@ window.verifyQuestionQuality=()=>{
   check(M.questionExtras(conversion).responseFormat==='decimal','Response format survives backup serialization');
   check(M.validateDraft(conversion,M.makeDraft(conversion,'0,'))?.value==='0,','An unfinished decimal answer survives draft validation');
   check(M.draftQuestionKey(older)===JSON.stringify([older.prompt,older.answer,older.unit,older.answerKind||null,null,null,older.visual||null]),'Older paused questions keep the same draft identity');
+  const originalRandom=Math.random;
+  try{
+    Math.random=()=>0;
+    check(M.generateReviewed('f-word-add',0).prompt.includes('1 penna.'),'One pencil uses singular Swedish');
+    check(M.generateReviewed('f-angle',2).prompt.includes('1 rät vinkel?'),'One right angle uses singular Swedish');
+  }finally{Math.random=originalRandom;}
+  for(let i=0;i<50;i++){
+    const double=M.generate('f-double',i%2);
+    check(double.optionValues.every(x=>x<=double.optionValues[double.answer-1]*4),'Double/half distractors do not introduce unrelated minute conversions');
+    const whole=M.generateReviewed('avrunda-heltal',0),step=whole.prompt.includes('tusental')?1000:whole.prompt.includes('hundratal')?100:10;
+    check(M.toChoice('avrunda-heltal',0,whole).optionValues.every(x=>x>=0&&x%step===0),'Integer rounding alternatives all have the requested rounding precision');
+    const decimal=M.toChoice('avrunda-decimal',1,M.generateReviewed('avrunda-decimal',1));
+    check(decimal.optionValues.every(x=>Math.abs(x*10-Math.round(x*10))<1e-8),'Decimal rounding alternatives all represent tenths');
+    const division=M.toChoice('tiodivision',1,M.generateReviewed('tiodivision',1));
+    check(division.options.every(s=>(s.split(',')[1]||'').length<=4),'Place-value alternatives avoid long recurring distractors');
+    const glass=M.generateReviewed('decimal-division',2).prompt.match(/glas rymmer ([\d,]+)/);
+    check(M.parseAnswer(glass[1])>=.2&&M.parseAnswer(glass[1])<=.5,'A glass has a plausible capacity');
+    check(M.generateReviewed('relativ-frekvens',0).responseFormat==='decimal'&&M.generateReviewed('experiment-sannolikhet',0).responseFormat==='decimal','Statistical decimal-form requests retain the response format');
+    const point=M.generate('koordinater',1);
+    check(point.optionValues.every(x=>Math.abs(x)<=7),'Coordinate alternatives remain on the shown coordinate scale');
+    const power=M.generate('negativ-exponent',0);
+    check(power.optionValues.filter(x=>x>0&&x<=1).length>=2,'Negative exponent questions offer another plausible small positive value');
+    check(M.generate('brak-forkorta',1).optionValues.every(x=>x>0),'Positive denominator questions offer positive denominator alternatives');
+    const grid=M.generate('f-area',0);
+    const gridBound=Math.max(grid.visual.rows*grid.visual.cols*2,2*(grid.visual.rows+grid.visual.cols));
+    check(grid.optionValues.every(x=>x<=gridBound),'Area-count alternatives use the pictured grid instead of arbitrary scale factors');
+  }
+  for(const answer of [1/3,1/300]){
+    const q={prompt:'Vad är den relativa frekvensen i decimalform?',answer,answerKind:'number',responseFormat:'decimal'},digits=answer<.01?9:3,converted=M.toChoice('relativ-frekvens',0,q),response=answer.toFixed(digits).replace('.',',');
+    check(MATREE_ADAPTIVE.correct(q,response),'Precision guidance yields an accepted rounded decimal');
+    check(M.questionAnswerHint(q).includes(digits===9?'nio':'tre'),'Recurring decimal answers specify a usable rounding precision');
+    check(M.questionStem(converted).includes(digits===9?'nio':'tre'),'Recurring decimal choices state their rounding precision');
+    check(converted.options.every(s=>(s.split(',')[1]||'').length<=digits),'Recurring alternatives match the stated precision');
+  }
   for(let i=0;i<40;i++){
     check(M.generate('primtal',0).options.every(s=>Number.isInteger(M.parseAnswer(s))),'Prime-number alternatives all contain numbers, not definition statements');
     for(const v of [0,1]){

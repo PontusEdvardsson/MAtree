@@ -319,14 +319,27 @@
     }
     return null;
   }
-  function label(value,asFraction,exactDecimal=false){
+  function label(value,asFraction,exactDecimal=false,roundPlaces=null){
     if(asFraction){const f=fraction(value);if(f)return f;}
-    const rounded=!exactDecimal&&Math.abs(value)>=.01?Math.round(value*1000)/1000:value;
+    const rounded=roundPlaces!==null?Number(value.toFixed(roundPlaces)):!exactDecimal&&Math.abs(value)>=.01?Math.round(value*1000)/1000:value;
     return (Object.is(rounded,-0)?0:rounded).toLocaleString('sv-SE',{maximumFractionDigits:12,useGrouping:false});
   }
   function candidates(id,v,q){
     const p=stem(q),n=nums(p),[a,b,c,d]=n,result=q.answer,cat=nodes.get(id).category,out=[];
     const push=(...xs)=>out.push(...xs);
+    if(id==='f-double')push(...(v===1?[a*2,a-2,a,a+2]:[a/2,a+2,a,a*3]));
+    if(id==='f-proportion')push(a,b,a+b,a*b,a-b,result*2,result/2);
+    if(id==='negativ-exponent')push(...(v===1?[-result,result-1,result+1]:[result*10,result/10,1/result]));
+    if(['koordinater','f-coordinate'].includes(id)){
+      const point=q.visual?.type==='coordinate'?q.visual:q.visual?.points?.[0];
+      if(point)push(point.x,point.y,-point.x,-point.y,point.x+1,point.y+1);
+    }
+    if(q.visual?.type==='grid'){const {rows,cols}=q.visual;push(rows,cols,rows+cols,2*(rows+cols),result-1,result+1);}
+    if(['tiomultiplikation','tiodivision'].includes(id))push(result*10,result/10,result*100,result/100);
+    if(['f-round','avrunda-heltal','avrunda-decimal'].includes(id)){
+      const step=id==='avrunda-decimal'?10**(-v):/tusental/.test(p)?1000:/hundratal/.test(p)?100:10;
+      push(Math.floor(a/step)*step,Math.ceil(a/step)*step,result-step,result+step,result+2*step,result+3*step);
+    }
     const pairs=[...clean(p).matchAll(/(-?\d+)\/(\d+)/g)].map(m=>[Number(m[1]),Number(m[2])]);
     if(cat==='brak'||cat==='sannolikhet'){
       if(pairs.length>=2){const [[A,B],[C,D]]=pairs;push((A+C)/(B+D),A*C/(B*D),(A+C)/(B*D),(A-C)/(B-D),A*D/(B*C),A/B+C/D);}
@@ -360,7 +373,8 @@
     }
     if(cat==='samband'){
       if(q.visual?.type==='cartesian'&&q.visual.series.length){const points=q.visual.series[0].points,[x,y]=points[0],[X,Y]=points.at(-1),k=(Y-y)/(X-x);push(k,y-k*x,-k,(Y-y),1/k);}
-      push(a*b,a/b,b/a,a+b,a-b,result*60,result/60);
+      push(a*b,a/b,b/a,a+b,a-b);
+      if(['hastighet','tid-enheter','vag-tid','f-clock','f-time'].includes(id))push(result*60,result/60);
     }
     if(cat==='tal'||cat==='algebra'||cat==='problem'){
       if(/×|\*/.test(p))push(a+b,a-b,a/b);
@@ -382,25 +396,31 @@
       const options=shuffle([...q.prompt.matchAll(/\d+\/\d+/g)].map(m=>m[0])),optionValues=options.map(M.parseAnswer),answer=optionValues.findIndex(x=>near(x,q.answer))+1;
       return {...q,prompt:q.prompt+'\n\n'+options.map((s,i)=>`${i+1}. ${s}`).join('\n')+'\n\nVälj ett svar.',answer,answerKind:'choice',options,optionValues};
     }
-    const exactDecimal=q.answerKind==='decimal'||/decimalform/.test(q.prompt)||['tiomultiplikation','tiodivision','decimal-multiplikation','decimal-division'].includes(id);
-    const asFraction=!exactDecimal&&(q.answerKind==='fraction'||['brak','sannolikhet'].includes(nodes.get(id).category)&&!Number.isInteger(q.answer)),correct=label(q.answer,asFraction,exactDecimal);
+    const decimalNotation=q.answerKind==='decimal'||/decimalform/.test(q.prompt)||['tiomultiplikation','tiodivision','decimal-multiplikation','decimal-division'].includes(id);
+    const exactDecimal=decimalNotation&&Math.abs(q.answer-Number(q.answer.toFixed(9)))<=1e-12*Math.max(1e-9,Math.abs(q.answer));
+    const roundPlaces=decimalNotation&&!exactDecimal?(Math.abs(q.answer)<.01?9:3):null;
+    const asFraction=!decimalNotation&&(q.answerKind==='fraction'||['brak','sannolikhet'].includes(nodes.get(id).category)&&!Number.isInteger(q.answer)),format=value=>label(value,asFraction,exactDecimal,roundPlaces),correct=format(q.answer);
     const selected=[{text:correct,value:q.answer}],seen=new Set([correct]);
     const probability=nodes.get(id).category==='sannolikhet'&&!Number.isInteger(q.answer);
     const physicalUnits=new Set(['cm','m','mm','dm','km','cm²','m²','cm³','m³','g','kg','liter','l','dl','h','min','sekunder','kr','kr/kg','paket','personer']);
-    const integerOnly=q.answerKind==='integer'&&nodes.get(id).category!=='sannolikhet',nonnegative=q.answer>=0&&(/Hur många/i.test(q.prompt)||physicalUnits.has(q.unit));
+    const integerOnly=q.answerKind==='integer'&&nodes.get(id).category!=='sannolikhet',nonnegative=q.answer>=0&&(/Hur många|Avrunda|Vilken rest|täljare|nämnare/i.test(q.prompt)||physicalUnits.has(q.unit)),positiveDenominator=/nämnare/.test(q.prompt);
+    const decimalPlaces=Math.max(3,(correct.split(',')[1]||'').length);
     for(const value of candidates(id,v,q)){
       if(integerOnly&&!Number.isInteger(value)||nonnegative&&value<0)continue;
+      if(positiveDenominator&&value===0)continue;
+      if(exactDecimal&&Math.abs(value-Number(value.toFixed(decimalPlaces)))>1e-12*Math.max(1e-9,Math.abs(value)))continue;
       if(near(value,q.answer)||probability&&(value<0||value>1))continue;
-      const text=label(value,asFraction,exactDecimal);if(seen.has(text))continue;
+      const text=format(value);if(seen.has(text))continue;
       selected.push({text,value});seen.add(text);if(selected.length===4)break;
     }
     for(let delta=3;selected.length<4;delta++){
-      const value=probability?(delta%9+1)/10:q.answer+delta,text=label(value,asFraction,exactDecimal);
+      const value=probability?(delta%9+1)/10:q.answer+delta,text=format(value);
       if(!seen.has(text)&&!near(value,q.answer)){selected.push({text,value});seen.add(text);}
     }
     const options=shuffle(selected),answer=options.findIndex(o=>near(o.value,q.answer))+1;
     let prompt=q.prompt.replace(/Svara med ett bråk\.?/g,'').replace(/Ange bara talet framför %\.?/g,'').trim();
-    if(!exactDecimal&&!asFraction&&Math.abs(q.answer)>=.01&&!near(Math.round(q.answer*1000)/1000,q.answer))prompt+=' Alternativen är avrundade till tre decimaler.';
+    if(roundPlaces!==null)prompt+=` Alternativen är avrundade till ${roundPlaces===9?'nio':'tre'} decimaler.`;
+    else if(!exactDecimal&&!asFraction&&Math.abs(q.answer)>=.01&&!near(Math.round(q.answer*1000)/1000,q.answer))prompt+=' Alternativen är avrundade till tre decimaler.';
     prompt+='\n\n'+options.map((o,i)=>`${i+1}. ${o.text}`).join('\n')+'\n\nVälj ett svar.';
     return {...q,prompt,answer,answerKind:'choice',options:options.map(o=>o.text),optionValues:options.map(o=>o.value)};
   }

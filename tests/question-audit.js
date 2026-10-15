@@ -1,20 +1,21 @@
 /* Reproducible browser samples, independently solved before conversion to choices. */
-window.buildQuestionAudit=()=>{
+window.buildQuestionAudit=({seedOffset=0,variantOffset=0,exclude=[]}={})=>{
   const M=MATREE,original=Math.random,rows=[],errors=[];
+  const excluded=new Set(exclude),newQuestions=new Set();
   window.verifyReviewedQuestions();
   try{
     for(const scope of ['1-3','4-6','7','8','9']){
       const nodes=M.detailNodes.filter(n=>M.matchesYearView(n,scope)),seen=new Set();let attempt=0,count=0;
-      while(count<120&&attempt<1200){
-        const index=attempt%nodes.length,node=nodes[index],v=(index+Math.floor(attempt/nodes.length))%3,seed=20261015+Number(scope.replace('-',''))*10000+attempt++;
-        let state=seed;Math.random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296;};
+      while(count<120&&attempt<12000){
+        const index=attempt%nodes.length,node=nodes[index],v=(index+Math.floor(attempt/nodes.length)+variantOffset)%3,seed=20261015+Number(scope.replace('-',''))*10000+attempt++ + seedOffset;
+        let state=seed;if(seedOffset){state=Math.imul(state^(state>>>16),0x45d9f3b);state=Math.imul(state^(state>>>16),0x45d9f3b);state=(state^(state>>>16))>>>0;}Math.random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296;};
         const raw=M.generateReviewed(node.id,v),rawExpected=solveReviewedQuestion(node.id,v,raw);
         const q=raw.answerKind==='choice'?M.expandChoice(node.id,v,raw):M.responsePlan[node.id][v]==='C'?M.toChoice(node.id,v,raw):raw;
-        const key=node.id+'|'+M.questionFingerprint(q);if(seen.has(key))continue;seen.add(key);
+        const fingerprint=M.questionFingerprint(q),key=node.id+'|'+fingerprint;if(seen.has(key)||excluded.has(fingerprint)||exclude.length&&newQuestions.has(fingerprint))continue;seen.add(key);newQuestions.add(fingerprint);
         const expected=raw.answerKind==='choice'?solveReviewedQuestion(node.id,v,q):rawExpected;
         const actual=q.optionValues?q.optionValues[q.answer-1]:q.answer;
         if(Math.abs(actual-expected)>1e-9*Math.max(1,Math.abs(expected)))errors.push({scope,id:node.id,v,expected,actual});
-        rows.push({scope,number:++count,id:node.id,title:node.title,category:node.category,v,seed,expected,q,prompt:M.questionStem(q),answer:M.answerText(q)});
+        rows.push({scope,number:++count,id:node.id,title:node.title,category:node.category,v,seed,seedOffset,fingerprint,expected,q,prompt:M.questionStem(q),answer:M.answerText(q)});
       }
       if(count!==120)throw Error('Not enough distinct samples: '+scope);
     }
@@ -58,7 +59,7 @@ window.auditQuestionUI=async scope=>{
 window.auditGallery=(scope,start=1)=>{
   document.querySelectorAll('dialog[open]').forEach(d=>d.close());
   const rows=questionAudit.filter(s=>s.scope===scope&&(Array.isArray(start)?start.includes(s.number):s.number>=start&&s.number<start+6));
-  questionGallery(rows.map(s=>({id:s.id,v:s.v,seed:s.seed})));
+  questionGallery(rows.map(s=>({id:s.id,v:s.v,seed:s.seed,q:s.q})));
   return rows.map(s=>({number:s.number,id:s.id,prompt:s.prompt,answer:s.answer}));
 };
 window.showAuditStudent=(scope,number)=>{

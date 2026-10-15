@@ -6,7 +6,44 @@ Alla dessa färdigheter använder nu den granskade banken. Den innehåller tre m
 
 Av dessa hör 759 varianter till de 253 delmomenten, 33 till elva blandade kontroller och 75 till äldre sammanslagna ID:n. Ungefär hälften av delmomentens varianter i varje område har klickbara svarsalternativ, resten eget numeriskt svar. De numeriska flervalsfrågorna har normalt fyra alternativ med bland annat fel räknesätt, jämförelsebas, skalfaktor, tecken eller avrundningssteg. Vid jämförelse av två givna bråk används just de två bråken. Begreppsliga alternativ utgår från frågans innehåll. Naturliga ja/nej-frågor och vissa frågor med tre kategorier behåller två respektive tre svar. Alternativen och deras ordning sparas så att ett återupptaget pass använder samma fråga och samma facit.
 
-## Fem granskningsomgångar 2026-10-15
+## Andra genomgången: 600 andra frågor
+
+Fem nya omgångar genomfördes med 120 frågor vardera för åk 1–3, 4–6, 7, 8 och 9. Varje fråga jämfördes med hela förra stickprovet genom ett fingeravtryck av frågetext och bilddata. Alternativens ordning påverkar inte jämförelsen. Det nya stickprovet innehåller 600 olika frågor och ingen från föregående genomgång. Slumptalen sprids med ett nytt startfrö och mallvarianterna förskjuts ett steg.
+
+| Omgång | Årskursurval | Nya frågor | Delmoment | Flerval | Bildfrågor |
+|---|---|---:|---:|---:|---:|
+| 1 | 1–3 | 120 | 26 | 79 | 11 |
+| 2 | 4–6 | 120 | 61 | 71 | 9 |
+| 3 | 7 | 120 | 77 | 65 | 5 |
+| 4 | 8 | 120 | 91 | 58 | 8 |
+| 5 | 9 | 120 | 104 | 60 | 10 |
+
+Tillsammans täcks alla 253 delmoment. Alla 600 frågornas texter, alternativ, facit och bilddata lästes igenom. Facit kontrollerades med separata lösningsfunktioner. Varje fråga provades genom svarsformuläret med ett rätt och ett fel svar, totalt 1 200 rättningskontroller. Diagram och elevläge kontrollerades även med skärmbilder, riktiga klick och tangentbord vid 1366 × 768 och 390 × 844.
+
+Ändringar från de nya omgångarna:
+
+- **1–3:** Singularformerna `1 penna` och `1 rät vinkel` rättades. Dubbelt och hälften får alternativ som avser just dubblering, halvering eller en förväxling med addition/subtraktion.
+- **4–6:** Avrundningsalternativ har nu samma precision som frågan ber om: exempelvis bara jämna tusental, eller tal på tiondelsnivå. Multiplikation och division med tiopotenser får platsvärdesalternativ. Onödiga periodiska decimaler tas bort som felalternativ i exakta decimaluppgifter.
+- **7:** Frågor om positiva nämnare undviker noll och negativa alternativ. Rutnätsfrågor får felalternativ från den visade figurens rader, kolumner eller omkrets, i stället för exempelvis 1 000 rutor i ett litet rutnät.
+- **8:** Glas i volymproblemen rymmer 0,2–0,5 liter. Formatkravet för nya frågor som uttryckligen ber om decimalform gäller även statistikfrågor som inte börjar med ”Skriv”. Periodiska decimalsvar får ett uttryckligt och fungerande avrundningsbesked; små sådana svar använder nio decimaler.
+- **9:** Koordinatalternativ utgår från den ritade punkten och tecken-/axelförväxlingar. Negativa exponenter får flera rimliga små positiva tal som alternativ. Omvandlingsfel med faktorn 60 används i tidsuppgifter, inte generellt i alla uppgifter om samband.
+
+Inga felaktiga matematiska facit hittades i stickprovet. Förbättringarna gäller språk, frågornas tydlighet och hur alternativen prövar färdigheten. Nya formatkrav sparas med frågan; äldre frågor och elevresultat behåller sina tidigare regler. Frågebankens färdigheter, pausade frågor, rapporter, profilbyte och export/import bevaras och regressionstestas.
+
+Återskapa andra genomgången:
+
+```powershell
+python tests/run_browser.py
+python tests/ui_preview.py tests/question-audit-second.json
+python tests/ui_preview.py tests/question-visual-second.json
+python tests/ui_preview.py tests/question-audit-second.json https://pontusedvardsson.github.io/MAtree/
+```
+
+Förra stickprovets fingeravtryck finns i `tests/question-audit-baseline.js`. De nya frågorna skrivs till `.verification/question-audit-second-600.json`. `.verification/second-audit-uniqueness.json` visar antalet nya frågor och noll överlapp; separata filer visar de 1 200 rättningskontrollerna. Inga riktiga elevprofiler används eller publiceras.
+
+Kvarstående begränsningar: återkommande mallar kan likna varandra trots nya tal och bilder, och alla möjliga slumpvarianter har inte språkgranskats. Vissa felalternativ i övriga mallar är fortfarande relativt lätta. Automaträttningen bedömer svaren, inte elevens fullständiga metod.
+
+## Första genomgången: fem granskningsomgångar 2026-10-15
 
 Den publicerade sidan öppnades i Chrome. Därefter lästes 120 provfrågor per årskursurval med svarsalternativ, facit och bilddata. Facit räknades också fram med separata lösningsfunktioner från frågetexten och bilddata. Varje provfråga skickades genom det manuella svarsformuläret med både ett rätt och ett fel svar: 600 frågor och 1 200 rättningskontroller. Testerna använder isolerade syntetiska elevprofiler.
 

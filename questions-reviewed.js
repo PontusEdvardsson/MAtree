@@ -6,7 +6,7 @@
   const r=(a,b)=>a+Math.floor(Math.random()*(b-a+1)), pick=a=>a[r(0,a.length-1)];
   const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=r(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
   const gcd=(a,b)=>b?gcd(b,a%b):a;
-  const q=(prompt,answer,explanation,unit='',answerKind=Number.isInteger(answer)?'integer':'number',visual=null)=>({prompt,answer,explanation,unit,answerKind,...(/^Skriv .+ i decimalform\./.test(prompt)&&answerKind!=='choice'?{responseFormat:'decimal'}:{}),...(visual?{visual}: {})});
+  const q=(prompt,answer,explanation,unit='',answerKind=Number.isInteger(answer)?'integer':'number',visual=null)=>({prompt,answer,explanation,unit,answerKind,...(/\bi decimalform\b/.test(prompt)&&answerKind!=='choice'?{responseFormat:'decimal'}:{}),...(visual?{visual}: {})});
   const choice=(prompt,correct,wrong,explanation,visual=null)=>{const options=shuffle([correct,...new Set(wrong.filter(x=>x!==correct))]);return q(`${prompt}\n\n${options.map((x,i)=>`${i+1}. ${x}`).join('\n')}\n\nSvara med alternativets nummer.`,options.indexOf(correct)+1,explanation,'','choice',visual);};
   const frac=(n,d)=>`${n}/${d}`;
   const table=(labels,values)=>({type:'table',labels,values});
@@ -48,7 +48,7 @@
       if(!small){a=r(1,6)*10+r(5,9);b=r(1,2)*10+r(5,9);}
       if(facet===0)return q(`Vad är ${a} + ${b}?`,a+b,'Lägg ihop antalen och växla tio ental vid behov.');
       if(facet===1)return q(`${a} + □ = ${a+b}. Vilket tal saknas?`,b,'Hitta den saknade delen av summan.');
-      return q(`På ett bord ligger ${a} pennor. Du lägger dit ${b} till. Hur många ligger där nu?`,a+b,'Situationen betyder addition.','pennor');
+      return q(`På ett bord ligger ${a} ${a===1?'penna':'pennor'}. Du lägger dit ${b} till. Hur många ligger där nu?`,a+b,'Situationen betyder addition.','pennor');
     }
     if(!borrow){if(small){a=a+b;}else if(a<b)[a,b]=[b,a];}
     if(facet===0)return q(`Vad är ${a} − ${b}?`,a-b,'Ta bort den andra delen från det första antalet.');

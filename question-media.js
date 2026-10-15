@@ -23,7 +23,10 @@
     if(q.answerKind==='choice'||q.prompt.includes('alternativets nummer'))return 'Skriv alternativets nummer.';
     if(q.answerKind==='fraction')return 'Skriv ett bråk med snedstreck, till exempel 1/2.';
     if(/^Avrunda .+ till heltal\./.test(q.prompt))return 'Skriv ett heltal.';
-    if(q.answerKind==='decimal'||/decimalform/.test(q.prompt))return 'Skriv ett decimaltal med komma eller punkt.'+(q.answer!==0&&Math.abs(q.answer)<.01?' Skriv alla decimaler i svaret.':'');
+    if(q.answerKind==='decimal'||/decimalform/.test(q.prompt)){
+      const small=q.answer!==0&&Math.abs(q.answer)<.01,finite=Math.abs(q.answer-Number(q.answer.toFixed(9)))<=1e-12*Math.max(1e-9,Math.abs(q.answer));
+      return 'Skriv ett decimaltal med komma eller punkt.'+(finite?(small?' Skriv alla decimaler i svaret.':''):` Avrunda vid behov till ${small?'nio':'tre'} decimaler.`);
+    }
     if(q.answer!==0&&Math.abs(q.answer)<.01)return 'Skriv talet utan avrundning, eller som ett exakt bråk.';
     if(q.answerKind==='integer')return 'Skriv ett heltal.';
     return 'Skriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler.';

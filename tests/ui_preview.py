@@ -104,6 +104,16 @@ try:
             time.sleep(.15)
         if 'click' in step:
             click(step['click'])
+        if 'upload' in step:
+            upload = step['upload']
+            path = (root / upload['path']).resolve()
+            if not path.is_relative_to(root) or not path.is_file():
+                raise ValueError('Upload must be an existing workspace file.')
+            document = browser.call('DOM.getDocument')['result']['root']['nodeId']
+            node = browser.call('DOM.querySelector', {'nodeId': document, 'selector': upload['selector']})['result']['nodeId']
+            if not node:
+                raise RuntimeError('Missing file input: ' + upload['selector'])
+            browser.call('DOM.setFileInputFiles', {'nodeId': node, 'files': [str(path)]})
         if 'drag' in step:
             drag=step['drag']
             point=evaluate('(()=>{const e=document.querySelector('+json.dumps(drag['selector'])+'),r=e.getBoundingClientRect();return {x:r.left+e.clientWidth-30,y:r.top+100};})()')

@@ -1,0 +1,63 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "click": "#profile-button"
+  },
+  {
+    "upload": {
+      "selector": "#import-file",
+      "path": ".verification/live-r5-export.json"
+    }
+  },
+  {
+    "eval": "await new Promise(resolve=>{const t=setInterval(()=>{if(document.querySelector('#profile-message').textContent){clearInterval(t);resolve(true);}},30);});({message:document.querySelector('#profile-message').textContent,student:MATREE_APP.profile().name,sessions:MATREE_APP.profile().adaptive.sessions.length})",
+    "screenshot": "live-r5-import-result.png"
+  },
+  {
+    "eval": "if(!document.querySelector('#profile-message').textContent.includes('profiler importerade')||MATREE_APP.profile().adaptive.sessions.length<20||!MATREE_APP.storageOK())throw Error('The app rejects its own valid exported backup');'Large own backup roundtrip passed';"
+  },
+  {
+    "eval": "localStorage.setItem('live-r5-before-reload',String(performance.timeOrigin));void 0"
+  },
+  {
+    "click": "[data-close=profiles-dialog]"
+  },
+  {
+    "click": "a.brand"
+  },
+  {
+    "eval": "await new Promise(resolve=>{const t=setInterval(()=>{if(window.MATREE_APP&&performance.timeOrigin!==Number(localStorage.getItem('live-r5-before-reload'))){clearInterval(t);resolve(true);}},30);});if(MATREE_APP.profile().adaptive.sessions.length<20||!MATREE_APP.storageOK())throw Error('Imported large backup did not persist across reload');({persistedSessions:MATREE_APP.profile().adaptive.sessions.length,counts:MATREE_APP.profileCounts(MATREE_APP.profile())})"
+  },
+  {
+    "click": "#profile-button",
+    "eval": "window.liveR5BeforeBad=localStorage.getItem('matree.profiles.v1');document.querySelector('#profile-message').textContent='';void 0"
+  },
+  {
+    "upload": {
+      "selector": "#import-file",
+      "path": "tests/live-invalid-backup.json"
+    }
+  },
+  {
+    "eval": "await new Promise(resolve=>{const t=setInterval(()=>{if(document.querySelector('#profile-message').textContent){clearInterval(t);resolve(true);}},30);});if(!document.querySelector('#profile-message').textContent.includes('Kunde inte importera')||localStorage.getItem('matree.profiles.v1')!==liveR5BeforeBad)throw Error('Malformed backup altered saved results');'Malformed backup leaves existing results unchanged';",
+    "screenshot": "live-r5-bad-import-preserves-results.png"
+  },
+  {
+    "eval": "document.querySelector('[data-delete=\"'+MATREE_APP.profile().id+'\"]').id='live-r5-delete-active';void 0"
+  },
+  {
+    "confirm": false,
+    "click": "#live-r5-delete-active",
+    "eval": "if(MATREE_APP.profile().adaptive.sessions.length<20||localStorage.getItem('matree.profiles.v1')!==liveR5BeforeBad)throw Error('Cancelling deletion changed result data');'Round 5 large backup, reload, invalid import, unique counts and cancelled deletion passed';",
+    "screenshot": "live-r5-restored-large-profile.png"
+  },
+  {
+    "eval": "document.querySelector('#profile-message').textContent='';const transfer=new DataTransfer();transfer.items.add(new File([new Uint8Array(20000001)],'too-large.json',{type:'application/json'}));document.querySelector('#import-file').files=transfer.files;document.querySelector('#import-file').dispatchEvent(new Event('change',{bubbles:true}));void 0"
+  },
+  {
+    "eval": "await new Promise(r=>setTimeout(r,60));if(!document.querySelector('#profile-message').textContent.includes('max 20 MB')||localStorage.getItem('matree.profiles.v1')!==liveR5BeforeBad)throw Error('Oversized file was not safely rejected');'20 MB upper bound is enforced without changing saved pupils';"
+  }
+]

@@ -468,7 +468,7 @@
   $('#import-file').addEventListener('change', async event => {
     const file = event.target.files[0]; if (!file) return;
     try {
-      if (file.size > 5_000_000) throw new Error('Filen är för stor (max 5 MB).');
+      if (file.size > 20_000_000) throw new Error('Filen är för stor (max 20 MB).');
       const imported = validateData(JSON.parse(await file.text()));
       if (data.profiles.length + imported.profiles.length > 200) throw new Error('Importen skulle ge fler än 200 profiler.');
       // Importera som separata kopior så att befintliga resultat aldrig skrivs över.

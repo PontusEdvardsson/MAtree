@@ -1,0 +1,33 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('#new-profile').value='Omgång 5 · säkerhetskopia';void 0"
+  },
+  {
+    "click": "#profile-form .primary-button"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile(),A=MATREE_ADAPTIVE,s=A.create({scope:'9',mode:'all'});while(s.pending)A.answer(s,'',true);p.adaptive={active:null,sessions:[],confirmations:[]};let bytes=0;while(bytes<=5000000&&p.adaptive.sessions.length<30){p.adaptive.sessions.push({...structuredClone(s),id:'large-backup-'+p.adaptive.sessions.length});bytes=new Blob([JSON.stringify({version:1,activeId:p.id,profiles:[p]},null,2)]).size;}if(bytes<=5000000)throw Error('Backup did not exercise old size limit');A.validate(p.adaptive);MATREE_APP.save();MATREE_APP.render();if(!MATREE_APP.storageOK())throw Error('Large valid profile does not fit browser storage');return {sessions:p.adaptive.sessions.length,minimumExportBytes:bytes,storedCharacters:localStorage.getItem('matree.profiles.v1').length};})()"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "(()=>{const original=URL.createObjectURL;URL.createObjectURL=blob=>{window.liveR5Blob=blob;return original(blob);};return 'Capture own backup';})()"
+  },
+  {
+    "click": "#export-button",
+    "eval": "if(liveR5Blob.size<=5000000)throw Error('Export not above old import limit');({exportBytes:liveR5Blob.size,savedSessions:MATREE_APP.profile().adaptive.sessions.length})",
+    "screenshot": "live-r5-own-export.png"
+  },
+  {
+    "eval": "await liveR5Blob.text().then(JSON.parse)",
+    "json_output": "live-r5-export.json"
+  }
+]

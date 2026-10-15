@@ -124,6 +124,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 ## Verifiering
 
+Fem tester av den publicerade Pages-sidan, med rättningar av rapportåtergång och stora säkerhetskopior, dokumenteras i [LIVE_GRANSKNING.md](LIVE_GRANSKNING.md). Säkerhetskopior får vara upp till 20 MB vid import; befintliga profiler skrivs inte över.
+
 Fem UI-omgångar med före- och efterbilder dokumenteras i [UI_GRANSKNING.md](UI_GRANSKNING.md). `python tests/ui_preview.py tests/ui-scenarios.json` kör en separat kontroll med faktisk mus och tangentbord: små skärmar, årskursval, Enter, Escape, återställt fokus och musdragning. Den använder också en isolerad Chrome-profil och ändrar inte elevdata i användarens vanliga webbläsare.
 
 `python tests/run_browser.py` kör integrationstester i installerad Chrome på Windows, utan extra Python-paket. Testerna använder en separat webbläsarprofil. De kontrollerar 86 700 genererade frågor för giltiga svar och unika alternativ, 570 och 165 äldre facitfall, de ursprungliga 72 variantfallen och 13 005 oberoende facitfall för den granskade banken upp till åk 9. Därutöver kontrolleras grafens beroenden, att basen inte kräver fördjupning, att kort inte överlappar, årskurs- och nivåfilter, fokusvy, NP-vy, profilswitch, återupptagning, export/import och de nya bildtypernas data och rendering. Detta är teknisk och matematisk kontroll, inte pedagogisk validering.

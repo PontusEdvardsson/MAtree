@@ -116,6 +116,7 @@
       assert(true, window.verifyDirectControl());
       assert(true, await window.verifyTestAll());
       assert(true, await window.verifyCategoryScope());
+      assert(true, window.verifyCrossReportResume());
       click('[data-stage="9"]'); assert(document.querySelectorAll('.skill-node').length === MATREE.detailNodes.filter(n=>n.yearViews.includes('9')).length, 'Year 9 filtering includes shared skills');
       click('#reset-filters'); click('[data-category="algebra"]'); assert(document.querySelectorAll('.skill-node').length === MATREE.detailNodes.filter(n=>n.category==='algebra').length, 'Category filtering works');
       click('#reset-filters'); $('#search').value = 'Pythagoras'; $('#search').dispatchEvent(new Event('input')); assert(document.querySelectorAll('.skill-node').length >= 3, 'Search finds granular skills and prerequisites');

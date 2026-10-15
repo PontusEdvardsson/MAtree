@@ -1,0 +1,52 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "script": "tests/improvements-tests.js",
+    "eval": "window.verifyReportContext()"
+  },
+  {
+    "script": "tests/continuity-tests.js",
+    "eval": "window.verifyManualHistory();window.verifyPartialEvidence();"
+  },
+  {
+    "eval": "(()=>{const A=MATREE_ADAPTIVE,p=MATREE_APP.profile(),make=(id,date)=>{const s=A.create({scope:'1-3',category:'tal',limit:30});A.answer(s,'',true);A.answer(s,'',true);s.id=id;s.started=s.ended=date;s.endReason='teacher';s.pending=null;s.items.forEach(i=>i.date=date);return s;};const old=make('live-r4-old',new Date(Date.now()-86400000).toISOString()),recent=make('live-r4-new',new Date().toISOString());p.results={};p.quiz=null;p.adaptive={active:null,sessions:[old,recent],confirmations:[]};A.validate(p.adaptive);MATREE_APP.save();MATREE_APP.showProgress();return {old:old.id,recent:recent.id};})()"
+  },
+  {
+    "click": "#progress-view [data-adaptive-report=\"live-r4-new\"]"
+  },
+  {
+    "click": ".report-answers > summary"
+  },
+  {
+    "click": "[data-answer-filter=\"skipped\"]",
+    "eval": "if(document.querySelectorAll('#report-answer-groups .answer-review').length!==2)throw Error('Report skip filter mismatch');",
+    "screenshot": "live-r4-newer-report.png"
+  },
+  {
+    "click": ".followup-suggestion [data-report-start]",
+    "eval": "(()=>{const p=MATREE_APP.profile(),q=p.quiz.questions[0];if(q.options)document.querySelector('[data-choice=\"1\"]').click();else{document.querySelector('#answer').value='123';document.querySelector('#answer').dispatchEvent(new Event('input',{bubbles:true}));}window.liveR4Quiz=JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers});if(document.querySelector('.control-report-return').dataset.adaptiveReport!=='live-r4-new')throw Error('Initial source report incorrect');return {skill:p.quiz.nodeId};})()"
+  },
+  {
+    "click": ".control-report-return"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "#progress-view [data-adaptive-report=\"live-r4-old\"]",
+    "eval": "document.querySelector('.report-answers').open=true;void 0"
+  },
+  {
+    "click": ".followup-suggestion [data-report-start]",
+    "screenshot": "live-r4-old-report-resume.png",
+    "eval": "(()=>{const p=MATREE_APP.profile();if(JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers})!==liveR4Quiz)throw Error('Resuming changed saved question');if(document.querySelector('.control-report-return').dataset.adaptiveReport!=='live-r4-old')throw Error('Resuming from older report returns to a different report');return 'Resume keeps question but returns to the report just used';})()"
+  },
+  {
+    "click": ".control-report-return",
+    "eval": "if(!document.querySelector('.report-answers').open||!document.querySelector('#adaptive-content [data-adaptive-node]'))throw Error('Report context lost');'Round 4 historical reports, filters and cross-report resume passed';",
+    "screenshot": "live-r4-restored-older-report.png"
+  }
+]

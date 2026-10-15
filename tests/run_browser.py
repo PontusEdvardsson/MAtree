@@ -35,6 +35,8 @@ class CDP:
         while b'\r\n\r\n' not in header: header += self.socket.recv(1)
         if b'101' not in header: raise RuntimeError(header)
         self.sequence = 0
+        self.pending = {}
+        self.on_event = None
     def read(self, n):
         data = b''
         while len(data) < n:
@@ -44,19 +46,26 @@ class CDP:
         return data
     def call(self, method, params=None):
         self.sequence += 1
+        command_id = self.sequence
         raw = json.dumps({'id': self.sequence, 'method': method, 'params': params or {}}).encode()
         mask = os.urandom(4)
         size = len(raw)
         header = bytes([129, 128 | size]) if size < 126 else bytes([129, 254]) + struct.pack('!H', size) if size < 65536 else bytes([129, 255]) + struct.pack('!Q', size)
         self.socket.sendall(header + mask + bytes(value ^ mask[i % 4] for i, value in enumerate(raw)))
         while True:
+            if command_id in self.pending:
+                return self.pending.pop(command_id)
             first, second = self.read(2)
             size = second & 127
             if size == 126: size = struct.unpack('!H', self.read(2))[0]
-            if size == 127: size = struct.unpack('!Q', self.read(8))[0]
+            elif size == 127: size = struct.unpack('!Q', self.read(8))[0]
             payload = self.read(size)
             message = json.loads(payload)
-            if message.get('id') == self.sequence: return message
+            if message.get('id') == command_id: return message
+            if 'id' in message:
+                self.pending[message['id']] = message
+            elif self.on_event:
+                self.on_event(message)
 
 try:
     page = None

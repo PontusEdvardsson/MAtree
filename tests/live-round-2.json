@@ -1,0 +1,75 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "eval": "MATREE_APP.openSkill('f-decimal');void 0"
+  },
+  {
+    "click": "#skill-content [data-start]"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile();p.quiz.questions=[0,1,2].map(v=>MATREE.generateReviewed('f-decimal',0));MATREE_APP.save();MATREE_APP.openSkill('f-decimal');window.liveManualQ=p.quiz.questions[0];return {prompt:liveManualQ.prompt,answer:liveManualQ.answer};})()"
+  },
+  {
+    "click": "#answer",
+    "type": "2abc"
+  },
+  {
+    "click": "#answer-form .primary-button",
+    "eval": "if(MATREE_APP.profile().quiz.answers.length||!document.querySelector('#answer-error').textContent)throw Error('Invalid manual input was graded');"
+  },
+  {
+    "eval": "document.querySelector('#answer').value='';void 0"
+  },
+  {
+    "click": "#answer",
+    "type": "0,5"
+  },
+  {
+    "eval": "document.querySelector('#answer').value=String(liveManualQ.answer).replace('.',',');document.querySelector('#answer').dispatchEvent(new Event('input',{bubbles:true}));void 0"
+  },
+  {
+    "click": "#answer-form .primary-button",
+    "eval": "if(MATREE_APP.profile().quiz.answers.length!==1||!MATREE_APP.profile().quiz.answers[0])throw Error('Swedish decimal was rejected');"
+  },
+  {
+    "click": "#next-question"
+  },
+  {
+    "click": "#abandon-quiz",
+    "screenshot": "live-r2-retained-after-cancel.png",
+    "eval": "if(!MATREE_APP.profile().quiz||MATREE_APP.profile().quiz.answers.length!==1)throw Error('Cancelling discard changed answers');",
+    "confirm": false
+  },
+  {
+    "eval": "(()=>{const q=MATREE_APP.profile().quiz.questions[1];document.querySelector('#answer').value=Math.round(q.answer*1000)+'/1000';document.querySelector('#answer').dispatchEvent(new Event('input',{bubbles:true}));return {fraction:document.querySelector('#answer').value};})()"
+  },
+  {
+    "click": "#answer-form .primary-button",
+    "eval": "if(!MATREE_APP.profile().quiz.answers[1])throw Error('Equivalent fraction rejected');"
+  },
+  {
+    "click": "#next-question"
+  },
+  {
+    "eval": "document.querySelector('#answer').value=String(MATREE_APP.profile().quiz.questions[2].answer).replace('.',',');void 0"
+  },
+  {
+    "click": "#answer-form .primary-button"
+  },
+  {
+    "click": "#next-question",
+    "eval": "if(MATREE_APP.latest('f-decimal').score!==3||MATREE_APP.profile().quiz)throw Error('Manual 3/3 not stored');",
+    "screenshot": "live-r2-completed-3-3.png"
+  },
+  {
+    "click": "#skill-content [data-start]"
+  },
+  {
+    "confirm": true,
+    "click": "#abandon-quiz",
+    "eval": "if(MATREE_APP.profile().quiz||MATREE_APP.profile().results[MATREE.resolveSkillId('f-decimal')].history.length!==1||MATREE_APP.latest('f-decimal').score!==3)throw Error('Discard damaged previous result');'Round 2 manual validation, decimal/fraction answers, cancellation and saved 3/3 passed';"
+  }
+]

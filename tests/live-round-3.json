@@ -1,0 +1,134 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "click": "#adaptive-open"
+  },
+  {
+    "eval": "document.querySelector('#adaptive-start').value='8';document.querySelector('#adaptive-category').value='geometri';document.querySelector('#adaptive-limit').value='30';document.querySelector('#adaptive-category').dispatchEvent(new Event('change',{bubbles:true}));localStorage.setItem('live-r3-profile-a',MATREE_APP.profile().id);void 0"
+  },
+  {
+    "click": "#adaptive-setup > .primary-button"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile();window.liveR3={numerics:0,choices:0,images:0};window.replyR3=()=>{const s=p.adaptive.active,q=s.pending;if(q.visual)liveR3.images++;if(q.options){liveR3.choices++;document.querySelector('[data-choice=\"'+q.answer+'\"]').click();}else{liveR3.numerics++;document.querySelector('#adaptive-answer').value=q.answer.toLocaleString('en-US',{useGrouping:false,maximumSignificantDigits:17});}document.querySelector('#adaptive-answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));if(!s.items.at(-1).correct)throw Error('Correct student answer failed');};let count=0;while(!p.adaptive.active.pending.visual&&count++<6)replyR3();if(!p.adaptive.active)throw Error('Run ended before pause test');return {nextHasImage:!!p.adaptive.active.pending.visual};})()",
+    "screenshot": "live-r3-geometry-student.png"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile();while(p.adaptive.active.items.length<8)replyR3();const s=p.adaptive.active,q=s.pending,input=document.querySelector('#adaptive-answer');if(q.options)document.querySelector('[data-choice=\"2\"]').click();else{input.value='123';input.dispatchEvent(new Event('input',{bubbles:true}));}localStorage.setItem('live-r3-a-question',q.prompt);localStorage.setItem('live-r3-a-draft',input.value);if(document.querySelector('.feedback'))throw Error('Student mode reveals marking');return liveR3;})()"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('#new-profile').value='Omgång 3 · elev B';void 0"
+  },
+  {
+    "click": "#profile-form .primary-button"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "eval": "document.querySelector('#adaptive-start').value='7';document.querySelector('#adaptive-category').value='procent';document.querySelector('#adaptive-limit').value='all';document.querySelector('#adaptive-category').dispatchEvent(new Event('change',{bubbles:true}));localStorage.setItem('live-r3-profile-b',MATREE_APP.profile().id);void 0"
+  },
+  {
+    "click": "#adaptive-setup > .primary-button"
+  },
+  {
+    "eval": "(()=>{const s=MATREE_APP.profile().adaptive.active,input=document.querySelector('#adaptive-answer');if(s.items.length)throw Error('Another pupil inherited answers');if(s.pending.options)document.querySelector('[data-choice=\"1\"]').click();else{input.value='456';input.dispatchEvent(new Event('input',{bubbles:true}));}localStorage.setItem('live-r3-b-session',JSON.stringify(s));return {student:MATREE_APP.profile().name,area:s.category,grade:s.scope};})()"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('[data-profile=\"'+localStorage.getItem('live-r3-profile-a')+'\"]').click();void 0"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "click": "#adaptive-resume",
+    "eval": "(()=>{const p=MATREE_APP.profile(),s=p.adaptive.active;if(s.category!=='geometri'||s.scope!=='8'||s.items.length!==8||s.pending.prompt!==localStorage.getItem('live-r3-a-question')||document.querySelector('#adaptive-answer').value!==localStorage.getItem('live-r3-a-draft'))throw Error('Profile A lost its exact state');return 'Profile A restored with eight answers and original draft';})()",
+    "screenshot": "live-r3-restored-a.png"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "click": "#adaptive-skip",
+    "eval": "if(!MATREE_APP.profile().adaptive.active.items.at(-1).skipped||MATREE_APP.profile().adaptive.active.draft)throw Error('Skip did not clear only current draft');"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-finish",
+    "eval": "(()=>{const s=MATREE_APP.profile().adaptive.sessions.at(-1);if(s.items.length!==9||s.endReason!=='teacher'||s.items.some(q=>MATREE.nodes.find(n=>n.id===q.nodeId).category!=='geometri'))throw Error('Wrong archived scope or answers');return {answers:s.items.length,reason:s.endReason};})()",
+    "screenshot": "live-r3-teacher-stop.png"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('[data-profile=\"'+localStorage.getItem('live-r3-profile-b')+'\"]').click();if(JSON.stringify(MATREE_APP.profile().adaptive.active)!==localStorage.getItem('live-r3-b-session'))throw Error('Working with A changed B');void 0"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "click": "#adaptive-resume",
+    "eval": "if(MATREE_APP.profile().adaptive.active.items.length!==0||!document.querySelector('#adaptive-answer').value)throw Error('Profile B draft lost');'Round 3 separate student sessions, geometry images, choices, numeric answers, skip and teacher stop passed';",
+    "screenshot": "live-r3-restored-b-mobile.png"
+  },
+  {
+    "click": "#adaptive-pause"
+  },
+  {
+    "click": "#adaptive-close"
+  },
+  {
+    "click": "#profile-button"
+  },
+  {
+    "eval": "document.querySelector('#new-profile').value='Omgång 3 · bildfrågor';void 0"
+  },
+  {
+    "click": "#profile-form .primary-button"
+  },
+  {
+    "click": "#adaptive-open"
+  },
+  {
+    "eval": "document.querySelector('#adaptive-start').value='9';document.querySelector('#adaptive-category').value='samband';document.querySelector('#adaptive-limit').value='all';document.querySelector('#adaptive-category').dispatchEvent(new Event('change',{bubbles:true}));void 0"
+  },
+  {
+    "click": "#adaptive-setup > .primary-button"
+  },
+  {
+    "eval": "(()=>{const p=MATREE_APP.profile();let count=0;while(p.adaptive.active?.pending&&!p.adaptive.active.pending.visual&&count++<90){const q=p.adaptive.active.pending,input=document.querySelector('#adaptive-answer');if(q.options)document.querySelector('[data-choice=\"'+q.answer+'\"]').click();else input.value=q.answer.toLocaleString('en-US',{useGrouping:false,maximumSignificantDigits:17});document.querySelector('#adaptive-answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));}if(!p.adaptive.active?.pending.visual||!document.querySelector('.question-visual svg'))throw Error('No visual student question rendered');return {imageType:p.adaptive.active.pending.visual.type,answeredBeforeImage:count};})()",
+    "screenshot": "live-r3-actual-image-mobile.png"
+  },
+  {
+    "click": "#adaptive-skip",
+    "eval": "if(!MATREE_APP.profile().adaptive.active.items.at(-1).skipped)throw Error('Image skip failed');'Round 3 actual image question and mobile response controls passed';"
+  }
+]

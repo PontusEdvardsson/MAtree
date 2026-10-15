@@ -194,7 +194,8 @@
       card.insertAdjacentHTML('beforeend','<div class="paused-control-notice" role="status"><p>En kontroll av '+esc(byId(quiz.nodeId).title)+' är pausad. Den nya kontrollen har inte startats.</p><button class="secondary-button" data-resume-report-quiz="'+esc(M.resolveSkillId(quiz.nodeId))+'">Fortsätt i stället: '+esc(byId(quiz.nodeId).title)+'</button></div>');
       card.querySelector('.paused-control-notice').scrollIntoView({block:'nearest'});return;
     }
-    rememberReport();controlOrigin={profileId:profile().id,sessionId:quiz?.reportSessionId||session.id,nodeId:node.id};
+    rememberReport();controlOrigin={profileId:profile().id,sessionId:session.id,nodeId:node.id};
+    if(quiz){quiz.reportSessionId=session.id;app.save();}
     dialog.close();app.openSkill(node.id);app.startQuiz(node.id);decorateControl(node.id);
   }
   document.addEventListener('matree-control-render',event=>decorateControl(event.detail.id));

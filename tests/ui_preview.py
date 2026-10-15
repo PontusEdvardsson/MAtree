@@ -49,6 +49,17 @@ try:
     if not page:
         raise RuntimeError('Chrome did not start.')
     browser = CDP(page['webSocketDebuggerUrl'])
+    browser.dialog_response = None
+    def handle_event(message):
+        if message.get('method') == 'Page.javascriptDialogOpening':
+            if browser.dialog_response is None:
+                raise RuntimeError('Unexpected browser dialog: ' + message['params']['message'])
+            accepted = browser.dialog_response
+            browser.dialog_response = None
+            print('Browser confirmation: ' + ('accepted' if accepted else 'cancelled'), flush=True)
+            browser.call('Page.handleJavaScriptDialog', {'accept': accepted})
+    browser.on_event = handle_event
+    browser.call('Page.enable')
     browser.call('Page.setDownloadBehavior', {'behavior': 'deny'})
 
     def evaluate(expression):
@@ -78,6 +89,10 @@ try:
     if not evaluate('!!window.MATREE_APP'):
         raise RuntimeError('App failed to load.')
     for step in steps:
+        if 'confirm' in step:
+            browser.dialog_response = step['confirm']
+        if 'note' in step:
+            print(step['note'], flush=True)
         if 'script' in step:
             script=(root/step['script']).resolve()
             if not script.is_relative_to(root):

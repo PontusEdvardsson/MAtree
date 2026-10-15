@@ -1,0 +1,89 @@
+[
+  {
+    "size": [
+      1366,
+      768
+    ],
+    "click": "[data-stage=\"7\"]"
+  },
+  {
+    "click": "[data-category=\"tal\"]"
+  },
+  {
+    "click": "[data-map-mode=\"details\"]",
+    "eval": "(()=>{const ids=[...document.querySelectorAll('.skill-node[data-node]')].map(e=>e.dataset.node),expected=MATREE.detailNodes.filter(n=>n.category==='tal'&&n.yearViews.includes('7'));if(ids.length!==expected.length||ids.some(id=>!expected.some(n=>n.id===id)))throw Error('Year and area filter disagree');return {year:7,area:'tal',skills:ids.length};})()"
+  },
+  {
+    "eval": "document.querySelector('#map-zoom').value='160';document.querySelector('#map-zoom').dispatchEvent(new Event('input'));document.querySelector('#map-scroll').scrollIntoView({block:'start'});void 0"
+  },
+  {
+    "drag": {
+      "selector": "#map-scroll",
+      "dx": -120,
+      "dy": -180
+    },
+    "eval": "(()=>{const m=document.querySelector('#map-scroll');if(m.scrollTop<100||document.querySelector('#skill-dialog').open)throw Error('Panning failed');return {left:m.scrollLeft,top:m.scrollTop};})()",
+    "screenshot": "live-r1-map-desktop.png"
+  },
+  {
+    "eval": "document.querySelector('#map-scroll').addEventListener('click',()=>{const m=document.querySelector('#map-scroll');window.liveMapOrigin={left:m.scrollLeft,top:m.scrollTop,page:scrollY};},{capture:true,once:true});void 0"
+  },
+  {
+    "click": ".skill-node[data-node]"
+  },
+  {
+    "key": "Escape",
+    "eval": "await new Promise(r=>setTimeout(r,150));if(document.querySelector('#skill-dialog').open||document.querySelector('#map-scroll').scrollLeft!==liveMapOrigin.left||document.querySelector('#map-scroll').scrollTop!==liveMapOrigin.top||scrollY!==liveMapOrigin.page)throw Error('Map position lost after dialog');"
+  },
+  {
+    "click": "#reset-filters"
+  },
+  {
+    "click": "[data-stage=\"9\"]"
+  },
+  {
+    "click": "[data-category=\"geometri\"]"
+  },
+  {
+    "click": "#search",
+    "type": "Pythagoras"
+  },
+  {
+    "click": "[data-node=\"pythagoras-hyp\"]"
+  },
+  {
+    "click": "[data-focus=\"pythagoras-hyp\"]",
+    "eval": "(()=>{if(document.querySelector('#focus-banner').hidden||!document.querySelector('[data-node=\"multiplikation\"]'))throw Error('Full prerequisite view missing');return 'Focus includes earlier prerequisites outside selected grade and category';})()"
+  },
+  {
+    "click": "#clear-focus",
+    "eval": "(()=>{if(document.querySelector('#search').value!=='Pythagoras'||!document.querySelector('#map-title').textContent.includes('åk 9'))throw Error('Focus return lost filters');return 'Search and grade preserved';})()"
+  },
+  {
+    "click": "#reset-filters"
+  },
+  {
+    "click": "[data-map-mode=\"groups\"]"
+  },
+  {
+    "size": [
+      360,
+      800
+    ],
+    "eval": "scrollTo(0,0);if(document.documentElement.scrollWidth>innerWidth)throw Error('Mobile page overflow');void 0",
+    "screenshot": "live-r1-mobile-navigation.png"
+  },
+  {
+    "click": "[data-view=\"progress\"]",
+    "eval": "if(document.querySelector('#progress-view').hidden)throw Error('Mobile teacher navigation failed');"
+  },
+  {
+    "click": "[data-view=\"np\"]",
+    "eval": "if(document.querySelector('#np-view').hidden)throw Error('Mobile NP navigation failed');"
+  },
+  {
+    "click": "[data-view=\"tree\"]",
+    "eval": "if(document.querySelector('#tree-view').hidden||document.documentElement.scrollWidth>innerWidth)throw Error('Mobile tree navigation failed');'Round 1 navigation and map passed';",
+    "screenshot": "live-r1-mobile-tree.png"
+  }
+]

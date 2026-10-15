@@ -231,3 +231,23 @@ window.verifyCategoryScope=async()=>{
     return 'All 45 year/area selections, bounded adaptive and full routing, empty selections, scoped estimates, reports, paused drafts, backup validation and legacy sessions passed';
   }finally{document.querySelectorAll('dialog[open]').forEach(d=>d.close());Object.assign(p,saved);app.save();app.render();}
 };
+
+window.verifyCrossReportResume=()=>{
+  const A=MATREE_ADAPTIVE,app=MATREE_APP,p=app.profile(),$=s=>document.querySelector(s),saved={results:p.results,quiz:p.quiz,adaptive:p.adaptive},check=(c,m)=>{if(!c)throw Error(m);};
+  const make=(id,time)=>{const s=A.create({scope:'1-3',category:'tal',limit:30});A.answer(s,'',true);A.answer(s,'',true);s.id=id;s.started=s.ended=time;s.endReason='teacher';s.pending=null;return s;};
+  try{
+    const older=make('resume-old-report',new Date(Date.now()-86400000).toISOString()),newer=make('resume-new-report',new Date().toISOString());
+    p.results={};p.quiz=null;p.adaptive={active:null,sessions:[older,newer],confirmations:[]};app.save();app.showProgress();
+    $('#progress-view [data-adaptive-report="'+newer.id+'"]').click();$('.followup-suggestion [data-report-start]').click();
+    const q=p.quiz.questions[0],input=$('#answer');input.value=q.options?'1':'123';input.dispatchEvent(new Event('input',{bubbles:true}));
+    const pending=JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers});
+    check($('.control-report-return').dataset.adaptiveReport===newer.id,'New control returns to its source report');
+    $('.control-report-return').click();$('#adaptive-close').click();
+    $('#progress-view [data-adaptive-report="'+older.id+'"]').click();$('.report-answers').open=true;$('.followup-suggestion [data-report-start]').click();
+    check(p.quiz.reportSessionId===older.id&&$('.control-report-return').dataset.adaptiveReport===older.id,'Resuming from another report updates the return destination');
+    check(JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers})===pending,'Changing report destination preserves exact questions, draft and answers');
+    $('.control-report-return').click();
+    check($('.report-answers').open&&$('.report-meta').textContent.includes(new Date(older.started).toLocaleString('sv-SE',{dateStyle:'short',timeStyle:'short'})),'Return restores the older report and its expanded sections');
+    return 'Cross-report resume preserves the question and draft and returns to the report most recently used';
+  }finally{document.querySelectorAll('dialog[open]').forEach(d=>d.close());Object.assign(p,saved);app.save();app.render();}
+};

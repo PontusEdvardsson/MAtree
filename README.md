@@ -57,13 +57,23 @@ Ett delmoment får upp till fyra frågor. Enstaka fel följs av en annan variant
 
 Passet avslutas vid vald gräns eller när inga fler lämpliga moment finns under dessa regler. Det går även att pausa, återuppta efter omladdning eller avsluta tidigare. Sammanställningen skiljer på visat, uppföljning, begränsat underlag och det som inte prövats. Alla frågor, elevsvar, facit och urvalsskäl sparas i elevprofilen och följer med vid export/import. Elevöversikten listar tidigare pass.
 
-**Testa alla** prövar samtliga delmoment i den valda årskursvyn, inklusive fördjupning och tidigare visade färdigheter. Det vanliga urvalets stopp vid bristande förkunskaper används inte i detta läge. Varje delmoment får fortfarande 2–4 frågor och bedöms separat; inga förkunskaper godkänns automatiskt. De vanliga passen på 30, 60 och 90 frågor behåller sina urvalsregler och sin basavgränsning.
+**Testa alla** prövar samtliga delmoment i den valda årskursens innehåll, inklusive fördjupning och tidigare visade färdigheter. Det vanliga urvalets stopp vid bristande förkunskaper används inte i detta läge. Varje delmoment får fortfarande 2–4 frågor och bedöms separat; inga förkunskaper godkänns automatiskt. De vanliga passen på 30, 60 och 90 frågor behåller sina urvalsregler och sin basavgränsning.
 
 Före start visas antal delmoment, minsta och högsta frågeantal samt grov arbetstid vid ungefär en minut per fråga. Exempel: åk 4–6 har 62 delmoment och kräver 124–248 frågor, ungefär 2–4 timmar utan pauser. Uppskattningen följer valt årskursurval; elevens tempo kan ge kortare eller längre tid. Kartläggningen kan delas över flera tillfällen genom paus och återupptagning.
 
 Ett fullföljt Testa alla-pass märks **Alla delmoment i valt årskursurval har prövats**. Detta innebär insamlade svar på varje delmoment, inte att alla färdigheter är visade eller att kartläggningen är pedagogiskt validerad. Läget följer med vid omladdning och export/import; äldre pass fungerar som tidigare.
 
 Urvalet är en första regelstyrd version. Det har ingen kalibrerad svårighetsskala eller statistisk skattning av elevens nivå. Frågorna ger ett begränsat underlag; läraren behöver följa upp elevens resonemang.
+
+## Årskursens innehåll i elevpass
+
+Nya pass för åk 7–9 utgår från delmomentens kursplacering och primära bokhänvisning (`courseYears`). Kartans extra återkommande förkunskaper (`yearViews`) läggs inte automatiskt till i passet. Detta gäller både vanliga pass och **Testa alla**, i alla områden. Färdigheter som faktiskt ingår i flera kurser behåller ett gemensamt resultat.
+
+Exempel: **Tal & räkning · åk 9** innehåller 15 basmoment om stora tal, prefix, potenser, grundpotensform, kvadratrötter och talmängder. Testa alla lägger till fördjupningen Räkna med kvadratrötter: totalt 16 delmoment, 32–64 frågor och ungefär 32–64 minuter vid en minut per fråga. Ett nytt pass startar på årskursens innehåll även när eleven saknar tidigare resultat. Grunder väljs separat; kunskap där godkänns aldrig automatiskt.
+
+Urvalsregeln sparas som `selection: 'course'` i nya pass och bevaras genom paus, omladdning och export/import. Äldre pass utan denna markering behåller sitt tidigare urval, sina frågor och utkast. Äldre högstadiepass märks **äldre urval med grunder**. Avsluta ett sådant pass och starta ett nytt för det nya årskursurvalet. Rapporternas antal oprövade moment beräknas från det urval som hör till respektive pass.
+
+`tests/course-scope-tests.js` kontrollerar det uttryckliga innehållet för Tal åk 9, skillnaden mot Grunder, årskurs 7–9, fullständiga pass även efter överhoppade svar samt äldre och nya sparade frågor. `python tests/ui_preview.py tests/course-scope-preview.json` testar start, utkast, paus, mobilvy, omladdning och rapport i Chrome.
 
 ## Färdigheter i flera årskurser
 

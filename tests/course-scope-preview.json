@@ -1,0 +1,14 @@
+[
+  {"size":[1366,768],"script":"tests/course-scope-tests.js","eval":"verifyCourseScope()"},
+  {"eval":"const app=MATREE_APP,p=app.profile();p.results={};p.quiz=null;p.adaptive={active:null,sessions:[],confirmations:[]};app.save();app.render();document.querySelector('#adaptive-open').click();document.querySelector('#adaptive-start').value='9';document.querySelector('#adaptive-category').value='tal';document.querySelector('#adaptive-limit').value='all';document.querySelector('#adaptive-category').dispatchEvent(new Event('change',{bubbles:true}));","screenshot":"year-nine-course-setup.png"},
+  {"click":"#adaptive-setup .primary-button","eval":"window.courseFirst=JSON.stringify(MATREE_APP.profile().adaptive.active.pending);if(MATREE_APP.profile().adaptive.active.selection!=='course')throw Error('Setup did not use course selection');","screenshot":"year-nine-course-first.png"},
+  {"eval":"const q=MATREE_APP.profile().adaptive.active.pending;if(q.options)document.querySelector('#adaptive-answer-form [data-choice]').click();else{const input=document.querySelector('#adaptive-answer');input.value='12';input.dispatchEvent(new Event('input',{bubbles:true}));}void 0;"},
+  {"click":"#adaptive-pause"},
+  {"click":"#adaptive-resume","eval":"if(JSON.stringify(MATREE_APP.profile().adaptive.active.pending)!==courseFirst||!document.querySelector('#adaptive-answer').value)throw Error('Pause changed exact course question or draft');","size":[390,844],"screenshot":"year-nine-course-mobile.png"},
+  {"eval":"window.location.reload();"},
+  {"eval":"await new Promise(resolve=>setTimeout(resolve,250));if(!MATREE_APP.storageOK()||MATREE_APP.profile().adaptive.active.selection!=='course')throw Error('Reload lost course policy');void 0;"},
+  {"click":"#adaptive-open"},
+  {"click":"#adaptive-resume","eval":"if(!document.querySelector('#adaptive-answer').value||!MATREE_ADAPTIVE.scopedPool(MATREE_APP.profile().adaptive.active).every(n=>n.source.book==='9tal'))throw Error('Reload changed draft or course');"},
+  {"click":"#adaptive-pause"},
+  {"click":"#adaptive-finish","size":[1366,900],"screenshot":"year-nine-course-report.png"}
+]

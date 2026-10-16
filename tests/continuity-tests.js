@@ -35,7 +35,7 @@ window.verifyEndReasons=()=>{
   const show=s=>{document.querySelectorAll('dialog[open]').forEach(d=>d.close());p.adaptive={active:null,sessions:[s],confirmations:[]};app.save();app.render();$('.last-report-link').click();};
   try{
     for(const [scope,total]of [['1-3',4],['9',16]]){
-      const s=A.create({scope,limit:90});while(!s.ended)A.answer(s,'',true);
+      const s=A.create({scope,limit:90,selection:'progression'});while(!s.ended)A.answer(s,'',true);
       check(s.items.length===total&&s.endReason==='coverage','Existing all-skip selection is unchanged for '+scope);show(s);
       check($('.report-end').dataset.endReason==='coverage'&&$('.report-end').textContent.includes('Urvalsreglerna'),'Rule-stop reason is explicit');
       check($('.report-end').textContent.includes(String(A.scopedPool(s).length-A.summary(s).length)),'Untried remainder is stated accurately');
@@ -147,7 +147,7 @@ window.verifyTestAll=async()=>{
   const check=(c,m)=>{if(!c)throw Error(m);};
   try{
     for(const scope of ['1-3','4-6','7','8','9']){
-      const expected=M.detailNodes.filter(n=>M.matchesYearView(n,scope)),e=A.estimateAll(scope),ids=new Set(expected.map(n=>n.id));
+      const expected=M.detailNodes.filter(n=>M.matchesCourseYear(n,scope)),e=A.estimateAll(scope),ids=new Set(expected.map(n=>n.id));
       check(e.skills===ids.size&&e.minQuestions===2*ids.size&&e.maxQuestions===4*ids.size,'Estimate covers every distinct skill in '+scope);
       for(const kind of ['right','skip','one-wrong']){
         const s=A.create({scope,mode:'all',known:[expected[0].id]});let count=0;
@@ -194,11 +194,11 @@ window.verifyCategoryScope=async()=>{
   const check=(c,m)=>{if(!c)throw Error(m);};
   try{
     for(const scope of ['1-3','4-6','7','8','9'])for(const cat of M.categories){
-      const expected=M.detailNodes.filter(n=>M.matchesYearView(n,scope)&&n.category===cat.id),ids=new Set(expected.map(n=>n.id)),estimate=A.estimateAll(scope,cat.id);
+      const expected=M.detailNodes.filter(n=>M.matchesCourseYear(n,scope)&&n.category===cat.id),ids=new Set(expected.map(n=>n.id)),estimate=A.estimateAll(scope,cat.id);
       check(estimate.skills===ids.size&&estimate.maxQuestions===ids.size*4,'Estimate uses both year and area');
       if(!ids.size){let rejected=false;try{A.create({scope,category:cat.id,mode:'all'});}catch{rejected=true;}check(rejected,'Empty area selection cannot start a full run');continue;}
       for(const mode of ['adaptive','all']){
-        if(!A.scopedPool({scope,category:cat.id,mode}).length){let rejected=false;try{A.create({scope,category:cat.id,mode});}catch{rejected=true;}check(rejected,'Area with only extensions cannot start a core-only run');continue;}
+        if(!A.scopedPool({scope,category:cat.id,mode,selection:'course'}).length){let rejected=false;try{A.create({scope,category:cat.id,mode});}catch{rejected=true;}check(rejected,'Area with only extensions cannot start a core-only run');continue;}
         const s=A.create({scope,category:cat.id,mode,limit:30});let count=0;
         while(s.pending){check(ids.has(s.pending.nodeId),'Area run never tests outside selected year and area');A.answer(s,'',true);check(++count<=s.limit,'Area run is bounded');if(count%20===0)await new Promise(resolve=>setTimeout(resolve,0));}
         check(s.items.every(i=>M.nodes.find(n=>n.id===i.nodeId).category===cat.id),'No cross-area questions are inserted');

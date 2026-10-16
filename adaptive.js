@@ -5,12 +5,13 @@
   const pool = M.detailNodes.filter(n=>n.level==='core');
   const validId = id => M.detailNodes.some(n=>n.id===resolve(id))||M.legacyAdaptiveIds.has(resolve(id));
   const scopes = ['1-3','4-6','7','8','9'];
-  const inScope = (node,scope,category=null) => (!scope || M.matchesYearView(node,scope))&&(!category||node.category===category);
+  const inScope = (node,scope,category=null,selection='progression') => (!scope || (selection==='course'?M.matchesCourseYear(node,scope):M.matchesYearView(node,scope)))&&(!category||node.category===category);
   const validCategory = category => category===null||M.categories.some(c=>c.id===category);
-  const scopedPool = session => (session.mode==='all'?M.detailNodes:pool).filter(n=>inScope(n,session.scope,session.category));
-  const scopeLabel = session => session.scope ? `Åk ${session.scope.replace('-','–')}${session.category?' · '+M.categories.find(c=>c.id===session.category).name:''}${session.mode==='all'?' · Testa alla':''}` : session.start==='basic'?'Tidigare grunder · äldre blandat pass':'Högstadieingångar · äldre blandat pass';
-  function estimateAll(scope,category=null) {
-    const nodes=scopedPool({scope,category,mode:'all'}),skills=nodes.length;
+  // A saved pass without a policy keeps its original progression; a new selection uses the course.
+  const scopedPool = session => (session.mode==='all'?M.detailNodes:pool).filter(n=>inScope(n,session.scope,session.category,session.selection??(session.id?'progression':'course')));
+  const scopeLabel = session => session.scope ? `Åk ${session.scope.replace('-','–')}${session.category?' · '+M.categories.find(c=>c.id===session.category).name:''}${session.mode==='all'?' · Testa alla':''}${session.id&&['7','8','9'].includes(session.scope)&&session.selection!=='course'?' · äldre urval med grunder':''}` : session.start==='basic'?'Tidigare grunder · äldre blandat pass':'Högstadieingångar · äldre blandat pass';
+  function estimateAll(scope,category=null,selection='course') {
+    const nodes=scopedPool({scope,category,mode:'all',selection}),skills=nodes.length;
     return {skills,core:nodes.filter(n=>n.level==='core').length,extension:nodes.filter(n=>n.level!=='core').length,minQuestions:skills*2,maxQuestions:skills*4,minMinutes:skills*2,maxMinutes:skills*4};
   }
   const basicAnchors = ['f-count','f-equality','f-shapes','f-readtable','f-double','f-half','f-chance','f-word-add','f-percent'];
@@ -64,14 +65,15 @@
     session.pending={...question,nodeId:selected.id,variant,reason:selected.reason};
     return session.pending;
   }
-  function create({start='basic',limit=30,scope=null,known=[],recent=[],mode='adaptive',category=null}={}) {
+  function create({start='basic',limit=30,scope=null,known=[],recent=[],mode='adaptive',category=null,selection='course'}={}) {
     if(scope!==null&&!scopes.includes(scope))throw Error('Välj ett giltigt årskursurval.');
     if(!['adaptive','all'].includes(mode)||mode==='all'&&scope===null)throw Error('Välj ett giltigt kartläggningsläge och årskursurval.');
     if(!validCategory(category)||category!==null&&scope===null)throw Error('Välj ett giltigt kunskapsområde och årskursurval.');
-    if(category&&!scopedPool({scope,category,mode}).length)throw Error('Det finns inga delmoment i detta urval.');
-    if(mode==='all'){known=[];limit=estimateAll(scope,category).maxQuestions;}
-    if(!Array.isArray(known)||known.some(id=>!validId(id)||!inScope(byId(id),scope,category)))throw Error('Ogiltigt tidigare underlag.');
-    const session={id:window.crypto?.randomUUID?.()||`a-${Date.now()}-${Math.random()}`,started:now(),ended:null,endReason:null,start,scope,...(category?{category}:{}),...(mode==='all'?{mode}:{}),known:[...new Set(known)],recent:recent.slice(-200),limit,items:[],pending:null,remediation:false};
+    if(!['course','progression'].includes(selection))throw Error('Ogiltigt innehållsurval.');
+    if(category&&!scopedPool({scope,category,mode,selection}).length)throw Error('Det finns inga delmoment i detta urval.');
+    if(mode==='all'){known=[];limit=estimateAll(scope,category,selection).maxQuestions;}
+    if(!Array.isArray(known)||known.some(id=>!validId(id)||!inScope(byId(id),scope,category,selection)))throw Error('Ogiltigt tidigare underlag.');
+    const session={id:window.crypto?.randomUUID?.()||`a-${Date.now()}-${Math.random()}`,started:now(),ended:null,endReason:null,start,scope,...(scope?{selection}:{}),...(category?{category}:{}),...(mode==='all'?{mode}:{}),known:[...new Set(known)],recent:recent.slice(-200),limit,items:[],pending:null,remediation:false};
     next(session);return session;
   }
   function answer(session,response,skip=false) {
@@ -106,22 +108,23 @@
     const question = item => item&&validId(item.nodeId)&&typeof item.prompt==='string'&&item.prompt.length<=2000&&typeof item.explanation==='string'&&item.explanation.length<=3000&&Number.isFinite(item.answer)&&typeof item.unit==='string'&&item.unit.length<=30&&Number.isInteger(item.variant)&&item.variant>=0&&item.variant<=2&&typeof item.reason==='string'&&item.reason.length<=500;
     const checkSession = (s,active) => {
       if(!s||typeof s.id!=='string'||s.id.length>100||!date(s.started)||!['basic','higher'].includes(s.start)||(s.mode==='all'?(!Number.isInteger(s.limit)||s.limit<1||s.limit>M.nodes.length*4):![30,60,90].includes(s.limit))||!Array.isArray(s.items)||s.items.length>s.limit||typeof s.remediation!=='boolean'||(active?s.ended!==null:!date(s.ended)))throw Error('Ogiltigt automatiskt pass.');
-      const scope=s.scope??null,mode=s.mode??'adaptive',category=s.category??null;
+      const scope=s.scope??null,mode=s.mode??'adaptive',category=s.category??null,selection=s.selection??'progression';
+      if(!['course','progression'].includes(selection))throw Error('Ogiltigt innehållsurval i automatiskt pass.');
       if(!validCategory(category)||category!==null&&scope===null)throw Error('Ogiltigt kunskapsområde i automatiskt pass.');
       if(!['adaptive','all'].includes(mode)||mode==='all'&&scope===null)throw Error('Ogiltigt kartläggningsläge.');
-      const allowed=new Set(scopedPool({scope,mode,category}).map(n=>n.id));
+      const allowed=new Set(scopedPool({scope,mode,category,selection}).map(n=>n.id));
       if(scope!==null&&!scopes.includes(scope))throw Error('Ogiltigt årskursurval i automatiskt pass.');
       const prior=s.known??[];
       if(mode==='all'&&(!Array.isArray(prior)||prior.length))throw Error('Testa alla får inte hoppa över tidigare visade färdigheter.');
       const recent=s.recent??[];
       if(!Array.isArray(recent)||recent.length>200||recent.some(i=>!validId(i.nodeId)||typeof i.fingerprint!=='string'||!/^[0-9a-f]{8}$/.test(i.fingerprint)))throw Error('Ogiltig uppgiftshistorik.');
-      if(!Array.isArray(prior)||prior.length>M.nodes.length||new Set(prior).size!==prior.length||prior.some(id=>!validId(id)||!inScope(byId(id),scope,category)))throw Error('Ogiltigt tidigare underlag i automatiskt pass.');
+      if(!Array.isArray(prior)||prior.length>M.nodes.length||new Set(prior).size!==prior.length||prior.some(id=>!validId(id)||!inScope(byId(id),scope,category,selection)))throw Error('Ogiltigt tidigare underlag i automatiskt pass.');
       const items=s.items.map(i=> {if(!question(i)||typeof i.response!=='string'||i.response.length>60||typeof i.correct!=='boolean'||typeof i.skipped!=='boolean'||!date(i.date)||i.correct!==(!i.skipped&&correct(i,i.response)))throw Error('Ogiltigt elevsvar i automatiskt pass.');return {...i,...M.questionExtras(i)};});
       if(active&&(s.items.length>=s.limit||!question(s.pending)))throw Error('Ogiltig pågående automatisk fråga.');
       if(!active&&s.pending!==null)throw Error('Avslutat pass har en pågående fråga.');
-      if(items.some(i=>!inScope(byId(i.nodeId),scope,category)||!allowed.has(resolve(i.nodeId))&&!M.legacyAdaptiveIds.has(resolve(i.nodeId)))||active&&(!inScope(byId(s.pending.nodeId),scope,category)||!allowed.has(resolve(s.pending.nodeId))&&!M.legacyAdaptiveIds.has(resolve(s.pending.nodeId))))throw Error('Passet innehåller uppgifter utanför valt årskursurval.');
+      if(items.some(i=>!inScope(byId(i.nodeId),scope,category,selection)||!allowed.has(resolve(i.nodeId))&&!M.legacyAdaptiveIds.has(resolve(i.nodeId)))||active&&(!inScope(byId(s.pending.nodeId),scope,category,selection)||!allowed.has(resolve(s.pending.nodeId))&&!M.legacyAdaptiveIds.has(resolve(s.pending.nodeId))))throw Error('Passet innehåller uppgifter utanför valt årskursurval.');
       const draft=active?M.validateDraft(s.pending,s.draft):null;
-      return {id:s.id,started:s.started,ended:s.ended,endReason:['limit','coverage','teacher','all-tested'].includes(s.endReason)?s.endReason:null,start:s.start,scope,...(category?{category}:{}),...(mode==='all'?{mode}:{}),known:[...prior],recent:recent.map(i=>({nodeId:i.nodeId,fingerprint:i.fingerprint})),limit:s.limit,items,pending:active?{...s.pending,...M.questionExtras(s.pending)}:null,remediation:s.remediation,...(draft?{draft}:{})};
+      return {id:s.id,started:s.started,ended:s.ended,endReason:['limit','coverage','teacher','all-tested'].includes(s.endReason)?s.endReason:null,start:s.start,scope,...(s.selection!==undefined?{selection}:{}),...(category?{category}:{}),...(mode==='all'?{mode}:{}),known:[...prior],recent:recent.map(i=>({nodeId:i.nodeId,fingerprint:i.fingerprint})),limit:s.limit,items,pending:active?{...s.pending,...M.questionExtras(s.pending)}:null,remediation:s.remediation,...(draft?{draft}:{})};
     };
     const confirmations=(state.confirmations||[]).map(c=> {if(!validId(c.targetId)||!validId(c.sourceId)||typeof c.prompt!=='string'||c.prompt.length>2000||typeof c.sessionId!=='string'||c.sessionId.length>100||!date(c.date))throw Error('Ogiltig metodbekräftelse.');return {targetId:c.targetId,sourceId:c.sourceId,prompt:c.prompt,sessionId:c.sessionId,date:c.date};});
     if(confirmations.length>500)throw Error('För många metodbekräftelser.');

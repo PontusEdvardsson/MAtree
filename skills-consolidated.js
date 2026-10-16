@@ -21,6 +21,7 @@
     node.mergedIds=[...(node.mergedIds||[]),oldId];node.mergedTitles=[...(node.mergedTitles||[]),old.title];
     node.mergedSources=[...(node.mergedSources||[]),old.source];
     node.yearViews=[...new Set([...node.yearViews,...old.yearViews])];
+    node.courseYears=[...new Set([...node.courseYears,...old.courseYears])];
     // Use the earlier entry's prerequisites instead of requiring a duplicate of itself.
     if(old.depth<node.depth){node.deps=[...old.deps];node.learnedAt=old.learnedAt;node.grade=old.grade;node.foundationBand=old.foundationBand;}
   }

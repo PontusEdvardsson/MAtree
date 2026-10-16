@@ -10,7 +10,7 @@
   const answer = wrong => { const q = current().quiz; $('#answer').value = String(wrong?(q.questions[q.index].options?q.questions[q.index].answer%q.questions[q.index].options.length+1:q.questions[q.index].answer+1000):q.questions[q.index].answer); submit('#answer-form'); };
   const close = () => click('[data-close="skill-dialog"]');
   try {
-    if (!localStorage.getItem('verification-phase')) { assert(true,window.verifySkillGroups()); assert(true,window.verifyTheme()); }
+    if (!localStorage.getItem('verification-phase')) { assert(true,window.verifySkillGroups()); assert(true,window.verifyTheme()); assert(true,window.verifyCourseScope()); }
     click('[data-map-mode="details"]');
     if (localStorage.getItem('verification-phase') === 'resume') {
       assert(current().adaptive.active.items.length===1&&current().adaptive.active.pending.prompt===localStorage.getItem('verification-adaptive-prompt'),'Adaptive session and exact question survive browser reload');

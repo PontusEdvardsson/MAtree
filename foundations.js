@@ -143,6 +143,8 @@
     const views=new Set([n.learnedAt]),courseGrade=courseGrades.get(n.id);
     if(courseGrade>=7)views.add(String(courseGrade));
     if(n.source.kind!=='curriculum'&&n.source.grade>=7)views.add(String(n.source.grade));
+    // Book/course placement belongs to assessment selection; later repetitions only to the map.
+    n.courseYears=[...views].filter(view=>Number(view)>=7);
     n.yearViews=[...views];
   });
   for(const [grade,ids]of Object.entries(recurring))for(const id of ids.split(' ')){
@@ -151,6 +153,7 @@
     if(!node.yearViews.includes(grade))node.yearViews.push(grade);
   }
   M.matchesYearView=(node,view)=>view==='all'||view==='0'&&node.yearViews.some(v=>v==='1-3'||v==='4-6')||node.yearViews.includes(String(view));
+  M.matchesCourseYear=(node,view)=>['7','8','9'].includes(String(view))?node.courseYears.includes(String(view)):M.matchesYearView(node,view);
   M.yearViewLabel=view=>`Åk ${String(view).replace('-','–')}`;
   M.foundationIds = new Set(rows.map(r=>r[0]));
   M.generate = (id, variant) => bank[id] ? bank[id](2+Math.floor(Math.random()*8),2+Math.floor(Math.random()*8),variant%3) : previousGenerate(id,variant%3);

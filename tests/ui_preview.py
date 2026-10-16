@@ -102,6 +102,12 @@ try:
             width,height = step['size']
             browser.call('Emulation.setDeviceMetricsOverride', {'width':width,'height':height,'deviceScaleFactor':1,'mobile':width<600})
             time.sleep(.15)
+        if 'color_scheme' in step:
+            scheme=step['color_scheme']
+            if scheme not in ('light','dark'):
+                raise ValueError('Expected a light or dark colour scheme.')
+            browser.call('Emulation.setEmulatedMedia', {'features':[{'name':'prefers-color-scheme','value':scheme}]})
+            time.sleep(.1)
         if 'click' in step:
             click(step['click'])
         if 'upload' in step:

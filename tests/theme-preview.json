@@ -1,0 +1,23 @@
+[
+  {"size":[1366,768],"color_scheme":"dark","eval":"if(document.documentElement.dataset.theme!=='dark')throw Error('System dark preference ignored');"},
+  {"color_scheme":"light","script":"tests/theme-tests.js","eval":"if(document.documentElement.dataset.theme!=='light')throw Error('System light preference ignored');verifyTheme()"},
+  {"eval":"document.querySelector('.topbar [data-theme-toggle]').focus();"},
+  {"key":"Enter","eval":"if(document.documentElement.dataset.theme!=='dark')throw Error('Keyboard theme switch failed');","screenshot":"theme-dark-map.png"},
+  {"eval":"MATREE_APP.openSkill('brak-forlanga')","screenshot":"theme-dark-skill.png"},
+  {"click":"[data-close='skill-dialog']"},
+  {"eval":"showThemeStudent()","screenshot":"theme-dark-student-laptop.png"},
+  {"click":"#adaptive-answer-form [data-choice]","eval":"verifyStudentTheme()","screenshot":"theme-dark-choice-selected.png"},
+  {"size":[390,844],"screenshot":"theme-dark-student-mobile.png"},
+  {"click":"#adaptive-pause"},
+  {"click":"#adaptive-close","screenshot":"theme-dark-map-mobile.png"},
+  {"eval":"showThemeReport()","screenshot":"theme-dark-report-mobile.png"},
+  {"size":[1366,900],"screenshot":"theme-dark-report.png"},
+  {"eval":"document.querySelectorAll('dialog[open]').forEach(d=>d.close());MATREE_APP.openSkill('f-probability');MATREE_APP.startQuiz('f-probability');","screenshot":"theme-dark-manual.png"},
+  {"eval":"document.querySelectorAll('dialog[open]').forEach(d=>d.close());"},
+  {"click":".topbar [data-theme-toggle]","screenshot":"theme-light-map.png"},
+  {"size":[390,844],"screenshot":"theme-light-map-mobile.png"},
+  {"eval":"if(document.documentElement.scrollWidth>innerWidth)throw Error('Theme controls cause horizontal overflow');window.location.reload();"},
+  {"eval":"await new Promise(resolve=>setTimeout(resolve,300));if(document.documentElement.dataset.theme!=='light'||!MATREE_APP.storageOK())throw Error('Theme or pupil data did not survive reload');void 0;"},
+  {"click":".topbar [data-theme-toggle]","eval":"window.location.reload();"},
+  {"eval":"await new Promise(resolve=>setTimeout(resolve,300));if(document.documentElement.dataset.theme!=='dark'||!MATREE_APP.storageOK())throw Error('Dark theme or pupil data did not survive reload');void 0;","size":[1366,768],"screenshot":"theme-dark-reloaded.png"}
+]

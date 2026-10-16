@@ -4,6 +4,8 @@ En körbar prototyp för kartläggning av matematikkunskaper hos högstadieeleve
 
 Öppna `index.html` i Chrome, Edge eller Firefox. Ingen installation, server, inloggning eller API-nyckel krävs. Alla resurser finns lokalt.
 
+Växla mellan **Mörkt tema** och **Ljust tema** med sol-/månknappen uppe till höger, även i elevläget. På mobil visas bara ikonen. Sidan följer datorns tema tills du väljer själv; ditt val sparas i webbläsaren separat från elevprofilerna. Kartan, uppgiftsbilderna och sammanställningarna följer samma tema.
+
 Sidan kan också publiceras på GitHub Pages. Se [GITHUB_PAGES.md](GITHUB_PAGES.md) för uppladdning till PontusEdvardsson/MAtree, PDF-filer och flytt av elevprofiler. `python tests/build_pages.py` skapar ett paket med appen och dess länkade bokfiler.
 
 ## Vad som går att göra

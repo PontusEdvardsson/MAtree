@@ -1,0 +1,11 @@
+[
+  {"size":[1366,768],"eval":"localStorage.setItem('matree.theme.v1','dark');dispatchEvent(new StorageEvent('storage',{key:'matree.theme.v1'}));"},
+  {"script":"tests/question-gallery.js"},
+  {"eval":"const style=document.createElement('style');style.textContent='.question-gallery-active{background:var(--page,#f5f7f2)!important}.gallery-case{background:var(--surface,white)!important;border-color:var(--line)!important}.gallery-case .audit-answer,.gallery-case h2{color:var(--muted,#5b704f)!important}';document.head.append(style);"},
+  {"size":[1366,1400],"eval":"questionGallery([{id:'f-count',v:2},{id:'f-half',v:0},{id:'f-fraction-line',v:0},{id:'f-area',v:0},{id:'f-shapes',v:0},{id:'f-coordinate',v:0}])","screenshot":"theme-dark-figures.png"},
+  {"eval":"questionGallery([{id:'f-readtable',v:0},{id:'stapel-stolp',v:0},{id:'linjediagram',v:0},{id:'cirkeldiagram',v:0},{id:'rita-linje',v:0},{id:'samband-tabell',v:0}])","screenshot":"theme-dark-charts.png"},
+  {"eval":"questionGallery([{id:'histogram',v:0},{id:'ladagram',v:0},{id:'venndiagram',v:0},{id:'trad-beroende',v:0},{id:'pythagoras-hyp',v:0},{id:'problem-bild',v:0}])","screenshot":"theme-dark-advanced.png"},
+  {"eval":"questionGallery([{id:'vilseledande',v:0},{id:'cirkeldiagram',v:0,seed:3},{id:'f-half',v:0,seed:4},{id:'rita-linje',v:1,seed:5},{id:'pythagoras-katet',v:0,seed:7},{id:'f-area',v:0,seed:19}])","screenshot":"theme-dark-visual-edges.png"},
+  {"eval":"document.body.classList.remove('question-gallery-active');document.querySelector('#question-gallery').remove();const p=MATREE_APP.profile();p.results['f-count']={history:[{score:3,date:new Date().toISOString()}]};p.results['f-compare']={history:[{score:0,date:new Date().toISOString()}]};MATREE_APP.save();MATREE_APP.render();document.querySelector('[data-stage=\"0\"]').click();document.querySelector('[data-foundation=\"1\"]').click();document.querySelector('[data-map-mode=\"details\"]').click();scrollTo(0,0);","size":[1366,768],"screenshot":"theme-dark-node-states.png"},
+  {"eval":"MATREE_APP.openSkill('f-count');MATREE_APP.startQuiz('f-count');document.querySelector('#answer').value=String(MATREE_APP.profile().quiz.questions[0].answer);document.querySelector('#answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));","screenshot":"theme-dark-feedback.png"}
+]

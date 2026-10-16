@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111b19">
   <title>MAtree · Matematikkartläggning</title>
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
   <script src="curriculum.js" defer></script>
   <script src="skill-catalog.js" defer></script>
   <script src="questions-expanded.js" defer></script>
@@ -43,7 +45,7 @@
     <button id="profile-button" class="profile-button"><span class="avatar" id="avatar">E</span><span><strong id="profile-name">Min profil</strong><small>Byt eller skapa elevprofil</small></span><span>⌄</span></button>
   </aside>
   <main>
-    <header class="topbar"><div>Kartläggning · Högstadiet <span>/</span> <strong id="breadcrumb">Kunskapsträdet</strong></div><button id="active-profile" class="active-profile-label" type="button">Elev: Elev 1</button><span class="save-status" id="save-status"><i></i> Sparas på den här enheten</span></header>
+    <header class="topbar"><div>Kartläggning · Högstadiet <span>/</span> <strong id="breadcrumb">Kunskapsträdet</strong></div><button id="active-profile" class="active-profile-label" type="button">Elev: Elev 1</button><div class="topbar-actions"><span class="save-status" id="save-status"><i></i> Sparas på den här enheten</span><button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt tema">Mörkt tema</button></div></header>
     <section class="page-heading"><div><h1 id="page-title">Kunskapsträdet</h1><p id="page-description">Delområden och förkunskaper från årskurs 1 till 9.</p></div><button class="secondary-button" id="continue-button">Börja kartlägga <span>↗</span></button></section>
     <details class="summary-stats" id="summary-stats"><summary id="summary-stats-label">Samlat elevunderlag</summary><section id="stats" class="stats" aria-label="Kartläggningens resultat"></section></details>
     <section class="adaptive-launch"><div><strong>Automatisk kartläggning</strong><p>En uppgift i taget. Nästa moment väljs utifrån elevens svar.</p></div><button class="primary-button" id="adaptive-open">Starta elevläge →</button></section>

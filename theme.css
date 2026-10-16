@@ -1,0 +1,110 @@
+/* Theme controls stay available in both the teacher and pupil workspaces. */
+:root { color-scheme: light; }
+.topbar-actions,.student-header-actions { display:flex;align-items:center;gap:12px; }
+.topbar-actions>.save-status { padding:0;color:inherit; }
+.theme-toggle { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;font-size:13px;white-space:nowrap;flex-shrink:0; }
+.theme-toggle svg { width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0; }
+.theme-toggle:hover { background:#eaf0e4; }
+@media(max-width:550px) {
+  .topbar>.topbar-actions { grid-column:2;grid-row:2;gap:8px; }
+  .theme-toggle { width:44px;min-height:44px;padding:10px; }
+  .theme-toggle span { display:none; }
+  .student-header-actions { gap:8px; }
+}
+
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --page:#111b17;
+  --surface:#1b2822;
+  --raised:#25362c;
+  --text:#e3eae4;
+  --muted:#b2bdb2;
+  --line:#405249;
+  --green:#b4d9a8;
+  --orange:#efc18c;
+  --positive-bg:#263d2a;
+  --positive:#bedfa8;
+  --warning-bg:#3b3021;
+  --warning:#f0c590;
+  --info-bg:#223440;
+  --info:#b2d5ec;
+  --purple-bg:#322b40;
+  --purple:#d7c2ef;
+  color:var(--text);background:var(--page);
+}
+[data-theme="dark"] :is(.map-controls,#adaptive-dialog.student-mode) { background:var(--page); }
+[data-theme="dark"] :is(dialog,.stat,.start-guide,.progress-panel,.report-section,.student-question,.choice-button,.question-visual table,.search,.skill-node,.review-answer-values p) { background:var(--surface);color:var(--text);border-color:var(--line); }
+[data-theme="dark"] :is(.tabs,.secondary-button,.icon-button,.tag,.choice-letter,.profile-select,.book-sources,.group-summary,.report-badge,.report-stat,.answer-review,.report-end,.followup-suggestion,.pass-outcome,.session-estimate,.active-profile-label) { background:var(--raised);color:var(--text);border-color:var(--line); }
+[data-theme="dark"] .tabs button { color:var(--muted); }
+[data-theme="dark"] .tabs button.selected { color:var(--text);background:#3c5341;box-shadow:none; }
+[data-theme="dark"] :is(.map-shell,.map-footer) { background:#15221b;border-color:var(--line); }
+[data-theme="dark"] .skill-map { background-image:radial-gradient(#3d5142 .8px,transparent .8px); }
+[data-theme="dark"] .map-scroll { scrollbar-color:#5e7563 #15221b; }
+[data-theme="dark"] :is(.map-lane-rule,.source-link,.progress-skill,.report-section[open]>summary,.question-visual th,.question-visual td) { border-color:var(--line); }
+[data-theme="dark"] .connection { stroke:#829c87; }
+[data-theme="dark"] .connection.done { stroke:#a3c187; }
+[data-theme="dark"] .connection.related { stroke:#c0e3b5; }
+[data-theme="dark"] .skill-node.focus-node { outline-color:#b6d59c; }
+[data-theme="dark"] .node-port { background:var(--surface);border-color:#8fa385; }
+[data-theme="dark"] .node-symbol { background:color-mix(in srgb,var(--node-color) 20%,var(--surface));color:color-mix(in srgb,var(--node-color) 50%,white); }
+[data-theme="dark"] .map-lane-label { color:color-mix(in srgb,var(--lane-color) 50%,white)!important; }
+[data-theme="dark"] .skill-node.mastered { background:var(--positive-bg);border-color:#789863; }
+[data-theme="dark"] .skill-node.practice { background:var(--warning-bg);border-color:#b28b56; }
+[data-theme="dark"] :is(.skill-node.partial,.skill-node.indirect) { background:var(--info-bg);border-color:#759bb2; }
+[data-theme="dark"] .skill-node.supported { background:var(--purple-bg);border-color:#a28aba; }
+[data-theme="dark"] .mastered .node-status { color:var(--positive); }
+[data-theme="dark"] .practice .node-status { color:var(--warning); }
+[data-theme="dark"] :is(.partial,.indirect) .node-status { color:var(--info); }
+[data-theme="dark"] .supported .node-status { color:var(--purple); }
+[data-theme="dark"] :is(.level-key,.tag.extension) { background:#452d2c;color:#ffc2b6; }
+[data-theme="dark"] :is(.np-key,.tag.core) { background:var(--positive-bg);color:var(--positive); }
+[data-theme="dark"] :is(.topbar,.topbar strong,.page-heading p,.stat-top,.stat-value span,.map-heading #node-count,.map-column-label,.node-bottom,.legend,.scroll-hint,.page-footer,.muted,.answer-help,.journey-note p,.progress-panel>p,.progress-skill span,.progress-empty,.map-options label,.map-connections-control,.dependency-label small,.prerequisite span:last-child,.source-link small,.student-progress,.student-instructions,.answer-label,.question-visual caption,.review-answer-values span,.report-skill-name small,.teacher-report .progress-skill>span:last-child,.profile-select .profile-identity small,.empty-map,.focus-banner span) { color:var(--muted); }
+[data-theme="dark"] :is(.text-button,.source-link,.group-open,.summary-stats>summary,.profile-active,.student-saved) { color:var(--positive); }
+[data-theme="dark"] .eyebrow { color:var(--muted); }
+[data-theme="dark"] .report-skill-name { color:var(--text)!important; }
+[data-theme="dark"] :is(input:not([type="file"]),select,#mobile-category,#adaptive-setup select,.map-options select) { color:var(--text);background:var(--surface);border-color:var(--line); }
+[data-theme="dark"] input::placeholder { color:#a0b0a2;opacity:1; }
+[data-theme="dark"] input[type="range"] { accent-color:#a8cf9b; }
+[data-theme="dark"] input[type="checkbox"] { accent-color:#a8cf9b; }
+[data-theme="dark"] :is(input:not([type="file"]),select,#mobile-category,#adaptive-setup select,.map-options select,.choice-button,.theme-toggle) { border-color:#718778; }
+[data-theme="dark"] .choice-letter { border-color:#82977d; }
+[data-theme="dark"] .primary-button { background:#a8d2ae;color:#10271a; }
+[data-theme="dark"] .primary-button span { color:inherit; }
+[data-theme="dark"] :is(.adaptive-launch,.focus-banner,.feedback) { background:var(--positive-bg);border-color:#6b8757;color:var(--text); }
+[data-theme="dark"] :is(.feedback.wrong,.report-stat.followup) { background:var(--warning-bg);border-color:#b28b56;color:var(--warning); }
+[data-theme="dark"] .report-stat.shown { background:var(--positive-bg);border-color:#789863;color:var(--positive); }
+[data-theme="dark"] .report-stat.partial { background:var(--info-bg);border-color:#759bb2;color:var(--info); }
+[data-theme="dark"] :is(.teacher-report .dialog-top,.report-actions,.student-response-actions) { background:var(--surface); }
+[data-theme="dark"] .student-question-actions #adaptive-skip { background:var(--raised);color:var(--text);border-color:#788e74; }
+[data-theme="dark"] .choice-button[aria-pressed="true"] { background:#314d35;border-color:#b1d995; }
+[data-theme="dark"] .choice-button[aria-pressed="true"] .choice-letter { background:#b1d995;border-color:#b1d995; }
+[data-theme="dark"] .choice-letter::after { background:#203620; }
+[data-theme="dark"] :is(#answer-error,#adaptive-error,#profile-message,.delete-profile) { color:#ffc1a7; }
+[data-theme="dark"] .stat-progress,[data-theme="dark"] .question-progress span { background:#35473a; }
+[data-theme="dark"] .stat-progress i,[data-theme="dark"] .question-progress .correct { background:#a7c785; }
+[data-theme="dark"] .question-progress .incorrect { background:#d8aa77; }
+[data-theme="dark"] .question-progress .current { background:#a0b9c9; }
+[data-theme="dark"] .toast { background:#d3e6ce;color:#192e1c; }
+[data-theme="dark"] dialog::backdrop { background:#020806c9; }
+[data-theme="dark"] .theme-toggle:hover { background:var(--raised); }
+
+/* Structured question pictures retain their data and geometry in either theme. */
+[data-theme="dark"] .question-visual svg { stroke:#a0b390; }
+[data-theme="dark"] .question-visual svg text { fill:var(--text); }
+[data-theme="dark"] .question-visual svg [fill="#fff"] { fill:var(--surface); }
+[data-theme="dark"] .question-visual svg :is([fill="#edf4e5"],[fill="#eef4e8"]) { fill:#2c4030; }
+[data-theme="dark"] .question-visual svg [fill="#e1e7d8"] { fill:#2d3d32; }
+[data-theme="dark"] .question-visual svg [fill="#799b61"] { fill:#9fbe7e; }
+[data-theme="dark"] .question-visual svg [fill="#285a44"] { fill:#b6d9aa; }
+[data-theme="dark"] .question-visual svg [stroke="#dee6d6"] { stroke:#34493a; }
+[data-theme="dark"] .question-visual svg [stroke="#344c40"] { stroke:#a0b390; }
+[data-theme="dark"] .question-visual svg [stroke="#afbe9f"] { stroke:#83977c; }
+[data-theme="dark"] .question-visual svg [stroke="#285a44"] { stroke:#b6d9aa; }
+[data-theme="dark"] .question-visual svg [stroke="#8a5730"] { stroke:#e9b780; }
+[data-theme="dark"] .question-visual svg [stroke="#575199"] { stroke:#c2b6f4; }
+[data-theme="dark"] .question-visual svg [style*="stroke:#fff"] { stroke:var(--surface)!important; }
+[data-theme="dark"] .question-visual svg [style*="fill:#263e30"] { fill:var(--text)!important; }
+[data-theme="dark"] .question-visual svg [style*="fill:#285a44"] { fill:#b6d9aa!important; }
+[data-theme="dark"] .question-visual svg [style*="fill:#8a5730"] { fill:#e9b780!important; }
+[data-theme="dark"] .question-visual svg [style*="fill:#575199"] { fill:#c2b6f4!important; }
+[data-theme="dark"] .question-visual svg path[fill="#799b61"]+text { fill:#162416; }

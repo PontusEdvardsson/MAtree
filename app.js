@@ -194,7 +194,7 @@
       return '<path class="connection '+(edge.pairs.every(p=>latest(p.from)?.score===3)?'done':'')+'" data-from="'+edge.from+'" data-to="'+edge.to+'" d="M '+x1+' '+y1+' C '+(x1+bend)+' '+y1+', '+(x2-bend)+' '+y2+', '+x2+' '+y2+'" marker-end="url(#arrow)"><title>'+esc(label)+'</title></path>';
     }).join('');
     const columns=compact?'':Array.from({length:maxDepth+1},(_,i)=>'<div class="map-column-label" style="left:'+(28+i*308)+'px">'+(i===0?'UTGÅNGSPUNKTER':'BYGGER VIDARE · STEG '+i)+'</div>').join('');
-    const labels=lanes.map((cat,i)=>'<div class="map-lane-label" style="top:'+laneTops.get(cat.id)+'px;color:'+cat.color+'"><i class="category-dot" style="background:'+cat.color+'"></i>'+cat.name+'</div>'+(i?'<div class="map-lane-rule" style="top:'+(laneTops.get(cat.id)-15)+'px"></div>':'')).join('');
+    const labels=lanes.map((cat,i)=>'<div class="map-lane-label" style="top:'+laneTops.get(cat.id)+'px;--lane-color:'+cat.color+';color:'+cat.color+'"><i class="category-dot" style="background:'+cat.color+'"></i>'+cat.name+'</div>'+(i?'<div class="map-lane-rule" style="top:'+(laneTops.get(cat.id)-15)+'px"></div>':'')).join('');
     const cards=entries.map(entry=>{
       const pos=positions.get(entry.id),cat=categories.find(c=>c.id===entry.category);
       const style=' style="left:'+pos.x+'px;top:'+pos.y+'px;--node-color:'+cat.color+';--node-bg:'+cat.bg+'"';

@@ -190,7 +190,7 @@
     $('#map-guidance').textContent=search?'Sökning visar enskilda delmoment. Rensa sökfältet för att återgå till '+(mapMode==='groups'?'grupper.':'alla delmoment.'):compact?'Öppna en grupp för att välja delmoment. Peka på ett kort för att se kopplingar.':'Pilarna visar förkunskaper. Avgränsa med område eller årskurs, eller öppna en förkunskapskedja. Dra för att flytta kartan.';
     const edges=projection.edges.map(edge=>{
       const from=positions.get(edge.from),to=positions.get(edge.to),x1=from.x+cardWidth,y1=from.y+56,x2=to.x,y2=to.y+56,bend=Math.max(20,(x2-x1)/2);
-      const label=edge.pairs.map(p=>byId(p.from).title+' → '+byId(p.to).title).join('; ');
+      const label=edge.pairs.map(p=>byId(p.from).title+' → '+byId(p.to).title+'\n'+connectionReason(p.from,p.to)).join('\n\n');
       return '<path class="connection '+(edge.pairs.every(p=>latest(p.from)?.score===3)?'done':'')+'" data-from="'+edge.from+'" data-to="'+edge.to+'" d="M '+x1+' '+y1+' C '+(x1+bend)+' '+y1+', '+(x2-bend)+' '+y2+', '+x2+' '+y2+'" marker-end="url(#arrow)"><title>'+esc(label)+'</title></path>';
     }).join('');
     const columns=compact?'':Array.from({length:maxDepth+1},(_,i)=>'<div class="map-column-label" style="left:'+(28+i*308)+'px">'+(i===0?'UTGÅNGSPUNKTER':'BYGGER VIDARE · STEG '+i)+'</div>').join('');
@@ -221,6 +221,7 @@
       '<div class="group-members">'+prerequisiteButtons(list.map(n=>n.id))+'</div>',
       other.length?'<details class="dialog-section"><summary>Övriga delmoment i gruppen · '+other.length+'</summary>'+prerequisiteButtons(other.map(n=>n.id))+'</details>':'',
       group.controls.length?'<details class="dialog-section group-controls"><summary>Blandade kontroller och tidigare underlag · '+group.controls.length+'</summary><p class="muted small">Dessa frågor finns kvar som separata kontroller. Resultaten godkänner inte gruppens delmoment automatiskt.</p>'+prerequisiteButtons(group.controls)+'</details>':'',
+      groupConnections(list),
       '<div class="dialog-actions"><button class="secondary-button" data-expand-group="'+id+'">Visa delmoment i kartan ↗</button>'+(expandedGroups.has(id)?'<button class="text-button" data-collapse-group="'+id+'">Samla gruppen igen</button>':'')+'</div>'
     ].join('');
     $('#skill-dialog').scrollTop=0;
@@ -230,8 +231,28 @@
     $('#map-sizer').style.width = `${width*zoom}px`; $('#map-sizer').style.height = `${height*zoom}px`;
     $('#zoom-value').textContent = `${Math.round(zoom*100)} %`;
   }
-  function prerequisiteButtons(ids, target = null) {
-    return ids.map(id => { const node = byId(id), state = status(node); return `<button class="prerequisite" data-open="${id}"><span>${state === 'mastered' ? '✓' : '↳'}</span><span class="dependency-label">${node.title}${target?`<small>${esc(target.dependencyReasons[id])}</small>`:''}</span><span>${latest(id) ? statusLabel(state) : 'Inte prövad'} →</span></button>`; }).join('');
+  const connectionNote='<p class="muted small connection-note">Kopplingarna är pedagogiska förslag, inte krav fastställda av böckerna eller Skolverket. ”Samband att granska” markerar en möjlig metod, jämförelse eller begränsad tillämpning. Ett senare resultat godkänner inte förkunskaperna.</p>';
+  function connectionReason(from,to) {
+    const target=byId(to);
+    return (target.dependencyReview[from]?'Samband att granska: ':'')+target.dependencyReasons[from];
+  }
+  function reasonMarkup(from,to) {
+    const target=byId(to);
+    return `<small class="connection-reason">${target.dependencyReview[from]?'<strong class="connection-review">Samband att granska</strong> ':''}${esc(target.dependencyReasons[from])}</small>`;
+  }
+  function groupConnections(list) {
+    const ids=new Set(list.map(n=>n.id)),incoming=[],outgoing=[],internal=[];
+    for(const target of window.MATREE.detailNodes)for(const from of target.deps){
+      const pair={from,to:target.id};
+      if(ids.has(from)&&ids.has(target.id))internal.push(pair);
+      else if(ids.has(target.id))incoming.push(pair);
+      else if(ids.has(from))outgoing.push(pair);
+    }
+    const section=(title,pairs,direction)=>pairs.length?`<details class="dialog-section group-connections" data-direction="${direction}"><summary>${title} · ${pairs.length}</summary>${pairs.map(p=>`<button class="prerequisite" data-open="${direction==='incoming'?p.from:p.to}" data-connection-from="${p.from}" data-connection-to="${p.to}"><span class="dependency-label">${esc(byId(p.from).title)} → ${esc(byId(p.to).title)}${reasonMarkup(p.from,p.to)}</span><span>Öppna ${direction==='incoming'?'förkunskap':'nästa moment'} →</span></button>`).join('')}</details>`:'';
+    return `<div class="group-connection-summary"><h3>Varför hänger momenten ihop?</h3><p class="muted small">Gäller delmomenten ovan. Kopplingar till andra årskurser och områden visas också.</p>${connectionNote}${section('Bygger på',incoming,'incoming')}${section('Leder vidare till',outgoing,'outgoing')}${section('Kopplingar mellan delmomenten',internal,'internal')}</div>`;
+  }
+  function prerequisiteButtons(ids, target = null, source = null) {
+    return ids.map(id => { const node = byId(id), state = status(node),from=target?id:source?.id,to=target?target.id:id; return `<button class="prerequisite" data-open="${id}"${from?` data-connection-from="${from}" data-connection-to="${to}"`:''}><span>${state === 'mastered' ? '✓' : '↳'}</span><span class="dependency-label">${esc(node.title)}${from?reasonMarkup(from,to):''}</span><span>${latest(id) ? statusLabel(state) : 'Inte prövad'} →</span></button>`; }).join('');
   }
   function openSkill(id) {
     id=window.MATREE.resolveSkillId(id);
@@ -250,8 +271,9 @@
       `<details class="book-sources"><summary>Underlag och hänvisningar</summary>${sourceLink(node.source)}${(node.mergedSources||[]).filter(s=>s.url!==node.source.url).map(sourceLink).join('')}${node.npSource&&node.source.book!=='np'?sourceLink(node.npSource):''}<p class="muted small">${node.source.kind==='curriculum'?'Kursplanen anger innehåll för stadiet. Delmomentet och frågorna är egna pedagogiska förslag.':'Sidhänvisningen visar var momentet behandlas. Beroendena är ett pedagogiskt förslag. Frågorna här är nyskrivna kontrollfrågor.'}</p></details>`,
       result?`<p class="muted small">Senaste kontroll: ${result.right??result.score} av ${result.total||3} rätt · ${result.pending?'Pågående kontroll':new Date(result.date).toLocaleDateString('sv-SE')}${result.adaptive?' · Automatiskt pass':''}</p>`:'',
       result?.items?`<details class="answer-review"><summary>Se elevens svar i senaste kontrollen</summary>${result.items.map((item,i)=>`<div class="review-item"><strong>${i+1}. ${esc(item.prompt)}</strong>${window.MATREE.renderQuestionVisual(item)}<p>${item.correct?'✓':'↳'} Elevens svar: ${esc(item.skipped?'Jag vet inte':item.response?window.MATREE.answerText(item,item.response):'Svar saknas i äldre underlag')} ${esc(item.unit)}<br>Rätt svar: ${esc(window.MATREE.answerText(item))} ${esc(item.unit)}</p><p class="muted">${esc(item.explanation)}</p></div>`).join('')}</details>`:'',
-      `<div class="dialog-section"><h3>Direkta förkunskaper · ${node.deps.length}</h3>${node.deps.length?prerequisiteButtons(node.deps,node):'<p class="muted small">En grundläggande utgångspunkt i den här kartan.</p>'}<button class="secondary-button" data-focus="${node.id}">Visa hela förkunskapskedjan · ${ancestors(id).size} noder ↗</button></div>`,
-      `<div class="dialog-section"><h3>Efterföljande färdigheter · ${successors.length}</h3>${successors.length?prerequisiteButtons(successors.map(n=>n.id)):'<p class="muted small">Inga efterföljande noder i detta urval.</p>'}</div>`,
+      connectionNote,
+      `<div class="dialog-section"><h3>Bygger på · ${node.deps.length}</h3>${node.deps.length?prerequisiteButtons(node.deps,node):'<p class="muted small">En grundläggande utgångspunkt i den här kartan.</p>'}<button class="secondary-button" data-focus="${node.id}">Visa hela förkunskapskedjan · ${ancestors(id).size} noder ↗</button></div>`,
+      `<div class="dialog-section"><h3>Leder vidare till · ${successors.length}</h3>${successors.length?prerequisiteButtons(successors.map(n=>n.id),null,node):'<p class="muted small">Inga efterföljande noder i detta urval.</p>'}</div>`,
       ''
     ].join('');
     $('#skill-dialog').scrollTop=0;
@@ -308,7 +330,7 @@
     if (history.length > 100) history.shift();
     profile().quiz = null; save(); render();
     const unresolved = node.deps.filter(id => latest(id)?.score !== 3);
-    $('#skill-content').innerHTML = `<div class="dialog-top"><div class="eyebrow">${node.title.toUpperCase()}</div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div><div class="result-hero"><span>${score === 3 ? '✧' : '↟'}</span><h3 id="skill-dialog-title">${score === 3 ? 'Visad kunskap' : 'Behöver följas upp'}</h3><p>${score} av 3 rätt i den här omgången</p></div><p>${score === 3 ? 'Färdigheten markeras som visad kunskap i trädet. Förkunskaperna behåller sina egna resultat och kan undersökas separat.' : 'Svaren visar att den här färdigheten behöver undersökas vidare. Pröva en förkunskap eller träna på förklaringarna och gör en ny omgång.'}</p>${score < 3 && unresolved.length ? `<div class="dialog-section"><h3>Förslag: undersök förkunskaperna</h3>${prerequisiteButtons(unresolved)}<p class="muted small">Detta är möjliga nästa kontroller. Ett fel avgör inte vilken förkunskap som saknas.</p></div>` : ''}<p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang och fler uppgifter för en säkrare bedömning.</p><div class="dialog-actions"><button class="secondary-button" data-start="${node.id}">Prova igen</button><button class="primary-button" data-open="${nextSkill().id}">Nästa steg →</button></div>`;
+    $('#skill-content').innerHTML = `<div class="dialog-top"><div class="eyebrow">${node.title.toUpperCase()}</div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div><div class="result-hero"><span>${score === 3 ? '✧' : '↟'}</span><h3 id="skill-dialog-title">${score === 3 ? 'Visad kunskap' : 'Behöver följas upp'}</h3><p>${score} av 3 rätt i den här omgången</p></div><p>${score === 3 ? 'Färdigheten markeras som visad kunskap i trädet. Förkunskaperna behåller sina egna resultat och kan undersökas separat.' : 'Svaren visar att den här färdigheten behöver undersökas vidare. Pröva en förkunskap eller träna på förklaringarna och gör en ny omgång.'}</p>${score < 3 && unresolved.length ? `<div class="dialog-section"><h3>Förslag: undersök förkunskaperna</h3>${prerequisiteButtons(unresolved,node)}<p class="muted small">Detta är möjliga nästa kontroller. Ett fel avgör inte vilken förkunskap som saknas.</p></div>` : ''}<p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang och fler uppgifter för en säkrare bedömning.</p><div class="dialog-actions"><button class="secondary-button" data-start="${node.id}">Prova igen</button><button class="primary-button" data-open="${nextSkill().id}">Nästa steg →</button></div>`;
     document.dispatchEvent(new CustomEvent('matree-control-render',{detail:{id:node.id,kind:'result'}}));
   }
 
@@ -457,7 +479,7 @@
     const id=node&&(node.dataset.node||'group:'+node.dataset.group);
     document.querySelectorAll('.connection').forEach(edge=>edge.classList.toggle('related',!!id&&(edge.dataset.from===id||edge.dataset.to===id)));
   }
-  $('#skill-map').addEventListener('pointerover',event=>highlightConnections(event.target.closest('[data-node],[data-group]')));
+  $('#skill-map').addEventListener('pointerover',event=>{if(!event.target.closest('.connection'))highlightConnections(event.target.closest('[data-node],[data-group]'));});
   $('#skill-map').addEventListener('focusin',event=>highlightConnections(event.target.closest('[data-node],[data-group]')));
   $('#skill-map').addEventListener('pointerleave',()=>highlightConnections(null));
   $('#skill-map').addEventListener('focusout',event=>highlightConnections(event.relatedTarget?.closest?.('[data-node],[data-group]')));

@@ -270,3 +270,17 @@ body[data-view="tree"] .page-heading p{display:none}
 .session-estimate { margin: 16px 0; padding: 16px; border: 1px solid var(--line, #d7dfd1); border-radius: 10px; background: #f0f4e9; }
 .session-estimate p { margin: 8px 0 0; }
 .session-estimate[hidden] { display: none; }
+.connection{pointer-events:stroke}
+.skill-map.compact .connection{pointer-events:none}
+.skill-map.compact.show-connections .connection,.skill-map.compact .connection.related{pointer-events:stroke}
+.group-connection-summary{margin-top:28px;border-top:1px solid var(--line);padding-top:18px}
+.group-connections summary{cursor:pointer;font-weight:600;line-height:1.5;padding:8px 0}
+.group-connections .prerequisite{border-bottom:1px solid var(--line);padding:14px 0}
+.dependency-label{min-width:0;overflow-wrap:anywhere}
+.connection-review{display:block;color:inherit;font-size:inherit;margin-bottom:3px}
+.connection-note{line-height:1.6}
+@media(max-width:550px){
+  .prerequisite[data-connection-from]>.dependency-label{flex-basis:calc(100% - 30px)}
+  .prerequisite[data-connection-from]>span:last-child{max-width:none;margin-left:auto;text-align:right}
+  .group-connections .prerequisite>.dependency-label{flex-basis:100%}
+}

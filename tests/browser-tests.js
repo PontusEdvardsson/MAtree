@@ -10,7 +10,7 @@
   const answer = wrong => { const q = current().quiz; $('#answer').value = String(wrong?(q.questions[q.index].options?q.questions[q.index].answer%q.questions[q.index].options.length+1:q.questions[q.index].answer+1000):q.questions[q.index].answer); submit('#answer-form'); };
   const close = () => click('[data-close="skill-dialog"]');
   try {
-    if (!localStorage.getItem('verification-phase')) { assert(true,window.verifySkillGroups()); assert(true,window.verifyTheme()); assert(true,window.verifyCourseScope()); }
+    if (!localStorage.getItem('verification-phase')) { assert(true,window.verifyDependencyReasons()); assert(true,window.verifySkillGroups()); assert(true,window.verifyTheme()); assert(true,window.verifyCourseScope()); }
     click('[data-map-mode="details"]');
     if (localStorage.getItem('verification-phase') === 'resume') {
       assert(current().adaptive.active.items.length===1&&current().adaptive.active.pending.prompt===localStorage.getItem('verification-adaptive-prompt'),'Adaptive session and exact question survive browser reload');
@@ -33,7 +33,8 @@
       answer(true); assert($('.feedback.wrong'), 'Incorrect answer gives explanation'); click('#next-question');
       answer(false); click('#next-question'); answer(false); click('#next-question');
       assert(current().results.brak.history.length === 2 && current().results.brak.history[1].score === 2, 'Retest retains history and updates latest evidence');
-      assert($('#skill-content [data-open="brak-del-hel"]'), 'Failed check suggests a granular prerequisite'); close();
+      assert($('#skill-content [data-open="brak-del-hel"]'), 'Failed check suggests a granular prerequisite');
+      assert($('#skill-content [data-open="brak-del-hel"] .connection-reason').textContent.includes(MATREE.nodes.find(n=>n.id==='brak').dependencyReasons['brak-del-hel']), 'Post-control prerequisites include the mathematical connection reason'); close();
       assert(MATREE_APP.latest('brak').score===2, 'Latest failed check marks practice');
       click('#profile-button'); $('#new-profile').value = '<Test & elev>'; submit('#profile-form');
       assert($('#profile-name').textContent === '<Test & elev>', 'Profile names render as text');

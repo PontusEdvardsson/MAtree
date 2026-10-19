@@ -20,6 +20,12 @@ Att beräkna värdet av ett uttryck är ett eget delmoment. Att lösa en ekvatio
 
 Blandade kontroller kan öppnas i sin grupp. De godkänner inte delmomenten automatiskt och ingår inte i kartans eller NP-vyns delmomentsräknare. Äldre pausade pass kan återupptas med sina sparade frågor. Sammanslagningar gäller överlappande kontroller av samma färdighet; det senaste direkta resultatet gäller den gemensamma färdigheten.
 
+## Kopplingsmotiveringar
+
+Varje riktad koppling har en egen matematisk motivering. Samma text visas under Bygger på och Leder vidare till, i gruppens utfällbara kopplingslistor och i kartpilens hjälptext. Gruppvyn redovisar de verkliga delmomentsparen, även kopplingar inom gruppen.
+
+Samband att granska markerar metodberoende, jämförande eller begränsade samband. Texten anger varför kopplingen inte ska tolkas som ett generellt förkunskapskrav. Markeringen ändrar inte grafen eller urvalet i elevpass. Motiveringarna är pedagogiska förslag och utgör inte en extern validering.
+
 ## Hänvisningar
 
 Bokreferenser anger tryckt sida och PDF-sida i de lokala Matte Direkt-böckerna, v3. Grundmoment hänvisar till Lgr22:s centrala innehåll som områdesunderlag. Delmoment, frågor och beroenden är egna pedagogiska förslag. Genrepet-hänvisningar finns kvar som bokreferenser och bildar inget separat urval.

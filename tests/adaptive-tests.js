@@ -46,7 +46,13 @@ window.verifyAdaptive = async () => {
     const allowed=new Set(A.scopedPool(s).map(n=>n.id));
     check(allowed.size>0&&s.pending,`Scope ${scope} has entry questions without testing earlier grades`);
     let count=0;
-    while(s.pending){check(allowed.has(s.pending.nodeId),`Scope ${scope} never leaves its selected grade`);const q=s.pending;A.answer(s,String(wrong?(q.options?q.answer%q.options.length+1:q.answer+1000):q.answer));check(++count<=60,`Scope ${scope} is bounded`);}
+    while(s.pending){
+      check(allowed.has(s.pending.nodeId),`Scope ${scope} never leaves its selected grade`);
+      const q=s.pending,value=wrong?(q.options?q.answer%q.options.length+1:q.answer+1000):q.answer;
+      // Tiny year-nine prefix values must use the decimal notation accepted by the input.
+      check(A.answer(s,value.toLocaleString('sv-SE',{useGrouping:false,maximumSignificantDigits:17})),`Scope ${scope} accepts the test response for ${q.nodeId}`);
+      check(++count<=60,`Scope ${scope} is bounded`);
+    }
     const imported=A.validate({active:null,sessions:[s],confirmations:[]});
     check(imported.sessions[0].scope===scope&&s.items.every(i=>allowed.has(i.nodeId)),`Scope ${scope} persists on export/import`);
   }

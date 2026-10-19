@@ -1,0 +1,41 @@
+[
+  {
+    "note": "Desktop: the selected group's outgoing and internal connections.",
+    "click": "[data-stage='7']"
+  },
+  {"click": "[data-group='primes']"},
+  {"click": ".group-connections[data-direction='outgoing'] summary"},
+  {
+    "eval": "document.querySelector('.group-connections[data-direction=outgoing]').scrollIntoView({block:'center'});if(!document.querySelector('.group-connections[open] .connection-reason'))throw Error('No accessible group explanation');",
+    "screenshot": "dependency-desktop-group.png"
+  },
+  {"click": "[data-connection-from='delbarhet'][data-connection-to='brak-forkorta']"},
+  {
+    "eval": "document.querySelector('.connection-note').scrollIntoView({block:'start'});",
+    "screenshot": "dependency-desktop-skill.png"
+  },
+  {
+    "note": "Keyboard: Enter expands group explanations and Escape closes the dialog.",
+    "eval": "MATREE_APP.openGroup('primes');document.querySelector('.group-connections[data-direction=incoming] summary').focus();"
+  },
+  {"key": "Enter","eval": "if(!document.querySelector('.group-connections[data-direction=incoming]').open)throw Error('Keyboard expansion failed');"},
+  {"key": "Escape","eval": "if(document.querySelector('#skill-dialog').open)throw Error('Escape did not close dialog');"},
+  {
+    "note": "Small mobile: long explanations and review markers fit the dialog.",
+    "size": [320,740],
+    "eval": "MATREE_APP.openSkill('median');document.querySelector('[data-connection-from=medel] .connection-reason').scrollIntoView({block:'center'});await new Promise(r=>setTimeout(r,120));const d=document.querySelector('#skill-dialog');if(d.scrollWidth>d.clientWidth+1)throw Error('Mobile dialog overflows');if(!d.querySelector('.connection-review'))throw Error('Missing review marker');",
+    "screenshot": "dependency-mobile-review.png"
+  },
+  {"eval": "MATREE_APP.openGroup('primes');"},
+  {"click": ".group-connections[data-direction='outgoing'] summary"},
+  {
+    "eval": "document.querySelector('.group-connections[data-direction=outgoing]').scrollIntoView({block:'start'});const d=document.querySelector('#skill-dialog');if(d.scrollWidth>d.clientWidth+1)throw Error('Mobile group overflows');",
+    "screenshot": "dependency-mobile-group.png"
+  },
+  {
+    "note": "Light theme retains readable explanations.",
+    "size": [1280,900],
+    "eval": "document.documentElement.dataset.theme='light';MATREE_APP.openSkill('brak-add-olika');document.querySelector('.connection-note').scrollIntoView({block:'start'});",
+    "screenshot": "dependency-light-skill.png"
+  }
+]

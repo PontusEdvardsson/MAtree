@@ -19,6 +19,14 @@ Sidan kan också publiceras på GitHub Pages. Se [GITHUB_PAGES.md](GITHUB_PAGES.
 - Se elevöversikt, senaste resultat och förslag på nästa kontroll. Öppna en prövad nod för att granska elevens faktiska svar och frågornas förklaringar från senaste omgången.
 - Skapa elevprofiler och fortsätt senare, även mitt i en omgång. Exportera/importera JSON för säkerhetskopiering och flytt mellan datorer. Import lägger till kopior och skriver inte över befintliga profiler.
 
+## Motiveringar till kopplingarna
+
+Alla 489 riktade kopplingar har en egen kort matematisk motivering. Öppna ett delmoment för att läsa **Bygger på** och **Leder vidare till**. Samma motivering visas från båda håll. I grupper finns utfällbara listor för inkommande, utgående och interna kopplingar mellan de faktiska delmomenten. Kartpilarnas hjälptexter visar också motiveringarna.
+
+**Samband att granska** markerar en möjlig metod, jämförelse eller begränsad tillämpning som inte ska tolkas som ett generellt förkunskapskrav. Texten anger begränsningen. Markeringen ändrar inte grafen, elevresultat eller urvalet i elevpass. Kopplingarna är pedagogiska förslag och är inte fastställda av böckerna eller Skolverket.
+
+Motiveringarna sätts efter sammanslagningen i [dependency-reasons.js](dependency-reasons.js), med ett uttryckligt par av förkunskap och mål för varje text. Filen omfattar också de 24 kopplingarna till bevarade blandade kontroller. Saknade, dubbla eller inaktuella par ger ett fel vid laddning i stället för att ersättas av generiska beskrivningar.
+
 ## Rapporter och elevprofiler
 
 När ett delmoment öppnas från ett automatiskt pass visas just det passets sparade frågor, svar och utfall. Det senaste samlade underlaget öppnas separat. Rapporten ger högst tre motiverade förslag på fortsatta kontroller och samlar svar per delmoment. Filtren skiljer på felsvar, överhoppade frågor och begränsat underlag.
@@ -125,6 +133,7 @@ En nästa version för skolbruk bör ha en lärargranskad färdighetskarta, en b
 - `foundations.js`: 55 nya grundmoment, frågor och korrigering av stadieindelningen.
 - `skills-consolidated.js`: 25 sammanslagningar, gemensamma beroenden och kompatibilitet med äldre ID:n.
 - `skill-groups.js`: öppningsbara grupper, separata blandade kontroller och sammanfattning av förkunskapsgrafen utan att tappa kopplingar.
+- [dependency-reasons.js](dependency-reasons.js): specifika motiveringar och granskningsmarkeringar för de slutliga riktade kopplingarna.
 - `questions-reviewed*.js`: granskade och utökade mallar för alla 289 färdigheter upp till åk 9.
 - `questions-mixed.js`: fördelning av svarssätt, numeriska och begreppsliga svarsalternativ och formatoberoende jämförelse av nyligen använda frågor.
 - `question-media.js`: validering och visning av strukturerade figurer och diagram samt svarshjälp.
@@ -147,6 +156,8 @@ Fem UI-omgångar med före- och efterbilder dokumenteras i [UI_GRANSKNING.md](UI
 Skärmbilder för dator och mobil, en maskinläsbar färdighetskatalog och testresultat läggs i `.verification/`. Webbläsaren behöver kunna starta utanför en eventuell exekveringssandlåda.
 
 Ytterligare 7 590 kontroller prövar den blandade banken mot oberoende lösningar, alternativens entydighet och visade värden. UI-tester klickar på alternativen i båda lägena och kontrollerar lärarens svarstext och äldre resultat. 51 grupp- och filterkombinationer kontrolleras för bevarade delmoment, samtliga förkunskapskopplingar och frånvaro av cirkulära beroenden. Gruppernas resultat, öppning, sökning och äldre blandade frågor kontrolleras också.
+
+[tests/dependency-tests.js](tests/dependency-tests.js) kontrollerar motiveringarnas täckning efter laddning, båda riktningarna, gruppkopplingar, äldre ID:n, granskningsmarkeringar och oförändrade elevdata. `python tests/ui_preview.py tests/dependency-scenarios.json` kontrollerar även läsning av motiveringarna på dator och 320-pixels mobil, tangentbordsnavigation och ljust tema. Det automatiska årskurstestet skriver små tal som decimaler, så att exempelvis nano inte skickas som det otillåtna svarsformatet `1e-9`.
 
 Efter ett nytt browser-audit kan `python tests/build_catalog_docs.py` återskapa [KUNSKAPSKARTA.md](KUNSKAPSKARTA.md) med aktuella grupper, delmoment, beroenden, blandade kontroller och äldre ID:n.
 

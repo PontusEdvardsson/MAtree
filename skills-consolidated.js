@@ -29,7 +29,7 @@
   for(const node of M.visibleNodes){node.deps=[...new Set(node.deps.map(M.resolveSkillId))].filter(id=>id!==node.id);delete node.depth;}
   const visiting=new Set(),depth=node=>{if(node.depth!==undefined)return node.depth;if(visiting.has(node.id))throw Error('Cirkulärt beroende efter sammanslagning.');visiting.add(node.id);node.depth=node.deps.length?1+Math.max(...node.deps.map(id=>depth(byId.get(id)))):0;visiting.delete(node.id);return node.depth;};
   M.visibleNodes.forEach(depth);
-  for(const node of M.visibleNodes)node.dependencyReasons=Object.fromEntries(node.deps.map(id=>[id,byId.get(id).description]));
+  // Motiveringar för de slutliga ID-paren sätts i dependency-reasons.js efter sammanslagningen.
   byId.get('avrunda-heltal').description='Avrunda och uppskatta heltal till angivet tiotal, hundratal eller tusental. Överslagsräkning har en egen nod.';
   byId.get('f-median').title='Median och typvärde · grundkontroll';
   byId.get('uttryck').title='Beräkna värdet av uttryck';

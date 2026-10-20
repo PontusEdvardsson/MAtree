@@ -52,8 +52,8 @@
     <div class="adaptive-launch"><p hidden></p></div>
     <section id="tree-view">
       <div class="map-controls">
-        <div class="map-heading"><div><strong id="map-title">Hela kunskapsträdet</strong><span id="node-count"></span><span id="fullscreen-profile" hidden></span></div><div class="map-heading-actions"><button class="text-button" id="about-button">Hjälp</button><button class="secondary-button" id="tree-fullscreen" type="button" aria-pressed="false" aria-controls="tree-view">⛶ Fullskärm</button></div></div>
-        <div class="tree-toolbar">
+        <div class="map-heading"><div><strong id="map-title">Hela kunskapsträdet</strong><span id="node-count"></span><span id="fullscreen-profile" hidden></span></div><div class="map-heading-actions"><button class="text-button" id="map-filter-toggle" aria-expanded="true" aria-controls="map-filter-panel">Dölj filter</button><button class="text-button" id="about-button">Hjälp</button><button class="secondary-button" id="tree-fullscreen" type="button" aria-pressed="false" aria-controls="tree-view">⛶ Fullskärm</button></div></div>
+        <div id="map-filter-panel"><div class="tree-toolbar">
           <div class="tabs" role="group" aria-label="Årskurs i progressionen"><button data-stage="all" class="selected">Alla år</button><button data-stage="0">Grunder</button><button data-stage="7">Åk 7</button><button data-stage="8">Åk 8</button><button data-stage="9">Åk 9</button></div>
           <select id="mobile-category" aria-label="Kunskapsområde"></select>
           <div class="map-view-tabs tabs" role="group" aria-label="Detaljnivå i kartan"><button data-map-mode="groups" class="selected" aria-pressed="true">Grupper</button><button data-map-mode="details" aria-pressed="false">Alla delmoment</button></div>
@@ -65,6 +65,7 @@
           </div></details>
         </div>
         <div id="foundation-filters" class="tabs foundation-filters" hidden role="group" aria-label="Tidigare grunder"><button data-foundation="all" class="selected">Alla grunder</button><button data-foundation="1">Åk 1–3</button><button data-foundation="2">Åk 4–6</button></div>
+        </div>
       </div>
       <div id="focus-banner" class="focus-banner" hidden></div>
       <div class="map-shell"><div class="map-scroll" id="map-scroll" tabindex="0" aria-label="Kunskapsträd. Scrolla eller håll nere vänster musknapp och dra för att flytta kartan."><div id="map-sizer"><div id="skill-map" class="skill-map"></div></div></div><details class="map-footer"><summary>Teckenförklaring</summary><div class="legend"><span><i class="legend-dot mastered"></i> Visad kunskap</span><span><i class="legend-dot available"></i> Redo att utforska</span><span><i class="legend-dot practice"></i> Behöver träning</span><span><i class="legend-dot locked"></i> Förkunskaper oprövade</span><span><i class="legend-dot partial"></i> Begränsat underlag</span><span><i class="legend-dot indirect"></i> Indirekt underlag</span><span><i class="legend-dot supported"></i> Metod bekräftad</span><span><b class="level-key">R</b> Fördjupning</span></div></details></div>

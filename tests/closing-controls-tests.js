@@ -21,7 +21,7 @@ window.verifyClosingControls=async()=>{
       check(JSON.stringify({...record.items[0],response:undefined,correct:undefined})===question,'Exact saved question survives early ending');
       check(app.latest(id).score===null&&app.latest(id).right===1&&app.latest(id).total===1,'Early manual result stays partial');
       check(!$('#control-end-status').hidden&&$('#control-end-description').textContent.includes('1 svar sparat'),'Ending acknowledges the submitted answer');
-      $('#control-end-review').click();check($('.manual-record-outcome').textContent.includes('1/1')&&$('.manual-record-answers .answer-review'),'End confirmation opens the exact saved manual control');$('#skill-content .dialog-top [data-close]').click();
+      $('#control-end-review').click();check($('.manual-record-outcome').textContent.includes('1/1')&&$('.manual-record-answers .answer-review').open&&$('#control-end-status').hidden,'End confirmation opens the saved manual answer and stops covering the map');$('#skill-content .dialog-top [data-close]').click();
     }
     const before=p.results[id].history.length;manual();$('#answer').value='-';$('#answer').dispatchEvent(new Event('input',{bubbles:true}));$('#skill-content .dialog-top [data-close]').click();
     check(!p.quiz&&p.results[id].history.length===before,'Unsubmitted drafts create no result on close');
@@ -42,7 +42,7 @@ window.verifyClosingControls=async()=>{
       check(!p.adaptive.active&&p.adaptive.sessions.at(-1)===session,'Automatic '+close+' archives the active pass');
       check(session.endReason==='teacher'&&session.pending===null&&!session.draft&&JSON.stringify(session.items)===items,'Ending preserves submitted responses without inventing a skipped answer');
       check(!$('#adaptive-dialog').open,'Ending leaves the dialog');
-      $('#control-end-review').click();check($('#adaptive-dialog .report-meta').textContent.includes('1 svar')&&$('.report-end').textContent.includes('manuellt'),'End confirmation opens the correct automatic report with neutral ending text');$('#adaptive-close').click();
+      $('#control-end-review').click();check($('#adaptive-dialog .report-meta').textContent.includes('1 svar')&&$('.report-end').textContent.includes('manuellt')&&$('.report-answers').open&&$('.report-answers .answer-review').open,'End confirmation opens the saved automatic answer directly');$('#adaptive-close').click();
     }
     const session=auto(),question=JSON.stringify(session.pending);$('#adaptive-answer').value='-';$('#adaptive-answer').dispatchEvent(new Event('input',{bubbles:true}));$('#adaptive-pause').click();$('#adaptive-close').click();await tick();
     check(p.adaptive.active===session&&JSON.stringify(session.pending)===question&&session.draft.value==='-','Closing after explicit automatic pause preserves question and draft');

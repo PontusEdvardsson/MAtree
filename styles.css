@@ -282,6 +282,10 @@ body[data-view="tree"] .page-heading p{display:none}
 .control-end-status{position:fixed;bottom:18px;right:18px;z-index:12;width:min(440px,calc(100vw - 36px));padding:14px 16px;background:var(--surface,#fff);color:var(--text,#243a33);border:1px solid var(--line);border-left:4px solid #7c9d67;border-radius:9px;box-shadow:0 8px 28px #0003}
 .control-end-status strong{font-size:15px}.control-end-status p{font-size:13px;line-height:1.5;margin:6px 0 12px;overflow-wrap:anywhere}
 .control-end-actions{display:flex;justify-content:space-between;align-items:center;gap:12px}.control-end-actions .secondary-button{font-size:13px;padding:9px 12px}
+.setup-profile{margin:4px 0 18px;font-size:14px}.setup-options summary,.setup-help summary{cursor:pointer;padding:9px 0;font-size:14px}.setup-help{margin-top:14px}.setup-help p{font-size:14px;line-height:1.6}.setup-options .adaptive-retest{margin:10px 0}
+#adaptive-setup #adaptive-selection-info,#adaptive-setup #adaptive-session-help{margin:2px 0;line-height:1.5}
+#map-filter-toggle{display:none}.tree-fullscreen #map-filter-toggle{display:inline-block}
+@media(max-width:550px){#map-filter-toggle{display:inline-block}.map-heading-actions{gap:10px}.map-heading-actions .text-button{font-size:13px}}
 .page-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 body[data-view] .adaptive-launch{background:transparent;border:0;padding:0;margin:0 0 8px;min-height:0}
 .adaptive-launch:has(p[hidden]){display:none}

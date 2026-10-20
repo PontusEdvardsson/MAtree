@@ -70,7 +70,7 @@
     $('#adaptive-selection-info').textContent=selection.length?A.scopeLabel({scope,category})+' · '+selection.length+' delmoment'+(all?' inklusive fördjupning':' i basen'):!all&&A.estimateAll(scope,category).skills?'Det finns inga basmoment i detta urval. Välj Testa alla för att ta med fördjupning.':'Inga delmoment finns i detta urval. Välj ett annat område eller en annan årskurs.';
     if(all&&!retest.disabled){retest.dataset.previous=String(retest.checked);retest.checked=true;retest.disabled=true;}
     if(!all&&retest.disabled){retest.disabled=false;retest.checked=retest.dataset.previous==='true';}
-    box.hidden=!all;$('#adaptive-session-help').hidden=all;
+    box.hidden=!all;$('#adaptive-session-help').hidden=all;$('#adaptive-session-help').textContent='En uppgift i taget. Passet kan bli kortare än '+limit.value+' uppgifter.';
     if(all){
       const e=A.estimateAll(scope,category);
       box.innerHTML='<strong>Testa alla · '+e.skills+' delmoment · '+esc(A.scopeLabel({scope,category}))+'</strong>'+
@@ -84,7 +84,21 @@
   function setup(){
     open();dialog.classList.remove('student-mode');content.classList.remove('teacher-report');
     const active=state().active,last=state().sessions.at(-1);
-    content.innerHTML=`${top('Automatisk kartläggning')}<p>Aktiv elevprofil: <strong>${esc(profile().name)}</strong></p><p>Eleven får en uppgift i taget, väljer svarsalternativ eller skriver ett eget svar. Vid återkommande rätt svar prövas fler moment; vid svårigheter undersöks tidigare delmoment inom urvalet.</p>${active?`<div class="session-resume"><p>${A.scopeLabel(active)} · pausat pass med ${active.items.length} sparade svar.</p><button class="primary-button" id="adaptive-resume">Fortsätt elevens pass →</button><button class="secondary-button" id="adaptive-finish">Avsluta och se underlaget</button></div>`:`<form id="adaptive-setup"><label for="adaptive-start">Årskursurval</label><select id="adaptive-start"><option value="1-3">Åk 1–3</option><option value="4-6">Åk 4–6</option><option value="7">Åk 7</option><option value="8">Åk 8</option><option value="9">Åk 9</option></select><label for="adaptive-category">Kunskapsområde</label><select id="adaptive-category"><option value="">Alla områden</option>${M.categories.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('')}</select><p class="muted small">Åk 7–9 prövar den valda årskursens kursinnehåll. Välj åk 1–3 eller 4–6 för tidigare grunder. Kartan kan även visa förkunskaper som inte ingår i passet. Oprövade förkunskaper godkänns inte automatiskt.</p><label class="adaptive-retest"><input id="adaptive-retest" type="checkbox"> Pröva även tidigare visade färdigheter</label><label for="adaptive-limit">Antal uppgifter / omfattning</label><select id="adaptive-limit"><option value="30">30 · kort första kartläggning</option><option value="60">60 · bredare kartläggning</option><option value="90">90 · längre pass</option><option value="all">Testa alla · hela urvalet</option></select><p class="small" id="adaptive-selection-info" role="status"></p><section id="adaptive-estimate" class="session-estimate" role="status" aria-live="polite" hidden></section><p class="muted" id="adaptive-session-help">Passet kan pausas när som helst. Urvalsreglerna kan avsluta det före uppgiftstaket. Välj Testa alla för att pröva varje delmoment i urvalet.</p><button class="primary-button">Starta elevens pass →</button></form>`}${last?`<div class="dialog-section"><button class="secondary-button" data-adaptive-report="${esc(last.id)}">Se senaste sammanställningen · ${A.scopeLabel(last)} · ${date(last.ended)}</button></div>`:''}<p class="muted small">Frågorna kommer från den lokala uppgiftsbanken. Urvalet följer regler utifrån svar och beroenden; det är ännu ingen validerad adaptiv diagnos. Facit visas i lärarens sammanställning.</p>`;
+    content.innerHTML=top(active?'Pausad kontroll':'Starta elevläge')+
+      '<p class="setup-profile">Elev: <strong>'+esc(profile().name)+'</strong></p>'+
+      (active?`<div class="session-resume"><p>${A.scopeLabel(active)} · pausad kontroll med ${active.items.length} sparade svar. Frågan och ditt påbörjade svar finns kvar.</p><button class="primary-button" id="adaptive-resume">Fortsätt kontrollen →</button><button class="secondary-button" id="adaptive-finish">Avsluta och se underlaget</button></div>`:
+      `<form id="adaptive-setup">
+        <label for="adaptive-start">Årskursurval</label><select id="adaptive-start"><option value="1-3">Åk 1–3</option><option value="4-6">Åk 4–6</option><option value="7">Åk 7</option><option value="8">Åk 8</option><option value="9">Åk 9</option></select>
+        <label for="adaptive-category">Kunskapsområde</label><select id="adaptive-category"><option value="">Alla områden</option>${M.categories.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('')}</select>
+        <label for="adaptive-limit">Omfattning</label><select id="adaptive-limit"><option value="30">Högst 30 uppgifter · kort kontroll</option><option value="60">Högst 60 uppgifter</option><option value="90">Högst 90 uppgifter</option><option value="all">Testa alla · hela urvalet</option></select>
+        <p class="small" id="adaptive-selection-info" role="status"></p>
+        <p class="muted small" id="adaptive-session-help"></p>
+        <section id="adaptive-estimate" class="session-estimate" role="status" aria-live="polite" hidden></section>
+        <button class="primary-button">Starta kontrollen →</button>
+        <details class="setup-options"><summary>Fler inställningar</summary><label class="adaptive-retest"><input id="adaptive-retest" type="checkbox"> Pröva även tidigare visade färdigheter</label></details>
+      </form>`)+
+      (last?`<div class="dialog-section"><button class="secondary-button" data-adaptive-report="${esc(last.id)}">Se senaste sammanställningen · ${A.scopeLabel(last)} · ${date(last.ended)}</button></div>`:'')+
+      '<details class="setup-help"><summary>Om kontrollen</summary><p>Du får en uppgift i taget. Dina svar hjälper till att välja nästa uppgift. Svar och facit finns i sammanställningen efteråt.</p><p>Pausa behåller frågan och ditt påbörjade svar. Avsluta sparar de svar som har skickats in och stänger kontrollen.</p><p>Åk 7–9 prövar den valda årskursens kursinnehåll. Välj åk 1–3 eller 4–6 för tidigare grunder. Kartan kan visa förkunskaper som inte ingår i passet. Oprövade förkunskaper godkänns inte automatiskt.</p><p class="muted small">Frågorna kommer från den lokala uppgiftsbanken. Urvalet följer regler utifrån svar och beroenden; det är ännu ingen validerad adaptiv diagnos.</p></details>';
     if(!active){$('#adaptive-start').value=app.yearScope()||last?.scope||'1-3';$('#adaptive-category').value=app.categoryScope()||last?.category||'';if(last?.limit)$('#adaptive-limit').value=last.mode==='all'?'all':String(last.limit);updateEstimate();}
     $('#adaptive-resume')?.focus();
   }
@@ -100,7 +114,7 @@
     }
     const hint=q.options?'Välj ett alternativ och tryck Svara.':answerHint(q)+' Tryck Enter eller Svara när du är klar.';
     clearTimeout(savedTimer);
-    content.innerHTML=`<header class="student-header"><span>Matematik · ${esc(profile().name)}</span><div class="student-header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt tema">Mörkt tema</button><button class="secondary-button" id="adaptive-pause">Pausa</button><button class="secondary-button" id="adaptive-end">Avsluta</button></div></header><div class="student-progress"><span>Uppgift ${session.items.length+1}</span><span id="student-save-status">${app.storageOK()?'Svar sparas på den här enheten':'Lagring fungerar inte · be läraren exportera efter passet'}</span></div><section class="student-question${q.visual?' has-visual':''}">${session.items.length===0?'<p class="student-instructions">Du kan använda papper när du räknar.</p>':''}<h1 class="question-text" id="student-question-title" tabindex="-1">${esc(M.questionStem(q))}</h1>${M.renderQuestionVisual(q)}<form id="adaptive-answer-form">${M.renderAnswerFields(q,'adaptive-answer')}<p id="adaptive-hint" class="answer-help">${hint}</p><p id="adaptive-error" role="alert"></p></form><div class="student-question-actions"><button type="button" class="secondary-button" id="adaptive-skip" aria-label="Jag vet inte, gå vidare till nästa uppgift">Jag vet inte</button><span class="student-saved" id="adaptive-saved" role="status" aria-live="polite"></span></div></section>`;
+    content.innerHTML=`<header class="student-header"><span>Matematik · ${esc(profile().name)}</span><div class="student-header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt tema">Mörkt tema</button><button class="secondary-button" id="adaptive-pause">Pausa</button><button class="secondary-button" id="adaptive-end">Avsluta</button></div></header><div class="student-progress"><span>Uppgift ${session.items.length+1} · högst ${session.limit}</span><span id="student-save-status">${app.storageOK()?'Svar sparas på den här enheten':'Lagring fungerar inte · be läraren exportera efter passet'}</span></div><section class="student-question${q.visual?' has-visual':''}">${session.items.length===0?'<p class="student-instructions">Du kan använda papper när du räknar.</p>':''}<h1 class="question-text" id="student-question-title" tabindex="-1">${esc(M.questionStem(q))}</h1>${M.renderQuestionVisual(q)}<form id="adaptive-answer-form">${M.renderAnswerFields(q,'adaptive-answer')}<p id="adaptive-hint" class="answer-help">${hint}</p><p id="adaptive-error" role="alert"></p></form><div class="student-question-actions"><button type="button" class="secondary-button" id="adaptive-skip" aria-label="Jag vet inte, gå vidare till nästa uppgift">Jag vet inte</button><span class="student-saved" id="adaptive-saved" role="status" aria-live="polite"></span></div></section>`;
     window.MATREE_THEME.refresh();
     const form=$('#adaptive-answer-form'),actions=$('.student-question-actions');
     actions.classList.add('student-response-actions');actions.prepend(form.querySelector('.primary-button'));form.append(actions);
@@ -231,7 +245,15 @@
     if(b.id==='adaptive-finish')finish();
     if(b.id==='adaptive-skip')respond(true);
     if(b.id==='adaptive-teacher-report')report();
-    if(b.dataset.adaptiveReport){app.endManualControl();$('#skill-dialog').close();reportSessionId=b.dataset.adaptiveReport;report(b.dataset.restoreReport==='true');}
+    if(b.dataset.adaptiveReport){
+      app.endManualControl();$('#skill-dialog').close();reportSessionId=b.dataset.adaptiveReport;report(b.dataset.restoreReport==='true');
+      if(b.id==='control-end-review'){
+        reportAnswerFilter='all';refreshAnswerFilter();
+        const log=content.querySelector('.report-answers');log.open=true;
+        const first=log.querySelector('.answer-review');if(first)first.open=true;
+        log.scrollIntoView({block:'start'});
+      }
+    }
     if(b.dataset.adaptiveNode)sessionSkill(b.dataset.adaptiveNode);
     if(b.dataset.reportStart)startReportControl(b.dataset.reportStart);
     if(b.dataset.resumeReportQuiz)startReportControl(b.dataset.resumeReportQuiz);

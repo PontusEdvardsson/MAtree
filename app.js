@@ -5,6 +5,12 @@
   const $ = selector => document.querySelector(selector);
   let mapMode='groups',currentMapNodes=[],displayedQuiz=null,endedControl=null;
   let treeFullscreen=false,fullscreenOrigin=null,ownsFullscreen=false,fullscreenRequest=0;
+  function showMapFilters(show){
+    $('#map-filter-panel').hidden=!show;
+    $('#map-filter-toggle').textContent=show?'Dölj filter':'Visa filter';
+    $('#map-filter-toggle').setAttribute('aria-expanded',String(show));
+    if(!show)$('#map-tools').open=false;
+  }
   function updateFullscreenButton() {
     document.body.classList.toggle('tree-fullscreen',treeFullscreen);
     $('#tree-fullscreen').setAttribute('aria-pressed',String(treeFullscreen));
@@ -14,6 +20,7 @@
   function leaveTreeFullscreen() {
     if(!treeFullscreen)return;
     treeFullscreen=false;fullscreenRequest++;
+    showMapFilters(true);
     updateFullscreenButton();
     if(ownsFullscreen&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
     ownsFullscreen=false;
@@ -24,6 +31,7 @@
     const map=$('#map-scroll');
     fullscreenOrigin={left:map.scrollLeft,top:map.scrollTop,page:scrollY};
     treeFullscreen=true;updateFullscreenButton();
+    showMapFilters(innerWidth>550);
     const request=++fullscreenRequest;
     if(!document.fullscreenElement&&document.documentElement.requestFullscreen){
       try{await document.documentElement.requestFullscreen();if(request!==fullscreenRequest){if(document.fullscreenElement)await document.exitFullscreen();return;}ownsFullscreen=true;}
@@ -31,6 +39,7 @@
     }
   }
   $('#tree-fullscreen').addEventListener('click',()=>treeFullscreen?leaveTreeFullscreen():enterTreeFullscreen());
+  $('#map-filter-toggle').addEventListener('click',()=>showMapFilters($('#map-filter-panel').hidden));
   document.addEventListener('fullscreenchange',()=>{if(ownsFullscreen&&!document.fullscreenElement)leaveTreeFullscreen();});
   document.addEventListener('keydown',event=>{
     if(event.key!=='Escape'||document.querySelector('dialog[open]'))return;
@@ -392,6 +401,7 @@
     if(ended.sessionId)$('#control-end-review').dataset.adaptiveReport=ended.sessionId;
     $('#control-end-status').hidden=false;
   }
+  function dismissControlEnd(){endedControl=null;$('#control-end-status').hidden=true;}
   function endManualControl(){endDisplayedQuiz();render();}
   function closeManualControl(){endManualControl();$('#skill-dialog').close();}
   function finishQuiz() {
@@ -450,8 +460,9 @@
   document.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button) return;
-    if(button.id==='control-end-dismiss'){endedControl=null;$('#control-end-status').hidden=true;return;}
-    if(button.id==='control-end-review'&&endedControl?.record){view='progress';render();const index=manualHistoryRows.findIndex(r=>r.record===endedControl.record);if(index>=0)openManualRecord(index);return;}
+    if(button.id==='control-end-dismiss'){dismissControlEnd();return;}
+    if(button.id==='control-end-review'&&endedControl?.record){const record=endedControl.record;dismissControlEnd();view='progress';render();const index=manualHistoryRows.findIndex(r=>r.record===record);if(index>=0){openManualRecord(index);const first=$('.manual-record-answers .answer-review');if(first){first.open=true;first.scrollIntoView({block:'start'});}}return;}
+    dismissControlEnd();
     if (button.dataset.close) { if(button.dataset.close==='skill-dialog')closeManualControl();else $(`#${button.dataset.close}`).close();return; }
     if (button.hasAttribute('data-pause-manual')) { displayedQuiz=null;save();$('#skill-dialog').close();render();return; }
     if (button.dataset.view) { view = button.dataset.view; render(); }

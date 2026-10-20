@@ -157,6 +157,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 [FORSTAELSE_UPPFOLJNING.md](FORSTAELSE_UPPFOLJNING.md) följer naturliga elevpass med två separat frysta modellnivåer, nio överföringsfrågor och tio förbestämda gissningsomtag. Fullständiga stickprov och körbara audits finns under `tests/`.
 
+[FORSTAELSE_SANNOLIKHET.md](FORSTAELSE_SANNOLIKHET.md) prövar en preciserad felidé om återläggning i ett naturligt åk 8-pass, tre separat blindgranskade kontrastfrågor och åtta gissningsomtag. Ett gissat godkänt och alla misslyckade omgångar finns i stickprovet.
+
 Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. På mobil fälls filterpanelen in i fullskärm; **Visa filter** öppnar samma filter och sökning med bevarade val. Zoom finns under **Fler val**. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och Fler val samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
 
 [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.

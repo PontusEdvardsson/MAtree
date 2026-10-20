@@ -1,0 +1,938 @@
+{
+  "method": "Frozen misconception; natural course routing; DOM-only inputs; one pass<=30 and exactly eight retakes.",
+  "natural": {
+    "scope": "8",
+    "category": "sannolikhet",
+    "selection": "course",
+    "setup": "Åk 8 · Sannolikhet · 11 delmoment i basen",
+    "endReason": "limit",
+    "transcript": [
+      {
+        "prompt": "En påse har 5 röda kulor och 6 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+        "options": [
+          "6/11",
+          "5/22",
+          "10/11",
+          "5/11"
+        ],
+        "value": "5/11",
+        "rule": "single-event",
+        "choiceGuess": false,
+        "selected": "5/11",
+        "nodeId": "gynnsamma-utfall",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Ett lyckohjul har 8 lika stora fält. 6 fält ger vinst. Vad är sannolikheten för vinst?",
+        "options": [
+          "3/8",
+          "1/4",
+          "0",
+          "3/4"
+        ],
+        "value": "6/8",
+        "rule": "single-event",
+        "choiceGuess": false,
+        "selected": "3/4",
+        "nodeId": "gynnsamma-utfall",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "En vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 2?",
+        "options": [],
+        "value": "1/6",
+        "rule": "single-event",
+        "choiceGuess": false,
+        "selected": "1/6",
+        "nodeId": "gynnsamma-utfall",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Du väljer en tröja bland 8 olika tröjor, ett par byxor bland 4 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?",
+        "options": [
+          "0",
+          "128",
+          "256",
+          "64"
+        ],
+        "value": 128,
+        "rule": "independent-choices",
+        "choiceGuess": false,
+        "selected": "128",
+        "nodeId": "kombinationer",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "En kod har 3 teckenplatser. Varje plats kan vara ett av 7 tecken och tecken får upprepas. Hur många koder finns?",
+        "options": [],
+        "value": 343,
+        "rule": "independent-choices",
+        "choiceGuess": false,
+        "selected": "343",
+        "nodeId": "kombinationer",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Det finns 7 huvudrätter och 8 efterrätter. Du väljer en huvudrätt och kan antingen avstå efterrätt eller välja en. Hur många måltidskombinationer finns?",
+        "options": [],
+        "value": 63,
+        "rule": "independent-choices",
+        "choiceGuess": false,
+        "selected": "63",
+        "nodeId": "kombinationer",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vilket tal kan vara en sannolikhet?",
+        "options": [
+          "0,1",
+          "2",
+          "1,2",
+          "−0,2"
+        ],
+        "value": "0,1",
+        "rule": "range",
+        "choiceGuess": false,
+        "selected": "0,1",
+        "nodeId": "sannolikhet-skala",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vad är sannolikheten för en säker händelse?",
+        "options": [
+          "0,5",
+          "1",
+          "0",
+          "2"
+        ],
+        "value": 1,
+        "rule": "certain",
+        "choiceGuess": false,
+        "selected": "1",
+        "nodeId": "sannolikhet-skala",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vad är sannolikheten för en omöjlig händelse?",
+        "options": [],
+        "value": 0,
+        "rule": "impossible",
+        "choiceGuess": false,
+        "selected": "0",
+        "nodeId": "sannolikhet-skala",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vinstsannolikheten är 7/8. Hur många vinster förväntas vid 56 försök?",
+        "options": [],
+        "value": 49,
+        "rule": "expected-count",
+        "choiceGuess": false,
+        "selected": "49",
+        "nodeId": "forvantat-antal",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vinstsannolikheten är 1/2. Hur många försök behövs för ett förväntat antal på 20 vinster?",
+        "options": [
+          "2",
+          "40",
+          "1",
+          "0,333"
+        ],
+        "value": 40,
+        "rule": "expected-count",
+        "choiceGuess": false,
+        "selected": "40",
+        "nodeId": "forvantat-antal",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Vid 63 försök är det förväntade antalet vinster 49. Måste det faktiska antalet vara just detta?",
+        "options": [
+          "Ja",
+          "Nej"
+        ],
+        "value": "Nej",
+        "rule": "expected-not-guaranteed",
+        "choiceGuess": false,
+        "selected": "Nej",
+        "nodeId": "forvantat-antal",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "På hur många sätt kan 5 olika böcker placeras i en rad?",
+        "options": [
+          "120",
+          "0",
+          "240",
+          "60"
+        ],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "ordna-objekt",
+        "correct": false,
+        "skipped": true
+      },
+      {
+        "prompt": "Bland 6 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+        "options": [],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "ordna-objekt",
+        "correct": false,
+        "skipped": true
+      },
+      {
+        "prompt": "Påsen har 6 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "options": [
+          "1/4",
+          "1/2",
+          "1/8",
+          "3/4"
+        ],
+        "value": "36/144",
+        "rule": "bag-unchanged-ordered",
+        "choiceGuess": false,
+        "selected": "1/4",
+        "nodeId": "trad-oberoende",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Påsen har 7 vita och 4 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "options": [
+          "14/121",
+          "56/121",
+          "93/121",
+          "28/121"
+        ],
+        "value": "28/121",
+        "rule": "bag-unchanged-ordered",
+        "choiceGuess": false,
+        "selected": "28/121",
+        "nodeId": "trad-oberoende",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Påsen har 4 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?",
+        "options": [],
+        "value": "9/49",
+        "rule": "bag-unchanged-ordered",
+        "choiceGuess": false,
+        "selected": "9/49",
+        "nodeId": "trad-oberoende",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "En påse har 6 vita och 5 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": [
+          "30/121",
+          "61/121",
+          "120/121",
+          "60/121"
+        ],
+        "value": "60/121",
+        "rule": "bag-unchanged-either-order",
+        "choiceGuess": false,
+        "selected": "60/121",
+        "nodeId": "flera-vagar",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "En påse har 4 vita och 5 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": [],
+        "value": "40/81",
+        "rule": "bag-unchanged-either-order",
+        "choiceGuess": false,
+        "selected": "40/81",
+        "nodeId": "flera-vagar",
+        "correct": false,
+        "skipped": false
+      },
+      {
+        "prompt": "En påse har 2 vita och 2 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": [],
+        "value": "8/16",
+        "rule": "bag-unchanged-either-order",
+        "choiceGuess": false,
+        "selected": "8/16",
+        "nodeId": "flera-vagar",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "En påse har 6 vita och 6 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": [],
+        "value": "72/144",
+        "rule": "bag-unchanged-either-order",
+        "choiceGuess": false,
+        "selected": "72/144",
+        "nodeId": "flera-vagar",
+        "correct": false,
+        "skipped": false
+      },
+      {
+        "prompt": "Sannolikheten för vinst är 3/10. Vad är sannolikheten att inte vinna?",
+        "options": [
+          "3/11",
+          "7/10",
+          "2/5",
+          "3/13"
+        ],
+        "value": "7/10",
+        "rule": "complement",
+        "choiceGuess": false,
+        "selected": "7/10",
+        "nodeId": "komplement",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Sannolikheten för att det inte regnar är 5/10. Vad är sannolikheten för regn?",
+        "options": [
+          "5/11",
+          "1/3",
+          "1/2",
+          "3/5"
+        ],
+        "value": "5/10",
+        "rule": "complement",
+        "choiceGuess": false,
+        "selected": "1/2",
+        "nodeId": "komplement",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Sannolikheten för fel är 90 %. Vad är sannolikheten för ett korrekt resultat i procent?",
+        "options": [],
+        "value": 10,
+        "rule": "complement",
+        "choiceGuess": false,
+        "selected": "10",
+        "nodeId": "komplement",
+        "correct": true,
+        "skipped": false
+      },
+      {
+        "prompt": "Påsen har 3 vita och 6 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "options": [
+          "11/12",
+          "1/24",
+          "1/6",
+          "1/12"
+        ],
+        "value": "9/81",
+        "rule": "bag-unchanged-ordered",
+        "choiceGuess": true,
+        "selected": "11/12",
+        "nodeId": "trad-beroende",
+        "correct": false,
+        "skipped": false
+      },
+      {
+        "prompt": "Påsen har 3 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "options": [],
+        "value": "9/36",
+        "rule": "bag-unchanged-ordered",
+        "choiceGuess": false,
+        "selected": "9/36",
+        "nodeId": "trad-beroende",
+        "correct": false,
+        "skipped": false
+      },
+      {
+        "prompt": "I 130 försök inträffar utfallet 93 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+        "options": [],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "experiment-sannolikhet",
+        "correct": false,
+        "skipped": true
+      },
+      {
+        "prompt": "I 180 försök inträffar utfallet 71 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+        "options": [],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "experiment-sannolikhet",
+        "correct": false,
+        "skipped": true
+      },
+      {
+        "prompt": "Vinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+        "options": [],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "minst-en",
+        "correct": false,
+        "skipped": true
+      },
+      {
+        "prompt": "Vinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+        "options": [
+          "271/1000",
+          "271/500",
+          "271/2000",
+          "729/1000"
+        ],
+        "value": null,
+        "rule": "unsupported-skip",
+        "choiceGuess": false,
+        "selected": null,
+        "nodeId": "minst-en",
+        "correct": false,
+        "skipped": true
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "gynnsamma-utfall",
+        "title": "Gynnsamma och möjliga utfall",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 3,
+        "prerequisites": [
+          {
+            "id": "f-half",
+            "tested": false
+          },
+          {
+            "id": "f-chance",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "kombinationer",
+        "title": "Multiplikationsprincipen",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 6,
+        "prerequisites": [
+          {
+            "id": "multiplikation",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "sannolikhet-skala",
+        "title": "Sannolikhet mellan 0 och 1",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 9,
+        "prerequisites": [
+          {
+            "id": "brak-del-hel",
+            "tested": false
+          },
+          {
+            "id": "procent-begrepp",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "forvantat-antal",
+        "title": "Förväntat antal utfall",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 12,
+        "prerequisites": [
+          {
+            "id": "gynnsamma-utfall",
+            "tested": true
+          },
+          {
+            "id": "brak-del-antal",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "ordna-objekt",
+        "title": "Ordna olika föremål",
+        "state": "followup",
+        "right": 0,
+        "total": 2,
+        "firstShownAt": null,
+        "prerequisites": [
+          {
+            "id": "kombinationer",
+            "tested": true
+          }
+        ]
+      },
+      {
+        "id": "trad-oberoende",
+        "title": "Träddiagram: oberoende händelser",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 17,
+        "prerequisites": [
+          {
+            "id": "gynnsamma-utfall",
+            "tested": true
+          },
+          {
+            "id": "brak-multiplikation",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "flera-vagar",
+        "title": "Addera alternativa vägar",
+        "state": "followup",
+        "right": 2,
+        "total": 4,
+        "firstShownAt": null,
+        "prerequisites": [
+          {
+            "id": "trad-oberoende",
+            "tested": true
+          },
+          {
+            "id": "brak-add-olika",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "komplement",
+        "title": "Komplementhändelser",
+        "state": "shown",
+        "right": 3,
+        "total": 3,
+        "firstShownAt": 24,
+        "prerequisites": [
+          {
+            "id": "sannolikhet-skala",
+            "tested": true
+          },
+          {
+            "id": "brak-sub-lika",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "trad-beroende",
+        "title": "Träddiagram: utan återläggning",
+        "state": "followup",
+        "right": 0,
+        "total": 2,
+        "firstShownAt": null,
+        "prerequisites": [
+          {
+            "id": "trad-oberoende",
+            "tested": true
+          },
+          {
+            "id": "brak-multiplikation",
+            "tested": false
+          }
+        ]
+      },
+      {
+        "id": "experiment-sannolikhet",
+        "title": "Sannolikhet från försök",
+        "state": "followup",
+        "right": 0,
+        "total": 2,
+        "firstShownAt": null,
+        "prerequisites": [
+          {
+            "id": "relativ-frekvens",
+            "tested": false
+          },
+          {
+            "id": "gynnsamma-utfall",
+            "tested": true
+          }
+        ]
+      },
+      {
+        "id": "minst-en",
+        "title": "Minst en: komplementmetoden",
+        "state": "followup",
+        "right": 0,
+        "total": 2,
+        "firstShownAt": null,
+        "prerequisites": [
+          {
+            "id": "komplement",
+            "tested": true
+          },
+          {
+            "id": "trad-oberoende",
+            "tested": true
+          }
+        ]
+      }
+    ]
+  },
+  "contrasts": [
+    {
+      "prompt": "Påsen har 2 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+      "expected": 0.1,
+      "value": "4/25",
+      "rule": "bag-unchanged-ordered",
+      "correct": false
+    },
+    {
+      "prompt": "Påsen har 2 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+      "expected": 0.16,
+      "value": "4/25",
+      "rule": "bag-unchanged-ordered",
+      "correct": true
+    },
+    {
+      "prompt": "En påse har 2 vita och 3 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+      "expected": 0.6,
+      "value": "12/25",
+      "rule": "bag-unchanged-either-order",
+      "correct": false
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Ett tillåtet x måste ha minst två olika y.",
+            "Varje y måste ha exakt ett x.",
+            "Alla y måste vara positiva.",
+            "Varje tillåtet x har exakt ett y."
+          ],
+          "selected": "Ett tillåtet x måste ha minst två olika y.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (1, 5), (3, 7)",
+            "(1, 4), (2, 5), (1, 6)",
+            "(1, 4), (2, 4), (3, 7)"
+          ],
+          "selected": "(2, 1), (2, 3), (2, 5)",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 2,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Ett tillåtet x måste ha minst två olika y.",
+            "Varje y måste ha exakt ett x.",
+            "Varje tillåtet x har exakt ett y.",
+            "Alla y måste vara positiva."
+          ],
+          "selected": "Ett tillåtet x måste ha minst två olika y.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 5), (1, 6)",
+            "(1, 4), (1, 5), (3, 7)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 4), (3, 7)"
+          ],
+          "selected": "(1, 4), (2, 5), (1, 6)",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 3,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Varje y måste ha exakt ett x.",
+            "Alla y måste vara positiva.",
+            "Ett tillåtet x måste ha minst två olika y.",
+            "Varje tillåtet x har exakt ett y."
+          ],
+          "selected": "Varje y måste ha exakt ett x.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 5), (1, 6)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 4), (3, 7)",
+            "(1, 4), (1, 5), (3, 7)"
+          ],
+          "selected": "(1, 4), (2, 5), (1, 6)",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 4,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Alla y måste vara positiva.",
+            "Ett tillåtet x måste ha minst två olika y.",
+            "Varje tillåtet x har exakt ett y.",
+            "Varje y måste ha exakt ett x."
+          ],
+          "selected": "Alla y måste vara positiva.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Nej",
+            "Ja"
+          ],
+          "selected": "Nej",
+          "correct": false
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 5), (1, 6)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 4), (3, 7)",
+            "(1, 4), (1, 5), (3, 7)"
+          ],
+          "selected": "(1, 4), (2, 5), (1, 6)",
+          "correct": false
+        }
+      ],
+      "score": 0,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 5,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Ett tillåtet x måste ha minst två olika y.",
+            "Alla y måste vara positiva.",
+            "Varje y måste ha exakt ett x.",
+            "Varje tillåtet x har exakt ett y."
+          ],
+          "selected": "Ett tillåtet x måste ha minst två olika y.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (1, 5), (3, 7)",
+            "(1, 4), (2, 4), (3, 7)",
+            "(1, 4), (2, 5), (1, 6)",
+            "(2, 1), (2, 3), (2, 5)"
+          ],
+          "selected": "(1, 4), (1, 5), (3, 7)",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 6,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Varje y måste ha exakt ett x.",
+            "Varje tillåtet x har exakt ett y.",
+            "Alla y måste vara positiva.",
+            "Ett tillåtet x måste ha minst två olika y."
+          ],
+          "selected": "Varje y måste ha exakt ett x.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 5), (1, 6)",
+            "(1, 4), (2, 4), (3, 7)",
+            "(1, 4), (1, 5), (3, 7)",
+            "(2, 1), (2, 3), (2, 5)"
+          ],
+          "selected": "(1, 4), (2, 5), (1, 6)",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 7,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Varje tillåtet x har exakt ett y.",
+            "Varje y måste ha exakt ett x.",
+            "Alla y måste vara positiva.",
+            "Ett tillåtet x måste ha minst två olika y."
+          ],
+          "selected": "Varje tillåtet x har exakt ett y.",
+          "correct": true
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Ja",
+            "Nej"
+          ],
+          "selected": "Ja",
+          "correct": true
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 4), (3, 7)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 5), (1, 6)",
+            "(1, 4), (1, 5), (3, 7)"
+          ],
+          "selected": "(1, 4), (2, 4), (3, 7)",
+          "correct": true
+        }
+      ],
+      "score": 3,
+      "status": "Visad kunskap"
+    },
+    {
+      "attempt": 8,
+      "questions": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Alla y måste vara positiva.",
+            "Varje tillåtet x har exakt ett y.",
+            "Varje y måste ha exakt ett x.",
+            "Ett tillåtet x måste ha minst två olika y."
+          ],
+          "selected": "Alla y måste vara positiva.",
+          "correct": false
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Nej",
+            "Ja"
+          ],
+          "selected": "Nej",
+          "correct": false
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (2, 4), (3, 7)",
+            "(1, 4), (1, 5), (3, 7)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 5), (1, 6)"
+          ],
+          "selected": "(1, 4), (2, 4), (3, 7)",
+          "correct": true
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    }
+  ],
+  "version": "2b439b4",
+  "precommitModel": "rules and eight-attempt budget fixed before the only browser run; no policy adaptation after feedback"
+}

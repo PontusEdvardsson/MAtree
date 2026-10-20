@@ -1,0 +1,4 @@
+[
+  {"script":"tests/understanding-audit.js"},
+  {"script":"tests/understanding-probability.js","eval":"runProbabilityMisconception()","json_output":"understanding-probability.json"}
+]

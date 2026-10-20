@@ -1,5 +1,13 @@
 # UI-granskning · fem omgångar
 
+## Stängning avslutar kontrollen · 2026-10-20
+
+Kryss, Escape och klick utanför en kontroll avslutar nu kontrollen. Det gäller både manuell kontroll och automatiskt elevläge. En kontroll som är öppen när sidan lämnas avslutas också. Uttrycklig **Pausa** behåller fortfarande den exakta frågan och utkastet. Att stänga dialogen efter ett sådant pausval ändrar inte pausen. Elevläget har separata **Pausa** och **Avsluta**.
+
+En avslutad manuell kontroll med ett eller två inskickade svar sparas i historiken med verklig nämnare och begränsad status. Noll inskickade svar skapar inget resultat. Ett oskickat svar förvandlas aldrig till fel eller överhoppat. Ett automatiskt pass arkiveras med befintliga inskickade svar och läraravslut som orsak. Rapportåtergång avslutar en öppen manuell kontroll om användaren inte uttryckligen har pausat den först.
+
+Full regression passerade, inklusive historik, import/export och återupptagning efter uttrycklig paus. [tests/closing-controls-tests.js](tests/closing-controls-tests.js) täcker även tidiga delresultat och exakta frågedata efter import. [tests/closing-scenarios.json](tests/closing-scenarios.json) kontrollerar verklig Escape, kryss, avslutsknapp och mobil på 320 px. De äldre UI-omgångarnas beskrivningar av att Escape pausar är historiska; den här regeln gäller nu.
+
 ## Fullskärm och samlade kartverktyg · 2026-10-20
 
 **Fullskärm** finns ovanför kartan. Hela dokumentet används för webbläsarens fullskärmsläge så att delmoments- och elevdialoger kan öppnas ovanpå kartan. Om funktionen inte är tillgänglig fyller kartan fönstret. Utgång återställer kartans och sidans rullningsposition. Escape stänger först en öppen dialog eller verktygspanel.

@@ -19,8 +19,8 @@ window.verifyAnswerDrafts=()=>{
     $('#adaptive-answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));check(!c.draft&&c.items.length===1,'Submitting clears the choice draft');
     $('#adaptive-pause').click();$('#adaptive-close').click();
     p.quiz={nodeId:'brak-forlanga',questions:[0,1,2].map(v=>M.generateReviewed('brak-forlanga',v)),answers:[],responses:[],index:0};
-    app.openSkill('brak-forlanga');$('#answer').value='123';$('#answer').dispatchEvent(new Event('input',{bubbles:true}));$('[data-close="skill-dialog"]').click();app.openSkill('brak-forlanga');
-    check($('#answer').value==='123'&&p.quiz.answers.length===0,'Manual draft survives closing without grading');
+    app.openSkill('brak-forlanga');$('#answer').value='123';$('#answer').dispatchEvent(new Event('input',{bubbles:true}));$('[data-pause-manual]').click();app.openSkill('brak-forlanga');
+    check($('#answer').value==='123'&&p.quiz.answers.length===0,'Manual draft survives explicit pause without grading');
     $('#answer').value=String(p.quiz.questions[0].answer);$('#answer').dispatchEvent(new Event('input',{bubbles:true}));$('#answer-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
     check(!p.quiz.draft&&p.quiz.answers[0],'Manual submission clears its draft');
     const old=JSON.parse(JSON.stringify(c));delete old.draft;check(!A.validate({active:old,sessions:[],confirmations:[]}).active.draft,'Older sessions without drafts remain valid');
@@ -118,7 +118,7 @@ window.verifyDirectControl=()=>{
     check($('.control-student').textContent.includes(p.name)&&$('#skill-dialog-title').textContent.includes(M.nodes.find(n=>n.id===id).title),'Student and skill remain visible in control');
     check(p.quiz.reportSessionId===older.id&&$('.control-report-return').dataset.adaptiveReport===older.id,'Control remembers the selected older report');
     const q=p.quiz.questions[0],draft=q.options?'1':'-';$('#answer').value=draft;$('#answer').dispatchEvent(new Event('input',{bubbles:true}));
-    $('.control-report-return').click();
+    $('[data-pause-manual]').click();$('.control-report-return').click();
     check($('#adaptive-dialog').open&&$('#adaptive-content.teacher-report')&&(!details||$('#adaptive-content details').open),'Return restores the selected report and expanded evidence');
     const again=$('.followup-suggestion [data-report-start="'+id+'"]');check(again.textContent.includes('Fortsätt'),'Paused control has an explicit resume action');again.click();
     check($('#answer').value===draft&&p.quiz.answers.length===0,'Direct resume restores draft without submitting');
@@ -242,7 +242,7 @@ window.verifyCrossReportResume=()=>{
     const q=p.quiz.questions[0],input=$('#answer');input.value=q.options?'1':'123';input.dispatchEvent(new Event('input',{bubbles:true}));
     const pending=JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers});
     check($('.control-report-return').dataset.adaptiveReport===newer.id,'New control returns to its source report');
-    $('.control-report-return').click();$('#adaptive-close').click();
+    $('[data-pause-manual]').click();$('.control-report-return').click();$('#adaptive-close').click();
     $('#progress-view [data-adaptive-report="'+older.id+'"]').click();$('.report-answers').open=true;$('.followup-suggestion [data-report-start]').click();
     check(p.quiz.reportSessionId===older.id&&$('.control-report-return').dataset.adaptiveReport===older.id,'Resuming from another report updates the return destination');
     check(JSON.stringify({questions:p.quiz.questions,draft:p.quiz.draft,answers:p.quiz.answers})===pending,'Changing report destination preserves exact questions, draft and answers');

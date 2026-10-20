@@ -111,6 +111,7 @@
       assert(true, window.verifyFollowupReport());
       assert(true, await window.verifyMapWorkspace());
       assert(true, window.verifyProfileCounts());
+      assert(true, await window.verifyClosingControls());
       assert(true, window.verifyAnswerDrafts());
       assert(true, window.verifyManualHistory());
       assert(true, window.verifyPartialEvidence());
@@ -131,8 +132,8 @@
       click('#continue-button'); assert($('#skill-content').textContent.includes('Bråk'), 'Initial diagnostic starts with relevant prerequisite for secondary school');
       assert($('#skill-content [data-start="brak-del-hel"]'),'New diagnostic starts with a specific skill instead of a duplicated broad check'); MATREE_APP.openSkill('brak');
       click('[data-start="brak"]'); $('#answer').value = 'invalid'; submit('#answer-form'); assert(current().quiz.answers.length === 0 && $('#answer-error').textContent.length > 0, 'Invalid input does not count as a wrong answer');
-      answer(false); click('#next-question'); close();
-      assert(current().quiz.index === 1, 'Closing dialog pauses quiz');
+      answer(false); click('#next-question'); click('[data-pause-manual]');
+      assert(current().quiz.index === 1, 'Explicit pause retains the manual quiz');
       const autoDraft=MATREE.makeDraft(MATREE_APP.profile().adaptive.active.pending,'1');MATREE_APP.profile().adaptive.active.draft=autoDraft;
       const mq=MATREE_APP.profile().quiz.questions[1],manualDraft=MATREE.makeDraft(mq,mq.options?'1':'-');MATREE_APP.profile().quiz.draft=manualDraft;MATREE_APP.profile().quiz.reportSessionId=MATREE_APP.profile().adaptive.sessions[0].id;localStorage.setItem('verification-manual-origin',MATREE_APP.profile().quiz.reportSessionId);MATREE_APP.save();localStorage.setItem('verification-auto-draft',autoDraft.value);localStorage.setItem('verification-manual-draft',manualDraft.value);
       localStorage.setItem('verification-phase', 'resume'); localStorage.setItem('verification-results', JSON.stringify(results)); location.reload();

@@ -2,7 +2,7 @@
   'use strict';
   const A=window.MATREE_ADAPTIVE, app=window.MATREE_APP, M=window.MATREE;
   const $=s=>document.querySelector(s), esc=app.esc, dialog=$('#adaptive-dialog'), content=$('#adaptive-content');
-  let reportSessionId=null, savedTimer;
+  let reportSessionId=null, savedTimer,studentSession=null;
   const profile=()=>app.profile(), state=()=>profile().adaptive;
   const date=value=>new Date(value).toLocaleString('sv-SE',{dateStyle:'short',timeStyle:'short'});
   const byId=id=>M.visibleNodes.find(n=>n.id===M.resolveSkillId(id));
@@ -90,6 +90,7 @@
   }
   function student(saved=false){
     const session=state().active;if(!session){report();return;}
+    studentSession=session;
     open();dialog.classList.add('student-mode');content.classList.remove('teacher-report');
     dialog.setAttribute('aria-labelledby','student-question-title');
     const q=session.pending;
@@ -99,7 +100,7 @@
     }
     const hint=q.options?'Välj ett alternativ och tryck Svara.':answerHint(q)+' Tryck Enter eller Svara när du är klar.';
     clearTimeout(savedTimer);
-    content.innerHTML=`<header class="student-header"><span>Matematik · ${esc(profile().name)}</span><div class="student-header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt tema">Mörkt tema</button><button class="secondary-button" id="adaptive-pause">Pausa</button></div></header><div class="student-progress"><span>Uppgift ${session.items.length+1}</span><span id="student-save-status">${app.storageOK()?'Svar sparas på den här enheten':'Lagring fungerar inte · be läraren exportera efter passet'}</span></div><section class="student-question${q.visual?' has-visual':''}">${session.items.length===0?'<p class="student-instructions">Du kan använda papper när du räknar.</p>':''}<h1 class="question-text" id="student-question-title" tabindex="-1">${esc(M.questionStem(q))}</h1>${M.renderQuestionVisual(q)}<form id="adaptive-answer-form">${M.renderAnswerFields(q,'adaptive-answer')}<p id="adaptive-hint" class="answer-help">${hint}</p><p id="adaptive-error" role="alert"></p></form><div class="student-question-actions"><button type="button" class="secondary-button" id="adaptive-skip" aria-label="Jag vet inte, gå vidare till nästa uppgift">Jag vet inte</button><span class="student-saved" id="adaptive-saved" role="status" aria-live="polite"></span></div></section>`;
+    content.innerHTML=`<header class="student-header"><span>Matematik · ${esc(profile().name)}</span><div class="student-header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt tema">Mörkt tema</button><button class="secondary-button" id="adaptive-pause">Pausa</button><button class="secondary-button" id="adaptive-end">Avsluta</button></div></header><div class="student-progress"><span>Uppgift ${session.items.length+1}</span><span id="student-save-status">${app.storageOK()?'Svar sparas på den här enheten':'Lagring fungerar inte · be läraren exportera efter passet'}</span></div><section class="student-question${q.visual?' has-visual':''}">${session.items.length===0?'<p class="student-instructions">Du kan använda papper när du räknar.</p>':''}<h1 class="question-text" id="student-question-title" tabindex="-1">${esc(M.questionStem(q))}</h1>${M.renderQuestionVisual(q)}<form id="adaptive-answer-form">${M.renderAnswerFields(q,'adaptive-answer')}<p id="adaptive-hint" class="answer-help">${hint}</p><p id="adaptive-error" role="alert"></p></form><div class="student-question-actions"><button type="button" class="secondary-button" id="adaptive-skip" aria-label="Jag vet inte, gå vidare till nästa uppgift">Jag vet inte</button><span class="student-saved" id="adaptive-saved" role="status" aria-live="polite"></span></div></section>`;
     window.MATREE_THEME.refresh();
     const form=$('#adaptive-answer-form'),actions=$('.student-question-actions');
     actions.classList.add('student-response-actions');actions.prepend(form.querySelector('.primary-button'));form.append(actions);
@@ -112,12 +113,18 @@
     }
   }
   function archive(session,reason){
+    if(studentSession===session)studentSession=null;
     delete session.draft;
     session.ended ||= new Date().toISOString();session.endReason ||= reason;session.pending=null;
     state().sessions.push(session);state().sessions=state().sessions.slice(-30);state().active=null;
     reportSessionId=session.id;app.save();app.render();
   }
   function finish(){const session=state().active;if(session)archive(session,'teacher');report();}
+  function endStudentControl(){
+    const session=studentSession;studentSession=null;
+    if(session&&state().active===session)archive(session,'teacher');
+  }
+  function closeStudentControl(){endStudentControl();dialog.close();}
 
   function saveStudentDraft(){
     const session=state().active,input=$('#adaptive-answer');if(!session?.pending||!input)return;
@@ -219,12 +226,12 @@
     const b=event.target.closest('button');if(!b)return;
     if(b.id==='adaptive-open'||b.id==='adaptive-new'){reportSessionId=null;setup();}
     if(['adaptive-resume','adaptive-resume-overview'].includes(b.id))student();
-    if(b.id==='adaptive-pause'){app.save();setup();}
-    if(b.id==='adaptive-close')dialog.close();
+    if(b.id==='adaptive-pause'){studentSession=null;app.save();setup();}
+    if(b.id==='adaptive-close'||b.id==='adaptive-end')closeStudentControl();
     if(b.id==='adaptive-finish')finish();
     if(b.id==='adaptive-skip')respond(true);
     if(b.id==='adaptive-teacher-report')report();
-    if(b.dataset.adaptiveReport){$('#skill-dialog').close();reportSessionId=b.dataset.adaptiveReport;report(b.dataset.restoreReport==='true');}
+    if(b.dataset.adaptiveReport){app.endManualControl();$('#skill-dialog').close();reportSessionId=b.dataset.adaptiveReport;report(b.dataset.restoreReport==='true');}
     if(b.dataset.adaptiveNode)sessionSkill(b.dataset.adaptiveNode);
     if(b.dataset.reportStart)startReportControl(b.dataset.reportStart);
     if(b.dataset.resumeReportQuiz)startReportControl(b.dataset.resumeReportQuiz);
@@ -247,8 +254,14 @@
       if(state().active.ended){archive(state().active,state().active.endReason);complete();}else{app.save();student();}
     }
   });
-  dialog.addEventListener('cancel',event=>{if(dialog.classList.contains('student-mode')&&state().active){event.preventDefault();app.save();setup();}});
-  dialog.addEventListener('close',()=>{if(dialog.open)return;clearTimeout(savedTimer);dialog.classList.remove('student-mode');app.render();});
+  dialog.addEventListener('cancel',event=>{event.preventDefault();closeStudentControl();});
+  dialog.addEventListener('close',()=>{if(dialog.open)return;endStudentControl();clearTimeout(savedTimer);dialog.classList.remove('student-mode');app.render();});
+  let backdropPress=false;
+  const outside=event=>{const r=dialog.getBoundingClientRect();return event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom;};
+  dialog.addEventListener('pointerdown',event=>{backdropPress=event.target===dialog&&outside(event);});
+  dialog.addEventListener('click',event=>{if(backdropPress&&event.target===dialog&&outside(event))closeStudentControl();backdropPress=false;});
+  window.addEventListener('pagehide',endStudentControl);
+  window.addEventListener('pageshow',event=>{if(event.persisted)dialog.close();});
   document.addEventListener('matree-render',update);
   update();
 })();

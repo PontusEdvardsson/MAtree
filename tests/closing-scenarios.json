@@ -1,0 +1,13 @@
+[
+  {"script":"tests/closing-controls-tests.js","eval":"await verifyClosingControls()"},
+  {"eval":"MATREE_APP.openSkill('brak-forlanga');MATREE_APP.startQuiz('brak-forlanga');"},
+  {"key":"Escape","eval":"if(MATREE_APP.profile().quiz||document.querySelector('#skill-dialog').open)throw Error('Real Escape did not end manual control');"},
+  {"eval":"MATREE_APP.openSkill('brak-forlanga');MATREE_APP.startQuiz('brak-forlanga');"},
+  {"click":"#skill-content .dialog-top [data-close]","eval":"if(MATREE_APP.profile().quiz)throw Error('Close icon still pauses');"},
+  {"click":"#adaptive-open"},
+  {"click":"#adaptive-setup button.primary-button"},
+  {"key":"Escape","eval":"if(MATREE_APP.profile().adaptive.active||document.querySelector('#adaptive-dialog').open)throw Error('Real Escape still pauses student mode');"},
+  {"size":[320,740],"click":"#adaptive-open"},
+  {"click":"#adaptive-setup button.primary-button","eval":"if(document.querySelector('#adaptive-dialog').scrollWidth>document.querySelector('#adaptive-dialog').clientWidth+1)throw Error('End and pause controls overflow');","screenshot":"closing-mobile-student.png"},
+  {"click":"#adaptive-end","eval":"if(MATREE_APP.profile().adaptive.active)throw Error('End button did not end');"}
+]

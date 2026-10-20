@@ -63,7 +63,7 @@ Välj en elevprofil och klicka **Starta elevläge**. Välj **åk 1–3, 4–6, 7
 
 Ett delmoment får upp till fyra frågor. Enstaka fel följs av en annan variant. Minst tre rätt och högst ett fel ger visad kunskap i passet; två fel eller överhoppade frågor ger uppföljning. Efter svårigheter undersöks en närliggande förkunskap inom samma årskursurval. Urvalet prioriterar områden med färre insamlade svar och går vidare till efterföljande moment när direkta förkunskaper inom urvalet har visats. Förkunskaper utanför urvalet ger varken uppgifter eller ett automatiskt godkännande i passet. Bekräftat indirekt underlag räknas inte som direkt prövning. Varje nytt pass börjar inom valt årskursurval; ett pausat pass fortsätter exakt där det slutade. Äldre blandade pass behåller sitt ursprungliga urval och kan fortfarande återupptas.
 
-Passet avslutas vid vald gräns eller när inga fler lämpliga moment finns under dessa regler. Det går även att pausa, återuppta efter omladdning eller avsluta tidigare. Sammanställningen skiljer på visat, uppföljning, begränsat underlag och det som inte prövats. Alla frågor, elevsvar, facit och urvalsskäl sparas i elevprofilen och följer med vid export/import. Elevöversikten listar tidigare pass.
+Passet avslutas vid vald gräns eller när inga fler lämpliga moment finns under dessa regler. Kryss, Escape, klick utanför kontrollrutan och att lämna sidan avslutar en öppen kontroll. Endast ett uttryckligt val av **Pausa** sparar kontrollen för fortsatt arbete. Ett pausat pass kan återupptas efter omladdning. Sammanställningen skiljer på visat, uppföljning, begränsat underlag och det som inte prövats. Inskickade frågor, elevsvar, facit och urvalsskäl sparas i elevprofilen och följer med vid export/import. Elevöversikten listar tidigare pass.
 
 **Testa alla** prövar samtliga delmoment i den valda årskursens innehåll, inklusive fördjupning och tidigare visade färdigheter. Det vanliga urvalets stopp vid bristande förkunskaper används inte i detta läge. Varje delmoment får fortfarande 2–4 frågor och bedöms separat; inga förkunskaper godkänns automatiskt. De vanliga passen på 30, 60 och 90 frågor behåller sina urvalsregler och sin basavgränsning.
 
@@ -178,3 +178,11 @@ Automatiska sammanställningar anger om passet nådde uppgiftstaket, avslutades 
 Rapportens förslag har **Starta kontroll** bredvid **Granska underlaget**. Den manuella kontrollen visar elev och färdighet samt en länk tillbaka till samma rapport. En annan pausad manuell kontroll skrivs inte över; den namnges och kan återupptas uttryckligen. Rapportlänken följer med en pausad kontroll även efter omladdning.
 
 Sparformatets version är fortfarande 1. Utkast, datum för senast inskickat manuellt svar och rapportreferens är valfria fält. Se [UI_GRANSKNING.md](UI_GRANSKNING.md) för omgångarna och verifieringen.
+
+## Avsluta när kontrollen lämnas · 2026-10-20
+
+En manuell kontroll avslutas även när länken tillbaka till en rapport används. **Pausa och fortsätt senare** är det uttryckliga undantaget. Inskickade svar arkiveras; ett oskickat utkast räknas inte som ett svar. En kontroll utan inskickade svar ger inget resultat. Ett eller två manuella svar sparas med sitt verkliga antal och visas som **Begränsat underlag · Avslutad i förtid**. Inga obesvarade frågor görs om till fel. Tre inskickade svar bedöms som en fullständig kontroll även om resultatknappen inte har tryckts.
+
+Manuella historikposter kan nu ha det valfria fältet `total` (1–3) och `endReason: 'teacher'` vid tidigt avslut. Äldre poster utan `total` behåller nämnaren 3. Importvalidering och historikvisning stöder båda formerna; tidigare uttryckligen pausade eller äldre sparade kontroller kan fortfarande återupptas.
+
+[tests/closing-controls-tests.js](tests/closing-controls-tests.js) kontrollerar avslut, uttrycklig paus, exakta svar, begränsat underlag, historik och import. `python tests/ui_preview.py tests/closing-scenarios.json` använder även verkliga klick och Escape samt mobilvyn med separata Pausa- och Avsluta-knappar.

@@ -27,8 +27,8 @@
     "click": "#adaptive-setup button.primary-button"
   },
   {
-    "key": "Escape",
-    "eval": "if(!MATREE_APP.profile().adaptive.active||!document.querySelector('#adaptive-resume'))throw Error('Escape did not pause safely')"
+    "click": "#adaptive-pause",
+    "eval": "if(!MATREE_APP.profile().adaptive.active||!document.querySelector('#adaptive-resume'))throw Error('Explicit pause did not preserve the pass')"
   },
   {
     "eval": "MATREE_APP.profile().adaptive.active.pending={...MATREE.generateReviewed('multiplikation',0),nodeId:'multiplikation',variant:0,reason:'En separat kontroll av tangentbordsinmatning.'};MATREE_APP.save();void 0;"

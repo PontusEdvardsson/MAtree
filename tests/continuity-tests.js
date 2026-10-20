@@ -35,7 +35,7 @@ window.verifyEndReasons=()=>{
   const show=s=>{document.querySelectorAll('dialog[open]').forEach(d=>d.close());p.adaptive={active:null,sessions:[s],confirmations:[]};app.save();app.render();$('.last-report-link').click();};
   try{
     for(const [scope,total]of [['1-3',4],['9',16]]){
-      const s=A.create({scope,limit:90,selection:'progression'});while(!s.ended)A.answer(s,'',true);
+      const s=A.create({scope,limit:90,selection:'progression'});delete s.coveragePolicy;while(!s.ended)A.answer(s,'',true);
       check(s.items.length===total&&s.endReason==='coverage','Existing all-skip selection is unchanged for '+scope);show(s);
       check($('.report-end').dataset.endReason==='coverage'&&$('.report-end').textContent.includes('Urvalsreglerna'),'Rule-stop reason is explicit');
       check($('.report-end').textContent.includes(String(A.scopedPool(s).length-A.summary(s).length)),'Untried remainder is stated accurately');
@@ -166,7 +166,7 @@ window.verifyTestAll=async()=>{
         check(imported.mode==='all'&&imported.limit===e.maxQuestions&&imported.endReason==='all-tested'&&imported.items.length===expectedTotal,'Large full run survives validation/export format');
       }
     }
-    const standard=A.create({scope:'1-3',limit:90});while(standard.pending)A.answer(standard,'',true);
+    const standard=A.create({scope:'1-3',limit:90});delete standard.coveragePolicy;while(standard.pending)A.answer(standard,'',true);
     check(standard.items.length===4&&standard.endReason==='coverage'&&!standard.mode,'Existing adaptive routing remains unchanged');
     p.results={};p.quiz=null;p.adaptive={active:null,sessions:[],confirmations:[]};app.save();app.render();$('#adaptive-open').click();
     $('#adaptive-start').value='4-6';$('#adaptive-limit').value='all';$('#adaptive-limit').dispatchEvent(new Event('change',{bubbles:true}));

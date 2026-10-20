@@ -34,7 +34,7 @@
     ['procent','Procent','#b78c65','#f9eee3','%'],
     ['statistik','Statistik','#68959d','#e9f2f3','▥'],
     ['sannolikhet','Sannolikhet','#ab8098','#f5eaf0','⚄'],
-    ['problem','Problemlösning & verktyg','#938b5c','#f2f0e4','⌘']
+    ['problem','Problemlösning','#938b5c','#f2f0e4','⌘']
   ].map(([id,name,color,bg,symbol]) => ({id,name,color,bg,symbol}));
   function source(ref) {
     const [id, pageText] = ref.split(':');

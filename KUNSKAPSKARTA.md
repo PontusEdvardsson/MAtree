@@ -1,8 +1,8 @@
 # Kunskapskarta · tidigare grunder och Matte Direkt 7–9
 
-253 delmoment · 489 riktade förkunskapskopplingar · nio områden.
+249 delmoment · 481 riktade förkunskapskopplingar · nio områden.
 
-Översiktsvyn samlar dem i 57 öppningsbara grupper och sex fristående delmoment: 63 kort när alla år visas. Grupper är en vy över färdigheterna; resultat hör fortfarande till varje delmoment. Elva blandade kontroller och alla 25 tidigare ID:n för sammanslagna färdigheter finns kvar med sina frågor och resultat.
+Översiktsvyn samlar dem i 56 öppningsbara grupper och sex fristående delmoment: 62 kort när alla år visas. Grupper är en vy över färdigheterna; resultat hör fortfarande till varje delmoment. Elva blandade kontroller och alla 25 tidigare ID:n för sammanslagna färdigheter finns kvar med sina frågor och resultat.
 
 Grunder omfattar 86 delmoment efter första inlärning: 26 inom åk 1–3 och 60 inom åk 4–6. Vissa delmoment återkommer i båda urvalen. Stadieindelning och beroenden är pedagogiska förslag, inte en officiell checklista eller betygsgräns.
 
@@ -44,7 +44,7 @@ Automatiskt elevläge väljer delmoment ur basen. Direkt visad kunskap, begräns
 | Procent | 19 | 4 | 2 | 17 | 2 |
 | Statistik | 18 | 4 | 7 | 17 | 1 |
 | Sannolikhet | 16 | 3 | 4 | 13 | 3 |
-| Problemlösning & verktyg | 17 | 4 | 2 | 13 | 4 |
+| Problemlösning | 13 | 3 | 2 | 9 | 4 |
 
 ## Tal
 
@@ -609,7 +609,7 @@ Blandade kontroller i gruppen: Sannolikhet (sannolikhet).
 | Val där ordningen saknar betydelse (oordnade-val) | Åk 8 | Åk 8 | Fördjupning | Ordna olika föremål (ordna-objekt); Multiplikationsprincipen (kombinationer) | MD 8 · Sannolikhet · s. 243 (PDF 36) |
 
 
-## Problemlösning & verktyg
+## Problemlösning
 
 ### Textproblem med grundläggande räknesätt
 
@@ -629,15 +629,6 @@ Blandade kontroller i gruppen: Sannolikhet (sannolikhet).
 | Välja ekvation som metod (problem-ekvation) | Åk 9 | Åk 9 | Bas | Ställa upp en ekvation (ekvation-text); Obekanta i båda leden (ekvation-bada) | MD 9 · Problemlösning · s. 289 (PDF 4) |
 | Kontrollera svar och enhet (problem-rimlighet) | Åk 9 | Åk 9 | Bas | Överslagsräkning (overslag); Omvandla längdenheter (langd-enheter); Pröva en lösning (ekvation-provning) | MD 9 · Genrepet · inför NP · s. 238 (PDF 61) |
 | Flerstegsproblem inför NP (problem-flersteg) | Åk 9 | Åk 9 | Bas | Kontrollera svar och enhet (problem-rimlighet); Beräkna delen (procent-delen); Kubikenheter och liter (volym-enheter) | MD 9 · Genrepet · inför NP · s. 240 (PDF 63) |
-
-### Programmering och digitala verktyg
-
-| Färdighet och ID | Lärs in | Visas i | Urval | Direkta förkunskaper | Hänvisning |
-|---|---|---|---|---|---|
-| Följa kod med variabler (kod-variabel) | Åk 8 | Åk 8 | Bas | Variabel och obekant (variabel); Räkneordning (prioritering) | MD 8 · Algebra · s. 110 (PDF 13) |
-| Upprepning i kod (kod-loop) | Åk 8 | Åk 8 | Bas | Följa kod med variabler (kod-variabel); Talmönster (monster) | MD 8 · Algebra · s. 111 (PDF 14) |
-| Formler i kalkylblad (kalkylblad) | Åk 8 | Åk 8 | Bas | Variabel och obekant (variabel); Medelvärde (medel) | MD 8 · Geometri · s. 70 (PDF 17) |
-| Simulera slumpförsök (simulering) | Åk 8 | Åk 8 | Bas | Upprepning i kod (kod-loop); Sannolikhet från försök (experiment-sannolikhet) | MD 8 · Sannolikhet · s. 222 (PDF 15) |
 
 ### Tillämpningar: mått, material och ekonomi
 

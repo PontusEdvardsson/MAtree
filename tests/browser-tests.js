@@ -11,6 +11,7 @@
   const close = () => click('[data-close="skill-dialog"]');
   try {
     if (!localStorage.getItem('verification-phase')) { assert(true,window.verifyDependencyReasons()); assert(true,window.verifySkillGroups()); assert(true,window.verifyTheme()); assert(true,window.verifyCourseScope()); }
+    if(!localStorage.getItem('verification-phase'))assert(true,window.verifyAssessedCoverage());
     click('[data-map-mode="details"]');
     if (localStorage.getItem('verification-phase') === 'resume') {
       assert(current().adaptive.active.items.length===1&&current().adaptive.active.pending.prompt===localStorage.getItem('verification-adaptive-prompt'),'Adaptive session and exact question survive browser reload');

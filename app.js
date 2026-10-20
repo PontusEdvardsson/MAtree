@@ -205,7 +205,7 @@
   function renderMap() {
     const M=window.MATREE;
     const focused=focusId?new Set([focusId,...ancestors(focusId),...nodes.filter(n=>n.deps.includes(focusId)).map(n=>n.id)]):null;
-    currentMapNodes=nodes.filter(n=>focused?focused.has(n.id):!M.mixedControlIds.has(n.id)&&(category==='all'||category===n.category)&&M.matchesYearView(n,stage)&&(stage!=='0'||foundationBand==='all'||M.matchesYearView(n,foundationBand==='1'?'1-3':'4-6'))&&(level==='all'||level===n.level)&&(!search||(n.title+' '+n.description+' '+categories.find(c=>c.id===n.category).name).toLocaleLowerCase('sv').includes(search)));
+    currentMapNodes=nodes.filter(n=>!n.retired&&(focused?focused.has(n.id):!M.mixedControlIds.has(n.id)&&(category==='all'||category===n.category)&&M.matchesYearView(n,stage)&&(stage!=='0'||foundationBand==='all'||M.matchesYearView(n,foundationBand==='1'?'1-3':'4-6'))&&(level==='all'||level===n.level)&&(!search||(n.title+' '+n.description+' '+categories.find(c=>c.id===n.category).name).toLocaleLowerCase('sv').includes(search))));
     const visible=currentMapNodes,projection=M.projectMap(visible,{details:mapMode==='details'||!!search||!!focused,expanded:expandedGroups});
     const entries=projection.entries,entryById=new Map(entries.map(n=>[n.id,n]));
     document.querySelectorAll('[data-map-mode]').forEach(b=>{const effective=search||focused?'details':mapMode;b.classList.toggle('selected',b.dataset.mapMode===effective);b.setAttribute('aria-pressed',String(b.dataset.mapMode===effective));b.disabled=!!search||!!focused;});
@@ -311,14 +311,14 @@
     if (!$('#skill-dialog').open) { rememberDialogOrigin('[data-node="'+id+'"]'); $('#skill-dialog').showModal(); }
     if (profile().quiz&&window.MATREE.resolveSkillId(profile().quiz.nodeId) === id) { renderQuiz(); return; }
     const node = byId(id), cat = categories.find(c => c.id === node.category), result = latest(id);
-    const successors = nodes.filter(n=>n.deps.includes(id)), prerequisiteCount=ancestors(id).size;
+    const successors = nodes.filter(n=>!n.retired&&n.deps.includes(id)), prerequisiteCount=ancestors(id).size;
     $('#skill-content').innerHTML = [
       `<div class="dialog-top"><div><div class="eyebrow">${cat.name.toUpperCase()}</div><h2 id="skill-dialog-title">${node.title}</h2></div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div>`,
       `<div class="skill-meta"><span class="tag">Lärs in: ${window.MATREE.yearViewLabel(node.learnedAt)}</span><span class="tag ${node.level}">${node.level==='core'?'Bas':'Fördjupning'}${node.source.book==='gym'?' · inför gymnasiet':''}</span>${node.npSource?'<span class="tag">Genrepet · NP</span>':''}</div>`,
       `<p class="muted small">Ingår i: ${node.yearViews.map(window.MATREE.yearViewLabel).join(', ')}. Samma färdighet och elevresultat visas i alla dessa urval.</p>`,
       window.MATREE.groupForSkill.has(id)?'<button class="text-button" data-group="'+window.MATREE.groupForSkill.get(id).id+'">← Se gruppens delmoment</button>':'',
       `<p>${node.description}</p><p class="muted small">${result?statusLabel(status(node)):'Inte prövad'}${window.MATREE.mixedControlIds.has(node.id)?' · Blandad kontroll. Delmomenten behåller sina egna resultat.':''}</p>`,
-      `<div class="dialog-actions skill-start-actions"><button class="primary-button" data-start="${id}">${result?'Prova igen':'Prova förståelsen'} <span>↗</span></button></div><p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang.${profile().quiz?' En annan omgång är pausad; fortsätt eller avsluta den först.':''}</p>`,
+      node.retired?'<p class="muted">Utgånget moment · ingår inte i bedömningen. Sparat underlag finns kvar.</p>':`<div class="dialog-actions skill-start-actions"><button class="primary-button" data-start="${id}">${result?'Prova igen':'Prova förståelsen'} <span>↗</span></button></div><p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang.${profile().quiz?' En annan omgång är pausad; fortsätt eller avsluta den först.':''}</p>`,
       `<details class="book-sources"><summary>Underlag och hänvisningar</summary>${sourceLink(node.source)}${(node.mergedSources||[]).filter(s=>s.url!==node.source.url).map(sourceLink).join('')}${node.npSource&&node.source.book!=='np'?sourceLink(node.npSource):''}<p class="muted small">${node.source.kind==='curriculum'?'Kursplanen anger innehåll för stadiet. Delmomentet och frågorna är egna pedagogiska förslag.':'Sidhänvisningen visar var momentet behandlas. Beroendena är ett pedagogiskt förslag. Frågorna här är nyskrivna kontrollfrågor.'}</p></details>`,
       result?`<p class="muted small">Senaste kontroll: ${result.right??result.score} av ${result.total||3} rätt · ${result.pending?'Pågående kontroll':new Date(result.date).toLocaleDateString('sv-SE')}${result.adaptive?' · Automatiskt pass':''}</p>`:'',
       result?.items?`<details class="answer-review"><summary>Se elevens svar i senaste kontrollen</summary>${result.items.map((item,i)=>`<div class="review-item"><strong>${i+1}. ${esc(item.prompt)}</strong>${window.MATREE.renderQuestionVisual(item)}<p>${item.correct?'✓':'↳'} Elevens svar: ${esc(item.skipped?'Jag vet inte':item.response?window.MATREE.answerText(item,item.response):'Svar saknas i äldre underlag')} ${esc(item.unit)}<br>Rätt svar: ${esc(window.MATREE.answerText(item))} ${esc(item.unit)}</p><p class="muted">${esc(item.explanation)}</p></div>`).join('')}</details>`:'',
@@ -333,6 +333,7 @@
   }
   function startQuiz(id) {
     id=window.MATREE.resolveSkillId(id);
+    if(byId(id)?.retired&&profile().quiz?.nodeId!==id){toast('Momentet ingår inte längre i bedömningen.');return false;}
     if (profile().quiz && window.MATREE.resolveSkillId(profile().quiz.nodeId) !== id) {
       toast('Du har en pausad omgång. Fortsätt den eller avsluta den först.');
       selected = profile().quiz.nodeId; renderQuiz(); return;

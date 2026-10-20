@@ -13,7 +13,7 @@ window.verifySkillGroups=()=>{
   const p=M.projectMap(M.detailNodes);
   check(p.entries.length<M.detailNodes.length*.65,'Default grouping materially reduces card count');
   check(document.querySelectorAll('.skill-node').length===p.entries.length&&document.querySelector('[data-group]'),'Default UI renders groups');
-  check(M.mixedControlIds.size===11&&M.detailNodes.length===253,'Mixed checks are kept outside the detailed denominator');
+  check(M.mixedControlIds.size===11&&M.detailNodes.length===249,'Mixed checks are kept outside the detailed denominator');
   check(M.detailNodes.some(n=>n.id==='uttryck')&&M.detailNodes.every(n=>n.deps.every(id=>!M.mixedControlIds.has(id))),'Substitution remains a separate skill and no detailed skill requires a broad control');
   check(!A.scopedPool({scope:null}).some(n=>M.mixedControlIds.has(n.id)),'Automatic sampling excludes duplicated broad controls');
   const saved={results:app.profile().results,quiz:app.profile().quiz,adaptive:app.profile().adaptive};

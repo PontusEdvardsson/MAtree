@@ -39,3 +39,39 @@ window.verifyCourseScope=()=>{
     return 'Course-specific year 7–9 selection, distinct foundations, exact year-nine number coverage, estimates and unchanged legacy questions/drafts passed';
   }finally{document.querySelectorAll('dialog[open]').forEach(d=>d.close());Object.assign(p,saved);app.save();app.render();}
 };
+window.verifyAssessedCoverage=()=>{
+  const M=MATREE,A=MATREE_ADAPTIVE,app=MATREE_APP,check=(c,m)=>{if(!c)throw Error(m);};
+  check(M.detailNodes.length===249&&M.skillGroups.length===56,'Retired digital group is absent from assessed totals');
+  check(M.detailNodes.every(n=>!M.retiredSkillIds.has(n.id)&&n.deps.every(id=>!M.retiredSkillIds.has(id))),'No assessed skill requires a retired digital skill');
+  let selections=0;
+  for(const scope of ['1-3','4-6','7','8','9'])for(const category of M.categories.map(c=>c.id)){
+    const nodes=A.scopedPool({scope,category});
+    check(!A.scopedPool({scope,category,mode:'all'}).some(n=>n.retired),'New full selection excludes retired content');
+    if(!nodes.length)continue;
+    const s=A.create({scope,category,limit:90}),ids=new Set(nodes.map(n=>n.id));
+    while(s.pending){check(ids.has(s.pending.nodeId)&&!M.retiredSkillIds.has(s.pending.nodeId),'Natural route stays within assessed selection');A.answer(s,'',true);}
+    const expected=Math.min(90,nodes.length*2);
+    check(s.items.length===expected,'Failures do not prematurely block other selected skills: '+scope+'/'+category);
+    check(s.endReason===(expected===nodes.length*2?'all-tested':'limit'),'End reason distinguishes exhausted selection from question cap');
+    if(s.endReason==='all-tested')check(A.summary(s).length===nodes.length&&A.summary(s).every(r=>r.state==='followup'),'Exhausted failed pass has direct evidence for every selected skill');
+    const copy=A.validate({active:null,sessions:[s],confirmations:[]}).sessions[0];
+    check(copy.coveragePolicy==='exhaustive'&&copy.catalogue==='assessed','New policies survive serialization');selections++;
+  }
+  const legacy=A.create({scope:'8',category:'problem',limit:30});delete legacy.catalogue;delete legacy.coveragePolicy;
+  legacy.pending={...M.generateReviewed('kalkylblad',0),nodeId:'kalkylblad',variant:0,reason:'Äldre sparad fråga.'};
+  legacy.draft=M.makeDraft(legacy.pending,legacy.pending.options?'1':'1,');
+  const savedQuestion=JSON.stringify(legacy.pending),savedDraft=JSON.stringify(legacy.draft);
+  const restored=A.validate({active:legacy,sessions:[],confirmations:[]}).active;
+  check(JSON.stringify(restored.pending)===savedQuestion&&JSON.stringify(restored.draft)===savedDraft,'Retired saved question and draft survive validation exactly');
+  check(A.scopedPool(restored).some(n=>n.id==='kalkylblad')&&!restored.coveragePolicy,'Older paused selection and routing stay intact');
+  const p=app.profile(),saved={quiz:p.quiz,results:p.results,adaptive:p.adaptive};
+  try{
+    p.quiz=null;check(app.startQuiz('kalkylblad')===false&&!p.quiz,'A new manual retired control cannot start');
+    p.quiz={nodeId:'kalkylblad',questions:[0,1,2].map(v=>M.generateReviewed('kalkylblad',v)),index:0,answers:[],responses:[]};
+    const prompt=p.quiz.questions[0].prompt;
+    app.openSkill('kalkylblad');
+    check(document.querySelector('#manual-question-title').textContent===M.questionStem(p.quiz.questions[0]),'Explicitly paused retired manual question can still resume');
+    document.querySelector('[data-pause-manual]').click();check(p.quiz.questions[0].prompt===prompt,'Pausing again preserves legacy manual question');
+  }finally{document.querySelectorAll('dialog[open]').forEach(d=>d.close());Object.assign(p,saved);app.save();app.render();}
+  return selections+' assessed selections continue after failures; retired content excluded; legacy questions, drafts and policies preserved';
+};

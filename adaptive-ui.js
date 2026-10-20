@@ -22,7 +22,7 @@
     for(const row of rows.filter(r=>['followup','partial'].includes(r.state))){
       const deps=row.state==='followup'?row.node.deps.filter(id=>!shown.has(id)):[];
       for(const id of deps.length?deps:[row.node.id]){
-        const target=byId(id);if(!target||shown.has(id))continue;
+        const target=byId(id);if(!target||target.retired||shown.has(id))continue;
         if(!candidates.has(id))candidates.set(id,{node:target,rows:[],prerequisite:id!==row.node.id});
         candidates.get(id).rows.push(row);
       }
@@ -71,7 +71,7 @@
     $('#adaptive-selection-info').textContent=selection.length?A.scopeLabel({scope,category})+' · '+selection.length+' delmoment'+(all?' inklusive fördjupning':' i basen'):!all&&A.estimateAll(scope,category).skills?'Det finns inga basmoment i detta urval. Välj Testa alla för att ta med fördjupning.':'Inga delmoment finns i detta urval. Välj ett annat område eller en annan årskurs.';
     if(all&&!retest.disabled){retest.dataset.previous=String(retest.checked);retest.checked=true;retest.disabled=true;}
     if(!all&&retest.disabled){retest.disabled=false;retest.checked=retest.dataset.previous==='true';}
-    box.hidden=!all;$('#adaptive-session-help').hidden=all;$('#adaptive-session-help').textContent='En uppgift i taget. Passet kan bli kortare än '+limit.value+' uppgifter.';
+    box.hidden=!all;$('#adaptive-session-help').hidden=all;$('#adaptive-session-help').textContent='En uppgift i taget. Alla delmoment i urvalet undersöks, men högst '+limit.value+' uppgifter.';
     if(all){
       const e=A.estimateAll(scope,category);
       box.innerHTML='<strong>Testa alla · '+e.skills+' delmoment · '+esc(A.scopeLabel({scope,category}))+'</strong>'+
@@ -98,6 +98,7 @@
         <button class="primary-button">Starta kontrollen →</button>
         <details class="setup-options"><summary>Fler inställningar</summary><label class="adaptive-retest"><input id="adaptive-retest" type="checkbox"> Pröva även tidigare visade färdigheter</label></details>
       </form>`)+
+      (active&&active.coveragePolicy!=='exhaustive'?'<p class="muted small">Det här äldre pausade passet behåller sina ursprungliga frågor och urvalsregler. Avsluta det och starta ett nytt pass för att använda det gallrade innehållet och pröva hela urvalet.</p>':'')+
       (last?`<div class="dialog-section"><button class="secondary-button" data-adaptive-report="${esc(last.id)}">Se senaste sammanställningen · ${A.scopeLabel(last)} · ${date(last.ended)}</button></div>`:'')+
       '<details class="setup-help"><summary>Om kontrollen</summary><p>Du får en uppgift i taget. Dina svar hjälper till att välja nästa uppgift. Svar och facit finns i sammanställningen efteråt.</p><p>Pausa behåller frågan och ditt påbörjade svar. Avsluta sparar de svar som har skickats in och stänger kontrollen.</p><p>Åk 7–9 prövar den valda årskursens kursinnehåll. Välj åk 1–3 eller 4–6 för tidigare grunder. Kartan kan visa förkunskaper som inte ingår i passet. Oprövade förkunskaper godkänns inte automatiskt.</p><p class="muted small">Frågorna kommer från den lokala uppgiftsbanken. Urvalet följer regler utifrån svar och beroenden; det är ännu ingen validerad adaptiv diagnos.</p></details>';
     if(!active){$('#adaptive-start').value=app.yearScope()||last?.scope||'1-3';$('#adaptive-category').value=app.categoryScope()||last?.category||'';if(last?.limit)$('#adaptive-limit').value=last.mode==='all'?'all':String(last.limit);updateEstimate();}

@@ -1,0 +1,3 @@
+[
+  {"script":"tests/assessed-ui-tests.js","eval":"await verifyAssessedUI()","json_output":"assessed-ui.json"}
+]

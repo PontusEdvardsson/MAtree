@@ -12,10 +12,10 @@ window.verifyDependencyReasons=()=>{
       check(typeof reason==='string'&&reason.length>30,'Every final dependency has a reason: '+from+' -> '+target.id);
       check(reason!==byId.get(from).description&&reason!==target.description,'No description fallback: '+from+' -> '+target.id);
       check(typeof target.dependencyReview[from]==='boolean','Explicit review status: '+from+' -> '+target.id);
-      if(!M.mixedControlIds.has(target.id))edges++;
+      if(!target.retired&&!M.mixedControlIds.has(target.id))edges++;
     }
   }
-  check(edges===489&&M.detailNodes.length===253,'Reason annotations preserve all 489 edges and 253 skills');
+  check(edges===481&&M.detailNodes.length===249,'Reason annotations preserve all 481 assessed edges and 249 skills');
   const inspectRows=()=>{
     for(const el of document.querySelectorAll('#skill-content [data-connection-from]')){
       const {connectionFrom:from,connectionTo:to}=el.dataset,target=byId.get(to);
@@ -27,7 +27,7 @@ window.verifyDependencyReasons=()=>{
   try{
     for(const target of M.visibleNodes){
       app.openSkill(target.id);
-      const count=target.deps.length+M.visibleNodes.filter(n=>n.deps.includes(target.id)).length;
+      const count=target.deps.length+M.visibleNodes.filter(n=>!n.retired&&n.deps.includes(target.id)).length;
       check(document.querySelectorAll('#skill-content [data-connection-from]').length===count,'All incoming and outgoing reasons are accessible: '+target.id);
       inspectRows();
     }

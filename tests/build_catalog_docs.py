@@ -13,7 +13,7 @@ categories = [
     ('tal', 'Tal'), ('brak', 'Bråk'), ('algebra', 'Algebra'),
     ('geometri', 'Geometri'), ('samband', 'Samband & funktioner'),
     ('procent', 'Procent'), ('statistik', 'Statistik'), ('sannolikhet', 'Sannolikhet'),
-    ('problem', 'Problemlösning & verktyg'),
+    ('problem', 'Problemlösning'),
 ]
 
 def year(value):

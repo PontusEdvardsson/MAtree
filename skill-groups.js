@@ -403,15 +403,20 @@
     ""
   ]
 ];
-  M.skillGroups=definitions.map(([id,title,category,members,controls])=>({id,title,category,members:members.split(' '),controls:controls?controls.split(' '):[]}));
+  // Keep the catalogue entries for exact historical questions and old drafts.
+  // They no longer participate in the assessed map or new controls.
+  M.retiredSkillIds=new Set(['kod-variabel','kod-loop','kalkylblad','simulering']);
+  for(const node of M.visibleNodes)node.retired=M.retiredSkillIds.has(node.id);
+  M.skillGroups=definitions.filter(([id])=>id!=='digital-tools').map(([id,title,category,members,controls])=>({id,title,category,members:members.split(' '),controls:controls?controls.split(' '):[]}));
   M.groupForSkill=new Map();
   for(const group of M.skillGroups)for(const id of [...group.members,...group.controls]){
     if(!byId.has(id)||M.groupForSkill.has(id))throw Error('Ogiltig eller dubblerad gruppmedlem: '+id);
     M.groupForSkill.set(id,group);
   }
   M.mixedControlIds=new Set(M.skillGroups.flatMap(g=>g.controls));
-  M.detailNodes=M.visibleNodes.filter(n=>!M.mixedControlIds.has(n.id));
-  M.legacyAdaptiveIds=new Set(['f-median']);
+  M.archivedDetailNodes=M.visibleNodes.filter(n=>!M.mixedControlIds.has(n.id));
+  M.detailNodes=M.archivedDetailNodes.filter(n=>!n.retired);
+  M.legacyAdaptiveIds=new Set(['f-median',...M.retiredSkillIds]);
   M.projectMap=(visible,{details=false,expanded=new Set()}={})=>{
     const visibleIds=new Set(visible.map(n=>n.id)),rawEdges=visible.flatMap(n=>n.deps.filter(id=>visibleIds.has(id)).map(id=>({from:id,to:n.id})));
     const unfolded=new Set(expanded);

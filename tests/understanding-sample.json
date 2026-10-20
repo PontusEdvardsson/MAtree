@@ -1,0 +1,753 @@
+{
+  "version": "eff6cb4",
+  "method": "Frozen visible-input policies; prerequisite guesses are not evidence of actual human misunderstanding. Technical sign-whitespace parsing corrected before this recorded run. No answer keys supplied to policies.",
+  "cases": [
+    {
+      "category": "tal",
+      "title": "Tal",
+      "id": "potens-multiplikation",
+      "prerequisite": "potens-begrepp",
+      "rule": "Addera exponenter vid samma bas; beräkna med potensknappen.",
+      "prerequisiteScore": 0,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Beräkna 5^4.",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        },
+        {
+          "prompt": "Produkten 6 × 6 skrivs som 6^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        },
+        {
+          "prompt": "Vilken produkt skriver ut 4^2 som lika faktorer med basen 4?",
+          "options": [
+            "2 × 2 × 2 × 2",
+            "4 + 2",
+            "4 × 2",
+            "4 × 4"
+          ],
+          "table": [],
+          "response": "2 × 2 × 2 × 2",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "2 × 2 × 2 × 2"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Skriv 5^5 × 5^1 som 5^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "response": "6",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "6"
+        },
+        {
+          "prompt": "Beräkna 2^4 × 2^4.",
+          "options": [],
+          "table": [],
+          "response": "256",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "256"
+        },
+        {
+          "prompt": "Vilken regel gäller för x^3 × x^1, där x > 0?",
+          "options": [
+            "x^(4)",
+            "x^(3)",
+            "2x^(4)",
+            "x^(0)"
+          ],
+          "table": [],
+          "response": "x^(4)",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "x^(4)"
+        }
+      ]
+    },
+    {
+      "category": "brak",
+      "title": "Bråk",
+      "id": "brak-division",
+      "prerequisite": "brak-likvardiga",
+      "rule": "Invertera andra bråket och multiplicera; lös luckan med samma bråkrutin.",
+      "prerequisiteScore": 0,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "2/3 = □/6. Vilken täljare saknas?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        },
+        {
+          "prompt": "3/5 = 9/□. Vilken nämnare saknas?",
+          "options": [
+            "16",
+            "1",
+            "15",
+            "30"
+          ],
+          "table": [],
+          "response": "16",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "16"
+        },
+        {
+          "prompt": "Vilket bråk är lika stort som 4/6?",
+          "options": [
+            "10/6",
+            "4/18",
+            "12/18",
+            "12/6"
+          ],
+          "table": [],
+          "response": "10/6",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "10/6"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Beräkna 7/4 ÷ 3/9. Svara med ett bråk.",
+          "options": [],
+          "table": [],
+          "response": "63/12",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "63/12"
+        },
+        {
+          "prompt": "5/9 ÷ □ = 45/27. Vilket tal saknas? Svara med ett bråk.",
+          "options": [],
+          "table": [],
+          "response": "135/405",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "135/405"
+        },
+        {
+          "prompt": "Vilken beräkning är likvärdig med 6/2 ÷ 5/5?",
+          "options": [
+            "50/10",
+            "6 × 5 / (2 × 5)",
+            "40/10",
+            "(6 × 5 / (2 × 5)) × 2"
+          ],
+          "table": [],
+          "response": "30/10",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "6 × 5 / (2 × 5)"
+        }
+      ]
+    },
+    {
+      "category": "algebra",
+      "title": "Algebra",
+      "id": "kvadreringsregel",
+      "prerequisite": "tva-parenteser",
+      "rule": "Memorera a² och 2a för uttryck där x har koefficienten ett.",
+      "prerequisiteScore": 0,
+      "advancedScore": 2,
+      "prerequisiteRows": [
+        {
+          "prompt": "Utveckla (x + 3)(x + 7). Vilken koefficient får x?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        },
+        {
+          "prompt": "Utveckla (x − 4)(x + 1). Vilket konstanttal får uttrycket?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        },
+        {
+          "prompt": "Vilken utveckling av (x + 4)(x + 6) är korrekt?",
+          "options": [
+            "x² + 11x + 24",
+            "x² + 24x + 10",
+            "x² + 24",
+            "x² + 10x + 24"
+          ],
+          "table": [],
+          "response": "x² + 11x + 24",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "x² + 11x + 24"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Utveckla (x + 8)². Vilket konstanttal återstår?",
+          "options": [],
+          "table": [],
+          "response": "64",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "64"
+        },
+        {
+          "prompt": "Utveckla (x − 2)². Vilken koefficient får x?",
+          "options": [],
+          "table": [],
+          "response": "4",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "4"
+        },
+        {
+          "prompt": "Vilket uttryck är lika med (x + 9)²?",
+          "options": [
+            "x² + 18x + 81",
+            "x² + 81",
+            "x² + 9x + 81",
+            "x² + 19x + 81"
+          ],
+          "table": [],
+          "response": "x² + 18x + 81",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "x² + 18x + 81"
+        }
+      ]
+    },
+    {
+      "category": "geometri",
+      "title": "Geometri",
+      "id": "klot-yta",
+      "prerequisite": "cirkel-area",
+      "rule": "Memorera 4·3,14·r²; halvera diameter respektive krökt halvklotsyta.",
+      "prerequisiteScore": 0,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "En cirkel har radien 2 cm. Beräkna arean. Använd π = 3,14.",
+          "options": [
+            "10,28",
+            "6,28",
+            "5,14",
+            "12,56"
+          ],
+          "table": [],
+          "response": "10,28",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "10,28 cm²"
+        },
+        {
+          "prompt": "En cirkel har diametern 8 cm. Beräkna arean. Använd π = 3,14.",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0 cm²"
+        },
+        {
+          "prompt": "En cirkel har arean 153,86 cm². Beräkna radien. Använd π = 3,14.",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0 cm"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Ett klot har radien 3 cm. Beräkna ytans area. Använd π = 3,14.",
+          "options": [],
+          "table": [],
+          "response": "113.03999999999999",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "113.03999999999999 cm²"
+        },
+        {
+          "prompt": "Ett klot har diametern 16 cm. Beräkna ytans area. Använd π = 3,14.",
+          "options": [
+            "803,84",
+            "50,24",
+            "100,48",
+            "2411,52"
+          ],
+          "table": [],
+          "response": "803.84",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "803,84 cm²"
+        },
+        {
+          "prompt": "Ett halvklot har radien 11 cm. Beräkna den krökta ytans area, utan den plana cirkelytan. Använd π = 3,14.",
+          "options": [],
+          "table": [],
+          "response": "759.88",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "759.88 cm²"
+        }
+      ]
+    },
+    {
+      "category": "samband",
+      "title": "Samband & funktioner",
+      "id": "funktionsvarde",
+      "prerequisite": "funktion-begrepp",
+      "rule": "Läs tre tal i standardformen och beräkna k·x+m.",
+      "prerequisiteScore": 0,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Vilket villkor krävs för en funktion från x till y?",
+          "options": [
+            "Varje y måste ha exakt ett x.",
+            "Alla y måste vara positiva.",
+            "Varje tillåtet x har exakt ett y.",
+            "Ett tillåtet x måste ha minst två olika y."
+          ],
+          "table": [],
+          "response": "Varje y måste ha exakt ett x.",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "Varje y måste ha exakt ett x."
+        },
+        {
+          "prompt": "För y = x² ger x = 3 och x = −3 samma y. Är sambandet ändå en funktion?",
+          "options": [
+            "Nej",
+            "Ja"
+          ],
+          "table": [],
+          "response": "Nej",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "Nej"
+        },
+        {
+          "prompt": "Vilken tabell beskriver en funktion från x till y?",
+          "options": [
+            "(1, 4), (1, 5), (3, 7)",
+            "(1, 4), (2, 4), (3, 7)",
+            "(2, 1), (2, 3), (2, 5)",
+            "(1, 4), (2, 5), (1, 6)"
+          ],
+          "table": [],
+          "response": "(1, 4), (1, 5), (3, 7)",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "(1, 4), (1, 5), (3, 7)"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Beräkna y = −2x − 3 när x = -3.",
+          "options": [],
+          "table": [],
+          "response": "3",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "3"
+        },
+        {
+          "prompt": "Beräkna y = −3x − 4 när x = 0.",
+          "options": [
+            "−4",
+            "−7",
+            "−12",
+            "1"
+          ],
+          "table": [],
+          "response": "-4",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "−4"
+        },
+        {
+          "prompt": "Beräkna y = 0,5x + 6 när x = -4.",
+          "options": [],
+          "table": [],
+          "response": "4",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "4"
+        }
+      ]
+    },
+    {
+      "category": "procent",
+      "title": "Procent",
+      "id": "upprepad-forandring",
+      "prerequisite": "forandringsfaktor",
+      "rule": "Applicera 1±p/100 två gånger utifrån orden höjs och sänks.",
+      "prerequisiteScore": 1,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Vilken förändringsfaktor motsvarar en ökning med 70 %?",
+          "options": [
+            "1,7",
+            "170",
+            "98,3",
+            "0,017"
+          ],
+          "table": [],
+          "response": "1,7",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "1,7"
+        },
+        {
+          "prompt": "Vilken förändringsfaktor motsvarar en minskning med 40 %?",
+          "options": [
+            "99,4",
+            "0,006",
+            "0,6",
+            "60"
+          ],
+          "table": [],
+          "response": "99,4",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "99,4"
+        },
+        {
+          "prompt": "Förändringsfaktorn är 1,05. Hur många procent ökar värdet?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0 %"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Värdet 1500 höjs med 15 % och sänks sedan med 15 %. Vad blir slutvärdet?",
+          "options": [
+            "1466,25",
+            "−9900",
+            "0,01",
+            "−99"
+          ],
+          "table": [],
+          "response": "1466.2499999999998",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "1466,25"
+        },
+        {
+          "prompt": "Värdet 1200 sänks med 15 % och sänks sedan med 5 %. Vad blir slutvärdet?",
+          "options": [],
+          "table": [],
+          "response": "969",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "969"
+        },
+        {
+          "prompt": "Värdet 700 höjs med 25 % och höjs sedan med 20 %. Vad blir slutvärdet?",
+          "options": [],
+          "table": [],
+          "response": "1050",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "1050"
+        }
+      ]
+    },
+    {
+      "category": "statistik",
+      "title": "Statistik",
+      "id": "viktat-medel",
+      "prerequisite": "medel",
+      "rule": "Multiplicera tabellkolumner och summera; dividera med antalet vid medelvärde.",
+      "prerequisiteScore": 1,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Vad är medelvärdet av 1, 3, 7? Alternativen är avrundade till tre decimaler.",
+          "options": [
+            "11",
+            "6",
+            "3",
+            "3,667"
+          ],
+          "table": [],
+          "response": "11",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "11"
+        },
+        {
+          "prompt": "4 elever har tillsammans 12 pennor. Hur många har de i genomsnitt?",
+          "options": [
+            "3",
+            "4",
+            "300",
+            "16"
+          ],
+          "table": [],
+          "response": "3",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "3"
+        },
+        {
+          "prompt": "Vad är medelvärdet av 9, 14, 10, 7?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Vad är medelvärdet för observationerna i frekvenstabellen?",
+          "options": [],
+          "table": [
+            [
+              "13",
+              "1"
+            ],
+            [
+              "6",
+              "6"
+            ],
+            [
+              "1",
+              "5"
+            ]
+          ],
+          "response": "4.5",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "4.5"
+        },
+        {
+          "prompt": "Hur stor är summan av alla observerade värden i frekvenstabellen?",
+          "options": [
+            "2,333",
+            "33",
+            "7",
+            "2"
+          ],
+          "table": [
+            [
+              "2",
+              "4"
+            ],
+            [
+              "7",
+              "2"
+            ],
+            [
+              "11",
+              "1"
+            ]
+          ],
+          "response": "33",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "33"
+        },
+        {
+          "prompt": "Grupp A har 4 elever med medelvärdet 2. Grupp B har 7 elever med medelvärdet 12. Vad är gruppernas gemensamma medelvärde?",
+          "options": [],
+          "table": [],
+          "response": "8.363636363636363",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "8.363636363636363"
+        }
+      ]
+    },
+    {
+      "category": "sannolikhet",
+      "title": "Sannolikhet",
+      "id": "trad-beroende",
+      "prerequisite": "trad-oberoende",
+      "rule": "Multiplicera två dragandelar; minska totalen och vid samma färg även täljaren.",
+      "prerequisiteScore": 1,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Påsen har 5 vita och 4 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+          "options": [
+            "25/81",
+            "50/81",
+            "56/81",
+            "25/162"
+          ],
+          "table": [],
+          "response": "25/81",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "25/81"
+        },
+        {
+          "prompt": "Påsen har 6 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+          "options": [
+            "4/9",
+            "1/9",
+            "7/9",
+            "2/9"
+          ],
+          "table": [],
+          "response": "4/9",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "4/9"
+        },
+        {
+          "prompt": "Påsen har 8 vita och 4 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Påsen har 2 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+          "options": [
+            "9/10",
+            "1/10",
+            "1/20",
+            "1/5"
+          ],
+          "table": [],
+          "response": "2/20",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "1/10"
+        },
+        {
+          "prompt": "Påsen har 7 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+          "options": [],
+          "table": [],
+          "response": "21/90",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "21/90"
+        },
+        {
+          "prompt": "Påsen har 6 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?",
+          "options": [],
+          "table": [],
+          "response": "6/72",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "6/72"
+        }
+      ]
+    },
+    {
+      "category": "problem",
+      "title": "Problemlösning & verktyg",
+      "id": "moms",
+      "prerequisite": "procent-baklanges",
+      "rule": "Pris utan moms gånger 1+p/100; pris med moms delat med samma faktor.",
+      "prerequisiteScore": 0,
+      "advancedScore": 3,
+      "prerequisiteRows": [
+        {
+          "prompt": "Efter en höjning med 30 % är priset 1 170 kr. Vad var priset före förändringen?",
+          "options": [
+            "3800",
+            "39",
+            "381",
+            "900"
+          ],
+          "table": [],
+          "response": "3800",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "3800 kr"
+        },
+        {
+          "prompt": "Efter en sänkning med 25 % är priset 1 050 kr. Vad var priset före förändringen?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0 kr"
+        },
+        {
+          "prompt": "Efter en höjning med 40 % är priset 980 kr. Vad var priset före förändringen?",
+          "options": [],
+          "table": [],
+          "response": "0",
+          "correct": false,
+          "supported": true,
+          "displayedSubmittedAnswer": "0 kr"
+        }
+      ],
+      "advancedRows": [
+        {
+          "prompt": "Priset utan moms är 1900 kr. Momssatsen är 12 %. Vad är priset med moms?",
+          "options": [
+            "2129",
+            "2128",
+            "2127",
+            "2130"
+          ],
+          "table": [],
+          "response": "2128",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "2128 kr"
+        },
+        {
+          "prompt": "Priset med moms är 2120 kr. Momssatsen är 6 %. Vad är priset utan moms?",
+          "options": [],
+          "table": [],
+          "response": "2000",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "2000 kr"
+        },
+        {
+          "prompt": "Priset utan moms är 500 kr och momssatsen är 6 %. Hur många kronor är momsen?",
+          "options": [],
+          "table": [],
+          "response": "30",
+          "correct": true,
+          "supported": true,
+          "displayedSubmittedAnswer": "30 kr"
+        }
+      ]
+    }
+  ]
+}

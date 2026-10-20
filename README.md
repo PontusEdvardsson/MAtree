@@ -153,6 +153,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 [ANVANDARTEST_BREDDNING.md](ANVANDARTEST_BREDDNING.md) följer tre nya omgångar med fokus på andra områden, elevprofiler, verklig export/import, rotation, rapportfilter och urval.
 
+[FORSTAELSEGRANSKNING.md](FORSTAELSEGRANSKNING.md) prövar smala räknerutiner mot avancerade manuella kontroller i samtliga nio områden, med separat underkänd förkunskap. Det är en simulering av underlagets räckvidd, inte en diagnos av faktiska elevers förståelse. [Fortsättningsprompt](FORTSATT_FORSTAELSETEST_PROMPT.md) avgränsar nästa etapp till automatiskt elevläge och överföring.
+
 Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. På mobil fälls filterpanelen in i fullskärm; **Visa filter** öppnar samma filter och sökning med bevarade val. Zoom finns under **Fler val**. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och Fler val samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
 
 [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.

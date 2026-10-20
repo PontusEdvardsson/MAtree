@@ -1,0 +1,7 @@
+[
+  {
+    "script": "tests/understanding-audit.js",
+    "eval": "runUnderstandingAudit()",
+    "json_output": "understanding-audit.json"
+  }
+]

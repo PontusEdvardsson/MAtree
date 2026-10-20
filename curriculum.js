@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const categories = [
-    { id: 'tal', name: 'Tal & räkning', color: '#738f5e', bg: '#edf3e5', symbol: '÷' },
+    { id: 'tal', name: 'Tal', color: '#738f5e', bg: '#edf3e5', symbol: '÷' },
     { id: 'algebra', name: 'Algebra', color: '#9382b3', bg: '#f0ecf7', symbol: 'x' },
     { id: 'geometri', name: 'Geometri', color: '#bb9761', bg: '#faf1e3', symbol: '△' },
     { id: 'statistik', name: 'Statistik & sannolikhet', color: '#68959d', bg: '#e9f2f3', symbol: '▥' }

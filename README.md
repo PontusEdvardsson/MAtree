@@ -55,9 +55,9 @@ Frågor väljs så att nyligen använda frågor undviks när det finns alternati
 
 ## Automatisk kartläggning
 
-Välj **Årskursurval** och **Kunskapsområde** för att till exempel kartlägga **Tal & räkning · åk 7**. **Alla områden** behåller en bred kartläggning. Både vanliga pass och **Testa alla** håller sig till kombinationen av årskurs och område. Förkunskaper utanför urvalet undersöks separat och godkänns inte automatiskt. Området följer med vid paus, omladdning, export/import och i rapportens rubrik.
+Välj **Årskursurval** och **Kunskapsområde** för att till exempel kartlägga **Tal · åk 7**. **Alla områden** behåller en bred kartläggning. Både vanliga pass och **Testa alla** håller sig till kombinationen av årskurs och område. Förkunskaper utanför urvalet undersöks separat och godkänns inte automatiskt. Området följer med vid paus, omladdning, export/import och i rapportens rubrik.
 
-Antal delmoment, frågor och tid för Testa alla anpassas till urvalet. Tal & räkning i åk 7 omfattar 18 delmoment och 36–72 frågor, ungefär 36–72 minuters arbete vid en minut per fråga. Ett urval utan delmoment kan inte startas; om endast fördjupning finns föreslås Testa alla.
+Antal delmoment, frågor och tid för Testa alla anpassas till urvalet. Tal i åk 7 omfattar 18 delmoment och 36–72 frågor, ungefär 36–72 minuters arbete vid en minut per fråga. Ett urval utan delmoment kan inte startas; om endast fördjupning finns föreslås Testa alla.
 
 Välj en elevprofil och klicka **Starta elevläge**. Välj **åk 1–3, 4–6, 7, 8 eller 9** och högst 30, 60 eller 90 uppgifter, eller **Testa alla**. Passet håller sig till det valda årskursurvalet. Tidigare förkunskaper undersöks i ett separat pass och godkänns inte automatiskt. Eleven väljer ett alternativ och klickar Svara, eller skriver ett eget svar och trycker Enter. Eleven kan också välja ”Jag vet inte”. Facit och rätt/fel visas först i lärarens sammanställning. Årskurs och färdighetsnivå visas inte under elevens arbete.
 
@@ -77,7 +77,7 @@ Urvalet är en första regelstyrd version. Det har ingen kalibrerad svårighetss
 
 Nya pass för åk 7–9 utgår från delmomentens kursplacering och primära bokhänvisning (`courseYears`). Kartans extra återkommande förkunskaper (`yearViews`) läggs inte automatiskt till i passet. Detta gäller både vanliga pass och **Testa alla**, i alla områden. Färdigheter som faktiskt ingår i flera kurser behåller ett gemensamt resultat.
 
-Exempel: **Tal & räkning · åk 9** innehåller 15 basmoment om stora tal, prefix, potenser, grundpotensform, kvadratrötter och talmängder. Testa alla lägger till fördjupningen Räkna med kvadratrötter: totalt 16 delmoment, 32–64 frågor och ungefär 32–64 minuter vid en minut per fråga. Ett nytt pass startar på årskursens innehåll även när eleven saknar tidigare resultat. Grunder väljs separat; kunskap där godkänns aldrig automatiskt.
+Exempel: **Tal · åk 9** innehåller 15 basmoment om stora tal, prefix, potenser, grundpotensform, kvadratrötter och talmängder. Testa alla lägger till fördjupningen Räkna med kvadratrötter: totalt 16 delmoment, 32–64 frågor och ungefär 32–64 minuter vid en minut per fråga. Ett nytt pass startar på årskursens innehåll även när eleven saknar tidigare resultat. Grunder väljs separat; kunskap där godkänns aldrig automatiskt.
 
 Urvalsregeln sparas som `selection: 'course'` i nya pass och bevaras genom paus, omladdning och export/import. Äldre pass utan denna markering behåller sitt tidigare urval, sina frågor och utkast. Äldre högstadiepass märks **äldre urval med grunder**. Avsluta ett sådant pass och starta ett nytt för det nya årskursurvalet. Rapporternas antal oprövade moment beräknas från det urval som hör till respektive pass.
 

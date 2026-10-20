@@ -36,17 +36,17 @@ Automatiskt elevläge väljer delmoment ur basen. Direkt visad kunskap, begräns
 
 | Område | Delmoment | Grupper | Grunder efter första inlärning | Bas | Fördjupning |
 |---|---:|---:|---:|---:|---:|
-| Tal & räkning | 53 | 13 | 28 | 51 | 2 |
-| Bråk & andelar | 21 | 4 | 12 | 19 | 2 |
+| Tal | 53 | 13 | 28 | 51 | 2 |
+| Bråk | 21 | 4 | 12 | 19 | 2 |
 | Algebra | 25 | 4 | 6 | 19 | 6 |
-| Geometri & mätning | 56 | 13 | 19 | 51 | 5 |
+| Geometri | 56 | 13 | 19 | 51 | 5 |
 | Samband & funktioner | 28 | 8 | 6 | 25 | 3 |
 | Procent | 19 | 4 | 2 | 17 | 2 |
 | Statistik | 18 | 4 | 7 | 17 | 1 |
 | Sannolikhet | 16 | 3 | 4 | 13 | 3 |
 | Problemlösning & verktyg | 17 | 4 | 2 | 13 | 4 |
 
-## Tal & räkning
+## Tal
 
 ### Taluppfattning
 
@@ -169,7 +169,7 @@ Blandade kontroller i gruppen: Decimaltal (decimal).
 | Andra talbaser (andra-talbaser) | Åk 7 | Åk 7 | Fördjupning | Positionssystemet (positionssystem); Bas och exponent (potens-begrepp) | MD 7 · Tal · s. 43 (PDF 38) |
 
 
-## Bråk & andelar
+## Bråk
 
 ### Bråk som delar och antal
 
@@ -269,7 +269,7 @@ Blandade kontroller i gruppen: Ekvationer (ekvation).
 | Mönstrets generella regel (monster-regel) | Åk 7 | Åk 7 | Bas | Talmönster (monster); Från text till uttryck (skriva-uttryck) | MD 7 · Algebra · s. 120 (PDF 15); MD 9 · Genrepet · inför NP · s. 217 (PDF 40) |
 
 
-## Geometri & mätning
+## Geometri
 
 ### Former och deras egenskaper
 

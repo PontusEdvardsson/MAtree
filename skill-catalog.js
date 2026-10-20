@@ -26,10 +26,10 @@
     '9problem': [9, 'MD9 kap 7 Problemlösning och repetition_ocr.pdf', 286, 'Problemlösning']
   };
   const categories = [
-    ['tal','Tal & räkning','#738f5e','#edf3e5','÷'],
-    ['brak','Bråk & andelar','#638d83','#e7f2ed','½'],
+    ['tal','Tal','#738f5e','#edf3e5','÷'],
+    ['brak','Bråk','#638d83','#e7f2ed','½'],
     ['algebra','Algebra','#9382b3','#f0ecf7','x'],
-    ['geometri','Geometri & mätning','#bb9761','#faf1e3','△'],
+    ['geometri','Geometri','#bb9761','#faf1e3','△'],
     ['samband','Samband & funktioner','#6b87b0','#edf1f9','ƒ'],
     ['procent','Procent','#b78c65','#f9eee3','%'],
     ['statistik','Statistik','#68959d','#e9f2f3','▥'],

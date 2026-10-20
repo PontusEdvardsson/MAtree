@@ -10,8 +10,8 @@ details = [by_id[i] for i in audit['detailSkills']]
 groups = audit['groups']
 controls = [by_id[i] for g in groups for i in g['controls']]
 categories = [
-    ('tal', 'Tal & räkning'), ('brak', 'Bråk & andelar'), ('algebra', 'Algebra'),
-    ('geometri', 'Geometri & mätning'), ('samband', 'Samband & funktioner'),
+    ('tal', 'Tal'), ('brak', 'Bråk'), ('algebra', 'Algebra'),
+    ('geometri', 'Geometri'), ('samband', 'Samband & funktioner'),
     ('procent', 'Procent'), ('statistik', 'Statistik'), ('sannolikhet', 'Sannolikhet'),
     ('problem', 'Problemlösning & verktyg'),
 ]

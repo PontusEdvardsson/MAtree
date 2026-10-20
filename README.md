@@ -149,7 +149,9 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 [ANVANDARTEST.md](ANVANDARTEST.md) sammanfattar två separata oinsatta granskaragenters lärar- och elevflöden, ett frågestickprov och prioriterade förbättringsförslag. Det är simulerad granskning och ersätter inte test med faktiska användare.
 
-Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. Filter, sökning och zoom finns kvar. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och **Fler val** samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
+[ANVANDARTEST_TRE_OMGANGAR.md](ANVANDARTEST_TRE_OMGANGAR.md) följer tre ytterligare omgångar med nya lärar- och elevgranskare, ändringar mellan versionerna och verifiering.
+
+Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. På mobil fälls filterpanelen in i fullskärm; **Visa filter** öppnar samma filter och sökning med bevarade val. Zoom finns under **Fler val**. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och Fler val samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
 
 [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.
 
@@ -188,3 +190,5 @@ En manuell kontroll avslutas även när länken tillbaka till en rapport använd
 Manuella historikposter kan nu ha det valfria fältet `total` (1–3) och `endReason: 'teacher'` vid tidigt avslut. Äldre poster utan `total` behåller nämnaren 3. Importvalidering och historikvisning stöder båda formerna; tidigare uttryckligen pausade eller äldre sparade kontroller kan fortfarande återupptas.
 
 [tests/closing-controls-tests.js](tests/closing-controls-tests.js) kontrollerar avslut, uttrycklig paus, exakta svar, begränsat underlag, historik och import. `python tests/ui_preview.py tests/closing-scenarios.json` använder även verkliga klick och Escape samt mobilvyn med separata Pausa- och Avsluta-knappar.
+
+Efter avslut visas en bekräftelse med antal sparade svar. **Visa svar och facit** öppnar det aktuella underlaget, fäller ut första svaret och rullar dit. Bekräftelsen försvinner när man går vidare. Den manuella återkopplingen visar det faktiskt inskickade elevsvaret. Elevstarten samlar årskurs, område och omfattning före startknappen; regler och extra inställningar är utfällbara. Frågevyn visar uppgiftstaket utan att lova en exakt återstående längd.

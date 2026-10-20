@@ -1,0 +1,691 @@
+{
+  "run": "corrected-generic-parser",
+  "model": "OFÖRÄNDRAD: endast enstaka gynnsamma/totala (kulor, lyckohjul, en tärning), säkert=1, omöjligt=0, intervall0..1; övrigt Jag vet inte",
+  "methodLimit": "Första körningens facit lästes efter avslut för rapportering. Denna parser frysas före start och innehåller endast de i förväg angivna förmågorna; inga facit/tabeller används.",
+  "questions": [
+    {
+      "number": 1,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 1 · högst 60\nSvar sparas på den här enheten\n\nDu kan använda papper när du räknar.\n\nEn påse har 4 röda kulor och 1 blå kula. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?\nVälj ett svar\n1/5\n4/5\n2/5\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+      "question": "En påse har 4 röda kulor och 1 blå kula. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+      "options": [
+        "1/5",
+        "4/5",
+        "2/5",
+        "0"
+      ],
+      "computed": {
+        "value": 0.8,
+        "raw": "4/5",
+        "why": "Röda / alla kulor",
+        "index": 1
+      },
+      "submitted": "4/5",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 2 · högst 60\nSvar sparas på den här enheten\nEtt lyckohjul har 4 lika stora fält. 3 fält ger vinst. Vad är sannolikheten för vinst?\nVälj ett svar\n3/8\n0\n3/4\n1/4\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 2,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 2 · högst 60\nSvar sparas på den här enheten\nEtt lyckohjul har 4 lika stora fält. 3 fält ger vinst. Vad är sannolikheten för vinst?\nVälj ett svar\n3/8\n0\n3/4\n1/4\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Ett lyckohjul har 4 lika stora fält. 3 fält ger vinst. Vad är sannolikheten för vinst?",
+      "options": [
+        "3/8",
+        "0",
+        "3/4",
+        "1/4"
+      ],
+      "computed": {
+        "value": 0.75,
+        "raw": "3/4",
+        "why": "Vinstfält / alla fält",
+        "index": 2
+      },
+      "submitted": "3/4",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 3 · högst 60\nSvar sparas på den här enheten\nEn vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 4?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 3,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 3 · högst 60\nSvar sparas på den här enheten\nEn vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 4?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "En vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 4?",
+      "options": [],
+      "computed": {
+        "value": 0.5,
+        "raw": "3/6",
+        "why": "Gynnsamma tärningssidor 1,2,3 / 6",
+        "index": -1
+      },
+      "submitted": "3/6",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 4 · högst 60\nSvar sparas på den här enheten\nDu väljer en tröja bland 3 olika tröjor, ett par byxor bland 5 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\nVälj ett svar\n120\n30\n60\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 4,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 4 · högst 60\nSvar sparas på den här enheten\nDu väljer en tröja bland 3 olika tröjor, ett par byxor bland 5 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\nVälj ett svar\n120\n30\n60\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Du väljer en tröja bland 3 olika tröjor, ett par byxor bland 5 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?",
+      "options": [
+        "120",
+        "30",
+        "60",
+        "0"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 5 · högst 60\nSvar sparas på den här enheten\nEn kod har 7 teckenplatser. Varje plats kan vara ett av 8 tecken och tecken får upprepas. Hur många koder finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 5,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 5 · högst 60\nSvar sparas på den här enheten\nEn kod har 7 teckenplatser. Varje plats kan vara ett av 8 tecken och tecken får upprepas. Hur många koder finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "En kod har 7 teckenplatser. Varje plats kan vara ett av 8 tecken och tecken får upprepas. Hur många koder finns?",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 6 · högst 60\nSvar sparas på den här enheten\nVilket tal kan vara en sannolikhet?\nVälj ett svar\n−0,2\n2\n1,2\n0,1\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 6,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 6 · högst 60\nSvar sparas på den här enheten\nVilket tal kan vara en sannolikhet?\nVälj ett svar\n−0,2\n2\n1,2\n0,1\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vilket tal kan vara en sannolikhet?",
+      "options": [
+        "−0,2",
+        "2",
+        "1,2",
+        "0,1"
+      ],
+      "computed": {
+        "value": 0.1,
+        "raw": "0,1",
+        "why": "Enda talet inom 0..1",
+        "index": 3
+      },
+      "submitted": "0,1",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 7 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en säker händelse?\nVälj ett svar\n1\n0,5\n0\n2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 7,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 7 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en säker händelse?\nVälj ett svar\n1\n0,5\n0\n2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vad är sannolikheten för en säker händelse?",
+      "options": [
+        "1",
+        "0,5",
+        "0",
+        "2"
+      ],
+      "computed": {
+        "value": 1,
+        "raw": "1",
+        "why": "Säkert = 1",
+        "index": 0
+      },
+      "submitted": "1",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 8 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en omöjlig händelse?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 8,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 8 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en omöjlig händelse?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vad är sannolikheten för en omöjlig händelse?",
+      "options": [],
+      "computed": {
+        "value": 0,
+        "raw": "0",
+        "why": "Omöjligt = 0",
+        "index": -1
+      },
+      "submitted": "0",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 9 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 4/5. Hur många vinster förväntas vid 80 försök?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 9,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 9 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 4/5. Hur många vinster förväntas vid 80 försök?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vinstsannolikheten är 4/5. Hur många vinster förväntas vid 80 försök?",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 10 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 6/9. Hur många försök behövs för ett förväntat antal på 60 vinster?\nVälj ett svar\n90\n1,5\n0,6\n0,778\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 10,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 10 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 6/9. Hur många försök behövs för ett förväntat antal på 60 vinster?\nVälj ett svar\n90\n1,5\n0,6\n0,778\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vinstsannolikheten är 6/9. Hur många försök behövs för ett förväntat antal på 60 vinster?",
+      "options": [
+        "90",
+        "1,5",
+        "0,6",
+        "0,778"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 11 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 5 olika böcker placeras i en rad?\nVälj ett svar\n60\n240\n0\n120\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 11,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 11 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 5 olika böcker placeras i en rad?\nVälj ett svar\n60\n240\n0\n120\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "På hur många sätt kan 5 olika böcker placeras i en rad?",
+      "options": [
+        "60",
+        "240",
+        "0",
+        "120"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 12 · högst 60\nSvar sparas på den här enheten\nBland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 12,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 12 · högst 60\nSvar sparas på den här enheten\nBland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Bland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 13 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 4/7\nV: 4/7\nVV\nS: 3/7\nVS\nS: 3/7\nV: 4/7\nSV\nS: 3/7\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n8/49\n16/49\n32/49\n33/49\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 13,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 13 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 4/7\nV: 4/7\nVV\nS: 3/7\nVS\nS: 3/7\nV: 4/7\nSV\nS: 3/7\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n8/49\n16/49\n32/49\n33/49\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Påsen har 4 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 4/7\nV: 4/7\nVV\nS: 3/7\nVS\nS: 3/7\nV: 4/7\nSV\nS: 3/7\nSS\nV = vit kula, S = svart kula",
+      "options": [
+        "8/49",
+        "16/49",
+        "32/49",
+        "33/49"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 14 · högst 60\nSvar sparas på den här enheten\nPåsen har 8 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 8/14\nV: 8/14\nVV\nS: 6/14\nVS\nS: 6/14\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n37/49\n6/49\n12/49\n24/49\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 14,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 14 · högst 60\nSvar sparas på den här enheten\nPåsen har 8 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 8/14\nV: 8/14\nVV\nS: 6/14\nVS\nS: 6/14\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n37/49\n6/49\n12/49\n24/49\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Påsen har 8 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 8/14\nV: 8/14\nVV\nS: 6/14\nVS\nS: 6/14\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula",
+      "options": [
+        "37/49",
+        "6/49",
+        "12/49",
+        "24/49"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 15 · högst 60\nSvar sparas på den här enheten\nEn påse har 2 vita och 3 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nVälj ett svar\n12/25\n13/25\n24/25\n6/25\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 15,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 15 · högst 60\nSvar sparas på den här enheten\nEn påse har 2 vita och 3 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nVälj ett svar\n12/25\n13/25\n24/25\n6/25\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "En påse har 2 vita och 3 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+      "options": [
+        "12/25",
+        "13/25",
+        "24/25",
+        "6/25"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 16 · högst 60\nSvar sparas på den här enheten\nEn påse har 6 vita och 2 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 16,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 16 · högst 60\nSvar sparas på den här enheten\nEn påse har 6 vita och 2 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "En påse har 6 vita och 2 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 17 · högst 60\nSvar sparas på den här enheten\nSannolikheten för vinst är 3/10. Vad är sannolikheten att inte vinna?\nVälj ett svar\n3/11\n3/13\n2/5\n7/10\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 17,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 17 · högst 60\nSvar sparas på den här enheten\nSannolikheten för vinst är 3/10. Vad är sannolikheten att inte vinna?\nVälj ett svar\n3/11\n3/13\n2/5\n7/10\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Sannolikheten för vinst är 3/10. Vad är sannolikheten att inte vinna?",
+      "options": [
+        "3/11",
+        "3/13",
+        "2/5",
+        "7/10"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 18 · högst 60\nSvar sparas på den här enheten\nSannolikheten för att det inte regnar är 1/10. Vad är sannolikheten för regn?\nVälj ett svar\n1/5\n9/10\n1/10\n1/11\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 18,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 18 · högst 60\nSvar sparas på den här enheten\nSannolikheten för att det inte regnar är 1/10. Vad är sannolikheten för regn?\nVälj ett svar\n1/5\n9/10\n1/10\n1/11\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Sannolikheten för att det inte regnar är 1/10. Vad är sannolikheten för regn?",
+      "options": [
+        "1/5",
+        "9/10",
+        "1/10",
+        "1/11"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 19 · högst 60\nSvar sparas på den här enheten\nPåsen har 8 vita och 7 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 8/15\nV: 7/14\nVV\nS: 7/14\nVS\nS: 7/15\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n11/15\n8/15\n4/15\n2/15\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 19,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 19 · högst 60\nSvar sparas på den här enheten\nPåsen har 8 vita och 7 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 8/15\nV: 7/14\nVV\nS: 7/14\nVS\nS: 7/15\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n11/15\n8/15\n4/15\n2/15\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Påsen har 8 vita och 7 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 8/15\nV: 7/14\nVV\nS: 7/14\nVS\nS: 7/15\nV: 8/14\nSV\nS: 6/14\nSS\nV = vit kula, S = svart kula",
+      "options": [
+        "11/15",
+        "8/15",
+        "4/15",
+        "2/15"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 20 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 5 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 4/9\nV: 3/8\nVV\nS: 5/8\nVS\nS: 5/9\nV: 4/8\nSV\nS: 4/8\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 20,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 20 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 5 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 4/9\nV: 3/8\nVV\nS: 5/8\nVS\nS: 5/9\nV: 4/8\nSV\nS: 4/8\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Påsen har 4 vita och 5 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 4/9\nV: 3/8\nVV\nS: 5/8\nVS\nS: 5/9\nV: 4/8\nSV\nS: 4/8\nSS\nV = vit kula, S = svart kula",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 21 · högst 60\nSvar sparas på den här enheten\nI 130 försök inträffar utfallet 38 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.\nDitt svar\n\nSkriv ett decimaltal med komma eller punkt. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 21,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 21 · högst 60\nSvar sparas på den här enheten\nI 130 försök inträffar utfallet 38 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.\nDitt svar\n\nSkriv ett decimaltal med komma eller punkt. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "I 130 försök inträffar utfallet 38 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 22 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 45 gånger. Uppskatta dess sannolikhet i procent från experimentet.\nDitt svar (%)\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 22,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 22 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 45 gånger. Uppskatta dess sannolikhet i procent från experimentet.\nDitt svar (%)\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "I 110 försök inträffar utfallet 45 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 23 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 23,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 23 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+      "options": [],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 24 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,4. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\nVälj ett svar\n0\n98/125\n27/125\n49/125\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+    },
+    {
+      "number": 24,
+      "screenBefore": "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 24 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,4. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\nVälj ett svar\n0\n98/125\n27/125\n49/125\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat",
+      "question": "Vinstsannolikheten per försök är 0,4. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+      "options": [
+        "0",
+        "98/125",
+        "27/125",
+        "49/125"
+      ],
+      "computed": {
+        "value": null,
+        "why": "Utanför fryst modell"
+      },
+      "submitted": "Jag vet inte",
+      "outcome": "Passet är klart\n\nDina svar är sparade. Lämna tillbaka skärmen till din lärare.\n\nVisa sammanställningen"
+    }
+  ],
+  "errors": [],
+  "parserFrozenBeforeStart": true,
+  "setup": "Starta elevläge\n×\n\nElev: Elev 1\n\nÅrskursurval\nÅk 1–3\nÅk 4–6\nÅk 7\nÅk 8\nÅk 9\nKunskapsområde\nAlla områden\nTal\nBråk\nAlgebra\nGeometri\nSamband & funktioner\nProcent\nStatistik\nSannolikhet\nProblemlösning\nOmfattning\nHögst 30 uppgifter · kort kontroll\nHögst 60 uppgifter\nHögst 90 uppgifter\nTesta alla · hela urvalet\n\nÅk 8 · Sannolikhet · 11 delmoment i basen\n\nEn uppgift i taget. Alla delmoment i urvalet undersöks, men högst 60 uppgifter.\n\nStarta kontrollen →\nFler inställningar\nOm kontrollen",
+  "endText": "Passet är klart\n\nDina svar är sparade. Lämna tillbaka skärmen till din lärare.\n\nVisa sammanställningen",
+  "postCompletion": {
+    "summaryScreen": "M\n↗\nMAtree\nKARTLÄGGNING\n⌘\nKunskapsträdet\n◴\nElevöversikt\n◎\nInför NP\nMATEMATIKENS OMRÅDEN\nAlla områden\n249\nTal\n53\nBråk\n21\nAlgebra\n25\nGeometri\n56\nSamband & funktioner\n28\nProcent\n19\nStatistik\n18\nSannolikhet\n16\nProblemlösning\n13\nE\nElev 1\nByt eller skapa elevprofil\n⌄\nKartläggning · Högstadiet / Kunskapsträdet\nElev: Elev 1\nSparas på den här enheten\nLjust tema\nKunskapsträdet\nÖppna föreslaget moment ↗\nStarta elevläge →\nElevunderlag · 11 av 249 prövade\n\nSenaste sammanställningen · Åk 8 · Sannolikhet · 2026-10-20 15:07 →\n\nAlla områden · alla år\n62 kort · 249 delmoment · 481 kopplingar\nHjälp\n⛶ Fullskärm\nAlla år\nGrunder\nÅk 7\nÅk 8\nÅk 9\nGrupper\nAlla delmoment\n⌕\nFler val\nTAL\nBRÅK\nALGEBRA\nGEOMETRI\nSAMBAND & FUNKTIONER\nPROCENT\nSTATISTIK\nSANNOLIKHET\nPROBLEMLÖSNING\n÷\nTaluppfattning\nVisad kunskap: 0/7\nÖppna →\n÷\nAddition och subtraktion\nVisad kunskap: 0/5\nÖppna →\n÷\nMultiplikation och division\nVisad kunskap: 0/5\nÖppna →\nx\nTalmönster och regler\nVisad kunskap: 0/2\nÖppna →\nx\nLikhet och räkneordning\nVisad kunskap: 0/3\nÖppna →\nx\nVariabler och algebraiska uttryck\nVisad kunskap: 0/11\nÖppna →\n÷\nNegativa tal\nVisad kunskap: 0/4\nÖppna →\n△\nFormer och deras egenskaper\nVisad kunskap: 0/5\nÖppna →\n△\nLängd, massa och volymenheter\nVisad kunskap: 0/6\nÖppna →\n△\nOmkrets och area\nVisad kunskap: 0/6\nÖppna →\n▥\nData och frekvens\nVisad kunskap: 0/3\nÖppna →\n▥\nLägesmått och spridning\nVisad kunskap: 0/6\nÖppna →\n÷\nDecimaltal\nVisad kunskap: 0/8\nÖppna →\n÷\nAvrundning och överslag\nVisad kunskap: 0/3\nÖppna →\n÷\nDelbarhet och primtal\nVisad kunskap: 0/3\nÖppna →\n÷\nStora tal och prefix\nVisad kunskap: 0/3\nÖppna →\n÷\nPotenser\nVisad kunskap: 0/5\nÖppna →\n÷\nGrundpotensform\nVisad kunskap: 0/3\nÖppna →\n÷\nKvadrater och kvadratrötter\nVisad kunskap: 0/3\nÖppna →\n÷\nTalmängder\nVisad kunskap: 0/2\nÖppna →\n÷\nAndra sätt att skriva tal\nVisad kunskap: 0/2\nÖppna →\n½\nBråk som delar och antal\nVisad kunskap: 0/6\nÖppna →\n½\nLikvärdiga bråk och nämnare\nVisad kunskap: 0/6\nÖppna →\n½\nAddition och subtraktion av bråk\nVisad kunskap: 0/4\nÖppna →\n½\nBråk till decimalform\nInte prövad\n4–6\nNP\n½\nMultiplikation och division av bråk\nVisad kunskap: 0/4\nÖppna →\nx\nEkvationer\nVisad kunskap: 0/9\nÖppna →\n△\nVinklar och vinkelsummor\nVisad kunskap: 0/4\nÖppna →\n△\nKvadrat- och kubikenheter\nVisad kunskap: 0/3\nÖppna →\n△\nCirklar, bågar och sektorer\nVisad kunskap: 0/5\nÖppna →\n△\nGeometriska kroppar\nVisad kunskap: 0/2\nÖppna →\n△\nRätblock: volym och yta\nVisad kunskap: 0/2\nÖppna →\n△\nVolym och yta hos andra kroppar\nVisad kunskap: 0/7\nÖppna →\n△\nRätvinkliga trianglar\nVisad kunskap: 0/5\nÖppna →\n△\nLängdskala\nVisad kunskap: 0/4\nÖppna →\n△\nLikformighet, area- och volymskala\nVisad kunskap: 0/4\nÖppna →\n△\nSymmetri och spegling\nVisad kunskap: 0/3\nÖppna →\nƒ\nKoordinatsystem\nVisad kunskap: 0/2\nÖppna →\nƒ\nTabeller och grafer för samband\nVisad kunskap: 0/2\nÖppna →\nƒ\nProportionella samband\nVisad kunskap: 0/6\nÖppna →\nƒ\nHastighet, sträcka och tid\nVisad kunskap: 0/2\nÖppna →\nƒ\nTid och tidsenheter\nVisad kunskap: 0/3\nÖppna →\nƒ\nFunktioner och linjära samband\nVisad kunskap: 0/8\nÖppna →\nƒ\nAritmetiska och geometriska talföljder\nVisad kunskap: 0/2\nÖppna →\nƒ\nSkriva om formler\nInte prövad\n9\nNP\nƒ\nEkvationssystem\nVisad kunskap: 0/2\nÖppna →\n%\nProcent: begrepp, del och helhet\nVisad kunskap: 0/5\nÖppna →\n%\nProcentuell förändring\nVisad kunskap: 0/7\nÖppna →\n%\nUpprepade procentförändringar\nVisad kunskap: 0/2\nÖppna →\n%\nRänta\nVisad kunskap: 0/2\nÖppna →\n%\nProcent och procentenheter\nInte prövad\n9\n%\nPromille och ppm\nInte prövad\n9\nR\n%\nIndex och basår\nInte prövad\n9\nR\n▥\nStatistiska diagram\nVisad kunskap: 0/6\nÖppna →\n▥\nKvartiler och lådagram\nVisad kunskap: 0/2\nÖppna →\n▥\nVenndiagram\nInte prövad\n9\nR\n⚄\nGrundläggande sannolikhet\nVisad kunskap: 2/5\nÖppna →\n⚄\nSannolikhet i flera steg\nVisad kunskap: 0/7\nÖppna →\n⚄\nUtfall och kombinationer\nVisad kunskap: 0/4\nÖppna →\n⌘\nProblemlösning och representationer\nVisad kunskap: 0/7\nÖppna →\n⌘\nTillämpningar: mått, material och ekonomi\nVisad kunskap: 0/4\nÖppna →\n⌘\nTextproblem med grundläggande räknesätt\nVisad kunskap: 0/2\nÖppna →\nTeckenförklaring\nMAtree\nMatte Direkt 7–9 · Grön kurs, Genrepet och fördjupning\nSammanställning av elevens pass\n×\n\nElev 1 · Åk 8 · Sannolikhet · 2026-10-20 15:07\n24 svar på 11 delmoment\n\nAlla delmoment inom valt område och årskursurval har prövats.\n\n24 svar av högst 60. 11 delmoment fick nya svar; 0 finns kvar i listan Ej prövade. Tidigare visade redovisas separat.\n\nVälj tidigare årskursurval\n9\nBehöver följas upp\n2\nVisad i passet\n0\nBegränsat underlag\n0\nEj prövade i urvalet\n\nResultaten gäller detta pass. Öppna ett delmoment för att se elevens svar och förkunskaper.\n\nFörslag på nästa kontroller\n\nFörslag att undersöka. Svaren avgör inte orsaken till svårigheterna.\n\nTräddiagram: oberoende händelser\n\nEn direkt förkunskap att undersöka efter Addera alternativa vägar (0/2 rätt, 2 överhoppade svar); Träddiagram: utan återläggning (0/2 rätt, 2 överhoppade svar); Minst en: komplementmetoden (0/2 rätt, 2 överhoppade svar).\n\nDet finns svar att granska i passet.\n\nElev: Elev 1 · Manuell kontroll\n\nStarta kontroll →Granska underlaget\nBråk gånger bråk\n\nEn direkt förkunskap att undersöka efter Träddiagram: oberoende händelser (0/2 rätt, 2 överhoppade svar); Träddiagram: utan återläggning (0/2 rätt, 2 överhoppade svar).\n\nDelmomentet prövades inte i passet. Utanför passets årskurs- eller områdesurval; undersök det separat.\n\nElev: Elev 1 · Manuell kontroll\n\nStarta kontroll →Granska underlaget\nMultiplikation & division\n\nEn direkt förkunskap att undersöka efter Multiplikationsprincipen (0/2 rätt, 2 överhoppade svar).\n\nDelmomentet prövades inte i passet. Utanför passets årskurs- eller områdesurval; undersök det separat.\n\nElev: Elev 1 · Manuell kontroll\n\nStarta kontroll →Granska underlaget\nBehöver följas upp 9\nMultiplikationsprincipen\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nFörväntat antal utfall\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nOrdna olika föremål\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nTräddiagram: oberoende händelser\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nAddera alternativa vägar\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nKomplementhändelser\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nTräddiagram: utan återläggning\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nSannolikhet från försök\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nMinst en: komplementmetoden\nSannolikhet\n0/2 rätt · 2 överhoppade svar →\nBegränsat underlag 0\nVisad i passet 2\nEj prövade i detta urval 0\nFrågor, elevsvar och facit 24\nSå ska underlaget läsas\nTill elevöversikten →\nNytt pass",
+    "session": {
+      "id": "e04c0ded-733b-4fbe-a7ed-a4b7e447c957",
+      "catalogue": "assessed",
+      "coveragePolicy": "exhaustive",
+      "started": "2026-10-20T13:07:08.526Z",
+      "ended": "2026-10-20T13:07:10.436Z",
+      "endReason": "all-tested",
+      "start": "higher",
+      "scope": "8",
+      "selection": "course",
+      "category": "sannolikhet",
+      "known": [],
+      "recent": [],
+      "limit": 60,
+      "pending": null,
+      "remediation": false
+    },
+    "items": [
+      {
+        "prompt": "En påse har 4 röda kulor och 1 blå kula. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?\n\n1. 1/5\n2. 4/5\n3. 2/5\n4. 0\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Gynnsamma utfall delat med alla lika sannolika utfall.",
+        "answerKind": "choice",
+        "templateId": "gynnsamma-utfall:0",
+        "nodeId": "gynnsamma-utfall",
+        "response": "2",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:08.618Z"
+      },
+      {
+        "prompt": "Ett lyckohjul har 4 lika stora fält. 3 fält ger vinst. Vad är sannolikheten för vinst?\n\n1. 3/8\n2. 0\n3. 3/4\n4. 1/4\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Varje lika stort fält har samma sannolikhet.",
+        "answerKind": "choice",
+        "templateId": "gynnsamma-utfall:1",
+        "nodeId": "gynnsamma-utfall",
+        "response": "3",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:08.694Z"
+      },
+      {
+        "prompt": "En vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 4?",
+        "answer": 0.5,
+        "explanation": "Räkna gynnsamma sidor och dividera med sex.",
+        "answerKind": "fraction",
+        "templateId": "gynnsamma-utfall:2",
+        "nodeId": "gynnsamma-utfall",
+        "response": "3/6",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:08.773Z"
+      },
+      {
+        "prompt": "Du väljer en tröja bland 3 olika tröjor, ett par byxor bland 5 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\n\n1. 120\n2. 30\n3. 60\n4. 0\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Multiplicera antalet val i varje steg.",
+        "answerKind": "choice",
+        "templateId": "kombinationer:0",
+        "nodeId": "kombinationer",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:08.848Z"
+      },
+      {
+        "prompt": "En kod har 7 teckenplatser. Varje plats kan vara ett av 8 tecken och tecken får upprepas. Hur många koder finns?",
+        "answer": 2097152,
+        "explanation": "Varje plats har samma antal oberoende val.",
+        "answerKind": "integer",
+        "templateId": "kombinationer:1",
+        "nodeId": "kombinationer",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:08.925Z"
+      },
+      {
+        "prompt": "Vilket tal kan vara en sannolikhet?\n\n1. −0,2\n2. 2\n3. 1,2\n4. 0,1\n\nVälj ett svar.",
+        "answer": 4,
+        "explanation": "Sannolikhet är minst 0 och högst 1.",
+        "answerKind": "choice",
+        "templateId": "sannolikhet-skala:0",
+        "nodeId": "sannolikhet-skala",
+        "response": "4",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:09.004Z"
+      },
+      {
+        "prompt": "Vad är sannolikheten för en säker händelse?\n\n1. 1\n2. 0,5\n3. 0\n4. 2\n\nVälj ett svar.",
+        "answer": 1,
+        "explanation": "En säker händelse inträffar alltid.",
+        "answerKind": "choice",
+        "templateId": "sannolikhet-skala:1",
+        "nodeId": "sannolikhet-skala",
+        "response": "1",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:09.079Z"
+      },
+      {
+        "prompt": "Vad är sannolikheten för en omöjlig händelse?",
+        "answer": 0,
+        "explanation": "En omöjlig händelse inträffar aldrig.",
+        "answerKind": "integer",
+        "templateId": "sannolikhet-skala:2",
+        "nodeId": "sannolikhet-skala",
+        "response": "0",
+        "skipped": false,
+        "correct": true,
+        "date": "2026-10-20T13:07:09.153Z"
+      },
+      {
+        "prompt": "Vinstsannolikheten är 4/5. Hur många vinster förväntas vid 80 försök?",
+        "answer": 64,
+        "explanation": "Förväntat antal är antal försök gånger sannolikheten.",
+        "answerKind": "integer",
+        "templateId": "forvantat-antal:0",
+        "nodeId": "forvantat-antal",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.233Z"
+      },
+      {
+        "prompt": "Vinstsannolikheten är 6/9. Hur många försök behövs för ett förväntat antal på 60 vinster?\n\n1. 90\n2. 1,5\n3. 0,6\n4. 0,778\n\nVälj ett svar.",
+        "answer": 1,
+        "explanation": "Dividera förväntat antal med sannolikheten.",
+        "answerKind": "choice",
+        "templateId": "forvantat-antal:1",
+        "nodeId": "forvantat-antal",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.315Z"
+      },
+      {
+        "prompt": "På hur många sätt kan 5 olika böcker placeras i en rad?\n\n1. 60\n2. 240\n3. 0\n4. 120\n\nVälj ett svar.",
+        "answer": 4,
+        "explanation": "Ordningen eller rollen spelar roll; minska antalet val för varje upptagen plats.",
+        "answerKind": "choice",
+        "templateId": "ordna-objekt:0",
+        "nodeId": "ordna-objekt",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.397Z"
+      },
+      {
+        "prompt": "Bland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+        "answer": 6,
+        "explanation": "Ordningen eller rollen spelar roll; minska antalet val för varje upptagen plats.",
+        "answerKind": "integer",
+        "templateId": "ordna-objekt:1",
+        "nodeId": "ordna-objekt",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.479Z"
+      },
+      {
+        "prompt": "Påsen har 4 vita och 3 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\n\n1. 8/49\n2. 16/49\n3. 32/49\n4. 33/49\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+        "answerKind": "choice",
+        "templateId": "trad-oberoende:0",
+        "nodeId": "trad-oberoende",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.569Z"
+      },
+      {
+        "prompt": "Påsen har 8 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\n\n1. 37/49\n2. 6/49\n3. 12/49\n4. 24/49\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+        "answerKind": "choice",
+        "templateId": "trad-oberoende:1",
+        "nodeId": "trad-oberoende",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.646Z"
+      },
+      {
+        "prompt": "En påse har 2 vita och 3 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\n\n1. 12/25\n2. 13/25\n3. 24/25\n4. 6/25\n\nVälj ett svar.",
+        "answer": 1,
+        "explanation": "Summera de två skilda vägarna vit–svart och svart–vit.",
+        "answerKind": "choice",
+        "templateId": "flera-vagar:0",
+        "nodeId": "flera-vagar",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.719Z"
+      },
+      {
+        "prompt": "En påse har 6 vita och 2 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "answer": 0.42857142857142855,
+        "explanation": "Summera de två skilda vägarna vit–svart och svart–vit.",
+        "answerKind": "fraction",
+        "templateId": "flera-vagar:1",
+        "nodeId": "flera-vagar",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.800Z"
+      },
+      {
+        "prompt": "Sannolikheten för vinst är 3/10. Vad är sannolikheten att inte vinna?\n\n1. 3/11\n2. 3/13\n3. 2/5\n4. 7/10\n\nVälj ett svar.",
+        "answer": 4,
+        "explanation": "Händelse och komplement har sammanlagt sannolikheten ett.",
+        "answerKind": "choice",
+        "templateId": "komplement:0",
+        "nodeId": "komplement",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.886Z"
+      },
+      {
+        "prompt": "Sannolikheten för att det inte regnar är 1/10. Vad är sannolikheten för regn?\n\n1. 1/5\n2. 9/10\n3. 1/10\n4. 1/11\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Subtrahera den givna sannolikheten från ett.",
+        "answerKind": "choice",
+        "templateId": "komplement:1",
+        "nodeId": "komplement",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:09.964Z"
+      },
+      {
+        "prompt": "Påsen har 8 vita och 7 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\n\n1. 11/15\n2. 8/15\n3. 4/15\n4. 2/15\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+        "answerKind": "choice",
+        "templateId": "trad-beroende:0",
+        "nodeId": "trad-beroende",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.036Z"
+      },
+      {
+        "prompt": "Påsen har 4 vita och 5 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "answer": 0.2777777777777778,
+        "explanation": "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+        "answerKind": "fraction",
+        "templateId": "trad-beroende:1",
+        "nodeId": "trad-beroende",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.119Z"
+      },
+      {
+        "prompt": "I 130 försök inträffar utfallet 38 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+        "answer": 0.2923076923076923,
+        "explanation": "Relativ frekvens ger en empirisk uppskattning.",
+        "answerKind": "number",
+        "templateId": "experiment-sannolikhet:0",
+        "nodeId": "experiment-sannolikhet",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.190Z"
+      },
+      {
+        "prompt": "I 110 försök inträffar utfallet 45 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+        "answer": 40.909090909090914,
+        "explanation": "Relativ frekvens ger en empirisk uppskattning.",
+        "answerKind": "number",
+        "templateId": "experiment-sannolikhet:1",
+        "nodeId": "experiment-sannolikhet",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.268Z"
+      },
+      {
+        "prompt": "Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+        "answer": 0.75,
+        "explanation": "Använd komplementet: ett minus sannolikheten för ingen vinst.",
+        "answerKind": "number",
+        "templateId": "minst-en:0",
+        "nodeId": "minst-en",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.352Z"
+      },
+      {
+        "prompt": "Vinstsannolikheten per försök är 0,4. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\n\n1. 0\n2. 98/125\n3. 27/125\n4. 49/125\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Använd komplementet: ett minus sannolikheten för ingen vinst.",
+        "answerKind": "choice",
+        "templateId": "minst-en:1",
+        "nodeId": "minst-en",
+        "response": "",
+        "skipped": true,
+        "correct": false,
+        "date": "2026-10-20T13:07:10.435Z"
+      }
+    ]
+  }
+}

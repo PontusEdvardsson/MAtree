@@ -1,0 +1,1564 @@
+﻿{
+    "profile":  "Isolerad fiktiv Elev 1, port 9803",
+    "url":  "https://pontusedvardsson.github.io/MAtree/",
+    "frozenModel":  "Enkla sannolikheter, gynnsamma/totala, 0..1, säkert/omöjligt, kombinationer/produkt/koder/avstå, komplement, förväntat antal, relativ frekvens, fakultet, två ordnade drag med och utan återläggning, alternativa ordningar, minst en via komplement vid oberoende försök",
+    "expected":  "Alla valda basmoment Visad och naturligt avslut när urvalet uttömt",
+    "transcript":  [
+                       {
+                           "number":  1,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 1 · högst 60\nSvar sparas på den här enheten\n\nDu kan använda papper när du räknar.\n\nEn påse har 4 röda kulor och 4 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?\nVälj ett svar\n1\n0\n1/4\n1/2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "1",
+                                           "0",
+                                           "1/4",
+                                           "1/2"
+                                       ],
+                           "computed":  "1/2",
+                           "calculation":  "4/(4+4)=1/2",
+                           "sent":  "1/2",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 2 · högst 60\nSvar sparas på den här enheten\nEtt lyckohjul har 6 lika stora fält. 4 fält ger vinst. Vad är sannolikheten för vinst?\nVälj ett svar\n0\n1\n1/3\n2/3\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  2,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 2 · högst 60\nSvar sparas på den här enheten\nEtt lyckohjul har 6 lika stora fält. 4 fält ger vinst. Vad är sannolikheten för vinst?\nVälj ett svar\n0\n1\n1/3\n2/3\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "0",
+                                           "1",
+                                           "1/3",
+                                           "2/3"
+                                       ],
+                           "computed":  "2/3",
+                           "calculation":  "4/6=2/3",
+                           "sent":  "2/3",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 3 · högst 60\nSvar sparas på den här enheten\nEn vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 2?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  3,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 3 · högst 60\nSvar sparas på den här enheten\nEn vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 2?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "1/6",
+                           "calculation":  "Endast talet 1 är mindre än 2: 1/6",
+                           "sent":  "1/6",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 4 · högst 60\nSvar sparas på den här enheten\nDu väljer en tröja bland 6 olika tröjor, ett par byxor bland 8 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\nVälj ett svar\n384\n192\n96\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  4,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 4 · högst 60\nSvar sparas på den här enheten\nDu väljer en tröja bland 6 olika tröjor, ett par byxor bland 8 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\nVälj ett svar\n384\n192\n96\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "384",
+                                           "192",
+                                           "96",
+                                           "0"
+                                       ],
+                           "computed":  "192",
+                           "calculation":  "6*8*4=192",
+                           "sent":  "192",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 5 · högst 60\nSvar sparas på den här enheten\nEn kod har 5 teckenplatser. Varje plats kan vara ett av 2 tecken och tecken får upprepas. Hur många koder finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  5,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 5 · högst 60\nSvar sparas på den här enheten\nEn kod har 5 teckenplatser. Varje plats kan vara ett av 2 tecken och tecken får upprepas. Hur många koder finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "32",
+                           "calculation":  "2^5=32",
+                           "sent":  "32",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 6 · högst 60\nSvar sparas på den här enheten\nDet finns 2 huvudrätter och 3 efterrätter. Du väljer en huvudrätt och kan antingen avstå efterrätt eller välja en. Hur många måltidskombinationer finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  6,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 6 · högst 60\nSvar sparas på den här enheten\nDet finns 2 huvudrätter och 3 efterrätter. Du väljer en huvudrätt och kan antingen avstå efterrätt eller välja en. Hur många måltidskombinationer finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "8",
+                           "calculation":  "2*(3+1)=8, eftersom avstå är ytterligare ett val",
+                           "sent":  "8",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 7 · högst 60\nSvar sparas på den här enheten\nVilket tal kan vara en sannolikhet?\nVälj ett svar\n0,25\n2\n−0,2\n1,2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  7,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 7 · högst 60\nSvar sparas på den här enheten\nVilket tal kan vara en sannolikhet?\nVälj ett svar\n0,25\n2\n−0,2\n1,2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "0,25",
+                                           "2",
+                                           "−0,2",
+                                           "1,2"
+                                       ],
+                           "computed":  "0,25",
+                           "calculation":  "Sannolikhet ligger mellan 0 och 1 inklusive ändpunkter",
+                           "sent":  "0,25",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 8 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en säker händelse?\nVälj ett svar\n0,5\n2\n1\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  8,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 8 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en säker händelse?\nVälj ett svar\n0,5\n2\n1\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "0,5",
+                                           "2",
+                                           "1",
+                                           "0"
+                                       ],
+                           "computed":  "1",
+                           "calculation":  "Säker händelse har sannolikhet 1",
+                           "sent":  "1",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 9 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en omöjlig händelse?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  9,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 9 · högst 60\nSvar sparas på den här enheten\nVad är sannolikheten för en omöjlig händelse?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "0",
+                           "calculation":  "Omöjlig händelse har sannolikhet 0",
+                           "sent":  "0",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 10 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 3/5. Hur många vinster förväntas vid 30 försök?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  10,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 10 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 3/5. Hur många vinster förväntas vid 30 försök?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "18",
+                           "calculation":  "30*3/5=18",
+                           "sent":  "18",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 11 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 1/6. Hur många försök behövs för ett förväntat antal på 5 vinster?\nVälj ett svar\n0,143\n30\n0,333\n6\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  11,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 11 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten är 1/6. Hur många försök behövs för ett förväntat antal på 5 vinster?\nVälj ett svar\n0,143\n30\n0,333\n6\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "0,143",
+                                           "30",
+                                           "0,333",
+                                           "6"
+                                       ],
+                           "computed":  "30",
+                           "calculation":  "n/6=5 ger n=30",
+                           "sent":  "30",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 12 · högst 60\nSvar sparas på den här enheten\nVid 48 försök är det förväntade antalet vinster 30. Måste det faktiska antalet vara just detta?\nVälj ett svar\nNej\nJa\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  12,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 12 · högst 60\nSvar sparas på den här enheten\nVid 48 försök är det förväntade antalet vinster 30. Måste det faktiska antalet vara just detta?\nVälj ett svar\nNej\nJa\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "Nej",
+                                           "Ja"
+                                       ],
+                           "computed":  "Nej",
+                           "calculation":  "Förväntat antal beskriver medelvärde över upprepningar; slumpens utfall varierar",
+                           "sent":  "Nej",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 13 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 6 olika böcker placeras i en rad?\nVälj ett svar\n1440\n360\n0\n720\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  13,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 13 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 6 olika böcker placeras i en rad?\nVälj ett svar\n1440\n360\n0\n720\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "1440",
+                                           "360",
+                                           "0",
+                                           "720"
+                                       ],
+                           "computed":  "720",
+                           "calculation":  "6!=6*5*4*3*2*1=720",
+                           "sent":  "720",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 14 · högst 60\nSvar sparas på den här enheten\nBland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  14,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 14 · högst 60\nSvar sparas på den här enheten\nBland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "6",
+                           "calculation":  "3*2=6 ordnade rollval",
+                           "sent":  "6",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 15 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 5 olika böcker placeras i en rad?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  15,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 15 · högst 60\nSvar sparas på den här enheten\nPå hur många sätt kan 5 olika böcker placeras i en rad?\nDitt svar\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "120",
+                           "calculation":  "5!=120",
+                           "sent":  "120",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 16 · högst 60\nSvar sparas på den här enheten\nPåsen har 6 vita och 5 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 6/11\nV: 6/11\nVV\nS: 5/11\nVS\nS: 5/11\nV: 6/11\nSV\nS: 5/11\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n36/121\n18/121\n85/121\n72/121\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  16,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 16 · högst 60\nSvar sparas på den här enheten\nPåsen har 6 vita och 5 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 6/11\nV: 6/11\nVV\nS: 5/11\nVS\nS: 5/11\nV: 6/11\nSV\nS: 5/11\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n36/121\n18/121\n85/121\n72/121\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "36/121",
+                                           "18/121",
+                                           "85/121",
+                                           "72/121"
+                                       ],
+                           "computed":  "36/121",
+                           "calculation":  "Med återläggning: (6/11)*(6/11)=36/121",
+                           "sent":  "36/121",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 17 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 4/12\nV: 4/12\nVV\nS: 8/12\nVS\nS: 8/12\nV: 4/12\nSV\nS: 8/12\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n1/9\n7/9\n4/9\n2/9\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  17,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 17 · högst 60\nSvar sparas på den här enheten\nPåsen har 4 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 4/12\nV: 4/12\nVV\nS: 8/12\nVS\nS: 8/12\nV: 4/12\nSV\nS: 8/12\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n1/9\n7/9\n4/9\n2/9\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "1/9",
+                                           "7/9",
+                                           "4/9",
+                                           "2/9"
+                                       ],
+                           "computed":  "2/9",
+                           "calculation":  "(4/12)*(8/12)=32/144=2/9",
+                           "sent":  "2/9",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 18 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 2/10\nV: 2/10\nVV\nS: 8/10\nVS\nS: 8/10\nV: 2/10\nSV\nS: 8/10\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  18,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 18 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 2/10\nV: 2/10\nVV\nS: 8/10\nVS\nS: 8/10\nV: 2/10\nSV\nS: 8/10\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "16/25",
+                           "calculation":  "(8/10)^2=64/100=16/25",
+                           "sent":  "16/25",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 19 · högst 60\nSvar sparas på den här enheten\nEn påse har 4 vita och 7 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nVälj ett svar\n112/121\n56/121\n65/121\n28/121\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  19,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 19 · högst 60\nSvar sparas på den här enheten\nEn påse har 4 vita och 7 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nVälj ett svar\n112/121\n56/121\n65/121\n28/121\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "112/121",
+                                           "56/121",
+                                           "65/121",
+                                           "28/121"
+                                       ],
+                           "computed":  "56/121",
+                           "calculation":  "VS eller SV: 2*(4/11)*(7/11)=56/121",
+                           "sent":  "56/121",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 20 · högst 60\nSvar sparas på den här enheten\nEn påse har 5 vita och 3 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  20,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 20 · högst 60\nSvar sparas på den här enheten\nEn påse har 5 vita och 3 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "15/28",
+                           "calculation":  "VS+SV=(5/8)*(3/7)+(3/8)*(5/7)=30/56=15/28",
+                           "sent":  "15/28",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 21 · högst 60\nSvar sparas på den här enheten\nEn påse har 6 vita och 4 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  21,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 21 · högst 60\nSvar sparas på den här enheten\nEn påse har 6 vita och 4 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "12/25",
+                           "calculation":  "2*(6/10)*(4/10)=48/100=12/25",
+                           "sent":  "12/25",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 22 · högst 60\nSvar sparas på den här enheten\nSannolikheten för vinst är 7/10. Vad är sannolikheten att inte vinna?\nVälj ett svar\n7/11\n3/10\n7/17\n4/5\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  22,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 22 · högst 60\nSvar sparas på den här enheten\nSannolikheten för vinst är 7/10. Vad är sannolikheten att inte vinna?\nVälj ett svar\n7/11\n3/10\n7/17\n4/5\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "7/11",
+                                           "3/10",
+                                           "7/17",
+                                           "4/5"
+                                       ],
+                           "computed":  "3/10",
+                           "calculation":  "1-7/10=3/10",
+                           "sent":  "3/10",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 23 · högst 60\nSvar sparas på den här enheten\nSannolikheten för att det inte regnar är 5/10. Vad är sannolikheten för regn?\nVälj ett svar\n3/5\n1/3\n5/11\n1/2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  23,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 23 · högst 60\nSvar sparas på den här enheten\nSannolikheten för att det inte regnar är 5/10. Vad är sannolikheten för regn?\nVälj ett svar\n3/5\n1/3\n5/11\n1/2\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "3/5",
+                                           "1/3",
+                                           "5/11",
+                                           "1/2"
+                                       ],
+                           "computed":  "1/2",
+                           "calculation":  "1-5/10=1/2",
+                           "sent":  "1/2",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 24 · högst 60\nSvar sparas på den här enheten\nSannolikheten för fel är 50 %. Vad är sannolikheten för ett korrekt resultat i procent?\nDitt svar (%)\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  24,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 24 · högst 60\nSvar sparas på den här enheten\nSannolikheten för fel är 50 %. Vad är sannolikheten för ett korrekt resultat i procent?\nDitt svar (%)\n\nSkriv ett heltal. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "50",
+                           "calculation":  "100%-50%=50%",
+                           "sent":  "50",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 25 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 8 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 2/10\nV: 1/9\nVV\nS: 8/9\nVS\nS: 8/10\nV: 2/9\nSV\nS: 7/9\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n1/90\n1/45\n2/45\n44/45\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  25,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 25 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 8 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\nStart\nFörsta draget\nAndra draget\nV: 2/10\nV: 1/9\nVV\nS: 8/9\nVS\nS: 8/10\nV: 2/9\nSV\nS: 7/9\nSS\nV = vit kula, S = svart kula\nVälj ett svar\n1/90\n1/45\n2/45\n44/45\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "1/90",
+                                           "1/45",
+                                           "2/45",
+                                           "44/45"
+                                       ],
+                           "computed":  "1/45",
+                           "calculation":  "(2/10)*(1/9)=2/90=1/45",
+                           "sent":  "1/45",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 26 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 2 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 2/4\nV: 1/3\nVV\nS: 2/3\nVS\nS: 2/4\nV: 2/3\nSV\nS: 1/3\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  26,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 26 · högst 60\nSvar sparas på den här enheten\nPåsen har 2 vita och 2 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 2/4\nV: 1/3\nVV\nS: 2/3\nVS\nS: 2/4\nV: 2/3\nSV\nS: 1/3\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "1/3",
+                           "calculation":  "(2/4)*(2/3)=4/12=1/3",
+                           "sent":  "1/3",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 27 · högst 60\nSvar sparas på den här enheten\nPåsen har 3 vita och 6 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 3/9\nV: 2/8\nVV\nS: 6/8\nVS\nS: 6/9\nV: 3/8\nSV\nS: 5/8\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  27,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 27 · högst 60\nSvar sparas på den här enheten\nPåsen har 3 vita och 6 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?\nStart\nFörsta draget\nAndra draget\nV: 3/9\nV: 2/8\nVV\nS: 6/8\nVS\nS: 6/9\nV: 3/8\nSV\nS: 5/8\nSS\nV = vit kula, S = svart kula\nDitt svar\n\nSkriv ett bråk med snedstreck, till exempel 1/2. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "5/12",
+                           "calculation":  "(6/9)*(5/8)=30/72=5/12",
+                           "sent":  "5/12",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 28 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 3 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.\nDitt svar\n\nSkriv ett decimaltal med komma eller punkt. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  28,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 28 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 3 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.\nDitt svar\n\nSkriv ett decimaltal med komma eller punkt. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "0,027",
+                           "calculation":  "Relativ frekvens 3/110=0,0272727; avrundat till tre decimaler 0,027",
+                           "sent":  "0,027",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 29 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 92 gånger. Uppskatta dess sannolikhet i procent från experimentet.\nDitt svar (%)\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  29,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 29 · högst 60\nSvar sparas på den här enheten\nI 110 försök inträffar utfallet 92 gånger. Uppskatta dess sannolikhet i procent från experimentet.\nDitt svar (%)\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "83,636",
+                           "calculation":  "92/110*100=83,636363 procent; tre decimaler 83,636",
+                           "sent":  "83,636",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 30 · högst 60\nSvar sparas på den här enheten\nDu kastar en rättvis tärning ett litet antal gånger. Måste sexorna utgöra exakt en sjättedel av kasten?\nVälj ett svar\nJa\nNej\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  30,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 30 · högst 60\nSvar sparas på den här enheten\nDu kastar en rättvis tärning ett litet antal gånger. Måste sexorna utgöra exakt en sjättedel av kasten?\nVälj ett svar\nJa\nNej\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "Ja",
+                                           "Nej"
+                                       ],
+                           "computed":  "Nej",
+                           "calculation":  "Relativ frekvens varierar i ett litet slumpförsök; teoretisk sannolikhet kräver inte exakt andel",
+                           "sent":  "Nej",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 31 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  31,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 31 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "0,19",
+                           "calculation":  "1-(1-0,1)^2=1-0,81=0,19",
+                           "sent":  "0,19",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 32 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,8. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\nVälj ett svar\n62/125\n124/125\n1/125\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  32,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 32 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,8. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\nVälj ett svar\n62/125\n124/125\n1/125\n0\n\nVälj ett alternativ och tryck Svara.\n\nSvara →\nJag vet inte",
+                           "options":  [
+                                           "62/125",
+                                           "124/125",
+                                           "1/125",
+                                           "0"
+                                       ],
+                           "computed":  "124/125",
+                           "calculation":  "1-(1/5)^3=124/125",
+                           "sent":  "124/125",
+                           "anomaly":  false,
+                           "afterVisible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 33 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 4 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte\nSvar sparat"
+                       },
+                       {
+                           "number":  33,
+                           "visible":  "Matematik · Elev 1\nLjust tema\nPausa\nAvsluta\nUppgift 33 · högst 60\nSvar sparas på den här enheten\nVinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 4 försök?\nDitt svar\n\nSkriv ett tal eller bråk, till exempel 0,5 eller 1/2. Avrunda vid behov till tre decimaler. Tryck Enter eller Svara när du är klar.\n\nSvara →\nJag vet inte",
+                           "options":  [
+
+                                       ],
+                           "computed":  "3439/10000",
+                           "calculation":  "1-0,9^4=1-0,6561=0,3439=3439/10000; exakt bråk är tillåtet",
+                           "sent":  "3439/10000",
+                           "anomaly":  false,
+                           "afterVisible":  "Passet är klart\n\nDina svar är sparade. Lämna tillbaka skärmen till din lärare.\n\nVisa sammanställningen"
+                       }
+                   ],
+    "finalVisible":  "Passet är klart\n\nDina svar är sparade. Lämna tillbaka skärmen till din lärare.\n\nVisa sammanställningen",
+    "storedAfterCompletion":  {
+                                  "matree.profiles.v1":  {
+                                                             "version":  1,
+                                                             "profiles":  [
+                                                                              {
+                                                                                  "id":  "dea5cf98-a52e-48be-9047-3c7be0035d58",
+                                                                                  "name":  "Elev 1",
+                                                                                  "results":  {
+
+                                                                                              },
+                                                                                  "quiz":  null,
+                                                                                  "adaptive":  {
+                                                                                                   "active":  null,
+                                                                                                   "sessions":  [
+                                                                                                                    {
+                                                                                                                        "id":  "e3cc2eef-6242-4a67-aa61-98b8707030aa",
+                                                                                                                        "catalogue":  "assessed",
+                                                                                                                        "coveragePolicy":  "exhaustive",
+                                                                                                                        "started":  "2026-10-20T13:03:35.184Z",
+                                                                                                                        "ended":  "2026-10-20T13:09:01.645Z",
+                                                                                                                        "endReason":  "all-tested",
+                                                                                                                        "start":  "higher",
+                                                                                                                        "scope":  "8",
+                                                                                                                        "selection":  "course",
+                                                                                                                        "category":  "sannolikhet",
+                                                                                                                        "known":  [
+
+                                                                                                                                  ],
+                                                                                                                        "recent":  [
+
+                                                                                                                                   ],
+                                                                                                                        "limit":  60,
+                                                                                                                        "items":  [
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En påse har 4 röda kulor och 4 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?\n\n1. 1\n2. 0\n3. 1/4\n4. 1/2\n\nVälj ett svar.",
+                                                                                                                                          "answer":  4,
+                                                                                                                                          "explanation":  "Gynnsamma utfall delat med alla lika sannolika utfall.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "gynnsamma-utfall:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "1",
+                                                                                                                                                          "0",
+                                                                                                                                                          "1/4",
+                                                                                                                                                          "1/2"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               1,
+                                                                                                                                                               0,
+                                                                                                                                                               0.25,
+                                                                                                                                                               0.5
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "gynnsamma-utfall",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "4",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:01.116Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Ett lyckohjul har 6 lika stora fält. 4 fält ger vinst. Vad är sannolikheten för vinst?\n\n1. 0\n2. 1\n3. 1/3\n4. 2/3\n\nVälj ett svar.",
+                                                                                                                                          "answer":  4,
+                                                                                                                                          "explanation":  "Varje lika stort fält har samma sannolikhet.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "gynnsamma-utfall:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "0",
+                                                                                                                                                          "1",
+                                                                                                                                                          "1/3",
+                                                                                                                                                          "2/3"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0,
+                                                                                                                                                               1,
+                                                                                                                                                               0.33333333333333337,
+                                                                                                                                                               0.6666666666666666
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "gynnsamma-utfall",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "4",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:09.234Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En vanlig rättvis tärning kastas. Vad är sannolikheten för ett tal mindre än 2?",
+                                                                                                                                          "answer":  0.16666666666666666,
+                                                                                                                                          "explanation":  "Räkna gynnsamma sidor och dividera med sex.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "templateId":  "gynnsamma-utfall:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "gynnsamma-utfall",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "1/6",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:22.400Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Du väljer en tröja bland 6 olika tröjor, ett par byxor bland 8 olika par och en mössa bland 4 olika mössor. Hur många kombinationer finns?\n\n1. 384\n2. 192\n3. 96\n4. 0\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Multiplicera antalet val i varje steg.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "kombinationer:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "384",
+                                                                                                                                                          "192",
+                                                                                                                                                          "96",
+                                                                                                                                                          "0"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               384,
+                                                                                                                                                               192,
+                                                                                                                                                               96,
+                                                                                                                                                               0
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "kombinationer",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:30.215Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En kod har 5 teckenplatser. Varje plats kan vara ett av 2 tecken och tecken får upprepas. Hur många koder finns?",
+                                                                                                                                          "answer":  32,
+                                                                                                                                          "explanation":  "Varje plats har samma antal oberoende val.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "kombinationer:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "nodeId":  "kombinationer",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "32",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:37.164Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Det finns 2 huvudrätter och 3 efterrätter. Du väljer en huvudrätt och kan antingen avstå efterrätt eller välja en. Hur många måltidskombinationer finns?",
+                                                                                                                                          "answer":  8,
+                                                                                                                                          "explanation":  "Att avstå är också ett val.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "kombinationer:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "kombinationer",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "8",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:44.015Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vilket tal kan vara en sannolikhet?\n\n1. 0,25\n2. 2\n3. −0,2\n4. 1,2\n\nVälj ett svar.",
+                                                                                                                                          "answer":  1,
+                                                                                                                                          "explanation":  "Sannolikhet är minst 0 och högst 1.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "sannolikhet-skala:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "0,25",
+                                                                                                                                                          "2",
+                                                                                                                                                          "−0,2",
+                                                                                                                                                          "1,2"
+                                                                                                                                                      ],
+                                                                                                                                          "nodeId":  "sannolikhet-skala",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "1",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:51.452Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vad är sannolikheten för en säker händelse?\n\n1. 0,5\n2. 2\n3. 1\n4. 0\n\nVälj ett svar.",
+                                                                                                                                          "answer":  3,
+                                                                                                                                          "explanation":  "En säker händelse inträffar alltid.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "sannolikhet-skala:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "0,5",
+                                                                                                                                                          "2",
+                                                                                                                                                          "1",
+                                                                                                                                                          "0"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.5,
+                                                                                                                                                               2,
+                                                                                                                                                               1,
+                                                                                                                                                               0
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "sannolikhet-skala",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "3",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:04:58.991Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vad är sannolikheten för en omöjlig händelse?",
+                                                                                                                                          "answer":  0,
+                                                                                                                                          "explanation":  "En omöjlig händelse inträffar aldrig.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "sannolikhet-skala:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "sannolikhet-skala",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "0",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:05:12.172Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vinstsannolikheten är 3/5. Hur många vinster förväntas vid 30 försök?",
+                                                                                                                                          "answer":  18,
+                                                                                                                                          "explanation":  "Förväntat antal är antal försök gånger sannolikheten.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "forvantat-antal:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "nodeId":  "forvantat-antal",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "18",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:05:22.384Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vinstsannolikheten är 1/6. Hur många försök behövs för ett förväntat antal på 5 vinster?\n\n1. 0,143\n2. 30\n3. 0,333\n4. 6\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Dividera förväntat antal med sannolikheten.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "forvantat-antal:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "0,143",
+                                                                                                                                                          "30",
+                                                                                                                                                          "0,333",
+                                                                                                                                                          "6"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.14285714285714285,
+                                                                                                                                                               30,
+                                                                                                                                                               0.3333333333333333,
+                                                                                                                                                               6
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "forvantat-antal",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:05:37.506Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vid 48 försök är det förväntade antalet vinster 30. Måste det faktiska antalet vara just detta?\n\n1. Nej\n2. Ja\n\nSvara med alternativets nummer.",
+                                                                                                                                          "answer":  1,
+                                                                                                                                          "explanation":  "Ett förväntat antal är ett genomsnitt över upprepningar, inte en garanti.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "forvantat-antal:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "Nej",
+                                                                                                                                                          "Ja"
+                                                                                                                                                      ],
+                                                                                                                                          "nodeId":  "forvantat-antal",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "1",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:05:49.775Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "På hur många sätt kan 6 olika böcker placeras i en rad?\n\n1. 1440\n2. 360\n3. 0\n4. 720\n\nVälj ett svar.",
+                                                                                                                                          "answer":  4,
+                                                                                                                                          "explanation":  "Ordningen eller rollen spelar roll; minska antalet val för varje upptagen plats.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "ordna-objekt:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "1440",
+                                                                                                                                                          "360",
+                                                                                                                                                          "0",
+                                                                                                                                                          "720"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               1440,
+                                                                                                                                                               360,
+                                                                                                                                                               0,
+                                                                                                                                                               720
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "ordna-objekt",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "4",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:05:59.308Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Bland 3 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+                                                                                                                                          "answer":  6,
+                                                                                                                                          "explanation":  "Ordningen eller rollen spelar roll; minska antalet val för varje upptagen plats.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "ordna-objekt:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "nodeId":  "ordna-objekt",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "6",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:06.850Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "På hur många sätt kan 5 olika böcker placeras i en rad?",
+                                                                                                                                          "answer":  120,
+                                                                                                                                          "explanation":  "Ordningen eller rollen spelar roll; minska antalet val för varje upptagen plats.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "ordna-objekt:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "ordna-objekt",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "120",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:15.683Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 6 vita och 5 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\n\n1. 36/121\n2. 18/121\n3. 85/121\n4. 72/121\n\nVälj ett svar.",
+                                                                                                                                          "answer":  1,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "6/11",
+                                                                                                                                                                       "5/11"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "6/11",
+                                                                                                                                                                          "5/11"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "6/11",
+                                                                                                                                                                          "5/11"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-oberoende:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "36/121",
+                                                                                                                                                          "18/121",
+                                                                                                                                                          "85/121",
+                                                                                                                                                          "72/121"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.29752066115702475,
+                                                                                                                                                               0.14876033057851237,
+                                                                                                                                                               0.7024793388429753,
+                                                                                                                                                               0.5950413223140495
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "trad-oberoende",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "1",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:24.874Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 4 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?\n\n1. 1/9\n2. 7/9\n3. 4/9\n4. 2/9\n\nVälj ett svar.",
+                                                                                                                                          "answer":  4,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "4/12",
+                                                                                                                                                                       "8/12"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "4/12",
+                                                                                                                                                                          "8/12"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "4/12",
+                                                                                                                                                                          "8/12"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-oberoende:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "1/9",
+                                                                                                                                                          "7/9",
+                                                                                                                                                          "4/9",
+                                                                                                                                                          "2/9"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.1111111111111111,
+                                                                                                                                                               0.7777777777777778,
+                                                                                                                                                               0.4444444444444444,
+                                                                                                                                                               0.2222222222222222
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "trad-oberoende",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "4",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:32.840Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 2 vita och 8 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?",
+                                                                                                                                          "answer":  0.64,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "2/10",
+                                                                                                                                                                       "8/10"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "2/10",
+                                                                                                                                                                          "8/10"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "2/10",
+                                                                                                                                                                          "8/10"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-oberoende:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "trad-oberoende",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "16/25",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:42.750Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En påse har 4 vita och 7 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?\n\n1. 112/121\n2. 56/121\n3. 65/121\n4. 28/121\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Summera de två skilda vägarna vit–svart och svart–vit.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "flera-vagar:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "112/121",
+                                                                                                                                                          "56/121",
+                                                                                                                                                          "65/121",
+                                                                                                                                                          "28/121"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.9256198347107438,
+                                                                                                                                                               0.4628099173553719,
+                                                                                                                                                               0.5371900826446281,
+                                                                                                                                                               0.23140495867768596
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "flera-vagar",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:52.036Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En påse har 5 vita och 3 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+                                                                                                                                          "answer":  0.5357142857142857,
+                                                                                                                                          "explanation":  "Summera de två skilda vägarna vit–svart och svart–vit.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "templateId":  "flera-vagar:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "nodeId":  "flera-vagar",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "15/28",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:06:59.733Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "En påse har 6 vita och 4 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+                                                                                                                                          "answer":  0.48,
+                                                                                                                                          "explanation":  "Summera de två skilda vägarna vit–svart och svart–vit.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "templateId":  "flera-vagar:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "flera-vagar",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "12/25",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:12.853Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Sannolikheten för vinst är 7/10. Vad är sannolikheten att inte vinna?\n\n1. 7/11\n2. 3/10\n3. 7/17\n4. 4/5\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Händelse och komplement har sammanlagt sannolikheten ett.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "komplement:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "7/11",
+                                                                                                                                                          "3/10",
+                                                                                                                                                          "7/17",
+                                                                                                                                                          "4/5"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.6363636363636364,
+                                                                                                                                                               0.30000000000000004,
+                                                                                                                                                               0.4117647058823529,
+                                                                                                                                                               0.8
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "komplement",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:20.125Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Sannolikheten för att det inte regnar är 5/10. Vad är sannolikheten för regn?\n\n1. 3/5\n2. 1/3\n3. 5/11\n4. 1/2\n\nVälj ett svar.",
+                                                                                                                                          "answer":  4,
+                                                                                                                                          "explanation":  "Subtrahera den givna sannolikheten från ett.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "komplement:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "3/5",
+                                                                                                                                                          "1/3",
+                                                                                                                                                          "5/11",
+                                                                                                                                                          "1/2"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.6,
+                                                                                                                                                               0.3333333333333333,
+                                                                                                                                                               0.45454545454545453,
+                                                                                                                                                               0.5
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "komplement",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "4",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:29.534Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Sannolikheten för fel är 50 %. Vad är sannolikheten för ett korrekt resultat i procent?",
+                                                                                                                                          "answer":  50,
+                                                                                                                                          "explanation":  "Komplementet återstår upp till hundra procent.",
+                                                                                                                                          "unit":  "%",
+                                                                                                                                          "answerKind":  "integer",
+                                                                                                                                          "templateId":  "komplement:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "komplement",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "50",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:36.920Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 2 vita och 8 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?\n\n1. 1/90\n2. 1/45\n3. 2/45\n4. 44/45\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "2/10",
+                                                                                                                                                                       "8/10"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "1/9",
+                                                                                                                                                                          "8/9"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "2/9",
+                                                                                                                                                                          "7/9"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-beroende:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "1/90",
+                                                                                                                                                          "1/45",
+                                                                                                                                                          "2/45",
+                                                                                                                                                          "44/45"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.011111111111111112,
+                                                                                                                                                               0.022222222222222223,
+                                                                                                                                                               0.044444444444444446,
+                                                                                                                                                               0.9777777777777777
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "trad-beroende",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:46.406Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 2 vita och 2 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+                                                                                                                                          "answer":  0.3333333333333333,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "2/4",
+                                                                                                                                                                       "2/4"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "1/3",
+                                                                                                                                                                          "2/3"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "2/3",
+                                                                                                                                                                          "1/3"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-beroende:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "nodeId":  "trad-beroende",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "1/3",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:07:54.267Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Påsen har 3 vita och 6 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en svart kula och sedan en svart kula?",
+                                                                                                                                          "answer":  0.41666666666666663,
+                                                                                                                                          "explanation":  "Multiplicera längs den angivna vägen. Utan återläggning ändras antalet kulor efter första draget.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "fraction",
+                                                                                                                                          "visual":  {
+                                                                                                                                                         "type":  "tree",
+                                                                                                                                                         "first":  [
+                                                                                                                                                                       "3/9",
+                                                                                                                                                                       "6/9"
+                                                                                                                                                                   ],
+                                                                                                                                                         "next":  [
+                                                                                                                                                                      [
+                                                                                                                                                                          "2/8",
+                                                                                                                                                                          "6/8"
+                                                                                                                                                                      ],
+                                                                                                                                                                      [
+                                                                                                                                                                          "3/8",
+                                                                                                                                                                          "5/8"
+                                                                                                                                                                      ]
+                                                                                                                                                                  ]
+                                                                                                                                                     },
+                                                                                                                                          "templateId":  "trad-beroende:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "trad-beroende",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "5/12",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:02.389Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "I 110 försök inträffar utfallet 3 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+                                                                                                                                          "answer":  0.02727272727272727,
+                                                                                                                                          "explanation":  "Relativ frekvens ger en empirisk uppskattning.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "number",
+                                                                                                                                          "responseFormat":  "decimal",
+                                                                                                                                          "templateId":  "experiment-sannolikhet:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "nodeId":  "experiment-sannolikhet",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "0,027",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:11.161Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "I 110 försök inträffar utfallet 92 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+                                                                                                                                          "answer":  83.63636363636363,
+                                                                                                                                          "explanation":  "Relativ frekvens ger en empirisk uppskattning.",
+                                                                                                                                          "unit":  "%",
+                                                                                                                                          "answerKind":  "number",
+                                                                                                                                          "templateId":  "experiment-sannolikhet:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "nodeId":  "experiment-sannolikhet",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "83,636",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:21.025Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Du kastar en rättvis tärning ett litet antal gånger. Måste sexorna utgöra exakt en sjättedel av kasten?\n\n1. Ja\n2. Nej\n\nSvara med alternativets nummer.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Slumpvariation gör att frekvensen kan avvika från den teoretiska sannolikheten.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "experiment-sannolikhet:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "Ja",
+                                                                                                                                                          "Nej"
+                                                                                                                                                      ],
+                                                                                                                                          "nodeId":  "experiment-sannolikhet",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:28.718Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+                                                                                                                                          "answer":  0.18999999999999995,
+                                                                                                                                          "explanation":  "Använd komplementet: ett minus sannolikheten för ingen vinst.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "number",
+                                                                                                                                          "templateId":  "minst-en:0",
+                                                                                                                                          "facet":  0,
+                                                                                                                                          "nodeId":  "minst-en",
+                                                                                                                                          "variant":  0,
+                                                                                                                                          "reason":  "Fler delmoment i valt urval undersöks, även när förkunskaper behöver följas upp.",
+                                                                                                                                          "response":  "0,19",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:42.469Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vinstsannolikheten per försök är 0,8. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?\n\n1. 62/125\n2. 124/125\n3. 1/125\n4. 0\n\nVälj ett svar.",
+                                                                                                                                          "answer":  2,
+                                                                                                                                          "explanation":  "Använd komplementet: ett minus sannolikheten för ingen vinst.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "choice",
+                                                                                                                                          "templateId":  "minst-en:1",
+                                                                                                                                          "facet":  1,
+                                                                                                                                          "options":  [
+                                                                                                                                                          "62/125",
+                                                                                                                                                          "124/125",
+                                                                                                                                                          "1/125",
+                                                                                                                                                          "0"
+                                                                                                                                                      ],
+                                                                                                                                          "optionValues":  [
+                                                                                                                                                               0.496,
+                                                                                                                                                               0.992,
+                                                                                                                                                               0.008000000000000007,
+                                                                                                                                                               0
+                                                                                                                                                           ],
+                                                                                                                                          "nodeId":  "minst-en",
+                                                                                                                                          "variant":  1,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "2",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:08:50.142Z"
+                                                                                                                                      },
+                                                                                                                                      {
+                                                                                                                                          "prompt":  "Vinstsannolikheten per försök är 0,1. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 4 försök?",
+                                                                                                                                          "answer":  0.3439,
+                                                                                                                                          "explanation":  "Använd komplementet: ett minus sannolikheten för ingen vinst.",
+                                                                                                                                          "unit":  "",
+                                                                                                                                          "answerKind":  "number",
+                                                                                                                                          "templateId":  "minst-en:2",
+                                                                                                                                          "facet":  2,
+                                                                                                                                          "nodeId":  "minst-en",
+                                                                                                                                          "variant":  2,
+                                                                                                                                          "reason":  "En till uppgift prövar samma delmoment med en annan variant.",
+                                                                                                                                          "response":  "3439/10000",
+                                                                                                                                          "skipped":  false,
+                                                                                                                                          "correct":  true,
+                                                                                                                                          "date":  "2026-10-20T13:09:01.645Z"
+                                                                                                                                      }
+                                                                                                                                  ],
+                                                                                                                        "pending":  null,
+                                                                                                                        "remediation":  false
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                   "confirmations":  [
+
+                                                                                                                     ]
+                                                                                               }
+                                                                              }
+                                                                          ],
+                                                             "activeId":  "dea5cf98-a52e-48be-9047-3c7be0035d58"
+                                                         }
+                              },
+    "summaryVisible":  "Sammanställning av elevens pass\n×\n\nElev 1 · Åk 8 · Sannolikhet · 2026-10-20 15:03\n33 svar på 11 delmoment\n\nAlla delmoment inom valt område och årskursurval har prövats.\n\n33 svar av högst 60. 11 delmoment fick nya svar; 0 finns kvar i listan Ej prövade. Tidigare visade redovisas separat.\n\nVälj tidigare årskursurval\n0\nBehöver följas upp\n11\nVisad i passet\n0\nBegränsat underlag\n0\nEj prövade i urvalet\n\nResultaten gäller detta pass. Öppna ett delmoment för att se elevens svar och förkunskaper.\n\nBehöver följas upp 0\nBegränsat underlag 0\nVisad i passet 11\nGynnsamma och möjliga utfall\nSannolikhet\n3/3 rätt →\nMultiplikationsprincipen\nSannolikhet\n3/3 rätt →\nSannolikhet mellan 0 och 1\nSannolikhet\n3/3 rätt →\nFörväntat antal utfall\nSannolikhet\n3/3 rätt →\nOrdna olika föremål\nSannolikhet\n3/3 rätt →\nTräddiagram: oberoende händelser\nSannolikhet\n3/3 rätt →\nAddera alternativa vägar\nSannolikhet\n3/3 rätt →\nKomplementhändelser\nSannolikhet\n3/3 rätt →\nTräddiagram: utan återläggning\nSannolikhet\n3/3 rätt →\nSannolikhet från försök\nSannolikhet\n3/3 rätt →\nMinst en: komplementmetoden\nSannolikhet\n3/3 rätt →\nEj prövade i detta urval 0\nFrågor, elevsvar och facit 33\nSå ska underlaget läsas\nTill elevöversikten →\nNytt pass",
+    "outcomes":  [
+                     {
+                         "nodeId":  "gynnsamma-utfall",
+                         "templateId":  "gynnsamma-utfall:0",
+                         "response":  "4",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:01.116Z"
+                     },
+                     {
+                         "nodeId":  "gynnsamma-utfall",
+                         "templateId":  "gynnsamma-utfall:1",
+                         "response":  "4",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:09.234Z"
+                     },
+                     {
+                         "nodeId":  "gynnsamma-utfall",
+                         "templateId":  "gynnsamma-utfall:2",
+                         "response":  "1/6",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:22.400Z"
+                     },
+                     {
+                         "nodeId":  "kombinationer",
+                         "templateId":  "kombinationer:0",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:30.215Z"
+                     },
+                     {
+                         "nodeId":  "kombinationer",
+                         "templateId":  "kombinationer:1",
+                         "response":  "32",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:37.164Z"
+                     },
+                     {
+                         "nodeId":  "kombinationer",
+                         "templateId":  "kombinationer:2",
+                         "response":  "8",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:44.015Z"
+                     },
+                     {
+                         "nodeId":  "sannolikhet-skala",
+                         "templateId":  "sannolikhet-skala:0",
+                         "response":  "1",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:51.452Z"
+                     },
+                     {
+                         "nodeId":  "sannolikhet-skala",
+                         "templateId":  "sannolikhet-skala:1",
+                         "response":  "3",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:04:58.991Z"
+                     },
+                     {
+                         "nodeId":  "sannolikhet-skala",
+                         "templateId":  "sannolikhet-skala:2",
+                         "response":  "0",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:05:12.172Z"
+                     },
+                     {
+                         "nodeId":  "forvantat-antal",
+                         "templateId":  "forvantat-antal:0",
+                         "response":  "18",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:05:22.384Z"
+                     },
+                     {
+                         "nodeId":  "forvantat-antal",
+                         "templateId":  "forvantat-antal:1",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:05:37.506Z"
+                     },
+                     {
+                         "nodeId":  "forvantat-antal",
+                         "templateId":  "forvantat-antal:2",
+                         "response":  "1",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:05:49.775Z"
+                     },
+                     {
+                         "nodeId":  "ordna-objekt",
+                         "templateId":  "ordna-objekt:0",
+                         "response":  "4",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:05:59.308Z"
+                     },
+                     {
+                         "nodeId":  "ordna-objekt",
+                         "templateId":  "ordna-objekt:1",
+                         "response":  "6",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:06.850Z"
+                     },
+                     {
+                         "nodeId":  "ordna-objekt",
+                         "templateId":  "ordna-objekt:2",
+                         "response":  "120",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:15.683Z"
+                     },
+                     {
+                         "nodeId":  "trad-oberoende",
+                         "templateId":  "trad-oberoende:0",
+                         "response":  "1",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:24.874Z"
+                     },
+                     {
+                         "nodeId":  "trad-oberoende",
+                         "templateId":  "trad-oberoende:1",
+                         "response":  "4",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:32.840Z"
+                     },
+                     {
+                         "nodeId":  "trad-oberoende",
+                         "templateId":  "trad-oberoende:2",
+                         "response":  "16/25",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:42.750Z"
+                     },
+                     {
+                         "nodeId":  "flera-vagar",
+                         "templateId":  "flera-vagar:0",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:52.036Z"
+                     },
+                     {
+                         "nodeId":  "flera-vagar",
+                         "templateId":  "flera-vagar:1",
+                         "response":  "15/28",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:06:59.733Z"
+                     },
+                     {
+                         "nodeId":  "flera-vagar",
+                         "templateId":  "flera-vagar:2",
+                         "response":  "12/25",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:12.853Z"
+                     },
+                     {
+                         "nodeId":  "komplement",
+                         "templateId":  "komplement:0",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:20.125Z"
+                     },
+                     {
+                         "nodeId":  "komplement",
+                         "templateId":  "komplement:1",
+                         "response":  "4",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:29.534Z"
+                     },
+                     {
+                         "nodeId":  "komplement",
+                         "templateId":  "komplement:2",
+                         "response":  "50",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:36.920Z"
+                     },
+                     {
+                         "nodeId":  "trad-beroende",
+                         "templateId":  "trad-beroende:0",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:46.406Z"
+                     },
+                     {
+                         "nodeId":  "trad-beroende",
+                         "templateId":  "trad-beroende:1",
+                         "response":  "1/3",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:07:54.267Z"
+                     },
+                     {
+                         "nodeId":  "trad-beroende",
+                         "templateId":  "trad-beroende:2",
+                         "response":  "5/12",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:02.389Z"
+                     },
+                     {
+                         "nodeId":  "experiment-sannolikhet",
+                         "templateId":  "experiment-sannolikhet:0",
+                         "response":  "0,027",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:11.161Z"
+                     },
+                     {
+                         "nodeId":  "experiment-sannolikhet",
+                         "templateId":  "experiment-sannolikhet:1",
+                         "response":  "83,636",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:21.025Z"
+                     },
+                     {
+                         "nodeId":  "experiment-sannolikhet",
+                         "templateId":  "experiment-sannolikhet:2",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:28.718Z"
+                     },
+                     {
+                         "nodeId":  "minst-en",
+                         "templateId":  "minst-en:0",
+                         "response":  "0,19",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:42.469Z"
+                     },
+                     {
+                         "nodeId":  "minst-en",
+                         "templateId":  "minst-en:1",
+                         "response":  "2",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:08:50.142Z"
+                     },
+                     {
+                         "nodeId":  "minst-en",
+                         "templateId":  "minst-en:2",
+                         "response":  "3439/10000",
+                         "skipped":  false,
+                         "correct":  true,
+                         "date":  "2026-10-20T13:09:01.645Z"
+                     }
+                 ]
+}

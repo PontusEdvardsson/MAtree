@@ -1,0 +1,172 @@
+{
+  "low": {
+    "answers": 24,
+    "correct": 6,
+    "skipped": 18,
+    "endEvidence": "stored all-tested and rendered summary",
+    "skills": {
+      "gynnsamma-utfall": {
+        "correct": 3,
+        "total": 3
+      },
+      "kombinationer": {
+        "correct": 0,
+        "total": 2
+      },
+      "sannolikhet-skala": {
+        "correct": 3,
+        "total": 3
+      },
+      "forvantat-antal": {
+        "correct": 0,
+        "total": 2
+      },
+      "ordna-objekt": {
+        "correct": 0,
+        "total": 2
+      },
+      "trad-oberoende": {
+        "correct": 0,
+        "total": 2
+      },
+      "flera-vagar": {
+        "correct": 0,
+        "total": 2
+      },
+      "komplement": {
+        "correct": 0,
+        "total": 2
+      },
+      "trad-beroende": {
+        "correct": 0,
+        "total": 2
+      },
+      "experiment-sannolikhet": {
+        "correct": 0,
+        "total": 2
+      },
+      "minst-en": {
+        "correct": 0,
+        "total": 2
+      }
+    },
+    "shown": 2,
+    "followUp": 9,
+    "wrong": 0
+  },
+  "mixed": {
+    "answers": 33,
+    "correct": 29,
+    "skipped": 0,
+    "endEvidence": "rendered summary: all selected skills tested; no storage export",
+    "skills": {
+      "flera-vagar": {
+        "correct": 2,
+        "total": 4
+      },
+      "trad-beroende": {
+        "correct": 0,
+        "total": 2
+      },
+      "gynnsamma-utfall": {
+        "correct": 3,
+        "total": 3
+      },
+      "kombinationer": {
+        "correct": 3,
+        "total": 3
+      },
+      "sannolikhet-skala": {
+        "correct": 3,
+        "total": 3
+      },
+      "forvantat-antal": {
+        "correct": 3,
+        "total": 3
+      },
+      "ordna-objekt": {
+        "correct": 3,
+        "total": 3
+      },
+      "trad-oberoende": {
+        "correct": 3,
+        "total": 3
+      },
+      "komplement": {
+        "correct": 3,
+        "total": 3
+      },
+      "experiment-sannolikhet": {
+        "correct": 3,
+        "total": 3
+      },
+      "minst-en": {
+        "correct": 3,
+        "total": 3
+      }
+    },
+    "shown": 9,
+    "followUp": 2,
+    "wrong": 4
+  },
+  "strong": {
+    "answers": 33,
+    "correct": 33,
+    "skipped": 0,
+    "endEvidence": "stored all-tested and rendered summary",
+    "skills": {
+      "gynnsamma-utfall": {
+        "correct": 3,
+        "total": 3
+      },
+      "kombinationer": {
+        "correct": 3,
+        "total": 3
+      },
+      "sannolikhet-skala": {
+        "correct": 3,
+        "total": 3
+      },
+      "forvantat-antal": {
+        "correct": 3,
+        "total": 3
+      },
+      "ordna-objekt": {
+        "correct": 3,
+        "total": 3
+      },
+      "trad-oberoende": {
+        "correct": 3,
+        "total": 3
+      },
+      "flera-vagar": {
+        "correct": 3,
+        "total": 3
+      },
+      "komplement": {
+        "correct": 3,
+        "total": 3
+      },
+      "trad-beroende": {
+        "correct": 3,
+        "total": 3
+      },
+      "experiment-sannolikhet": {
+        "correct": 3,
+        "total": 3
+      },
+      "minst-en": {
+        "correct": 3,
+        "total": 3
+      }
+    },
+    "shown": 11,
+    "followUp": 0,
+    "wrong": 0
+  },
+  "limitations": [
+    "Simulations in one domain; no estimate of human understanding or false-positive rate.",
+    "Low rerun followed post-completion answer review of the failed first attempt.",
+    "Mixed evidence is rendered UI only; storage metadata was not exported."
+  ]
+}

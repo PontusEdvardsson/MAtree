@@ -16,14 +16,14 @@ brak|brak-del-antal|I den blandade kontrollen beräknas bråkdelar av antal geno
 decimal|decimal-plats|Platsvärden avgör vad varje siffra betyder i den blandade decimalkontrollen.
 decimal|decimal-addition|Den blandade kontrollens summor beräknas genom att addera ental, tiondelar och hundradelar var för sig.
 decimal|tiomultiplikation|Multiplikation med tio används för att ändra decimalers storlek i den blandade kontrollen.
-procent|procent-begrepp|Procenttalet tolkas som antal hundradelar av jämförelsevärdet i den blandade kontrollen.
+procent|procent-begrepp|Procenttalet tolkas som antal hundradelar av det hela i den blandade kontrollen.
 procent|procent-huvud|Halva, fjärdedelen och tiondelen används för att beräkna vanliga procentandelar i kontrollen.
 monster|f-add-small|Skillnaden mellan två tal kan användas som ett återkommande steg när talföljden fortsätts.
 likhet|f-add-small|Summor beräknas på båda sidor för att avgöra om uttrycken har samma värde.
 uttryck|variabel|Bokstaven ersätts med sitt givna talvärde innan uttrycket beräknas.
 uttryck|prioritering|Efter insättning avgör räkneordningen vilka operationer som ska utföras först.
-ekvation|ekvation-add|Addition eller subtraktion i båda leden används för att isolera det obekanta i kontrollens ekvationer.
-ekvation|ekvation-mult|Multiplikation eller division i båda leden används när det obekanta har en faktor eller nämnare.
+ekvation|ekvation-add|Addition eller subtraktion i båda leden används för att få det obekanta talet ensamt i ett led.
+ekvation|ekvation-mult|Båda leden multipliceras eller divideras med samma tal när det obekanta talet multipliceras eller divideras i ekvationen.
 negativa|sortera-tal|Talens ordning utvidgas till vänster om noll, där exempelvis −5 är mindre än −2.
 funktion|funktionsvarde|Insatta x-värden ger de y-värden som behövs för att undersöka kontrollens linjära samband.
 funktion|lutning|Ändringen i y per steg i x används för att tolka hur snabbt det linjära sambandet förändras.
@@ -57,7 +57,7 @@ decimal-addition|f-add-small|De små summorna används på varje decimalplats oc
 decimal-subtraktion|decimal-plats|Lika platsvärden ställs under varandra och en tiondel kan växlas till tio hundradelar.
 decimal-subtraktion|addition|Heltalens subtraktionsmetoder återanvänds för varje platsvärde i decimaltalen.
 tiomultiplikation|decimal-plats|Varje siffra får tio, hundra eller tusen gånger större platsvärde när talet multipliceras.
-tiomultiplikation|multiplikation|Produkten tolkas som att talets värde skalas upp med den angivna faktorn.
+tiomultiplikation|multiplikation|Talet multipliceras med 10, 100 eller 1 000 för att beräkna det nya värdet.
 tiodivision|decimal-plats|Varje siffra får tio, hundra eller tusen gånger mindre platsvärde vid divisionen.
 tiodivision|multiplikation|Divisionen kontrolleras genom att multiplicera kvoten med 10, 100 eller 1 000.
 avrunda-heltal|positionssystem|Den angivna positionen avgör vilka närliggande tiotal, hundratal eller tusental som är aktuella.
@@ -66,23 +66,23 @@ avrunda-decimal|decimal-plats|Den efterfrågade decimalplatsen och siffran närm
 avrunda-decimal|avrunda-heltal|Samma regel om närmaste värde används, men stegen kan vara tiondelar eller hundradelar.
 overslag|avrunda-heltal|Talen ersätts med närliggande, enklare tal innan ett ungefärligt svar beräknas.
 overslag|f-table|?Tabellprodukter förenklar överslag av produkter, exempelvis 19 · 4 ≈ 20 · 4; andra överslag använder andra räknesätt.
-delbarhet|multiplikation|Ett tal är delbart med en divisor när det kan skrivas som divisorn gånger ett heltal.
+delbarhet|multiplikation|Ett tal är delbart med ett annat tal när divisionen går jämnt upp, utan rest; multiplikation kan kontrollera svaret.
 delbarhet|tal-siffra|Siffrorna skiljs från hela talet när sista siffran eller siffersumman används i delbarhetsregler.
 primtal|delbarhet|Delare undersöks för att avgöra om ett tal större än 1 bara är delbart med 1 och sig självt.
 primfaktorer|primtal|Faktoriseringen fortsätter tills alla faktorer är primtal.
 primfaktorer|multiplikation|Talet skrivs som en produkt vars faktorer i sin tur kan delas upp.
 decimal-multiplikation|decimal-plats|Faktorernas platsvärden avgör produktens storlek och decimalernas placering.
 decimal-multiplikation|multiplikation|Heltalsprodukten används som ett delsteg när decimalfaktorernas siffror multipliceras.
-decimal-multiplikation|tiodivision|En beräknad heltalsprodukt skalas ned med tiopotenser för att återställa faktorernas decimalvärden.
-decimal-division|tiomultiplikation|Täljare och nämnare multipliceras med samma tiopotens så att divisorn blir ett heltal.
-decimal-division|multiplikation|När divisorn är ett heltal används division och kontroll med kvoten gånger divisorn.
-decimal-division|decimal-plats|Platsvärdena håller reda på storleken hos dividend, divisor och kvot när decimalerna flyttas.
+decimal-multiplikation|tiodivision|Heltalsprodukten divideras med 10, 100 eller 1 000 för att få rätt värde på produkten av decimaltalen.
+decimal-division|tiomultiplikation|Täljare och nämnare multipliceras med 10, 100 eller 1 000 så att nämnaren blir ett heltal utan att kvoten ändras.
+decimal-division|multiplikation|När nämnaren är ett heltal används samma divisionsmetod som för heltal; kvoten kontrolleras med multiplikation.
+decimal-division|decimal-plats|Siffrornas värden används för att kontrollera kvotens storlek när täljare och nämnare skrivs om.
 negativ-subtraktion|negativa|Tallinjens riktning används för att tolka att subtraktion av ett negativt tal ökar värdet.
 negativ-subtraktion|addition|Sambandet mellan addition och subtraktion används när a − (−b) skrivs som a + b.
 negativ-multiplikation|negativa|Minustecknet tolkas som talets tecken när faktorernas tecken bestämmer produktens tecken.
-negativ-multiplikation|multiplikation|Faktorernas belopp multipliceras innan rätt tecken sätts på produkten.
-negativ-division|negativ-multiplikation|Kvotens tecken väljs så att kvoten gånger divisorn ger dividendens tecken.
-negativ-division|multiplikation|Beloppen divideras och resultatet kontrolleras med motsvarande multiplikation.
+negativ-multiplikation|multiplikation|Först multipliceras talen utan minustecken, sedan bestäms om produkten är positiv eller negativ.
+negativ-division|negativ-multiplikation|Tecknet väljs så att kvoten multiplicerad med nämnaren ger talet i täljaren.
+negativ-division|multiplikation|Först divideras talen utan minustecken, sedan kontrolleras svaret med multiplikation och rätt tecken.
 stora-tal|positionssystem|Platsvärden grupperas i tusental, miljoner och miljarder när stora tal läses och skrivs.
 prefix-stora|stora-tal|Kilo, mega och giga kopplas till tusen, en miljon respektive en miljard enheter.
 prefix-stora|tiomultiplikation|Prefixets faktor används för att multiplicera ett mått till antalet grundenheter.
@@ -93,18 +93,18 @@ tiopotens|potens-begrepp|Basen sätts till 10 och exponenten anger antalet tiota
 tiopotens|tiomultiplikation|Upprepad multiplikation med 10 visar hur talvärdet förändras när exponenten ökar.
 negativ-exponent|tiopotens|Tiopotensernas mönster fortsätts förbi 10⁰ till 10⁻¹, 10⁻² och mindre värden.
 negativ-exponent|tiodivision|Varje steg nedåt i exponenten dividerar värdet med 10, även när exponenten blir negativ.
-grundpotens-stora|tiopotens|Tiopotensen beskriver hur många gånger koefficienten ska skalas med 10.
-grundpotens-stora|decimal-plats|Decimaltecknet placeras så att koefficienten är minst 1 och mindre än 10.
-grundpotens-sma|grundpotens-stora|Samma form a · 10ⁿ används, med koefficient mellan 1 och 10, men nu för små positiva tal.
-grundpotens-sma|negativ-exponent|En negativ exponent beskriver hur koefficienten skalas ned till ett tal mindre än 1.
+grundpotens-stora|tiopotens|Tiopotensen anger talets storleksordning när talet skrivs som en produkt i grundpotensform.
+grundpotens-stora|decimal-plats|Siffrornas värden används när decimaltecknet placeras så att talet framför tiopotensen är minst 1 men mindre än 10.
+grundpotens-sma|grundpotens-stora|Samma produktform används för små positiva tal: ett tal som är minst 1 men mindre än 10 multipliceras med en tiopotens.
+grundpotens-sma|negativ-exponent|Tiopotensen med negativ exponent visar hur talet framför tiopotensen ska divideras för att få det lilla talets värde.
 potens-multiplikation|potens-begrepp|Vid samma bas räknas alla basfaktorer i båda potenserna tillsammans.
 potens-multiplikation|addition|Exponenterna adderas eftersom de anger antalet basfaktorer i produkten.
 potens-division|potens-multiplikation|När gemensamma basfaktorer förkortas återstår exponenternas skillnad, som motsvarar multiplikationsregelns omvändning.
 potens-division|negativ-subtraktion|?Subtraktion av negativa exponenter används när nämnarens exponent är negativ; positiva exponenter kan behandlas först.
-grundpotens-rakning|grundpotens-stora|Resultatet skrivs om så att koefficienten åter ligger mellan 1 och 10.
+grundpotens-rakning|grundpotens-stora|Efter beräkningen skrivs produkten i grundpotensform, med ett tal som är minst 1 men mindre än 10 framför tiopotensen.
 grundpotens-rakning|potens-multiplikation|Tiopotensdelarna multipliceras genom att exponenterna adderas.
 grundpotens-rakning|potens-division|Tiopotensdelarna divideras genom att exponenterna subtraheras.
-grundpotens-rakning|decimal-multiplikation|Koefficienterna multipliceras separat från tiopotenserna innan resultatet normaliseras.
+grundpotens-rakning|decimal-multiplikation|Talen framför tiopotenserna multipliceras först; sedan skrivs resultatet i grundpotensform.
 kvadrattal|potens-begrepp|Exponent 2 tolkas som talet multiplicerat med sig självt.
 kvadratrot|kvadrattal|Kvadratroten söker det icke-negativa tal vars kvadrat är det givna talet.
 talmangder|negativa|Negativa heltal skiljs från naturliga tal när tal sorteras i talmängder.
@@ -125,7 +125,7 @@ blandad-form|brak-del-hel|När täljaren når nämnaren bildar bråkdelarna en h
 blandad-form|multiplikation|Division ger antalet hela och resten; multiplikation omvandlar hela tillbaka till bråkdelar.
 brak-likvardiga|f-half|Samma yta kan delas i fler lika stora delar, så att exempelvis en halv blir två fjärdedelar.
 brak-likvardiga|f-table|?Tabellprodukter hjälper att se att täljare och nämnare har skalats lika mycket; likvärdighet kan också visas med bilder.
-brak-forlanga|brak-likvardiga|Bråkets värde bevaras när varje del delas upp lika mycket och både täljare och nämnare ökar med samma faktor.
+brak-forlanga|brak-likvardiga|Varje del delas i fler lika stora delar, så att bråket får samma värde även när täljare och nämnare multipliceras med samma tal.
 brak-forlanga|multiplikation|Täljaren och nämnaren multipliceras med samma heltal för att få den nya indelningen.
 brak-forkorta|brak-likvardiga|Bråket ska behålla samma värde när mindre delar sammanförs till färre, större delar.
 brak-forkorta|delbarhet|En gemensam delare till täljare och nämnare används för att förkorta båda med samma tal.
@@ -147,13 +147,13 @@ brak-decimal|decimal-plats|Kvoten skrivs med rätt antal tiondelar, hundradelar 
 brak-heltal-mult|brak-add-lika|Ett heltal gånger ett bråk kan tolkas som upprepad addition av samma bråk.
 brak-heltal-mult|multiplikation|Täljaren multipliceras med heltalet för att räkna det sammanlagda antalet bråkdelar.
 brak-multiplikation|brak-del-antal|Idén att ta en del av en mängd utvidgas till att ta en bråkdel av en bråkdel.
-brak-multiplikation|brak-heltal-mult|?Multiplikation som skalning utvidgas från heltalsfaktorer till bråkfaktorer; en areamodell kan också introducera regeln direkt.
-brak-division|brak-multiplikation|Division med ett bråk utförs genom att multiplicera med dess invers och kan kontrolleras med en produkt.
+brak-multiplikation|brak-heltal-mult|?Att multiplicera ett heltal med ett bråk jämförs med att multiplicera två bråk; regeln kan också visas direkt med en bild av en uppdelad rektangel.
+brak-division|brak-multiplikation|Vid division med ett bråk multiplicerar man med det inverterade talet, där täljare och nämnare bytt plats.
 brak-division|brak-likvardiga|?Med lika nämnare kan division tolkas som hur många lika stora delar som ryms i varandra; detta är en möjlig härledning.
 brak-hela|brak-del-antal|Beräkningen av en bråkdel vänds: först hittas värdet av en del, sedan alla delar i helheten.
 brak-hela|multiplikation|Det givna antalet divideras med täljaren och multipliceras med nämnaren för att få helheten.
 brak-mgn|gemensam-namnare|Bland gemensamma nämnare väljs den minsta positiva för att förenkla beräkningen.
-brak-mgn|primfaktorer|?Primfaktorer kan användas för att bygga nämnarnas minsta gemensamma multipel; små nämnare kan jämföras genom uppräkning.
+brak-mgn|primfaktorer|?Primfaktorer kan användas för att hitta minsta gemensamma nämnaren; den kan också hittas genom att skriva upp nämnarnas multiplar.
 brak-korsforkorta|brak-multiplikation|Produkten har alla täljarfaktorer över alla nämnarfaktorer, så gemensamma faktorer kan tas bort före uträkningen.
 brak-korsforkorta|brak-forkorta|En täljarfaktor och en nämnarfaktor divideras med samma tal utan att produktens värde ändras.
 prioritering|f-add-small|Addition utförs efter eventuell multiplikation när uttryck med flera räknesätt beräknas.
@@ -163,7 +163,7 @@ variabel|multiplikation|?I uttryck som 3x betyder talet framför bokstaven multi
 variabel|likhet|?I en ekvation står bokstaven för ett värde som gör leden lika; variabler i fristående uttryck kräver ingen likhet.
 skriva-uttryck|variabel|En bokstav används för den okända eller varierande storheten när textens räkneoperationer skrivs symboliskt.
 forenkla-termer|variabel|Termer med samma bokstavsdel identifieras som samma slags storhet, exempelvis x-termer.
-forenkla-termer|addition|Koefficienterna adderas eller subtraheras när liknande termer samlas.
+forenkla-termer|addition|Talen framför samma slags bokstavstermer adderas eller subtraheras, som när 3x + 2x blir 5x.
 distributiva|forenkla-termer|?Efter inmultiplikation kan liknande termer samlas; själva fördelningen över parentesen kan läras före förenkling.
 distributiva|multiplikation|Faktorn utanför parentesen multipliceras med varje term inne i den.
 distributiva|parentes-tal|Parentesen avgränsar vilka termer som ska multipliceras med faktorn utanför.
@@ -173,10 +173,10 @@ tva-parenteser|distributiva|Varje term i den första parentesen multipliceras me
 tva-parenteser|forenkla-termer|Efter att delprodukterna skrivits ut samlas liknande termer i resultatet.
 ekvation-add|likhet|Samma tal adderas eller subtraheras i båda leden så att likheten bevaras.
 ekvation-add|f-sub-small|Subtraktion upphäver en addition till det obekanta, som när x + 5 = 12 löses.
-ekvation-mult|likhet|Båda leden multipliceras eller divideras med samma icke-nolltal för att behålla likheten.
+ekvation-mult|likhet|I balansmetoden multipliceras eller divideras båda leden med samma tal, som inte får vara noll, så att likheten gäller även efteråt.
 ekvation-mult|multiplikation|Division upphäver multiplikation med en faktor och multiplikation upphäver division.
-ekvation-tva-steg|ekvation-add|En tillagd eller subtraherad konstant tas bort som ett steg mot att isolera det obekanta.
-ekvation-tva-steg|ekvation-mult|När konstanten tagits bort divideras eller multipliceras båda leden för att isolera det obekanta.
+ekvation-tva-steg|ekvation-add|Ett adderat eller subtraherat tal tas bort genom att samma beräkning görs i båda leden.
+ekvation-tva-steg|ekvation-mult|När det adderade eller subtraherade talet tagits bort divideras eller multipliceras båda leden för att få det obekanta talet ensamt.
 ekvation-bada|ekvation-tva-steg|Efter att bokstavstermerna samlats löses den återstående ekvationen med omvända räkneoperationer.
 ekvation-bada|forenkla-termer|Bokstavstermer samlas i ett led och taltermer i det andra innan det obekanta beräknas.
 ekvation-parentes|ekvation-bada|?När parenteserna utvecklats kan obekanta finnas i båda leden; enklare parentesekvationer behöver inte detta steg.
@@ -189,17 +189,17 @@ ekvation-text|ekvation-tva-steg|?Den uppställda ekvationen kan lösas med flera
 monster-regel|monster|Återkommande förändringar mellan stegen används för att hitta hur mönstret beror på platsnumret.
 monster-regel|skriva-uttryck|Platsnumret får en variabel och mönstrets beräkningsregel skrivs som ett uttryck.
 kvadreringsregel|tva-parenteser|En kvadrerad parentes utvecklas som två lika parenteser där alla termpar multipliceras.
-kvadreringsregel|kvadrattal|De två ytterprodukterna känns igen som kvadrater, a² och b².
-konjugatregel|tva-parenteser|Parenteserna multipliceras termvis så att de två motsatta blandtermerna tar ut varandra.
+kvadreringsregel|kvadrattal|Produkterna a · a och b · b skrivs som kvadraterna a² och b² när parenteserna multiplicerats.
+konjugatregel|tva-parenteser|Varje term multipliceras med varje term; ab och −ab tar ut varandra så att a² − b² återstår.
 konjugatregel|kvadrattal|De återstående produkterna skrivs som skillnaden mellan två kvadrater, a² − b².
-faktorisera-uttryck|distributiva|Inmultiplikation används baklänges: den gemensamma faktorn flyttas utanför parentesen.
-faktorisera-uttryck|primfaktorer|?Primfaktorisering kan hitta en gemensam talfaktor i koefficienterna; en synlig gemensam faktor kan brytas ut direkt.
+faktorisera-uttryck|distributiva|Att multiplicera in i en parentes används baklänges när en gemensam faktor bryts ut.
+faktorisera-uttryck|primfaktorer|?Primfaktorer kan hjälpa till att hitta ett tal som kan brytas ut ur alla termer; en gemensam faktor kan också synas direkt.
 algebra-brak|faktorisera-uttryck|Summor skrivs som produkter så att gemensamma faktorer, inte enstaka termer, kan förkortas.
-algebra-brak|brak-forkorta|Samma icke-nollfaktor i täljare och nämnare kan förkortas även när den innehåller en variabel.
+algebra-brak|brak-forkorta|En gemensam faktor i täljare och nämnare kan förkortas även när den innehåller en bokstav, för de värden där faktorn inte är noll.
 ekvation-namnare|ekvation-parentes|?När nämnarna tagits bort kan parenteser behöva utvecklas; enkla bråkekvationer kan lösas utan detta moment.
 ekvation-namnare|gemensam-namnare|En gemensam nämnare används för att multiplicera alla termer så att bråknämnarna försvinner.
-andragrad|kvadratrot|När x² isolerats används kvadratroten för att hitta lösningarnas belopp.
-andragrad|ekvation-mult|En koefficient framför x² divideras bort innan kvadratroten tas.
+andragrad|kvadratrot|När x² står ensamt används kvadratroten för att hitta de tal som multiplicerade med sig själva ger högerledet.
+andragrad|ekvation-mult|Båda leden divideras med talet framför x² så att x² står ensamt innan kvadratroten används.
 andragrad|negativa|För ett positivt högerled ger både ett positivt och ett negativt x samma kvadrat.
 dimensioner|former|Linjer och plana figurer används för att skilja längd i en riktning från utbredning i två eller tre riktningar.
 langd-enheter|langd|Enheternas storlek och relationer, exempelvis 100 cm = 1 m, avgör om måttalet ska öka eller minska.
@@ -214,7 +214,7 @@ triangel-vinkelsumma|vinkeltyper|Triangelns inre vinklar identifieras och tolkas
 triangel-vinkelsumma|addition|De kända vinklarna summeras och deras summa subtraheras från 180°.
 sidovinklar|vinkeltyper|En rak vinkel, 180°, används som helhet när två sidovinklar möts på en linje.
 sidovinklar|addition|En sidovinkel räknas ut genom att den kända vinkeln subtraheras från 180°.
-parallella-vinklar|sidovinklar|Sidovinklar och vertikalvinklar kombineras med lika vinklar vid parallella linjer för att hitta okända vinklar.
+parallella-vinklar|sidovinklar|Sidovinklarnas summa 180° används tillsammans med lika vertikalvinklar, alternatvinklar och likbelägna vinklar för att hitta okända vinklar.
 area-rektangel|dimensioner|Arean tolkas som tvådimensionell täckning och svaret anges i kvadratenheter.
 area-rektangel|multiplikation|Antalet rader av enhetsrutor multipliceras med antalet rutor i varje rad.
 area-rektangel|langd|Bas och höjd mäts som längder i samma enhet innan de multipliceras.
@@ -256,7 +256,7 @@ volym-prisma|volym-ratblock|Principen basarea gånger höjd överförs från rek
 volym-cylinder|cirkel-area|Den cirkelformade basytans area beräknas som πr².
 volym-cylinder|volym-ratblock|Principen basarea gånger höjd används även när lagren är cirkelformade.
 cylinder-yta|cirkel-omkrets|Mantelns utvecklade rektangel har en sida lika lång som bascirkelns omkrets.
-cylinder-yta|cirkel-area|De två cirkelformade basytornas areor läggs till mantelytan för att få totalytan.
+cylinder-yta|cirkel-area|De två basytornas cirkelareor adderas till mantelytan för att få cylinderns hela begränsningsyta.
 cylinder-yta|area-rektangel|Den utrullade mantelytans area beräknas som omkrets gånger cylinderhöjd.
 volym-pyramid|volym-ratblock|För en pyramid med rektangulär bas jämförs volymen med basarea gånger höjd hos motsvarande rätblock.
 volym-pyramid|brak-del-antal|Pyramidens volym är en tredjedel av basarean gånger den vinkelräta höjden.
@@ -285,16 +285,16 @@ volymskala|volym-ratblock|När längd, bredd och höjd ändras med samma faktor 
 volymskala|potens-begrepp|Volymfaktorn skrivs som längdskalfaktorn upphöjd till tre.
 likformighet|skala-bestamma|Kvoten mellan motsvarande sidlängder används för att hitta den gemensamma längdskalan.
 likformighet|brak-likvardiga|Förhållandena mellan motsvarande sidor jämförs som lika stora kvoter.
-spegelsymmetri|former|Figurens sidor och hörn paras ihop på lika avstånd från en tänkt spegellinje.
+spegelsymmetri|former|Figurens sidor och hörn jämförs på var sin sida om en symmetrilinje för att se om delarna är spegelbilder.
 rotationssymmetri|vinkeltyper|?Rotationsvinkeln mäts som en del av 360°; att namnge spetsiga och trubbiga vinklar är inte nödvändigt i sig.
 rotationssymmetri|spegelsymmetri|?Båda undersöker om en figur täcker sig själv efter en förändring, men rotationssymmetri kräver inte spegelsymmetri.
 spegla-koordinat|koordinater|Punktens x- och y-koordinater används för att skriva läget före och efter speglingen.
 spegla-koordinat|negativa|Spegling i en koordinataxel byter tecken på en koordinat men bevarar avståndet till axeln.
-spegla-koordinat|spegelsymmetri|Punkt och spegelbild placeras lika långt från spegellinjen på var sin sida.
+spegla-koordinat|spegelsymmetri|Punkten och dess spegelbild placeras lika långt från symmetrilinjen på var sin sida.
 manghorning-vinkel|triangel-vinkelsumma|Månghörningen delas i trianglar och varje triangel bidrar med 180° till vinkelsumman.
 manghorning-vinkel|distributiva|?Formeln (n − 2) · 180° kan utvecklas med distributiva lagen, men kan användas direkt utan den.
 rymiddiagonal|pythagoras-hyp|Pythagoras används först på en sidoyta och sedan på triangeln med sidodiagonalen och kroppens höjd.
-rymiddiagonal|kroppar|Kroppens kanter, sidoytor och inre diagonal skiljs åt för att hitta de två räta trianglarna.
+rymiddiagonal|kroppar|Kroppens kanter, sidoytor och rymddiagonal skiljs åt för att hitta de två rätvinkliga trianglarna.
 likformighet-avancerad|likformighet|Motsvarande vinklar och sidor identifieras även när trianglar överlappar eller ligger inuti varandra.
 likformighet-avancerad|ekvation-tva-steg|Sambandet mellan motsvarande sidlängder skrivs som en ekvation som löses för den okända längden.
 klot-yta|cirkel-area|Formeln 4πr² kan beräknas som fyra gånger arean av en cirkel med samma radie.
@@ -322,28 +322,28 @@ tid-enheter|multiplikation|Timmar multipliceras med 60 till minuter och minuter 
 vag-tid|graf-avlasning|Tid och sträcka läses som ett sammanhörande värdepar på grafens axlar.
 vag-tid|hastighet|Sträckändringen per tidsintervall används för att tolka rörelse och jämföra hastigheter.
 vag-tid|tid-enheter|Tidsaxelns minuter eller timmar omvandlas så att hastighetens tidsenhet blir rätt.
-funktion-begrepp|samband-tabell|Tabellens in- och utvärden används för att undersöka om varje invärde har exakt ett utvärde.
-funktion-begrepp|variabel|Variabler namnger in- och utvärden när sambandet skrivs med en regel.
-funktionsvarde|funktion-begrepp|Det givna invärdet kopplas till ett bestämt utvärde enligt funktionens regel.
-funktionsvarde|uttryck|Invärdet sätts in i uttrycket och räkneoperationerna utförs för att få funktionsvärdet.
-funktionsvarde|negativa|?Negativa invärden eller utvärden behöver tolkas med rätt tecken; funktioner med enbart positiva värden kan undersökas tidigare.
-startvarde|funktion-begrepp|Startvärdet är det utvärde funktionen ger när invärdet är noll.
-startvarde|koordinater|Skärningen med y-axeln har x = 0, så dess y-koordinat visar startvärdet.
-lutning|koordinater|Två punkters koordinater används för att beräkna ändringen i y och ändringen i x.
-lutning|decimal-division|?Lutningen beräknas som Δy/Δx; decimaldivision behövs när koordinater eller kvoter innehåller decimaler.
+funktion-begrepp|samband-tabell|Tabellens x- och y-värden används för att undersöka om det till varje x-värde hör endast ett y-värde.
+funktion-begrepp|variabel|Bokstäverna x och y används för storheterna när sambandet beskrivs med en formel.
+funktionsvarde|funktion-begrepp|För ett givet x-värde bestäms det y-värde som hör till enligt funktionens formel.
+funktionsvarde|uttryck|Det givna x-värdet sätts in i uttrycket för att beräkna y-värdet, alltså funktionsvärdet.
+funktionsvarde|negativa|?Negativa x- eller y-värden räknas med rätt tecken; funktioner med enbart positiva värden kan undersökas tidigare.
+startvarde|funktion-begrepp|Funktionens formel används med x = 0 för att bestämma startvärdet, som då är y-värdet.
+startvarde|koordinater|Där linjen skär y-axeln är x = 0; punktens y-koordinat ger startvärdet, konstanttermen m.
+lutning|koordinater|Två punkters koordinater används för att beräkna skillnaden i y-led och skillnaden i x-led.
+lutning|decimal-division|?Lutningen beräknas som skillnaden i y-led delad med skillnaden i x-led; decimaldivision används när värdena är decimaltal.
 lutning|negativa|Negativa skillnader används för att beskriva linjer som sjunker när x ökar.
-linje-ekvation|lutning|Den beräknade lutningen sätts in som k i y = kx + m.
-linje-ekvation|startvarde|Skärningen med y-axeln ger konstanten m i linjens ekvation.
-linje-ekvation|ekvation-add|När k och en punkt är kända kan m isoleras genom att kx subtraheras från y.
+linje-ekvation|lutning|Lutningen ger riktningskoefficienten k som sätts in i räta linjens ekvation y = kx + m.
+linje-ekvation|startvarde|Startvärdet anger var linjen skär y-axeln och ger konstanttermen m i y = kx + m.
+linje-ekvation|ekvation-add|När k och en punkt är kända subtraheras kx från båda leden för att få m ensamt.
 rita-linje|funktionsvarde|Valda x-värden sätts in i regeln för att få punkter på linjen.
 rita-linje|koordinater|De beräknade värdeparen placeras som punkter i koordinatsystemet innan linjen dras.
 jamfora-samband|linje-ekvation|Varje modell skrivs som en linje så att startvärden, lutningar och skärning kan jämföras.
 jamfora-samband|ekvation-bada|?Modellernas uttryck sätts lika för att beräkna skärningen algebraiskt; jämförelser kan också göras i grafen.
 aritmetisk|monster-regel|Den konstanta ökningen används för att skriva en regel som ger talet på en valfri plats.
 aritmetisk|forenkla-termer|?En regel som a + d(n − 1) kan förenklas för jämförelse med andra regler; talföljden kan beräknas utan förenklingen.
-formel-omskrivning|ekvation-tva-steg|Samma operation utförs i båda leden för att stegvis isolera den önskade storheten.
+formel-omskrivning|ekvation-tva-steg|Som i balansmetoden utförs samma beräkning i båda leden tills den sökta storheten står ensam.
 formel-omskrivning|variabel|Bokstäverna tolkas som olika storheter som kan behandlas algebraiskt även utan givna talvärden.
-icke-linjart|funktion-begrepp|Varje invärde har fortfarande ett utvärde även när sambandet inte kan beskrivas med en rät linje.
+icke-linjart|funktion-begrepp|Till varje x-värde hör fortfarande endast ett y-värde, även när grafen inte är en rät linje.
 icke-linjart|lutning|?Konstant lutning kan användas som jämförelse för att upptäcka icke-linjära samband; sådana samband kan också introduceras direkt.
 geometrisk-talfoljd|aritmetisk|?Konstant kvot jämförs med konstant differens för att skilja två typer av talföljder; aritmetiska talföljder är inget nödvändigt förstadium.
 geometrisk-talfoljd|potens-begrepp|Upprepad multiplikation med samma kvot skrivs som en potens i talföljdens regel.
@@ -356,12 +356,12 @@ procent-begrepp|decimal-plats|Hundradelar skrivs i decimalform, exempelvis 25 % 
 procent-begrepp|procent-huvud|?Kända andelar som 50 % = hälften kan konkretisera hundradelar, men kan också läras efter procentbegreppet; ordningen bör granskas.
 procent-huvud|brak-del-antal|50 %, 25 % och 10 % beräknas som hälften, fjärdedelen och tiondelen av antalet.
 procent-huvud|decimal-plats|?Platsvärden kan stödja beräkning av 10 % och 1 % genom division med 10 och 100; enkla andelar kan beräknas utan decimalnotation.
-procent-delen|procent-begrepp|Procenttalet skrivs som en andel av hundra som ska tas av helheten.
-procent-delen|decimal-multiplikation|Helheten multipliceras med procentandelens decimalform, exempelvis 0,15 för 15 %.
-procent-andelen|procent-begrepp|Kvoten mellan del och helhet uttrycks i hundradelar, alltså procent.
-procent-andelen|decimal-division|Delen divideras med helheten innan kvoten omvandlas till procent.
-procent-hela|procent-delen|Sambandet del = andel · helhet används baklänges när delen och procentandelen är kända.
-procent-hela|decimal-division|Delen divideras med procentandelens decimalform för att få helheten.
+procent-delen|procent-begrepp|Andelen i procent anger hur många hundradelar av det hela som ska beräknas.
+procent-delen|decimal-multiplikation|Det hela multipliceras med andelen i decimalform, exempelvis 0,15 för 15 %, för att beräkna delen.
+procent-andelen|procent-begrepp|Delen divideras med det hela för att få andelen, som sedan skrivs i procent.
+procent-andelen|decimal-division|Delen divideras med det hela innan kvoten skrivs som en andel i procent.
+procent-hela|procent-delen|Sambandet delen = andelen · det hela används baklänges när delen och andelen är kända.
+procent-hela|decimal-division|Delen divideras med andelen i decimalform för att beräkna det hela.
 procent-rabatt|procent-delen|Rabattbeloppet beräknas som en procentandel av det ursprungliga priset.
 procent-rabatt|addition|Rabattbeloppet subtraheras från det gamla priset för att få det nya.
 procent-okning|procent-delen|Ökningsbeloppet beräknas som en procentandel av det ursprungliga värdet.
@@ -371,10 +371,10 @@ procent-forandring|addition|Skillnaden mellan nytt och gammalt värde beräknas 
 forandringsfaktor|procent-begrepp|Hela ursprungsvärdet motsvarar 100 % = 1, som ökningen läggs till eller minskningen dras från.
 forandringsfaktor|procent-rabatt|Efter p procent rabatt återstår andelen 1 − p/100 av ursprungspriset.
 forandringsfaktor|procent-okning|Efter p procent ökning återstår hela ursprungsvärdet plus ökningen, alltså faktorn 1 + p/100.
-procent-jamfora|procent-forandring|Nämnaren i förändringskvoten identifieras så att samma skillnad kan jämföras med olika ursprungsvärden.
+procent-jamfora|procent-forandring|Det som är jämförelsevärde, alltså det hela, identifieras innan skillnaden divideras med det värdet.
 procent-over100|forandringsfaktor|?En faktor större än 1 ger ett värde över 100 % av ursprunget; procent över 100 kan även läras direkt som fler än hundra hundradelar.
 procent-baklanges|forandringsfaktor|Det nya värdet divideras med samma faktor som användes vid förändringen.
-procent-baklanges|procent-hela|Det förändrade värdet ses som en känd andel av den okända ursprungliga helheten.
+procent-baklanges|procent-hela|Värdet efter förändringen ses som en känd andel av det okända ursprungliga värdet, alltså det hela.
 upprepad-forandring|forandringsfaktor|Varje förändringsfaktor verkar på det senast beräknade värdet, inte alltid på ursprungsvärdet.
 upprepad-forandring|decimal-multiplikation|Förändringsfaktorerna multipliceras i följd med ursprungsvärdet.
 upprepad-samma|upprepad-forandring|Samma faktor används vid varje förändring och produkten samlar alla stegen.
@@ -422,8 +422,8 @@ sannolikhet-skala|brak-del-hel|En sannolikhet som 1/4 tolkas som en andel mellan
 sannolikhet-skala|procent-begrepp|?Sannolikheter kan anges som 0–100 % och jämföras med 0–1; en skala i enbart bråk kräver inte procent.
 gynnsamma-utfall|f-half|Andelar av lika sannolika utfall uttrycks som bråk, exempelvis hälften av utfallen.
 gynnsamma-utfall|f-chance|Händelsens villkor används för att skilja möjliga gynnsamma utfall från omöjliga utfall.
-komplement|sannolikhet-skala|En händelse och dess komplement täcker tillsammans hela sannolikheten 1.
-komplement|brak-sub-lika|Komplementets sannolikhet beräknas som 1 minus händelsens sannolikhet, med lika nämnare när bråk används.
+komplement|sannolikhet-skala|En händelse och dess komplementhändelse har tillsammans sannolikheten 1, alltså 100 %.
+komplement|brak-sub-lika|Komplementhändelsens sannolikhet beräknas som 1 minus händelsens sannolikhet; vid bråkräkning skrivs talen med samma nämnare.
 forvantat-antal|gynnsamma-utfall|Sannolikheten för ett gynnsamt utfall används som förväntad andel av många försök.
 forvantat-antal|brak-del-antal|Antalet försök multipliceras med sannolikheten för att få det förväntade antalet gynnsamma utfall.
 trad-oberoende|gynnsamma-utfall|Varje grens sannolikhet bestäms genom att räkna gynnsamma och möjliga utfall i det steget.
@@ -431,11 +431,11 @@ trad-oberoende|brak-multiplikation|Sannolikheterna längs en väg multipliceras 
 trad-beroende|trad-oberoende|Trädets struktur och vägprodukter återanvänds, men nästa stegs sannolikheter ändras efter varje drag.
 trad-beroende|brak-multiplikation|De ändrade sannolikhetsbråken multipliceras längs vägen, exempelvis 3/5 · 2/4.
 flera-vagar|trad-oberoende|Trädet används för att hitta alla åtskilda vägar som leder till den sökta händelsen.
-flera-vagar|brak-add-olika|Sannolikheterna för alternativa, ömsesidigt uteslutande vägar adderas med gemensam nämnare vid behov.
+flera-vagar|brak-add-olika|Sannolikheterna för olika vägar som ger den sökta händelsen adderas; bråken skrivs med samma nämnare vid behov.
 minst-en|komplement|Sannolikheten för minst en träff beräknas som 1 minus sannolikheten för ingen träff.
-minst-en|trad-oberoende|Vägen utan någon träff identifieras och dess sannolikheter multipliceras innan komplementet tas.
+minst-en|trad-oberoende|Vägen utan någon träff hittas i träddiagrammet och sannolikheterna längs den multipliceras innan svaret dras från 1.
 experiment-sannolikhet|relativ-frekvens|Antalet observerade träffar divideras med antalet försök för att uppskatta sannolikheten.
-experiment-sannolikhet|gynnsamma-utfall|?En teoretisk utfallsandel kan jämföras med försöksresultatet när utfallen är lika sannolika; en empirisk uppskattning kräver inte detta.
+experiment-sannolikhet|gynnsamma-utfall|?Sannolikheten som beräknats med gynnsamma och möjliga utfall kan jämföras med försöksresultatet; en uppskattning genom försök kan göras utan den jämförelsen.
 kombinationer|multiplikation|Antalet alternativ i varje val multipliceras när varje val kan kombineras med alla alternativ i nästa.
 ordna-objekt|kombinationer|Multiplikationsprincipen används med ett färre val för varje plats när föremål inte får upprepas.
 tva-tarningar|kombinationer|Sex utfall på första tärningen kombineras med sex på den andra och ger 36 ordnade par.
@@ -480,7 +480,7 @@ amortering|multiplikation|Lika amorteringar summeras genom multiplikation med an
 amortering|addition|Skulden minskas med amorteringen och betalningen beräknas som amortering plus ränta.
 trigonometri|triangel-typer|Den räta vinkeln och sidornas lägen i förhållande till en vald vinkel identifieras.
 trigonometri|pythagoras-hyp|?Pythagoras kan ge en saknad sida före en trigonometrisk beräkning; givna sidförhållanden kan användas utan detta steg.
-trigonometri|likformighet|Likformiga räta trianglar har samma sidkvoter vid samma vinkel, vilket ligger bakom de trigonometriska förhållandena.
+trigonometri|likformighet|Likformiga rätvinkliga trianglar har samma förhållanden mellan motsvarande sidor; därför hör samma sidförhållanden till samma vinkel.
 f-compare|f-count|Talens ordning och mängdernas antal används för att avgöra vilket tal som är störst.
 f-line|f-count|Talföljdens ordning placeras på tallinjen med ett lika stort steg mellan på varandra följande tal.
 f-split|f-count|Ett räknat antal delas i två grupper vars antal tillsammans bildar det ursprungliga talet.

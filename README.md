@@ -147,6 +147,10 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 ## Verifiering
 
+Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. Filter, sökning och zoom finns kvar. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och **Fler val** samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
+
+[MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.
+
 Fem tester av den publicerade Pages-sidan, med rättningar av rapportåtergång och stora säkerhetskopior, dokumenteras i [LIVE_GRANSKNING.md](LIVE_GRANSKNING.md). Säkerhetskopior får vara upp till 20 MB vid import; befintliga profiler skrivs inte över.
 
 Fem UI-omgångar med före- och efterbilder dokumenteras i [UI_GRANSKNING.md](UI_GRANSKNING.md). `python tests/ui_preview.py tests/ui-scenarios.json` kör en separat kontroll med faktisk mus och tangentbord: små skärmar, årskursval, Enter, Escape, återställt fokus och musdragning. Den använder också en isolerad Chrome-profil och ändrar inte elevdata i användarens vanliga webbläsare.

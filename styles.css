@@ -279,6 +279,54 @@ body[data-view="tree"] .page-heading p{display:none}
 .dependency-label{min-width:0;overflow-wrap:anywhere}
 .connection-review{display:block;color:inherit;font-size:inherit;margin-bottom:3px}
 .connection-note{line-height:1.6}
+.page-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+body[data-view] .adaptive-launch{background:transparent;border:0;padding:0;margin:0 0 8px;min-height:0}
+.adaptive-launch:has(p[hidden]){display:none}
+.adaptive-launch p{margin:0}
+.map-heading{gap:12px;align-items:center}
+.map-heading>div:first-child{display:flex;gap:6px 12px;align-items:baseline;min-width:0}
+.map-heading-actions{display:flex;gap:14px;align-items:center;flex-shrink:0}
+.map-heading-actions button{white-space:nowrap}
+.tree-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tree-toolbar .search{margin-left:auto;flex:1;min-width:175px;max-width:300px}
+.tree-toolbar .map-view-tabs{margin:0;width:auto}
+.map-tools{position:relative}
+.map-tools>summary{cursor:pointer;padding:10px 12px;border:1px solid var(--line);border-radius:6px;white-space:nowrap;font-size:14px}
+.map-tools-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:6;width:340px;max-width:calc(100vw - 40px);max-height:65dvh;overflow:auto;padding:18px;border:1px solid var(--line);border-radius:9px;background:var(--surface,#fff);box-shadow:0 12px 32px #0003}
+.map-tools-panel .map-options{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin:0 0 18px}
+.map-tools-panel .map-options>label{display:flex;align-items:center;gap:10px;width:100%;justify-content:space-between}
+.map-tools-panel select{max-width:230px;min-width:0}
+.map-tools-panel .zoom-control input{min-width:60px;flex:1}
+.map-tools-panel .map-connections-control{white-space:normal}
+.map-tools-panel #map-guidance{line-height:1.6;margin:16px 0 8px}
+.map-footer{display:block;padding:10px 16px}
+.map-footer>summary{cursor:pointer;font-size:13px;color:var(--muted,#62725d)}
+.map-footer .legend{margin-top:12px}
+#fullscreen-profile{font-size:12px;color:var(--muted,#62725d);overflow-wrap:anywhere;max-width:100%}
+body.tree-fullscreen{overflow:hidden}
+body.tree-fullscreen .sidebar,body.tree-fullscreen main>:not(#tree-view){display:none!important}
+body.tree-fullscreen main{margin:0;padding:12px;width:100%;max-width:none}
+body.tree-fullscreen #tree-view{display:flex;flex-direction:column;height:calc(100dvh - 24px);min-height:0}
+body.tree-fullscreen .map-controls{position:relative;top:auto;flex-shrink:0}
+body.tree-fullscreen .map-shell{display:flex;flex:1;flex-direction:column;min-height:0}
+body.tree-fullscreen .map-scroll{height:auto;min-height:0;flex:1}
+body.tree-fullscreen .map-footer{flex-shrink:0;max-height:25dvh;overflow:auto}
+body.tree-fullscreen #mobile-category{display:block;width:auto;max-width:220px}
+@media(max-width:1100px){.tree-toolbar .search{max-width:none}.page-heading{gap:12px}.map-heading{flex-wrap:wrap}}
+@media(max-width:550px){
+  .page-heading{display:flex;align-items:flex-start;flex-direction:column;gap:8px;padding-bottom:6px}
+  .page-actions{gap:8px;width:100%}.page-actions button{font-size:13px;padding:10px 12px}
+  .map-heading>div:first-child{flex-basis:100%}.map-heading-actions{justify-content:space-between;width:100%}
+  .map-heading-actions .secondary-button{padding:8px 12px;font-size:13px}
+  .tree-toolbar{gap:8px}.tree-toolbar>.tabs:first-child{width:100%}
+  .tree-toolbar>.tabs:first-child button{flex:1;padding:8px 6px}
+  .tree-toolbar #mobile-category{flex:0 0 100%;width:100%;max-width:100%}
+  .tree-toolbar .map-view-tabs{display:flex;flex:1;flex-direction:row}.tree-toolbar .map-view-tabs button{flex:1;padding:8px;white-space:nowrap}
+  .tree-toolbar .search{order:4;min-width:0;flex:0 0 100%}
+  .map-tools{order:3}.map-tools-panel{max-width:calc(100vw - 30px);width:310px}
+  body.tree-fullscreen main{padding:8px}body.tree-fullscreen #tree-view{height:calc(100dvh - 16px)}
+  body.tree-fullscreen #mobile-category{max-width:100%;width:100%}
+}
 @media(max-width:550px){
   .prerequisite[data-connection-from]>.dependency-label{flex-basis:calc(100% - 30px)}
   .prerequisite[data-connection-from]>span:last-child{max-width:none;margin-left:auto;text-align:right}

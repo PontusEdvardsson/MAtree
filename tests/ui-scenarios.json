@@ -61,6 +61,9 @@
     "eval": "await new Promise(r=>setTimeout(r,100));if(document.querySelector('#adaptive-dialog').open)throw Error('Escape did not close teacher report');if(MATREE_APP.profile().adaptive.sessions.length!==1)throw Error('Saved report was lost')"
   },
   {
+    "click": "#map-tools summary"
+  },
+  {
     "click": "#reset-filters"
   },
   {
@@ -76,6 +79,9 @@
     "type": "zzzzzz",
     "eval": "if(!document.querySelector('.empty-map').textContent.includes('Rensa filter'))throw Error('Empty state has wrong action')",
     "screenshot": "ui-r5-after-search-empty.png"
+  },
+  {
+    "click": "#map-tools summary"
   },
   {
     "click": "#reset-filters"

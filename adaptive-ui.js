@@ -206,7 +206,8 @@
   function update(){
     $('#adaptive-open').textContent=state().active?'Fortsätt elevläge →':'Starta elevläge →';
     const active=state().active,last=state().sessions.at(-1),launchInfo=$('.adaptive-launch p');
-    launchInfo.textContent=active?'Pausat pass · '+A.scopeLabel(active)+' · '+active.items.length+' sparade svar.':'En uppgift i taget. Nästa moment väljs utifrån elevens svar.';
+    launchInfo.hidden=!active&&!last;
+    launchInfo.textContent=active?'Pausat pass · '+A.scopeLabel(active)+' · '+active.items.length+' sparade svar.':'';
     if(last)launchInfo.insertAdjacentHTML('beforeend',' <button class="text-button last-report-link" data-adaptive-report="'+esc(last.id)+'">Senaste sammanställningen · '+A.scopeLabel(last)+' · '+date(last.ended)+' →</button>');
 
     if(!$('#progress-view').hidden){

@@ -1,5 +1,17 @@
 # UI-granskning · fem omgångar
 
+## Fullskärm och samlade kartverktyg · 2026-10-20
+
+**Fullskärm** finns ovanför kartan. Hela dokumentet används för webbläsarens fullskärmsläge så att delmoments- och elevdialoger kan öppnas ovanpå kartan. Om funktionen inte är tillgänglig fyller kartan fönstret. Utgång återställer kartans och sidans rullningsposition. Escape stänger först en öppen dialog eller verktygspanel.
+
+Starta elevläge och Manuell kontroll delar rad med sidrubriken. Den fristående startbannern är borttagen; endast ett faktiskt pausat pass eller senaste rapport ger en extra rad. Elevunderlag är utfällbart. Hjälpen innehåller startguiden, och teckenförklaringen är utfällbar under kartan. Årskurs, detaljnivå och sökning ligger i en samlad verktygsrad. Urval, zoom, alla kopplingar och återställning finns under **Fler val**. Aktivt bas- eller fördjupningsurval syns i kartans rubrik.
+
+Vid 1 440 × 900 börjar kartan omkring y = 295 i stället för den tidigare överdelen på cirka 600 px. Mobilens kategori-, årskurs- och detaljval behåller läsbara etiketter ned till 320 px.
+
+Verifierat med full regression samt verkliga klick och tangenttryckningar i [tests/fullscreen-scenarios.json](tests/fullscreen-scenarios.json) och [tests/ui-scenarios.json](tests/ui-scenarios.json): fullskärm, reservläge, Escape, dialoger, hjälpgenvägar, zoom, återställd position, mobil, oförändrade elevdata och musdragning. Språkgranskningen dokumenteras i [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md).
+
+## Tidigare omgångar
+
 Arbetet omfattade kartan, navigationen, manuella kontroller, elevläget och lärarens sammanställning. Varje omgång började med en renderad vy i Chrome, följdes av ändringar och avslutades med nya skärmbilder och kontroller. Testerna använder separata webbläsarprofiler.
 
 | Omgång | Observerat problem | Ändring | Verifiering |

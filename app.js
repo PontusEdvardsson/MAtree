@@ -2,7 +2,42 @@
   'use strict';
   const { categories, generate, parseAnswer, fmt } = window.MATREE, nodes=window.MATREE.visibleNodes;
   const adaptive = window.MATREE_ADAPTIVE, detailNodes=window.MATREE.detailNodes;
+  const $ = selector => document.querySelector(selector);
   let mapMode='groups',currentMapNodes=[];
+  let treeFullscreen=false,fullscreenOrigin=null,ownsFullscreen=false,fullscreenRequest=0;
+  function updateFullscreenButton() {
+    document.body.classList.toggle('tree-fullscreen',treeFullscreen);
+    $('#tree-fullscreen').setAttribute('aria-pressed',String(treeFullscreen));
+    $('#tree-fullscreen').textContent=treeFullscreen?'⛶ Avsluta fullskärm':'⛶ Fullskärm';
+    $('#fullscreen-profile').hidden=!treeFullscreen;
+  }
+  function leaveTreeFullscreen() {
+    if(!treeFullscreen)return;
+    treeFullscreen=false;fullscreenRequest++;
+    updateFullscreenButton();
+    if(ownsFullscreen&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+    ownsFullscreen=false;
+    const origin=fullscreenOrigin;
+    setTimeout(()=>{if(treeFullscreen)return;if(origin){$('#map-scroll').scrollTo(origin.left,origin.top);window.scrollTo(0,origin.page);}if(view==='tree')$('#tree-fullscreen').focus({preventScroll:true});},180);
+  }
+  async function enterTreeFullscreen() {
+    const map=$('#map-scroll');
+    fullscreenOrigin={left:map.scrollLeft,top:map.scrollTop,page:scrollY};
+    treeFullscreen=true;updateFullscreenButton();
+    const request=++fullscreenRequest;
+    if(!document.fullscreenElement&&document.documentElement.requestFullscreen){
+      try{await document.documentElement.requestFullscreen();if(request!==fullscreenRequest){if(document.fullscreenElement)await document.exitFullscreen();return;}ownsFullscreen=true;}
+      catch{/* Keep the window-filling map when native fullscreen is unavailable. */}
+    }
+  }
+  $('#tree-fullscreen').addEventListener('click',()=>treeFullscreen?leaveTreeFullscreen():enterTreeFullscreen());
+  document.addEventListener('fullscreenchange',()=>{if(ownsFullscreen&&!document.fullscreenElement)leaveTreeFullscreen();});
+  document.addEventListener('keydown',event=>{
+    if(event.key!=='Escape'||document.querySelector('dialog[open]'))return;
+    if($('#map-tools').open){$('#map-tools').open=false;$('#map-tools summary').focus();event.preventDefault();return;}
+    if(treeFullscreen){leaveTreeFullscreen();event.preventDefault();}
+  });
+  document.addEventListener('click',event=>{if(!event.target.closest('#map-tools')||event.target.closest('#reset-filters'))$('#map-tools').open=false;});
   const expandedGroups=new Set();
   let dialogReturnSelector='#continue-button',dialogMapPosition=null;
   const mapContext=()=>JSON.stringify([category,stage,foundationBand,level,focusId,zoom,search,view,mapMode,[...expandedGroups]]);
@@ -11,7 +46,6 @@
     dialogMapPosition={context:mapContext(),left:$('#map-scroll').scrollLeft,top:$('#map-scroll').scrollTop,page:window.scrollY};
     dialogReturnSelector=origin?.dataset.group?'[data-group="'+origin.dataset.group+'"]':origin?.dataset.node?'[data-node="'+origin.dataset.node+'"]':origin?.id?'#'+CSS.escape(origin.id):fallback;
   }
-  const $ = selector => document.querySelector(selector);
   const esc = text => String(text).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
   const key = 'matree.profiles.v1';
   const byId = id => nodes.find(node => node.id === window.MATREE.resolveSkillId(id));
@@ -120,10 +154,12 @@
     return entry || needs[0] || detailNodes.find(n => n.level === 'core' && status(n) === 'available') || detailNodes.find(n => n.level === 'core' && !latest(n.id)) || byId('funktionsvarde');
   }
   function render() {
+    if(view!=='tree'&&treeFullscreen)leaveTreeFullscreen();
     if(document.body.dataset.view!==view)$('#summary-stats').open=view!=='tree';
     document.body.dataset.view=view;
     $('#profile-name').textContent = profile().name; $('#avatar').textContent = profile().name.charAt(0).toUpperCase();
     $('#active-profile').textContent='Elev: '+profile().name;
+    $('#fullscreen-profile').textContent='Elev: '+profile().name;
     $('#active-profile').setAttribute('aria-label','Aktiv elev '+profile().name+'. Öppna elevprofiler.');
     $('#profile-button').setAttribute('aria-label','Elevprofil: '+profile().name+'. Byt eller skapa profil.');
     $('#mobile-category').innerHTML = [{id:'all',name:'Alla områden'},...categories].map(c => `<option value="${c.id}">${c.name}</option>`).join('');
@@ -133,7 +169,7 @@
     $('#foundation-filters').hidden = stage !== '0';
     document.querySelectorAll('[data-foundation]').forEach(b=>{b.classList.toggle('selected',b.dataset.foundation===foundationBand);b.setAttribute('aria-pressed',String(b.dataset.foundation===foundationBand));});
     const counts=evidenceCounts(),mastered=counts.mastered,practice=counts.practice,checked=detailNodes.length-counts.untried;
-    $('#summary-stats-label').textContent='Samlat elevunderlag · '+mastered+' visade · '+practice+' att följa upp · '+counts.partial+' begränsade · '+counts.untried+' oprövade';
+    $('#summary-stats-label').textContent=view==='tree'?'Elevunderlag · '+checked+' av '+detailNodes.length+' prövade':'Samlat elevunderlag · '+mastered+' visade · '+practice+' att följa upp · '+counts.partial+' begränsade · '+counts.untried+' oprövade';
     const rounds = Object.values(profile().results).reduce((total, r) => total + r.history.length, 0) + profile().adaptive.sessions.length;
     $('#stats').innerHTML = [
       `<div class="stat-top">Visad kunskap <span class="stat-icon">✧</span></div><div class="stat-value"><strong>${mastered}</strong><span>av ${detailNodes.length} färdigheter</span></div><div class="stat-progress"><i style="width:${mastered / detailNodes.length * 100}%"></i></div>`,
@@ -162,10 +198,10 @@
     document.querySelectorAll('[data-map-mode]').forEach(b=>{const effective=search||focused?'details':mapMode;b.classList.toggle('selected',b.dataset.mapMode===effective);b.setAttribute('aria-pressed',String(b.dataset.mapMode===effective));b.disabled=!!search||!!focused;});
     $('#focus-banner').hidden=!focusId;
     $('#focus-banner').innerHTML=focusId?'<div><strong>'+esc(byId(focusId).title)+'</strong><span>Alla '+ancestors(focusId).size+' förkunskaper samt nästa direkta steg. Filter pausas i fokusvyn.</span></div><button class="secondary-button" id="clear-focus">Tillbaka till urvalet ×</button>':'';
-    $('#map-title').textContent=focusId?'Förkunskapskedjan':(search?'Sökresultat':category==='all'?'Alla områden':categories.find(c=>c.id===category).name)+(stage==='all'?' · alla år':stage==='0'?' · grunder'+(foundationBand==='all'?'':foundationBand==='1'?' åk 1–3':' åk 4–6'):' · åk '+stage);
+    $('#map-title').textContent=(focusId?'Förkunskapskedjan':(search?'Sökresultat':category==='all'?'Alla områden':categories.find(c=>c.id===category).name)+(stage==='all'?' · alla år':stage==='0'?' · grunder'+(foundationBand==='all'?'':foundationBand==='1'?' åk 1–3':' åk 4–6'):' · åk '+stage))+(level==='core'?' · bas':level==='extension'?' · fördjupning':'');
     $('#node-count').textContent=entries.length+' kort · '+visible.length+' delmoment · '+projection.rawEdgeCount+' kopplingar';
     const map=$('#skill-map');
-    if(!visible.length){map.style.width='360px';map.style.height='360px';map.innerHTML='<div class="empty-map">Inga delmoment matchar filtret.<br><br>Prova ett annat sökord eller välj ”Rensa filter”.</div>';applyZoom(360,360);return;}
+    if(!visible.length){map.style.width='360px';map.style.height='360px';map.innerHTML='<div class="empty-map">Inga delmoment matchar filtret.<br><br>Prova ett annat sökord eller öppna ”Fler val” och välj ”Rensa filter”.</div>';applyZoom(360,360);return;}
     const lanes=categories.filter(c=>entries.some(n=>n.category===c.id)),depths=new Map();
     function localDepth(n){if(depths.has(n.id))return depths.get(n.id);const d=n.deps.length?1+Math.max(...n.deps.map(id=>localDepth(entryById.get(id)))):0;depths.set(n.id,d);return d;}
     entries.forEach(localDepth);
@@ -398,7 +434,7 @@
     if (button.dataset.npFilter) { level=button.dataset.npFilter; category=stage='all'; focusId=null; search=''; $('#search').value=''; view='tree'; render(); $('#map-scroll').scrollTo(0,0); }
     if (button.dataset.manualRecord!==undefined)openManualRecord(Number(button.dataset.manualRecord));
     if (button.id==='manual-history-return')returnManualHistory();
-    if (button.dataset.node || button.dataset.open) openSkill(button.dataset.node || button.dataset.open);
+    if (button.dataset.node || button.dataset.open) { if(button.closest('#about-dialog'))$('#about-dialog').close();openSkill(button.dataset.node || button.dataset.open); }
     if (button.dataset.start) startQuiz(button.dataset.start);
     if (button.id === 'continue-button') openSkill(nextSkill().id);
     if (button.id === 'reset-filters') { category = stage = level = 'all'; focusId=null; search = ''; $('#search').value = ''; render(); $('#map-scroll').scrollTo(0,0); }

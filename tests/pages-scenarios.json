@@ -108,7 +108,7 @@
   },
   {
     "click": "#adaptive-teacher-report",
-    "eval": "(()=>{if(!document.querySelector('.report-meta').textContent.includes('Tal & räkning')||!document.querySelector('.report-end').textContent.includes('valt område'))throw Error('Report loses area context');return 'Full Tal year 7 report is scoped correctly';})()",
+    "eval": "(()=>{if(!document.querySelector('.report-meta').textContent.includes('Åk 7 · Tal · Testa alla')||!document.querySelector('.report-end').textContent.includes('valt område'))throw Error('Report loses area context');return 'Full Tal year 7 report is scoped correctly';})()",
     "screenshot": "pages-area-complete-report.png"
   }
 ]

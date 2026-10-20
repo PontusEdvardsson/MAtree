@@ -311,7 +311,7 @@
     if (!$('#skill-dialog').open) { rememberDialogOrigin('[data-node="'+id+'"]'); $('#skill-dialog').showModal(); }
     if (profile().quiz&&window.MATREE.resolveSkillId(profile().quiz.nodeId) === id) { renderQuiz(); return; }
     const node = byId(id), cat = categories.find(c => c.id === node.category), result = latest(id);
-    const successors = nodes.filter(n=>n.deps.includes(id));
+    const successors = nodes.filter(n=>n.deps.includes(id)), prerequisiteCount=ancestors(id).size;
     $('#skill-content').innerHTML = [
       `<div class="dialog-top"><div><div class="eyebrow">${cat.name.toUpperCase()}</div><h2 id="skill-dialog-title">${node.title}</h2></div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div>`,
       `<div class="skill-meta"><span class="tag">Lärs in: ${window.MATREE.yearViewLabel(node.learnedAt)}</span><span class="tag ${node.level}">${node.level==='core'?'Bas':'Fördjupning'}${node.source.book==='gym'?' · inför gymnasiet':''}</span>${node.npSource?'<span class="tag">Genrepet · NP</span>':''}</div>`,
@@ -323,7 +323,7 @@
       result?`<p class="muted small">Senaste kontroll: ${result.right??result.score} av ${result.total||3} rätt · ${result.pending?'Pågående kontroll':new Date(result.date).toLocaleDateString('sv-SE')}${result.adaptive?' · Automatiskt pass':''}</p>`:'',
       result?.items?`<details class="answer-review"><summary>Se elevens svar i senaste kontrollen</summary>${result.items.map((item,i)=>`<div class="review-item"><strong>${i+1}. ${esc(item.prompt)}</strong>${window.MATREE.renderQuestionVisual(item)}<p>${item.correct?'✓':'↳'} Elevens svar: ${esc(item.skipped?'Jag vet inte':item.response?window.MATREE.answerText(item,item.response):'Svar saknas i äldre underlag')} ${esc(item.unit)}<br>Rätt svar: ${esc(window.MATREE.answerText(item))} ${esc(item.unit)}</p><p class="muted">${esc(item.explanation)}</p></div>`).join('')}</details>`:'',
       connectionNote,
-      `<div class="dialog-section"><h3>Bygger på · ${node.deps.length}</h3>${node.deps.length?prerequisiteButtons(node.deps,node):'<p class="muted small">En grundläggande utgångspunkt i den här kartan.</p>'}<button class="secondary-button" data-focus="${node.id}">Visa hela förkunskapskedjan · ${ancestors(id).size} noder ↗</button></div>`,
+      `<div class="dialog-section"><h3>Bygger på · ${node.deps.length}</h3>${node.deps.length?prerequisiteButtons(node.deps,node):'<p class="muted small">En grundläggande utgångspunkt i den här kartan.</p>'}<button class="secondary-button" data-focus="${node.id}">Visa hela förkunskapskedjan · ${prerequisiteCount} ${prerequisiteCount===1?'förkunskap':'förkunskaper'} ↗</button></div>`,
       `<div class="dialog-section"><h3>Leder vidare till · ${successors.length}</h3>${successors.length?prerequisiteButtons(successors.map(n=>n.id),null,node):'<p class="muted small">Inga efterföljande noder i detta urval.</p>'}</div>`,
       ''
     ].join('');

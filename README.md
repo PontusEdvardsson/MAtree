@@ -147,6 +147,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 ## Verifiering
 
+[ANVANDARTEST.md](ANVANDARTEST.md) sammanfattar två separata oinsatta granskaragenters lärar- och elevflöden, ett frågestickprov och prioriterade förbättringsförslag. Det är simulerad granskning och ersätter inte test med faktiska användare.
+
 Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. Filter, sökning och zoom finns kvar. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och **Fler val** samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
 
 [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.

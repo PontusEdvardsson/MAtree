@@ -46,7 +46,7 @@ window.verifyEndReasons=()=>{
     const limit=A.create({scope:'9',limit:30});while(!limit.ended)A.answer(limit,String(limit.pending.answer));show(limit);
     check($('.report-end').dataset.endReason==='limit'&&$('.report-end').textContent.includes('Uppgiftstaket på 30'),'Question cap has a separate explanation');
     const teacher=A.create({scope:'7',limit:90});A.answer(teacher,String(teacher.pending.answer));teacher.ended=new Date().toISOString();teacher.pending=null;teacher.endReason='teacher';show(teacher);
-    check($('.report-end').textContent.includes('av läraren'),'Teacher stop has a separate explanation');
+    check($('.report-end').textContent.includes('manuellt'),'Teacher stop has a separate explanation');
     const old={...teacher,endReason:null};show(old);check($('.report-end').textContent.includes('saknas i detta äldre pass'),'Older unknown reason is not invented');
     const paused=A.create({scope:'1-3',limit:30});p.adaptive.active=paused;app.save();$('#adaptive-close').click();$('.last-report-link').click();
     check($('[data-earlier-scope]').disabled&&p.adaptive.active.id===paused.id,'Earlier-scope shortcut cannot overwrite another paused session');
@@ -184,7 +184,7 @@ window.verifyTestAll=async()=>{
     check($('#adaptive-answer').value===s.draft.value,'Full run pauses and restores exact draft');
     check(A.validate(JSON.parse(JSON.stringify(p.adaptive))).active.mode==='all','Paused full run is importable');
     $('#adaptive-pause').click();$('#adaptive-finish').click();
-    check(p.adaptive.sessions.at(-1).endReason==='teacher'&&$('.report-end').textContent.includes('av läraren'),'Manual stop still works in full mode');
+    check(p.adaptive.sessions.at(-1).endReason==='teacher'&&$('.report-end').textContent.includes('manuellt'),'Manual stop still works in full mode');
     return 'Test all covers all five year selections with correct, skipped and mixed answers; 2–4 question estimates, extensions, unchanged standard routing, pause, drafts and large backup validation passed';
   }finally{document.querySelectorAll('dialog[open]').forEach(d=>d.close());Object.assign(p,saved);app.save();app.render();}
 };
@@ -224,7 +224,7 @@ window.verifyCategoryScope=async()=>{
     $('#adaptive-skip').click();$('#adaptive-pause').click();
     check($('#adaptive-content').textContent.includes('Tal'),'Paused run names its area');
     $('#adaptive-finish').click();
-    check($('.report-meta').textContent.includes('Tal')&&$('.report-end').textContent.includes('av läraren'),'Report identifies its area and manual stop');
+    check($('.report-meta').textContent.includes('Tal')&&$('.report-end').textContent.includes('manuellt'),'Report identifies its area and manual stop');
     $('#adaptive-new').click();check($('#adaptive-category').value==='tal','Next run retains last area choice');
     $('#adaptive-category').value='';$('#adaptive-category').dispatchEvent(new Event('change',{bubbles:true}));
     check($('#adaptive-estimate').textContent.includes(A.estimateAll('7').skills+' delmoment'),'All areas restores full-year estimate');

@@ -122,7 +122,7 @@
   function finish(){const session=state().active;if(session)archive(session,'teacher');report();}
   function endStudentControl(){
     const session=studentSession;studentSession=null;
-    if(session&&state().active===session)archive(session,'teacher');
+    if(session&&state().active===session){archive(session,'teacher');app.announceControlEnd({title:A.scopeLabel(session),total:session.items.length,sessionId:session.id});}
   }
   function closeStudentControl(){endStudentControl();dialog.close();}
 
@@ -147,7 +147,7 @@
   }
 
   function endSummary(session,rows,untried){
-    const labels={'all-tested':session.category?'Alla delmoment inom valt område och årskursurval har prövats.':'Alla delmoment i valt årskursurval har prövats.',limit:'Uppgiftstaket på '+session.limit+' svar nåddes.',teacher:'Passet avslutades av läraren.',coverage:'Urvalsreglerna hittade inga fler lämpliga uppgifter inom passets urval.'};
+    const labels={'all-tested':session.category?'Alla delmoment inom valt område och årskursurval har prövats.':'Alla delmoment i valt årskursurval har prövats.',limit:'Uppgiftstaket på '+session.limit+' svar nåddes.',teacher:'Passet avslutades manuellt.',coverage:'Urvalsreglerna hittade inga fler lämpliga uppgifter inom passets urval.'};
     const lower={'4-6':'1-3','7':'4-6','8':'7','9':'8'}[session.scope];
     return '<section class="report-end" data-end-reason="'+esc(session.endReason||'unknown')+'" aria-label="Varför passet avslutades"><strong>'+esc(labels[session.endReason]||'Avslutsorsaken saknas i detta äldre pass.')+'</strong>'+
       '<p>'+session.items.length+' svar av högst '+session.limit+'. '+rows.length+' delmoment fick nya svar; '+untried.length+' finns kvar i listan Ej prövade. '+(session.mode==='all'?'Tidigare visade prövades på nytt.':'Tidigare visade redovisas separat.')+'</p>'+
@@ -178,7 +178,7 @@
       section('followup','Behöver följas upp',follow,follow.length>0)+section('partial','Begränsat underlag',partial,partial.length>0)+section('shown','Visad i passet',shown,!follow.length&&!partial.length)+
       (prior.length?'<details class="report-section"><summary>Tidigare visade vid passets start <span class="report-badge">'+prior.length+'</span></summary><p class="muted small">Direkt underlag från tidigare kontroller. Dessa är inte nya resultat från passet.</p>'+prior.map(n=>'<button class="progress-skill" data-adaptive-node="'+n.id+'">'+esc(n.title)+' →</button>').join('')+'</details>':'')+
       '<details class="report-section" id="report-untried"><summary>Ej prövade i detta urval <span class="report-badge">'+untried.length+'</span></summary><p class="muted small">Här saknas nya svar från detta pass. Det betyder inte att eleven saknar kunskapen.</p>'+untried.map(n=>'<button class="progress-skill" data-adaptive-node="'+n.id+'">'+esc(n.title)+' →</button>').join('')+'</details>'+
-      '<details class="report-section report-answers"><summary>Alla uppgifter och elevens svar <span class="report-badge">'+session.items.length+'</span></summary><div class="tabs report-answer-filters" role="group" aria-label="Filtrera elevsvar">'+[['all','Alla'],['incorrect','Felsvar'],['skipped','Överhoppade'],['partial','Begränsat underlag']].map(([key,label])=>'<button data-answer-filter="'+key+'" aria-pressed="'+(reportAnswerFilter===key)+'" class="'+(reportAnswerFilter===key?'selected':'')+'">'+label+'</button>').join('')+'</div><p id="report-answer-count" class="small" role="status">'+filteredAnswers(session).length+' av '+session.items.length+' uppgifter</p><div id="report-answer-groups">'+answerRows+'</div></details>'+
+      '<details class="report-section report-answers"><summary>Frågor, elevsvar och facit <span class="report-badge">'+session.items.length+'</span></summary><div class="tabs report-answer-filters" role="group" aria-label="Filtrera elevsvar">'+[['all','Alla'],['incorrect','Felsvar'],['skipped','Överhoppade'],['partial','Begränsat underlag']].map(([key,label])=>'<button data-answer-filter="'+key+'" aria-pressed="'+(reportAnswerFilter===key)+'" class="'+(reportAnswerFilter===key?'selected':'')+'">'+label+'</button>').join('')+'</div><p id="report-answer-count" class="small" role="status">'+filteredAnswers(session).length+' av '+session.items.length+' uppgifter</p><div id="report-answer-groups">'+answerRows+'</div></details>'+
       '<details class="report-section report-method"><summary>Så ska underlaget läsas</summary><p>Visad i passet kräver minst tre rätt och högst ett fel på samma delmoment. Minst två fel eller överhoppade svar ger uppföljning. Ett avbrutet delmoment med få svar visas som begränsat underlag.</p><p>Tidigare delmoment godkänns inte automatiskt. Frågorna täcker inte alla uttrycksformer och ger ingen betygs- eller NP-prognos. Följ upp elevens resonemang.</p></details>'+
       '<div class="dialog-actions report-actions"><button class="primary-button" id="adaptive-overview">Till elevöversikten →</button><button class="secondary-button" id="adaptive-new">Nytt pass</button></div>';
     dialog.scrollTop=0;

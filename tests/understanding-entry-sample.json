@@ -1,0 +1,847 @@
+{
+  "method": "Separate frozen entry-routine model; natural UI routing; no hidden answers; max30.",
+  "natural": [
+    {
+      "scope": "9",
+      "category": "tal",
+      "setup": "Åk 9 · Tal · 15 delmoment i basen",
+      "selection": "course",
+      "endReason": "coverage",
+      "transcript": [
+        {
+          "prompt": "Skriv 11 miljoner och 20 tusen som ett tal.",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "11020000",
+          "action": "answer",
+          "nodeId": "stora-tal",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Hur många miljoner är 8500000?",
+          "options": [
+            "9,5",
+            "10,5",
+            "7,5",
+            "8,5"
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "8.5",
+          "action": "answer",
+          "nodeId": "stora-tal",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Skriv 2 miljarder som antal miljoner.",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "2000",
+          "action": "answer",
+          "nodeId": "stora-tal",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Beräkna 4^4.",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "256",
+          "action": "answer",
+          "nodeId": "potens-begrepp",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Produkten 6 × 6 × 6 × 6 skrivs som 6^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "4",
+          "action": "answer",
+          "nodeId": "potens-begrepp",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Vilken produkt skriver ut 6^3 som lika faktorer med basen 6?",
+          "options": [
+            "6 × 3",
+            "3 × 3 × 3 × 3 × 3 × 3",
+            "6 × 6 × 6",
+            "6 + 3"
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "6 × 6 × 6",
+          "action": "answer",
+          "nodeId": "potens-begrepp",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Prefixet n används framför meter. Hur många meter är 10 nm?",
+          "options": [
+            "0,000000001",
+            "0,0000001",
+            "0,00000001",
+            "0,000001"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-sma",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Hur många mm är 0,006 meter?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-sma",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilken är den minsta av dessa talmängder som innehåller −4?",
+          "options": [
+            "Heltal",
+            "Reella tal",
+            "Rationella tal",
+            "Naturliga tal"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "talmangder",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilken är den minsta av dessa talmängder som innehåller 5/10?",
+          "options": [
+            "Rationella tal",
+            "Reella tal",
+            "Heltal",
+            "Naturliga tal"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "talmangder",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vad är kvadraten av 17?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "kvadrattal",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilket av talen är ett kvadrattal?",
+          "options": [
+            "51",
+            "49",
+            "50",
+            "48"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "kvadrattal",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Skriv 4^3 × 4^4 som 4^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "7",
+          "action": "answer",
+          "nodeId": "potens-multiplikation",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Beräkna 5^3 × 5^1.",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "625",
+          "action": "answer",
+          "nodeId": "potens-multiplikation",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Vilken regel gäller för x^2 × x^2, där x > 0?",
+          "options": [
+            "x^(4)",
+            "x^(-10)",
+            "4x^(4)",
+            "x^(0)"
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "x^(4)",
+          "action": "answer",
+          "nodeId": "potens-multiplikation",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Prefixet M används framför meter. Hur många meter är 20 Mm?",
+          "options": [
+            "2000000000",
+            "200000000",
+            "2000000",
+            "20000000"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-stora",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Hur många Gm är 2000000000 meter?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-stora",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Beräkna 10^(3).",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "tiopotens",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "10^n = 10. Vad är n?",
+          "options": [
+            "1",
+            "2",
+            "10",
+            "100"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "tiopotens",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Skriv 5^3 ÷ 5^1 som 5^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "potens-division",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Beräkna 5^4 ÷ 5^2.",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "potens-division",
+          "correct": false,
+          "skipped": true
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "stora-tal",
+          "title": "Miljoner och miljarder",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 3,
+          "prerequisites": [
+            {
+              "id": "positionssystem",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "potens-begrepp",
+          "title": "Bas och exponent",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 6,
+          "prerequisites": [
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "prefix-sma",
+          "title": "Milli, mikro och nano",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "tiodivision",
+              "tested": false
+            },
+            {
+              "id": "decimal-plats",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "talmangder",
+          "title": "Naturliga, hela och rationella tal",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "negativa",
+              "tested": false
+            },
+            {
+              "id": "brak-del-hel",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "kvadrattal",
+          "title": "Kvadrattal",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "potens-begrepp",
+              "tested": true
+            }
+          ]
+        },
+        {
+          "id": "potens-multiplikation",
+          "title": "Multiplicera potenser",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 15,
+          "prerequisites": [
+            {
+              "id": "potens-begrepp",
+              "tested": true
+            },
+            {
+              "id": "addition",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "prefix-stora",
+          "title": "Kilo, mega och giga",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "stora-tal",
+              "tested": true
+            },
+            {
+              "id": "tiomultiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "tiopotens",
+          "title": "Tiopotenser",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "potens-begrepp",
+              "tested": true
+            },
+            {
+              "id": "tiomultiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "potens-division",
+          "title": "Dividera potenser",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "potens-multiplikation",
+              "tested": true
+            },
+            {
+              "id": "negativ-subtraktion",
+              "tested": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "8",
+      "category": "samband",
+      "setup": "Åk 8 · Samband & funktioner · 8 delmoment i basen",
+      "selection": "course",
+      "endReason": "coverage",
+      "transcript": [
+        {
+          "prompt": "En vara kostar 10 kr per styck utan fast avgift. Vad gäller?",
+          "options": [
+            "Kostnaden minskar alltid när antalet ökar.",
+            "Kostnaden är proportionell mot antalet.",
+            "Det finns alltid en fast avgift.",
+            "Kostnaden är alltid densamma."
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "Kostnaden är proportionell mot antalet.",
+          "action": "answer",
+          "nodeId": "proportionalitet",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "5 likadana pennor kostar 25 kr. Vad kostar en penna?",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "5",
+          "action": "answer",
+          "nodeId": "proportionalitet",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Priset för n varor är 20 + 5n kr. Är priset proportionellt mot antalet?",
+          "options": [
+            "Kostnaden minskar alltid när antalet ökar.",
+            "Ja, eftersom n finns i uttrycket.",
+            "Nej, eftersom en fast avgift tillkommer.",
+            "Ja, eftersom priset ökar."
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "Nej, eftersom en fast avgift tillkommer.",
+          "action": "answer",
+          "nodeId": "proportionalitet",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Tabellen följer ett linjärt samband. Vad är y när x = 6?",
+          "options": [
+            "−7",
+            "−8",
+            "−9",
+            "−6"
+          ],
+          "table": [
+            [
+              "0",
+              "4"
+            ],
+            [
+              "2",
+              "0"
+            ],
+            [
+              "4",
+              "−4"
+            ]
+          ],
+          "recognized": true,
+          "response": "-8",
+          "action": "answer",
+          "nodeId": "samband-tabell",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Tabellen följer ett linjärt samband. Vad är förändringen i y när x ökar med 1?",
+          "options": [
+            "−3",
+            "−1",
+            "−2",
+            "−4"
+          ],
+          "table": [
+            [
+              "0",
+              "2"
+            ],
+            [
+              "2",
+              "−4"
+            ],
+            [
+              "4",
+              "−10"
+            ]
+          ],
+          "recognized": true,
+          "response": "-3",
+          "action": "answer",
+          "nodeId": "samband-tabell",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Tabellen följer ett linjärt samband. Vilket x ger y = 5?",
+          "options": [],
+          "table": [
+            [
+              "0",
+              "−1"
+            ],
+            [
+              "2",
+              "3"
+            ],
+            [
+              "4",
+              "7"
+            ]
+          ],
+          "recognized": true,
+          "response": "3",
+          "action": "answer",
+          "nodeId": "samband-tabell",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Skriv 2 timmar och 45 minuter som antal timmar i decimalform.",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "2.75",
+          "action": "answer",
+          "nodeId": "tid-enheter",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "Hur många minuter är 3,2 timmar?",
+          "options": [
+            "192",
+            "11520",
+            "191",
+            "193"
+          ],
+          "table": [],
+          "recognized": true,
+          "response": "192",
+          "action": "answer",
+          "nodeId": "tid-enheter",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "En lektion börjar 11:15 och slutar 12:51. Hur många minuter varar den?",
+          "options": [],
+          "table": [],
+          "recognized": true,
+          "response": "96",
+          "action": "answer",
+          "nodeId": "tid-enheter",
+          "correct": true,
+          "skipped": false
+        },
+        {
+          "prompt": "En bil färdas 180 km på 1,5 timmar. Beräkna medelhastigheten.",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "hastighet",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "En bil kör 120 km/h under 90 minuter. Hur långt färdas den?",
+          "options": [
+            "30",
+            "210",
+            "180",
+            "10800"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "hastighet",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Ett recept för 2 personer kräver 500 g mjöl. Hur mycket behövs för 10 personer?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "recept",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Ett recept för 5 personer kräver 500 g mjöl. Hur många personer räcker 800 g till?",
+          "options": [
+            "8",
+            "100",
+            "505",
+            "2500"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "recept",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilket y-värde visar grafen när x = -1?",
+          "options": [
+            "−1",
+            "1",
+            "−2",
+            "2"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "graf-avlasning",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilket x-värde ger y = 1 på grafen?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "graf-avlasning",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "2,5 kg kostar 300 kr. Vad är priset per kg?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "enhetspris",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Kilopriset är 170 kr. Vad kostar 2,5 kg?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "enhetspris",
+          "correct": false,
+          "skipped": true
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "proportionalitet",
+          "title": "Proportionella samband",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 3,
+          "prerequisites": [
+            {
+              "id": "f-proportion",
+              "tested": false
+            },
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "samband-tabell",
+          "title": "Samband i tabeller",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 6,
+          "prerequisites": [
+            {
+              "id": "frekvenstabell",
+              "tested": false
+            },
+            {
+              "id": "monster",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "tid-enheter",
+          "title": "Timmar, minuter och decimaler",
+          "state": "shown",
+          "right": 3,
+          "total": 3,
+          "firstShownAt": 9,
+          "prerequisites": [
+            {
+              "id": "brak-del-hel",
+              "tested": false
+            },
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "hastighet",
+          "title": "Hastighet, sträcka och tid",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "proportionalitet",
+              "tested": true
+            },
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "recept",
+          "title": "Skala upp ett recept",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "proportionalitet",
+              "tested": true
+            },
+            {
+              "id": "brak-del-antal",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "graf-avlasning",
+          "title": "Läsa en graf",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "avlasa",
+              "tested": false
+            },
+            {
+              "id": "samband-tabell",
+              "tested": true
+            }
+          ]
+        },
+        {
+          "id": "enhetspris",
+          "title": "Enhetspris och jämförelser",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "proportionalitet",
+              "tested": true
+            },
+            {
+              "id": "decimal-division",
+              "tested": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "88769fd",
+  "preflight": "JS syntax error corrected before any entry-model pass started; no learner policy changed after response feedback."
+}

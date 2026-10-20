@@ -1,0 +1,1038 @@
+{
+  "method": "UI-driven technical experiment; frozen visible-input policies; archived outcomes inspected only after natural passes.",
+  "natural": [
+    {
+      "scope": "9",
+      "category": "tal",
+      "setup": "Åk 9 · Tal · 15 delmoment i basen",
+      "selection": "course",
+      "endReason": "coverage",
+      "transcript": [
+        {
+          "prompt": "Skriv 3 miljoner och 73 tusen som ett tal.",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "stora-tal",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Hur många miljoner är 11500000?",
+          "options": [
+            "11,5",
+            "13,5",
+            "10,5",
+            "12,5"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "stora-tal",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Beräkna 4^4.",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "potens-begrepp",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Produkten 4 × 4 × 4 skrivs som 4^n. Vad är n?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "potens-begrepp",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Prefixet m används framför meter. Hur många meter är 2 mm?",
+          "options": [
+            "0,02",
+            "0,2",
+            "0,002",
+            "0,0002"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-sma",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Hur många mm är 0,002 meter?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "prefix-sma",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilken är den minsta av dessa talmängder som innehåller −8?",
+          "options": [
+            "Naturliga tal",
+            "Reella tal",
+            "Rationella tal",
+            "Heltal"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "talmangder",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilken är den minsta av dessa talmängder som innehåller 9/10?",
+          "options": [
+            "Rationella tal",
+            "Reella tal",
+            "Heltal",
+            "Naturliga tal"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "talmangder",
+          "correct": false,
+          "skipped": true
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "stora-tal",
+          "title": "Miljoner och miljarder",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "positionssystem",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "potens-begrepp",
+          "title": "Bas och exponent",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "prefix-sma",
+          "title": "Milli, mikro och nano",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "tiodivision",
+              "tested": false
+            },
+            {
+              "id": "decimal-plats",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "talmangder",
+          "title": "Naturliga, hela och rationella tal",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "negativa",
+              "tested": false
+            },
+            {
+              "id": "brak-del-hel",
+              "tested": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "8",
+      "category": "samband",
+      "setup": "Åk 8 · Samband & funktioner · 8 delmoment i basen",
+      "selection": "course",
+      "endReason": "coverage",
+      "transcript": [
+        {
+          "prompt": "En vara kostar 4 kr per styck utan fast avgift. Vad gäller?",
+          "options": [
+            "Kostnaden är alltid densamma.",
+            "Kostnaden minskar alltid när antalet ökar.",
+            "Kostnaden är proportionell mot antalet.",
+            "Det finns alltid en fast avgift."
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "proportionalitet",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "4 likadana pennor kostar 16 kr. Vad kostar en penna?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "proportionalitet",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Tabellen följer ett linjärt samband. Vad är y när x = 6?",
+          "options": [
+            "−9",
+            "−7",
+            "−10",
+            "−8"
+          ],
+          "table": [
+            [
+              "0",
+              "3"
+            ],
+            [
+              "2",
+              "−1"
+            ],
+            [
+              "4",
+              "−5"
+            ]
+          ],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "samband-tabell",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Tabellen följer ett linjärt samband. Vad är förändringen i y när x ökar med 1?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "table": [
+            [
+              "0",
+              "−5"
+            ],
+            [
+              "2",
+              "1"
+            ],
+            [
+              "4",
+              "7"
+            ]
+          ],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "samband-tabell",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Skriv 2 timmar och 15 minuter som antal timmar i decimalform.",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "tid-enheter",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Hur många minuter är 4,8 timmar?",
+          "options": [
+            "288",
+            "17280",
+            "289",
+            "287"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "tid-enheter",
+          "correct": false,
+          "skipped": true
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "proportionalitet",
+          "title": "Proportionella samband",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "f-proportion",
+              "tested": false
+            },
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "samband-tabell",
+          "title": "Samband i tabeller",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "frekvenstabell",
+              "tested": false
+            },
+            {
+              "id": "monster",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "tid-enheter",
+          "title": "Timmar, minuter och decimaler",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "brak-del-hel",
+              "tested": false
+            },
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "9",
+      "category": "sannolikhet",
+      "setup": "Det finns inga basmoment i detta urval. Välj Testa alla för att ta med fördjupning.",
+      "notStarted": true
+    },
+    {
+      "scope": "8",
+      "category": "sannolikhet",
+      "setup": "Åk 8 · Sannolikhet · 11 delmoment i basen",
+      "selection": "course",
+      "endReason": "coverage",
+      "transcript": [
+        {
+          "prompt": "En påse har 3 röda kulor och 2 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+          "options": [
+            "2/5",
+            "3/5",
+            "3/10",
+            "0"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "gynnsamma-utfall",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Ett lyckohjul har 4 lika stora fält. 1 fält ger vinst. Vad är sannolikheten för vinst?",
+          "options": [
+            "1/2",
+            "1/8",
+            "1/4",
+            "3/4"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "gynnsamma-utfall",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Du väljer en tröja bland 6 olika tröjor, ett par byxor bland 2 olika par och en mössa bland 6 olika mössor. Hur många kombinationer finns?",
+          "options": [
+            "72",
+            "36",
+            "144",
+            "0"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "kombinationer",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "En kod har 5 teckenplatser. Varje plats kan vara ett av 4 tecken och tecken får upprepas. Hur många koder finns?",
+          "options": [],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "kombinationer",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vilket tal kan vara en sannolikhet?",
+          "options": [
+            "0,75",
+            "2",
+            "1,2",
+            "−0,2"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "sannolikhet-skala",
+          "correct": false,
+          "skipped": true
+        },
+        {
+          "prompt": "Vad är sannolikheten för en säker händelse?",
+          "options": [
+            "1",
+            "0,5",
+            "2",
+            "0"
+          ],
+          "table": [],
+          "recognized": false,
+          "response": null,
+          "action": "skip",
+          "nodeId": "sannolikhet-skala",
+          "correct": false,
+          "skipped": true
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "gynnsamma-utfall",
+          "title": "Gynnsamma och möjliga utfall",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "f-half",
+              "tested": false
+            },
+            {
+              "id": "f-chance",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "kombinationer",
+          "title": "Multiplikationsprincipen",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "multiplikation",
+              "tested": false
+            }
+          ]
+        },
+        {
+          "id": "sannolikhet-skala",
+          "title": "Sannolikhet mellan 0 och 1",
+          "state": "followup",
+          "right": 0,
+          "total": 2,
+          "firstShownAt": null,
+          "prerequisites": [
+            {
+              "id": "brak-del-hel",
+              "tested": false
+            },
+            {
+              "id": "procent-begrepp",
+              "tested": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "kind": "potens-multiplikation",
+      "prompt": "Beräkna 2^3 × 3^2.",
+      "expected": 72,
+      "reason": "8 × 9 = 72; baserna är olika.",
+      "response": "32",
+      "supported": true,
+      "correct": false
+    },
+    {
+      "kind": "brak-division",
+      "prompt": "Hur många halvlitersflaskor kan fyllas med 3/2 liter?",
+      "expected": 3,
+      "reason": "1,5 liter delat med 0,5 liter ger tre flaskor.",
+      "response": "NaN/NaN",
+      "supported": false,
+      "correct": false
+    },
+    {
+      "kind": "kvadreringsregel",
+      "prompt": "Utveckla (2x + 3)². Vilken koefficient får x?",
+      "expected": 12,
+      "reason": "4x² + 12x + 9; korsprodukten är 2·2x·3.",
+      "response": "-4",
+      "supported": true,
+      "correct": false
+    },
+    {
+      "kind": "klot-yta",
+      "prompt": "Ett halvklot har radien 3 cm. Beräkna hela begränsningsytans area, inklusive den plana cirkelytan. Använd π = 3,14.",
+      "expected": 84.78,
+      "reason": "Krökt yta 2πr² plus plan cirkelyta πr² ger 3·3,14·9.",
+      "response": "56.519999999999996",
+      "supported": true,
+      "correct": false
+    },
+    {
+      "kind": "funktionsvarde",
+      "prompt": "Ange värdet på y när x är två enligt tabellen.",
+      "table": [
+        [
+          "x",
+          "y"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "3"
+        ],
+        [
+          "2",
+          "5"
+        ]
+      ],
+      "expected": 5,
+      "reason": "Tabellens rad med x = 2 har y = 5.",
+      "response": "NaN",
+      "supported": false,
+      "correct": false
+    },
+    {
+      "kind": "upprepad-forandring",
+      "prompt": "Ett värde höjs med 20 % och sänks sedan med 20 %. Slutvärdet är 96. Vad var ursprungsvärdet?",
+      "expected": 100,
+      "reason": "96 / (1,2·0,8) = 100.",
+      "response": "0.9600000000000009",
+      "supported": true,
+      "correct": false
+    },
+    {
+      "kind": "viktat-medel",
+      "prompt": "Grupp A har 2 elever med medelvärdet 0. Grupp B har 2 elever med medelvärdet 10. Grupp C har 6 elever med medelvärdet 20. Vad är gruppernas gemensamma medelvärde?",
+      "expected": 14,
+      "reason": "(2·0 + 2·10 + 6·20) / 10 = 14.",
+      "response": "5",
+      "supported": true,
+      "correct": false
+    },
+    {
+      "kind": "trad-beroende",
+      "prompt": "Påsen har 2 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten för en vit och en svart kula i valfri ordning?",
+      "expected": 0.6,
+      "reason": "2/5·3/4 + 3/5·2/4 = 3/5.",
+      "response": null,
+      "supported": false,
+      "correct": false
+    },
+    {
+      "kind": "moms",
+      "prompt": "Priset med moms är 1250 kr. Momssatsen är 25 %. Vad är momsen i kronor?",
+      "expected": 250,
+      "reason": "Nettopris 1250/1,25 = 1000; moms 1250 − 1000 = 250.",
+      "response": "1000",
+      "supported": true,
+      "correct": false
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": true
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": true
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Medelvärdet",
+            "Variationsbredden",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 2,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 2,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Typvärdet",
+            "Medelvärdet",
+            "Variationsbredden",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": true
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Medelvärdet",
+            "Typvärdet",
+            "Variationsbredden",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": true
+        }
+      ],
+      "score": 2,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 3,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Medelvärdet",
+            "Variationsbredden",
+            "Typvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Variationsbredden",
+            "Typvärdet",
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Variationsbredden",
+          "correct": false
+        }
+      ],
+      "score": 0,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 4,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": true
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Medelvärdet",
+            "Variationsbredden",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 5,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Medianen",
+            "Medelvärdet",
+            "Typvärdet",
+            "Variationsbredden"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 0,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 6,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": true
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Medelvärdet",
+            "Medianen",
+            "Typvärdet",
+            "Variationsbredden"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 7,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": true
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Variationsbredden",
+            "Typvärdet",
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Variationsbredden",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Medianen",
+            "Variationsbredden",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 8,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Medelvärdet",
+          "correct": false
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Variationsbredden",
+            "Typvärdet",
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Variationsbredden",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medelvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 0,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 9,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": true
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Variationsbredden",
+            "Medelvärdet",
+            "Typvärdet",
+            "Medianen"
+          ],
+          "table": [],
+          "selected": "Variationsbredden",
+          "correct": false
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Typvärdet",
+            "Variationsbredden",
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": false
+        }
+      ],
+      "score": 1,
+      "status": "Behöver följas upp"
+    },
+    {
+      "attempt": 10,
+      "questions": [
+        {
+          "prompt": "Fyra löner ligger nära varandra, medan en femte är mycket högre. Vilket lägesmått påverkas minst av hur hög den femte lönen är?",
+          "options": [
+            "Medianen",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": true
+        },
+        {
+          "prompt": "Du vill sammanfatta vilken färg som är vanligast bland elevernas favoritfärger. Vilket lägesmått passar?",
+          "options": [
+            "Typvärdet",
+            "Medelvärdet",
+            "Medianen",
+            "Variationsbredden"
+          ],
+          "table": [],
+          "selected": "Typvärdet",
+          "correct": true
+        },
+        {
+          "prompt": "Du känner antalet personer och vill kunna beräkna deras totala poäng från ett lägesmått. Vilket behövs?",
+          "options": [
+            "Medianen",
+            "Variationsbredden",
+            "Typvärdet",
+            "Medelvärdet"
+          ],
+          "table": [],
+          "selected": "Medianen",
+          "correct": false
+        }
+      ],
+      "score": 2,
+      "status": "Behöver följas upp"
+    }
+  ],
+  "version": "88769fd",
+  "technicalPreflight": "Two initial driver runs aborted at the blocked year-nine probability setup. They did not save full transcripts and are not counted as completed evidence. Response policies were not changed. The final run records that setup as notStarted and supplements year eight."
+}

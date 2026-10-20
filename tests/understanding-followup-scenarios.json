@@ -1,0 +1,4 @@
+[
+  {"script":"tests/understanding-audit.js"},
+  {"script":"tests/understanding-followup.js","eval":"runUnderstandingFollowup()","json_output":"understanding-followup.json"}
+]

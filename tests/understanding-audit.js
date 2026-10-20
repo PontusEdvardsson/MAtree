@@ -1,21 +1,5 @@
-/* Exploratory audit, not a validation of learner understanding.
-   Policies receive only rendered prompts, choices and table cells. They never
-   receive stored answers, correctness, template IDs or hidden visual metadata.
-   Driver hooks navigate to skills and read results only after submissions.
-   Run through understanding-scenarios.json in an isolated browser. */
-window.runUnderstandingAudit=()=>{
-  const $=s=>document.querySelector(s),M=MATREE,app=MATREE_APP;
-  const cases=[
-    ['tal','potens-multiplikation','potens-begrepp','Addera exponenter vid samma bas; beräkna med potensknappen.'],
-    ['brak','brak-division','brak-likvardiga','Invertera andra bråket och multiplicera; lös luckan med samma bråkrutin.'],
-    ['algebra','kvadreringsregel','tva-parenteser','Memorera a² och 2a för uttryck där x har koefficienten ett.'],
-    ['geometri','klot-yta','cirkel-area','Memorera 4·3,14·r²; halvera diameter respektive krökt halvklotsyta.'],
-    ['samband','funktionsvarde','funktion-begrepp','Läs tre tal i standardformen och beräkna k·x+m.'],
-    ['procent','upprepad-forandring','forandringsfaktor','Applicera 1±p/100 två gånger utifrån orden höjs och sänks.'],
-    ['statistik','viktat-medel','medel','Multiplicera tabellkolumner och summera; dividera med antalet vid medelvärde.'],
-    ['sannolikhet','trad-beroende','trad-oberoende','Multiplicera två dragandelar; minska totalen och vid samma färg även täljaren.'],
-    ['problem','moms','procent-baklanges','Pris utan moms gånger 1+p/100; pris med moms delat med samma faktor.']
-  ];
+/* The frozen policies are shared with the follow-up audit without alteration. */
+window.createUnderstandingPolicy=()=>{
   const clean=s=>s.replace(/−/g,'-').replace(/,/g,'.').replace(/([+-])\s+(?=\d)/g,'$1');
   const nums=s=>(clean(s).match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);
   const canonical=s=>clean(s).replace(/\s/g,'');
@@ -46,6 +30,27 @@ window.runUnderstandingAudit=()=>{
     if(kind==='moms')return /Hur många kronor/.test(p)?a*b/100:/^Priset med moms/.test(p)?a/(1+b/100):a*(1+b/100);
     return null;
   }
+  return {solve:policy,numeric,canonical};
+};
+/* Exploratory audit, not a validation of learner understanding.
+   Policies receive only rendered prompts, choices and table cells. They never
+   receive stored answers, correctness, template IDs or hidden visual metadata.
+   Driver hooks navigate to skills and read results only after submissions.
+   Run through understanding-scenarios.json in an isolated browser. */
+window.runUnderstandingAudit=()=>{
+  const $=s=>document.querySelector(s),M=MATREE,app=MATREE_APP;
+  const cases=[
+    ['tal','potens-multiplikation','potens-begrepp','Addera exponenter vid samma bas; beräkna med potensknappen.'],
+    ['brak','brak-division','brak-likvardiga','Invertera andra bråket och multiplicera; lös luckan med samma bråkrutin.'],
+    ['algebra','kvadreringsregel','tva-parenteser','Memorera a² och 2a för uttryck där x har koefficienten ett.'],
+    ['geometri','klot-yta','cirkel-area','Memorera 4·3,14·r²; halvera diameter respektive krökt halvklotsyta.'],
+    ['samband','funktionsvarde','funktion-begrepp','Läs tre tal i standardformen och beräkna k·x+m.'],
+    ['procent','upprepad-forandring','forandringsfaktor','Applicera 1±p/100 två gånger utifrån orden höjs och sänks.'],
+    ['statistik','viktat-medel','medel','Multiplicera tabellkolumner och summera; dividera med antalet vid medelvärde.'],
+    ['sannolikhet','trad-beroende','trad-oberoende','Multiplicera två dragandelar; minska totalen och vid samma färg även täljaren.'],
+    ['problem','moms','procent-baklanges','Pris utan moms gånger 1+p/100; pris med moms delat med samma faktor.']
+  ];
+  const {solve:policy,numeric,canonical}=window.createUnderstandingPolicy();
   const visible=()=>({
     prompt:$('#manual-question-title').textContent,
     options:[...document.querySelectorAll('#answer-form [data-choice]')].map(b=>b.lastElementChild.textContent),

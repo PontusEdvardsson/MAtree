@@ -107,7 +107,7 @@ Nivån avgörs utifrån hela progressionen. Ett moment som är rött i åttan ka
 
 Det finns 225 delmoment i basen och 28 fördjupningsmoment. Elva blandade kontroller hålls utanför dessa räknare. NP-översikten visar alltså 225 delområden i basen, inklusive tidigare grunder. Genrepet-hänvisningarna finns kvar som bokreferenser. Räknaren visar insamlat underlag, inte betyg eller sannolikhet att klara NP.
 
-Alla noder kan prövas direkt. I manuella kontroller ger tre rätt av tre **visad kunskap**. Automatiska pass kräver minst tre rätt och högst ett fel på samma delmoment. Färre rätt markerar **behöver träning**, vilket i elevöversikten presenteras som något att undersöka vidare. Oprövade förkunskaper markeras separat; ett godkänt resultat på en senare nod godkänner inte automatiskt tidigare noder. Manuella och automatiska resultat visas tillsammans med datum och faktiskt antal frågor. Manuella historiker behåller högst 100 omgångar per färdighet; de 30 senaste automatiska passen sparas. Ett delmoment med få svar i ett automatiskt pass markeras som begränsat underlag.
+Alla noder kan prövas direkt. I manuella kontroller ger tre rätt av tre **visad kunskap**. Automatiska pass kräver minst tre rätt och högst ett fel på samma delmoment. Färre rätt markerar **behöver följas upp**, vilket i elevöversikten presenteras som något att undersöka vidare. Oprövade förkunskaper markeras separat; ett godkänt resultat på en senare nod godkänner inte automatiskt tidigare noder. Manuella och automatiska resultat visas tillsammans med datum och faktiskt antal frågor. Manuella historiker behåller högst 100 omgångar per färdighet; de 30 senaste automatiska passen sparas. Ett delmoment med få svar i ett automatiskt pass markeras som begränsat underlag.
 
 Förslaget på nästa kontroll prioriterar en oprövad direkt förkunskap till en nod som behöver uppföljning. Annars föreslås centrala ingångar för högstadiet och därefter andra oprövade färdigheter. Detta är en enkel navigationsregel, inte en statistisk diagnosmodell.
 
@@ -177,7 +177,7 @@ I elevöversiktens manuella kontrollhistorik öppnar varje rad den valda kontrol
 
 Begränsat underlag har en egen status och räknare i elevöversikten och NP-vyn. Exempelvis är ett inskickat 1/1 ett prövat delmoment med begränsat underlag, inte oprövat och inte visad färdighet. Historiska rapporter gäller sitt eget pass; översikterna visar senaste underlaget per färdighet.
 
-Automatiska sammanställningar anger om passet nådde uppgiftstaket, avslutades av läraren eller stannade enligt urvalsreglerna. Antalet ej prövade delmoment inom urvalet visas. För äldre pass utan sparad avslutsorsak anges att uppgiften saknas. Urvalsreglerna har inte ändrats.
+Automatiska sammanställningar anger om passet nådde uppgiftstaket, avslutades manuellt eller stannade enligt urvalsreglerna. Antalet ej prövade delmoment inom urvalet visas. För äldre pass utan sparad avslutsorsak anges att uppgiften saknas. Urvalsreglerna har inte ändrats.
 
 Rapportens förslag har **Starta kontroll** bredvid **Granska underlaget**. Den manuella kontrollen visar elev och färdighet samt en länk tillbaka till samma rapport. En annan pausad manuell kontroll skrivs inte över; den namnges och kan återupptas uttryckligen. Rapportlänken följer med en pausad kontroll även efter omladdning.
 

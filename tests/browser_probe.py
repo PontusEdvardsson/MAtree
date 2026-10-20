@@ -2,7 +2,8 @@
 
 python tests/browser_probe.py PORT command.json
 Commands: start(url,width,height), read, click(selector), type(selector,text),
-key(key), size(width,height), screenshot(name), eval(code), stop.
+key(key), size(width,height), screenshot(name), upload(selector,path), eval(code), stop.
+Downloads go to .verification/probe-PORT-downloads.
 No application state or answers are inspected by this helper.
 """
 import ast
@@ -60,6 +61,9 @@ def metrics():
     call('Emulation.setDeviceMetricsOverride',{**settings,'deviceScaleFactor':1,'mobile':settings['width']<600})
 metrics()
 if action=='start':
+    download_dir=out/f'probe-{port}-downloads'
+    download_dir.mkdir(exist_ok=True)
+    call('Browser.setDownloadBehavior',{'behavior':'allow','downloadPath':str(download_dir.resolve())})
     call('Page.navigate',{'url':command['url']})
     time.sleep(1)
 elif action=='size':
@@ -76,11 +80,19 @@ elif action=='type':
     evaluate('document.querySelector('+json.dumps(command['selector'])+').focus()')
     call('Input.insertText',{'text':command['text']})
 elif action=='key':
-    key=command['key'];codes={'Enter':13,'Escape':27,'Tab':9,'ArrowDown':40,'ArrowUp':38}
+    parts=command['key'].split('+');key=parts[-1]
+    modifiers=sum({'Alt':1,'Control':2,'Meta':4,'Shift':8}[part] for part in parts[:-1])
+    codes={'Enter':13,'Escape':27,'Tab':9,'Backspace':8,'Delete':46,'ArrowLeft':37,'ArrowUp':38,'ArrowRight':39,'ArrowDown':40,'Home':36,'End':35}
     for event in ['keyDown','keyUp']:
-        args={'type':event,'key':key,'windowsVirtualKeyCode':codes.get(key,0)}
-        if key=='Enter' and event=='keyDown':args['text']='\r'
+        args={'type':event,'key':key,'modifiers':modifiers,'windowsVirtualKeyCode':codes.get(key,ord(key.upper()) if len(key)==1 else 0)}
+        if key=='Enter' and event=='keyDown' and not modifiers:args['text']='\r'
         call('Input.dispatchKeyEvent',args)
+elif action=='upload':
+    file_path=Path(command['path']).resolve()
+    if not file_path.is_file():raise ValueError('Choose an existing file.')
+    document=call('DOM.getDocument')
+    node=call('DOM.querySelector',{'nodeId':document['root']['nodeId'],'selector':command['selector']})
+    call('DOM.setFileInputFiles',{'nodeId':node['nodeId'],'files':[str(file_path)]})
 elif action=='eval':
     print(json.dumps(evaluate(command['code']),ensure_ascii=False))
 elif action=='stop':

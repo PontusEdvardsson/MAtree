@@ -1,0 +1,5 @@
+[
+  {"script":"tests/pupil-dom-adapter.js"},
+  {"script":"tests/pupil-adapter-preflight.js","eval":"await verifyPupilAdapter()","json_output":"pupil-adapter-preflight.json"},
+  {"script":"tests/pupil-adapter-app-smoke.js","eval":"await verifyPupilAdapterApp()","json_output":"pupil-adapter-app-smoke.json"}
+]

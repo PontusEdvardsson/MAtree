@@ -1,0 +1,307 @@
+{
+  "manifest": {
+    "probability_contrast_policy.py": "ec76bc46ce16be57cbc9f8226cc1d317135dc87c4f69f5deb3a9f0cf3e6b1eda",
+    "probability-contrast-questions.json": "317d2cc2b990522732192aa495d7189af19be0ba3311b4276369068ed7b84f4d",
+    "pupil-dom-adapter.js": "2291bfe13e8e8cb91198894e0382e58e3c404268f6f0809163c4d1435b69349f"
+  },
+  "summary": {
+    "low": {
+      "correct": 0,
+      "wrong": 0,
+      "abstained": 8,
+      "parserErrors": 0
+    },
+    "mixed": {
+      "correct": 4,
+      "wrong": 4,
+      "abstained": 0,
+      "parserErrors": 0
+    },
+    "strong": {
+      "correct": 8,
+      "wrong": 0,
+      "abstained": 0,
+      "parserErrors": 0
+    }
+  },
+  "attempts": {
+    "low": [
+      {
+        "id": "with-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "8",
+        "correct": null
+      },
+      {
+        "id": "with-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "3/8",
+        "correct": null
+      },
+      {
+        "id": "with-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "5/8",
+        "correct": null
+      },
+      {
+        "id": "without-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "7",
+        "correct": null
+      },
+      {
+        "id": "without-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "2/7",
+        "correct": null
+      },
+      {
+        "id": "without-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "5/7",
+        "correct": null
+      },
+      {
+        "id": "with-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "15/32",
+        "correct": null
+      },
+      {
+        "id": "without-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "abstain",
+          "reason": "Outside frozen single-event routine; not a diagnosed misconception"
+        },
+        "expected": "15/28",
+        "correct": null
+      }
+    ],
+    "mixed": [
+      {
+        "id": "with-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "answer",
+          "value": "8",
+          "method": "Inventory before second draw",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "8",
+        "correct": true
+      },
+      {
+        "id": "with-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "answer",
+          "value": "3/8",
+          "method": "Red remaining / total remaining",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "3/8",
+        "correct": true
+      },
+      {
+        "id": "with-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "answer",
+          "value": "5/8",
+          "method": "Blue remaining / total remaining",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "5/8",
+        "correct": true
+      },
+      {
+        "id": "without-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "answer",
+          "value": "8",
+          "method": "Inventory before second draw",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "7",
+        "correct": false
+      },
+      {
+        "id": "without-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "answer",
+          "value": "3/8",
+          "method": "Red remaining / total remaining",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "2/7",
+        "correct": false
+      },
+      {
+        "id": "without-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "answer",
+          "value": "5/8",
+          "method": "Blue remaining / total remaining",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "5/7",
+        "correct": false
+      },
+      {
+        "id": "with-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "answer",
+          "value": "15/32",
+          "method": "Sum red-blue and blue-red paths",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "15/32",
+        "correct": true
+      },
+      {
+        "id": "without-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "answer",
+          "value": "15/32",
+          "method": "Sum red-blue and blue-red paths",
+          "inventoryRule": "unchanged"
+        },
+        "expected": "15/28",
+        "correct": false
+      }
+    ],
+    "strong": [
+      {
+        "id": "with-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "answer",
+          "value": "8",
+          "method": "Inventory before second draw",
+          "inventoryRule": "update"
+        },
+        "expected": "8",
+        "correct": true
+      },
+      {
+        "id": "with-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "answer",
+          "value": "3/8",
+          "method": "Red remaining / total remaining",
+          "inventoryRule": "update"
+        },
+        "expected": "3/8",
+        "correct": true
+      },
+      {
+        "id": "with-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "answer",
+          "value": "5/8",
+          "method": "Blue remaining / total remaining",
+          "inventoryRule": "update"
+        },
+        "expected": "5/8",
+        "correct": true
+      },
+      {
+        "id": "without-total",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Hur många kulor finns i påsen inför andra draget?",
+        "response": {
+          "kind": "answer",
+          "value": "7",
+          "method": "Inventory before second draw",
+          "inventoryRule": "update"
+        },
+        "expected": "7",
+        "correct": true
+      },
+      {
+        "id": "without-red",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är röd?",
+        "response": {
+          "kind": "answer",
+          "value": "2/7",
+          "method": "Red remaining / total remaining",
+          "inventoryRule": "update"
+        },
+        "expected": "2/7",
+        "correct": true
+      },
+      {
+        "id": "without-blue",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är blå?",
+        "response": {
+          "kind": "answer",
+          "value": "5/7",
+          "method": "Blue remaining / total remaining",
+          "inventoryRule": "update"
+        },
+        "expected": "5/7",
+        "correct": true
+      },
+      {
+        "id": "with-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "answer",
+          "value": "15/32",
+          "method": "Sum red-blue and blue-red paths",
+          "inventoryRule": "update"
+        },
+        "expected": "15/32",
+        "correct": true
+      },
+      {
+        "id": "without-either",
+        "prompt": "En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?",
+        "response": {
+          "kind": "answer",
+          "value": "15/28",
+          "method": "Sum red-blue and blue-red paths",
+          "inventoryRule": "update"
+        },
+        "expected": "15/28",
+        "correct": true
+      }
+    ]
+  }
+}

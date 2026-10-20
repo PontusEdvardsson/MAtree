@@ -1,0 +1,10 @@
+[
+  {"id":"with-total","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Hur många kulor finns i påsen inför andra draget?"},
+  {"id":"with-red","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är röd?"},
+  {"id":"with-blue","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Den första kulan är röd och läggs tillbaka före andra draget. Vad är sannolikheten att den andra kulan är blå?"},
+  {"id":"without-total","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Hur många kulor finns i påsen inför andra draget?"},
+  {"id":"without-red","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är röd?"},
+  {"id":"without-blue","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Den första kulan är röd och läggs åt sidan före andra draget. Vad är sannolikheten att den andra kulan är blå?"},
+  {"id":"with-either","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras med återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?"},
+  {"id":"without-either","prompt":"En påse innehåller 3 röda och 5 blå kulor. Två kulor dras utan återläggning. Vad är sannolikheten att få en röd och en blå, i valfri ordning?"}
+]

@@ -1,0 +1,454 @@
+{
+  "kind": "technical smoke, not blind",
+  "answers": 22,
+  "persisted": 22,
+  "endReason": "all-tested",
+  "transcript": [
+    {
+      "view": {
+        "token": "1:En påse har 1 röd kula och 6 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+        "prompt": "En påse har 1 röd kula och 6 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+        "options": [
+          "6/7",
+          "1/14",
+          "2/7",
+          "1/7"
+        ]
+      },
+      "receipt": {
+        "token": "1:En påse har 1 röd kula och 6 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "2:Ett lyckohjul har 4 lika stora fält. 2 fält ger vinst. Vad är sannolikheten för vinst?",
+        "prompt": "Ett lyckohjul har 4 lika stora fält. 2 fält ger vinst. Vad är sannolikheten för vinst?",
+        "options": [
+          "1",
+          "0",
+          "1/2",
+          "1/4"
+        ]
+      },
+      "receipt": {
+        "token": "2:Ett lyckohjul har 4 lika stora fält. 2 fält ger vinst. Vad är sannolikheten för vinst?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "3:Du väljer en tröja bland 5 olika tröjor, ett par byxor bland 7 olika par och en mössa bland 6 olika mössor. Hur många kombinationer finns?",
+        "prompt": "Du väljer en tröja bland 5 olika tröjor, ett par byxor bland 7 olika par och en mössa bland 6 olika mössor. Hur många kombinationer finns?",
+        "options": [
+          "0",
+          "105",
+          "210",
+          "420"
+        ]
+      },
+      "receipt": {
+        "token": "3:Du väljer en tröja bland 5 olika tröjor, ett par byxor bland 7 olika par och en mössa bland 6 olika mössor. Hur många kombinationer finns?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "4:En kod har 3 teckenplatser. Varje plats kan vara ett av 3 tecken och tecken får upprepas. Hur många koder finns?",
+        "prompt": "En kod har 3 teckenplatser. Varje plats kan vara ett av 3 tecken och tecken får upprepas. Hur många koder finns?",
+        "options": []
+      },
+      "receipt": {
+        "token": "4:En kod har 3 teckenplatser. Varje plats kan vara ett av 3 tecken och tecken får upprepas. Hur många koder finns?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "5:Vilket tal kan vara en sannolikhet?",
+        "prompt": "Vilket tal kan vara en sannolikhet?",
+        "options": [
+          "−0,2",
+          "0,1",
+          "1,2",
+          "2"
+        ]
+      },
+      "receipt": {
+        "token": "5:Vilket tal kan vara en sannolikhet?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "6:Vad är sannolikheten för en säker händelse?",
+        "prompt": "Vad är sannolikheten för en säker händelse?",
+        "options": [
+          "2",
+          "1",
+          "0,5",
+          "0"
+        ]
+      },
+      "receipt": {
+        "token": "6:Vad är sannolikheten för en säker händelse?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "7:Vinstsannolikheten är 4/9. Hur många vinster förväntas vid 27 försök?",
+        "prompt": "Vinstsannolikheten är 4/9. Hur många vinster förväntas vid 27 försök?",
+        "options": []
+      },
+      "receipt": {
+        "token": "7:Vinstsannolikheten är 4/9. Hur många vinster förväntas vid 27 försök?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "8:Vinstsannolikheten är 1/4. Hur många försök behövs för ett förväntat antal på 13 vinster?",
+        "prompt": "Vinstsannolikheten är 1/4. Hur många försök behövs för ett förväntat antal på 13 vinster?",
+        "options": [
+          "4",
+          "52",
+          "0,5",
+          "0,2"
+        ]
+      },
+      "receipt": {
+        "token": "8:Vinstsannolikheten är 1/4. Hur många försök behövs för ett förväntat antal på 13 vinster?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "9:På hur många sätt kan 5 olika böcker placeras i en rad?",
+        "prompt": "På hur många sätt kan 5 olika böcker placeras i en rad?",
+        "options": [
+          "240",
+          "60",
+          "0",
+          "120"
+        ]
+      },
+      "receipt": {
+        "token": "9:På hur många sätt kan 5 olika böcker placeras i en rad?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "10:Bland 4 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+        "prompt": "Bland 4 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+        "options": []
+      },
+      "receipt": {
+        "token": "10:Bland 4 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "11:Påsen har 2 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "prompt": "Påsen har 2 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "options": [
+          "1/16",
+          "1/32",
+          "1/8",
+          "15/16"
+        ]
+      },
+      "receipt": {
+        "token": "11:Påsen har 2 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "12:Påsen har 6 vita och 7 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "prompt": "Påsen har 6 vita och 7 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "options": [
+          "42/169",
+          "21/169",
+          "84/169",
+          "127/169"
+        ]
+      },
+      "receipt": {
+        "token": "12:Påsen har 6 vita och 7 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "13:En påse har 4 vita och 5 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "prompt": "En påse har 4 vita och 5 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": [
+          "41/81",
+          "80/81",
+          "20/81",
+          "40/81"
+        ]
+      },
+      "receipt": {
+        "token": "13:En påse har 4 vita och 5 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "14:En påse har 6 vita och 7 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "prompt": "En påse har 6 vita och 7 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "options": []
+      },
+      "receipt": {
+        "token": "14:En påse har 6 vita och 7 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "15:Sannolikheten för vinst är 9/10. Vad är sannolikheten att inte vinna?",
+        "prompt": "Sannolikheten för vinst är 9/10. Vad är sannolikheten att inte vinna?",
+        "options": [
+          "9/11",
+          "1/10",
+          "1",
+          "9/19"
+        ]
+      },
+      "receipt": {
+        "token": "15:Sannolikheten för vinst är 9/10. Vad är sannolikheten att inte vinna?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "16:Sannolikheten för att det inte regnar är 8/10. Vad är sannolikheten för regn?",
+        "prompt": "Sannolikheten för att det inte regnar är 8/10. Vad är sannolikheten för regn?",
+        "options": [
+          "8/11",
+          "1/5",
+          "4/9",
+          "9/10"
+        ]
+      },
+      "receipt": {
+        "token": "16:Sannolikheten för att det inte regnar är 8/10. Vad är sannolikheten för regn?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "17:Påsen har 5 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "prompt": "Påsen har 5 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "options": [
+          "5/14",
+          "5/7",
+          "5/28",
+          "9/14"
+        ]
+      },
+      "receipt": {
+        "token": "17:Påsen har 5 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "18:Påsen har 4 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "prompt": "Påsen har 4 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "options": []
+      },
+      "receipt": {
+        "token": "18:Påsen har 4 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "19:I 70 försök inträffar utfallet 26 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+        "prompt": "I 70 försök inträffar utfallet 26 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+        "options": []
+      },
+      "receipt": {
+        "token": "19:I 70 försök inträffar utfallet 26 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "20:I 150 försök inträffar utfallet 44 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+        "prompt": "I 150 försök inträffar utfallet 44 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+        "options": []
+      },
+      "receipt": {
+        "token": "20:I 150 försök inträffar utfallet 44 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "21:Vinstsannolikheten per försök är 0,3. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+        "prompt": "Vinstsannolikheten per försök är 0,3. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+        "options": []
+      },
+      "receipt": {
+        "token": "21:Vinstsannolikheten per försök är 0,3. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+        "action": "skip",
+        "status": "advanced"
+      }
+    },
+    {
+      "view": {
+        "token": "22:Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+        "prompt": "Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+        "options": [
+          "1/8",
+          "0",
+          "7/16",
+          "7/8"
+        ]
+      },
+      "receipt": {
+        "token": "22:Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+        "action": "skip",
+        "status": "completed"
+      }
+    }
+  ],
+  "journal": [
+    {
+      "token": "1:En påse har 1 röd kula och 6 blå kulor. Alla kulor har samma chans att dras. Vad är sannolikheten att dra en röd kula?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "2:Ett lyckohjul har 4 lika stora fält. 2 fält ger vinst. Vad är sannolikheten för vinst?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "3:Du väljer en tröja bland 5 olika tröjor, ett par byxor bland 7 olika par och en mössa bland 6 olika mössor. Hur många kombinationer finns?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "4:En kod har 3 teckenplatser. Varje plats kan vara ett av 3 tecken och tecken får upprepas. Hur många koder finns?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "5:Vilket tal kan vara en sannolikhet?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "6:Vad är sannolikheten för en säker händelse?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "7:Vinstsannolikheten är 4/9. Hur många vinster förväntas vid 27 försök?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "8:Vinstsannolikheten är 1/4. Hur många försök behövs för ett förväntat antal på 13 vinster?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "9:På hur många sätt kan 5 olika böcker placeras i en rad?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "10:Bland 4 olika personer väljs ordförande och sekreterare. Ingen får båda rollerna. Hur många val finns?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "11:Påsen har 2 vita och 6 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "12:Påsen har 6 vita och 7 svarta kulor. Två kulor dras med återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "13:En påse har 4 vita och 5 svarta kulor. Du drar två med återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "14:En påse har 6 vita och 7 svarta kulor. Du drar två utan återläggning. Vad är sannolikheten för exakt en vit kula, oavsett ordning?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "15:Sannolikheten för vinst är 9/10. Vad är sannolikheten att inte vinna?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "16:Sannolikheten för att det inte regnar är 8/10. Vad är sannolikheten för regn?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "17:Påsen har 5 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en vit kula?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "18:Påsen har 4 vita och 3 svarta kulor. Två kulor dras utan återläggning. Hur stor är sannolikheten att först dra en vit kula och sedan en svart kula?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "19:I 70 försök inträffar utfallet 26 gånger. Uppskatta dess sannolikhet i decimalform från experimentet.",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "20:I 150 försök inträffar utfallet 44 gånger. Uppskatta dess sannolikhet i procent från experimentet.",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "21:Vinstsannolikheten per försök är 0,3. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 2 försök?",
+      "action": "skip",
+      "status": "advanced"
+    },
+    {
+      "token": "22:Vinstsannolikheten per försök är 0,5. Försöken är oberoende. Vad är sannolikheten för minst en vinst under 3 försök?",
+      "action": "skip",
+      "status": "completed"
+    }
+  ]
+}

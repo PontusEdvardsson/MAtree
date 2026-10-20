@@ -75,4 +75,6 @@ Fullständiga synliga frågor, alternativ, beräkningar, skickade svar och rätt
 
 [Åtgärdsprompten](ATGARDSPROMPT_ELEVTESTER.md) skiljer bekräftade verktygsfel från ett förslag om mer riktade konceptfrågor. Inga trösklar eller produktfrågor ändrades i denna granskning.
 
+Fortsättningen finns nu i [KONTRASTTEST_SANNOLIKHET.md](KONTRASTTEST_SANNOLIKHET.md): adaptertesterna och ett separat tekniskt kontrastprov är genomförda. Produktförslaget är fortfarande inte infört.
+
 `python tests/verify_pupil_levels.py` kontrollerar antal, delmomentsfördelning, rätt/avstående, förväntat mönster och tillgänglig avslutsmetadata mot de sparade försöken och återskapar jämförelsefilen. Kontrollen passerade. Den kör inga nya elevförsök och ersätter inte produktregression; eftersom endast rapporter och testunderlag ändrades kördes ingen ny full produktregression.

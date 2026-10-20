@@ -161,6 +161,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 [ELEVTEST_TRE_NIVAER.md](ELEVTEST_TRE_NIVAER.md) jämför tre oberoende simulerade elevmodeller i samma sannolikhetsurval: låg, blandad och stark. Rapporten bevarar även ett tekniskt misslyckat försök och skiljer verktygsfel från bedömning. [Åtgärdsprompt](ATGARDSPROMPT_ELEVTESTER.md) beskriver nästa kontroller och förbättringsförslag.
 
+[KONTRASTTEST_SANNOLIKHET.md](KONTRASTTEST_SANNOLIKHET.md) följer upp med en separat DOM-adapter, 13 syntetiska inmatningstester, ett tekniskt apppass och åtta kontrastfrågor med frysta modeller. Uppföljningsfrågorna är försöksmaterial utanför produktbanken.
+
 Kunskapsträdet har **Fullskärm** ovanför kartan. Läget avslutas med samma knapp eller Escape; en öppen dialog stängs först. På mobil fälls filterpanelen in i fullskärm; **Visa filter** öppnar samma filter och sökning med bevarade val. Zoom finns under **Fler val**. När webbläsarens fullskärmsfunktion saknas fyller kartan fönstret. Hjälp, teckenförklaring och Fler val samlar instruktioner och mindre använda kartverktyg. Urvalet bas eller fördjupning visas även i kartans rubrik.
 
 [MOTIVERINGSGRANSKNING.md](MOTIVERINGSGRANSKNING.md) beskriver språkgranskningen av alla 513 kopplingsmotiveringar och vilka bokbegrepp som används. 66 texter har ändrats; granskningsmarkeringarna är bevarade.

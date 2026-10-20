@@ -1,0 +1,124 @@
+{
+  "passed": 13,
+  "results": [
+    {
+      "case": "numeric",
+      "value": 0,
+      "recorded": [
+        "0"
+      ],
+      "status": "advanced"
+    },
+    {
+      "case": "numeric",
+      "value": "0,25",
+      "recorded": [
+        "0,25"
+      ],
+      "status": "advanced"
+    },
+    {
+      "case": "numeric",
+      "value": "−3",
+      "recorded": [
+        "−3"
+      ],
+      "status": "advanced"
+    },
+    {
+      "case": "numeric",
+      "value": "-3",
+      "recorded": [
+        "-3"
+      ],
+      "status": "advanced"
+    },
+    {
+      "case": "numeric",
+      "value": "2/7",
+      "recorded": [
+        "2/7"
+      ],
+      "status": "advanced"
+    },
+    {
+      "case": "choice with hidden input",
+      "recorded": [
+        1
+      ]
+    },
+    {
+      "case": "concurrent duplicate blocked",
+      "recorded": [
+        "0"
+      ]
+    },
+    {
+      "case": "implicit submit button",
+      "recorded": [
+        "0"
+      ]
+    },
+    {
+      "case": "reject",
+      "recorded": [],
+      "error": "Visible validation: Syntetiskt formatfel",
+      "journal": [
+        {
+          "token": "1:Syntetisk inmatning",
+          "action": "answer",
+          "status": "rejected"
+        }
+      ]
+    },
+    {
+      "case": "unconfirmed",
+      "recorded": [
+        "0"
+      ],
+      "error": "No visible acknowledgement; stop and inspect, do not retry",
+      "journal": [
+        {
+          "token": "1:Syntetisk inmatning",
+          "action": "answer",
+          "status": "unconfirmed"
+        }
+      ]
+    },
+    {
+      "case": "skip",
+      "recorded": [
+        "skip"
+      ],
+      "error": null,
+      "journal": [
+        {
+          "token": "1:Syntetisk inmatning",
+          "action": "skip",
+          "status": "advanced"
+        }
+      ]
+    },
+    {
+      "case": "complete",
+      "recorded": [
+        "0"
+      ],
+      "error": null,
+      "journal": [
+        {
+          "token": "1:Syntetisk inmatning",
+          "action": "answer",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "case": "missing",
+      "recorded": [],
+      "error": "Missing answer; explicit skip required",
+      "journal": []
+    }
+  ],
+  "receiptLimit": "Synthetic recorder proves exactly one delivery; real DOM advancement alone does not prove durable storage."
+}

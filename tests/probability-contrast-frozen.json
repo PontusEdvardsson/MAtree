@@ -1,0 +1,14 @@
+{
+  "sha256": {
+    "probability_contrast_policy.py": "ec76bc46ce16be57cbc9f8226cc1d317135dc87c4f69f5deb3a9f0cf3e6b1eda",
+    "probability-contrast-questions.json": "317d2cc2b990522732192aa495d7189af19be0ba3311b4276369068ed7b84f4d",
+    "pupil-dom-adapter.js": "2291bfe13e8e8cb91198894e0382e58e3c404268f6f0809163c4d1435b69349f"
+  },
+  "models": {
+    "low": "Single-event favourable/total only; abstain on conditional or two-draw tasks, including intermediate inventory.",
+    "mixed": "Multiply initial bag fractions, sum both orders; never update bag without replacement. Count remaining from that unchanged bag.",
+    "strong": "Update bag on no replacement, conditional fractions, multiply paths and sum both orders."
+  },
+  "method": "New deterministic parser; same mathematical abilities; technical transfer, not independent blind review.",
+  "preflightPassed": 13
+}

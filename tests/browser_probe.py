@@ -60,10 +60,12 @@ def evaluate(code):
 def metrics():
     call('Emulation.setDeviceMetricsOverride',{**settings,'deviceScaleFactor':1,'mobile':settings['width']<600})
 metrics()
+download_dir=out/f'probe-{port}-downloads'
+download_dir.mkdir(exist_ok=True)
+# CDP overrides belong to the attached client. Each command reconnects, so set
+# the download policy on this client too, not only the initial start command.
+call('Browser.setDownloadBehavior',{'behavior':'allow','downloadPath':str(download_dir.resolve())})
 if action=='start':
-    download_dir=out/f'probe-{port}-downloads'
-    download_dir.mkdir(exist_ok=True)
-    call('Browser.setDownloadBehavior',{'behavior':'allow','downloadPath':str(download_dir.resolve())})
     call('Page.navigate',{'url':command['url']})
     time.sleep(1)
 elif action=='size':

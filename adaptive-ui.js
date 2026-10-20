@@ -9,6 +9,7 @@
   function open(){if(!dialog.open)dialog.showModal();dialog.scrollTop=0;}
   function top(title){dialog.setAttribute('aria-labelledby','adaptive-dialog-title');return `<div class="dialog-top"><h2 id="adaptive-dialog-title">${title}</h2><button class="icon-button" id="adaptive-close" aria-label="Stäng">×</button></div>`;}
   const answerHint=q=>M.questionAnswerHint(q);
+  const skippedLabel=items=>{const count=items.filter(i=>i.skipped).length;return count+' '+(count===1?'överhoppat svar':'överhoppade svar');};
 
   function responseText(item){return item.skipped?'Jag vet inte':item.response?M.answerText(item,item.response)+(item.unit?' '+item.unit:''):'Svar saknas i äldre underlag';}
   function answerRow(item,index){
@@ -29,7 +30,7 @@
     return [...candidates.values()].sort((a,b)=>b.rows.filter(r=>r.state==='followup').length-a.rows.filter(r=>r.state==='followup').length||a.node.depth-b.node.depth||a.node.title.localeCompare(b.node.title,'sv')).slice(0,3);
   }
   function suggestionCard(s,session){
-    const facts=s.rows.map(r=>r.node.title+' ('+r.right+'/'+r.total+' rätt'+(r.items.some(i=>i.skipped)?', '+r.items.filter(i=>i.skipped).length+' överhoppade':'')+')').join('; ');
+    const facts=s.rows.map(r=>r.node.title+' ('+r.right+'/'+r.total+' rätt'+(r.items.some(i=>i.skipped)?', '+skippedLabel(r.items):'')+')').join('; ');
     const tried=session.items.some(i=>M.resolveSkillId(i.nodeId)===s.node.id),outside=!A.scopedPool(session).some(n=>n.id===s.node.id);
     return '<article class="followup-suggestion"><h4>'+esc(s.node.title)+'</h4><p>'+esc((s.prerequisite?'En direkt förkunskap att undersöka efter ':'Komplettera underlaget för ')+facts)+'.</p><p class="muted small">'+(tried?'Det finns svar att granska i passet.':'Delmomentet prövades inte i passet.')+(outside?' Utanför passets årskurs- eller områdesurval; undersök det separat.':'')+'</p><p class="small">Elev: '+esc(profile().name)+' · Manuell kontroll</p><div class="followup-actions"><button class="primary-button" data-report-start="'+esc(s.node.id)+'" aria-label="Starta eller fortsätt kontroll av '+esc(s.node.title)+' för '+esc(profile().name)+'">'+(profile().quiz&&M.resolveSkillId(profile().quiz.nodeId)===s.node.id?'Fortsätt kontroll':'Starta kontroll')+' →</button><button class="secondary-button" data-adaptive-node="'+esc(s.node.id)+'">Granska underlaget</button></div></article>';
   }
@@ -180,7 +181,7 @@
     const prior=[...new Set((session.known||[]).map(M.resolveSkillId))].map(byId);
     const ids=new Set([...rows.map(r=>r.node.id),...prior.map(n=>n.id)]),untried=A.scopedPool(session).filter(n=>!ids.has(n.id));
     const suggestions=followupSuggestions(session);
-    const section=(key,title,list,expanded)=>'<details class="report-section '+key+'" id="report-'+key+'"'+(expanded?' open':'')+'><summary>'+title+' <span class="report-badge">'+list.length+'</span></summary>'+(list.length?list.map(r=>'<button class="progress-skill" data-adaptive-node="'+r.node.id+'"><span class="report-skill-name">'+esc(r.node.title)+'<small>'+esc(M.categories.find(c=>c.id===r.node.category).name)+'</small></span><span>'+r.right+'/'+r.total+' rätt'+(r.items.some(i=>i.skipped)?' · '+r.items.filter(i=>i.skipped).length+' överhoppade':'')+' →</span></button>').join(''):'<p class="muted small">Inga delmoment i denna grupp.</p>')+'</details>';
+    const section=(key,title,list,expanded)=>'<details class="report-section '+key+'" id="report-'+key+'"'+(expanded?' open':'')+'><summary>'+title+' <span class="report-badge">'+list.length+'</span></summary>'+(list.length?list.map(r=>'<button class="progress-skill" data-adaptive-node="'+r.node.id+'"><span class="report-skill-name">'+esc(r.node.title)+'<small>'+esc(M.categories.find(c=>c.id===r.node.category).name)+'</small></span><span>'+r.right+'/'+r.total+' rätt'+(r.items.some(i=>i.skipped)?' · '+skippedLabel(r.items):'')+' →</span></button>').join(''):'<p class="muted small">Inga delmoment i denna grupp.</p>')+'</details>';
     const stat=(key,title,count)=>'<button class="report-stat '+key+'" data-report-section="'+key+'"><strong>'+count+'</strong><span>'+title+'</span></button>';
     const answerRows=answerGroups(session);
     content.innerHTML=top('Sammanställning av elevens pass')+

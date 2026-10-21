@@ -1,0 +1,40 @@
+{
+  "note": "One generated example per current template; names assessed in relation to each prompt, not pupil evidence.",
+  "rows": [
+    {
+      "id": "former",
+      "variant": 0,
+      "prompt": "Hur många hörn har figuren?",
+      "type": "shape",
+      "accessibleName": "Figur med formen rektangel."
+    },
+    {
+      "id": "former",
+      "variant": 1,
+      "prompt": "Hur många sidor har figuren?",
+      "type": "shape",
+      "accessibleName": "Figur med formen femhörning."
+    },
+    {
+      "id": "former",
+      "variant": 2,
+      "prompt": "Vilken figur visas?",
+      "type": "shape",
+      "accessibleName": "Figur med formen sexhörning."
+    },
+    {
+      "id": "f-count",
+      "variant": 2,
+      "prompt": "Hur många prickar ser du?",
+      "type": "dots",
+      "accessibleName": "8 prickar."
+    },
+    {
+      "id": "f-fraction-line",
+      "variant": 0,
+      "prompt": "Vilket tal står vid A på tallinjen? Svara med ett bråk.",
+      "type": "numberline",
+      "accessibleName": "Tallinje från 0 till 1 i 2 lika steg. A är vid steg 1."
+    }
+  ]
+}

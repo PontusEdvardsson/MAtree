@@ -1,0 +1,164 @@
+[
+  {
+    "id": "positionssystem",
+    "title": "Positionssystemet",
+    "learnedAt": "1-3",
+    "courseYears": [
+      "7"
+    ],
+    "yearViews": [
+      "1-3",
+      "7",
+      "8",
+      "9"
+    ],
+    "mergedIds": [
+      "f-place"
+    ],
+    "source": {
+      "book": "7tal",
+      "grade": 7,
+      "file": "MD 7 kap 1 tal_ocr.pdf",
+      "chapter": "Tal",
+      "page": 5,
+      "printed": 10,
+      "url": "7/Matte%20Direkt%207%20v3/MD%207%20kap%201%20tal_ocr.pdf#page=5"
+    },
+    "questions": [
+      {
+        "prompt": "Vilket värde har siffran på tiotalsplatsen i 773?\n\n1. 7\n2. 7000\n3. 70\n4. 700\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Platsen bestämmer siffrans värde.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "positionssystem:0",
+        "facet": 0,
+        "options": [
+          "7",
+          "7000",
+          "70",
+          "700"
+        ],
+        "optionValues": [
+          7,
+          7000,
+          70,
+          700
+        ]
+      },
+      {
+        "prompt": "Vilket tal består av 8 hundratal, 6 tiotal och 7 ental?\n\n1. 867\n2. 8670\n3. 868\n4. 86700\n\nVälj ett svar.",
+        "answer": 1,
+        "explanation": "Lägg ihop platsvärdena.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "positionssystem:1",
+        "facet": 1,
+        "options": [
+          "867",
+          "8670",
+          "868",
+          "86700"
+        ],
+        "optionValues": [
+          867,
+          8670,
+          868,
+          86700
+        ]
+      },
+      {
+        "prompt": "Hur många hela tiotal finns i 20?",
+        "answer": 2,
+        "explanation": "Ett tiotal är en grupp om tio.",
+        "unit": "",
+        "answerKind": "integer",
+        "templateId": "positionssystem:2",
+        "facet": 2
+      }
+    ]
+  },
+  {
+    "id": "former",
+    "title": "Former & hörn",
+    "learnedAt": "1-3",
+    "courseYears": [
+      "7"
+    ],
+    "yearViews": [
+      "1-3",
+      "7"
+    ],
+    "mergedIds": [
+      "f-shapes"
+    ],
+    "source": {
+      "book": "7geo",
+      "grade": 7,
+      "file": "MD 7 kap 2 geometri_ocr.pdf",
+      "chapter": "Geometri",
+      "page": 6,
+      "printed": 59,
+      "url": "7/Matte%20Direkt%207%20v3/MD%207%20kap%202%20geometri_ocr.pdf#page=6"
+    },
+    "questions": [
+      {
+        "prompt": "Hur många hörn har figuren?",
+        "answer": 3,
+        "explanation": "Figuren är en triangel och har 3 hörn. Räkna varje hörn en gång.",
+        "unit": "",
+        "answerKind": "integer",
+        "visual": {
+          "type": "shape",
+          "name": "triangel"
+        },
+        "templateId": "former:0",
+        "facet": 0
+      },
+      {
+        "prompt": "Hur många sidor har figuren?\n\n1. 6\n2. 5\n3. 4\n4. 3\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Figuren är en rektangel och har 4 sidor. Följ kanten runt hela figuren.",
+        "unit": "",
+        "answerKind": "choice",
+        "visual": {
+          "type": "shape",
+          "name": "rektangel"
+        },
+        "templateId": "former:1",
+        "facet": 1,
+        "options": [
+          "6",
+          "5",
+          "4",
+          "3"
+        ],
+        "optionValues": [
+          6,
+          5,
+          4,
+          3
+        ]
+      },
+      {
+        "prompt": "Vilken figur visas?\n\n1. cirkel\n2. triangel\n3. rektangel\n4. femhörning\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "En rektangel har fyra räta vinklar. Motstående sidor är lika långa.",
+        "unit": "",
+        "answerKind": "choice",
+        "visual": {
+          "type": "shape",
+          "name": "rektangel"
+        },
+        "templateId": "former:2",
+        "facet": 2,
+        "options": [
+          "cirkel",
+          "triangel",
+          "rektangel",
+          "femhörning"
+        ]
+      }
+    ]
+  }
+]

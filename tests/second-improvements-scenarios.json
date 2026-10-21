@@ -1,0 +1,91 @@
+[
+  {
+    "script": "tests/second-improvements-tests.js",
+    "eval": "verifySecondMath()",
+    "json_output": "second-math.json"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "eval": "verifySecondMobile()",
+    "json_output": "second-mobile.json",
+    "screenshot": "second-mobile-map.png"
+  },
+  {
+    "size": [
+      1366,
+      900
+    ],
+    "eval": "secondCheck(!document.querySelector('#map-filter-panel').hidden,'Desktop default remains expanded')"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "eval": "secondCheck(document.querySelector('#map-filter-panel').hidden,'Mobile explicit collapse survives rotation');document.querySelector('#map-filter-toggle').click();verifySecondConnections()",
+    "json_output": "second-connections.json"
+  },
+  {
+    "eval": "document.querySelector('#map-filter-toggle').click();document.querySelector('[data-group]').click();document.querySelector('#skill-dialog').close();secondCheck(document.querySelector('#map-filter-panel').hidden,'Dialog preserves folded state')"
+  },
+  {
+    "click": "#tree-fullscreen",
+    "eval": "secondCheck(document.body.classList.contains('tree-fullscreen'),'Fullscreen entered');secondCheck(document.querySelector('#map-filter-panel').hidden,'Mobile fullscreen starts folded');secondCheck(!document.querySelector('#fullscreen-theme').hidden,'Fullscreen theme reachable');const theme=document.documentElement.dataset.theme;document.querySelector('#fullscreen-theme').click();secondCheck(document.documentElement.dataset.theme!==theme,'Fullscreen theme changes');document.querySelector('#fullscreen-theme').click();secondCheck(!document.querySelector('#fullscreen-profile').hidden,'Active pupil visible');",
+    "screenshot": "second-mobile-fullscreen.png"
+  },
+  {
+    "click": "#tree-fullscreen",
+    "eval": "secondCheck(document.querySelector('#map-filter-panel').hidden,'Normal folded state restored');document.querySelector('[data-view=np]').click();secondCheck(!document.querySelector('#np-scope-note').hidden,'NP note visible')",
+    "screenshot": "second-mobile-np.png"
+  },
+  {
+    "eval": "secondInputFixture();verifySecondDrafts()",
+    "json_output": "second-drafts.json"
+  },
+  {
+    "click": "#answer",
+    "type": "3/4"
+  },
+  {
+    "eval": "secondCheck(document.querySelector('#answer').value==='3/4','Real input retained');secondCheck(MATREE_APP.profile().quiz.draft.value==='3/4','Real draft saved');secondCheck(document.querySelector('[data-fraction-preview] .math-fraction'),'Preview stacked')",
+    "screenshot": "second-mobile-fraction.png"
+  },
+  {
+    "key": "Enter",
+    "eval": "secondCheck(MATREE_APP.profile().quiz.answers.length===1&&MATREE_APP.profile().quiz.responses[0]==='3/4','Enter grades exactly once');secondCheck(document.querySelector('.feedback .math-fraction'),'Feedback stacked')",
+    "screenshot": "second-mobile-feedback.png"
+  },
+  {
+    "eval": "document.querySelector('#next-question').click();document.querySelector('#answer').value='1/0';document.querySelector('#answer').dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#answer-form').requestSubmit();secondCheck(MATREE_APP.profile().quiz.answers.length===1&&document.querySelector('#answer-error').textContent,'Invalid denominator not graded');document.querySelector('[data-pause-manual]').click();MATREE_APP.openSkill('brak-multiplikation');secondCheck(document.querySelector('#answer').value==='1/0','Pause restores exact answer')"
+  },
+  {
+    "eval": "document.querySelector('.topbar [data-theme-toggle]').click();",
+    "screenshot": "second-dark-fraction.png"
+  },
+  {
+    "size": [
+      1366,
+      900
+    ],
+    "screenshot": "second-desktop-fraction.png"
+  },
+  {
+    "eval": "secondChoiceFixture()",
+    "screenshot": "second-desktop-choice.png"
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "screenshot": "second-mobile-choice.png"
+  },
+  {
+    "script": "tests/first-improvements-tests.js",
+    "eval": "await verifyFirstImprovements()",
+    "json_output": "second-legacy-regression.json"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "script": "tests/second-improvements-tests.js",
+    "eval": "secondInputFixture();const field=document.querySelector('#answer');field.value='3/4';field.dispatchEvent(new Event('input',{bubbles:true}));if(document.documentElement.dataset.theme!=='light')document.querySelector('.topbar [data-theme-toggle]').click();",
+    "size": [
+      390,
+      844
+    ],
+    "screenshot": "second-fraction-light.png"
+  },
+  {
+    "eval": "document.querySelector('.topbar [data-theme-toggle]').click()",
+    "screenshot": "second-fraction-dark.png"
+  },
+  {
+    "eval": "MATREE_APP.profile().quiz.questions[0].visual={type:'tree',first:['1/3','2/3'],next:[['1/3','2/3'],['1/3','2/3']]};MATREE_APP.openSkill('brak-multiplikation')",
+    "screenshot": "second-tree-fractions-dark.png"
+  },
+  {
+    "eval": "document.querySelector('.topbar [data-theme-toggle]').click();MATREE_APP.openSkill('brak-multiplikation')",
+    "screenshot": "second-tree-fractions-light.png"
+  },
+  {
+    "eval": "document.querySelector('[data-pause-manual]').click();MATREE_APP.endManualControl();document.querySelector('#adaptive-open').click();for(const [id,v] of [['adaptive-start','8'],['adaptive-category','brak'],['adaptive-limit','30']]){document.querySelector('#'+id).value=v;document.querySelector('#'+id).dispatchEvent(new Event('change',{bubbles:true}));}document.querySelector('#adaptive-setup').requestSubmit();const s=MATREE_APP.profile().adaptive.active;s.pending={nodeId:'brak-multiplikation',variant:0,prompt:'Beräkna 1/2 + 1/4.',answer:.75,answerKind:'fraction',unit:'',explanation:'Summan är 3/4.'};document.querySelector('#adaptive-pause').click();document.querySelector('#adaptive-resume').click();",
+    "screenshot": "second-auto-fraction.png"
+  },
+  {
+    "script": "tests/pupil-dom-adapter.js",
+    "eval": "(()=>{const view=createPupilDOMAdapter(document).read();secondCheck(view.prompt.replace(/\\s/g,'').includes('1/2+1/4'),'Frozen adapter still sees displayed fractions');return view;})()",
+    "json_output": "second-adapter-read.json"
+  },
+  {
+    "click": "#adaptive-answer",
+    "type": "3/4",
+    "eval": "secondCheck(document.querySelector('[data-fraction-preview=adaptive-answer] .math-fraction'),'Auto preview stacked');secondCheck(MATREE_APP.profile().adaptive.active.draft.value==='3/4','Auto draft saved')",
+    "screenshot": "second-auto-preview.png"
+  },
+  {
+    "key": "Enter",
+    "eval": "secondCheck(MATREE_APP.profile().adaptive.active.items.length===1&&MATREE_APP.profile().adaptive.active.items[0].response==='3/4','Auto Enter once');document.querySelector('#adaptive-end').click();document.querySelector('#control-end-review').click();secondCheck(document.querySelector('.answer-review .math-fraction'),'Auto report stacked')",
+    "screenshot": "second-auto-report.png"
+  },
+  {
+    "eval": "MATREE.detailNodes.filter(n=>['positionssystem','former'].includes(n.id)).map(n=>({id:n.id,title:n.title,learnedAt:n.learnedAt,courseYears:n.courseYears,yearViews:n.yearViews,mergedIds:n.mergedIds,source:n.source,questions:[0,1,2].map(v=>MATREE.generate(n.id,v))}))",
+    "json_output": "second-book-sample.json"
+  },
+  {
+    "eval": "document.querySelector('#adaptive-close').click();document.querySelector('[data-view=tree]').click();",
+    "size": [
+      390,
+      844
+    ],
+    "screenshot": "second-map-light.png"
+  },
+  {
+    "eval": "secondVisualInventory()",
+    "json_output": "second-image-names.json"
+  },
+  {
+    "script": "tests/first-improvements-visual.js",
+    "eval": "secondInputFixture();firstImprovementTheme('light');firstImprovementContrast(['#skill-content .math-fraction','#answer-help','#answer'],'fraction presentation')",
+    "json_output": "second-fraction-contrast-light.json"
+  },
+  {
+    "eval": "firstImprovementTheme('dark');firstImprovementContrast(['#skill-content .math-fraction','#answer-help','#answer'],'fraction presentation')",
+    "json_output": "second-fraction-contrast-dark.json"
+  }
+]

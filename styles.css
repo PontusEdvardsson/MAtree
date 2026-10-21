@@ -125,7 +125,7 @@ dialog p,.how-list,.prerequisite,.feedback,.feedback p,.answer-review,.review-it
 .teacher-report .progress-skill>span:last-child{font-size:13px;flex-shrink:0;color:#596e4e}
 .review-answer-values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
 .review-answer-values p{background:#fff;border:1px solid #dbe3d3;border-radius:6px;padding:12px;margin:0}
-.review-answer-values span{display:block;font-size:12px;color:#607454;margin-bottom:6px}
+.review-answer-values p>span{display:block;font-size:12px;color:#607454;margin-bottom:6px}
 .review-answer-values strong{display:block;font-size:16px;overflow-wrap:anywhere}
 .option-review{margin:12px 0;font-size:14px}
 .option-review summary{cursor:pointer}
@@ -338,4 +338,21 @@ body.tree-fullscreen #mobile-category{display:block;width:auto;max-width:220px}
   .prerequisite[data-connection-from]>.dependency-label{flex-basis:calc(100% - 30px)}
   .prerequisite[data-connection-from]>span:last-child{max-width:none;margin-left:auto;text-align:right}
   .group-connections .prerequisite>.dependency-label{flex-basis:100%}
+}
+.map-search-summary{margin:0 0 10px;font-size:13px;color:var(--secondary-text,#52634e);overflow-wrap:anywhere}
+.math-fraction{display:inline-grid;grid-template-rows:auto auto;position:relative;vertical-align:middle;text-align:center;line-height:1.12;white-space:nowrap;margin:0 .08em;font-variant-numeric:lining-nums}
+.math-fraction::before{content:attr(data-numerator);grid-row:1;border-bottom:.07em solid currentColor;padding:0 .16em .1em}
+.math-fraction::after{content:attr(data-denominator);grid-row:2;padding:.1em .16em 0}
+.student-mode .question-text .math-fraction{color:inherit}
+.math-fraction-source{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:pre}
+.fraction-preview{margin:12px 0;line-height:1.9;color:var(--text)}
+.math-svg-text{color:#263e30}.math-svg-background{fill:#fff}
+[data-theme="dark"] .math-svg-text{color:var(--text)}
+[data-theme="dark"] .math-svg-background{fill:var(--surface)}
+.question-text:has(.math-fraction),.choice-button:has(.math-fraction),.feedback:has(.math-fraction){line-height:1.9}
+.np-scope-note{margin:10px 0 0;font-size:14px;color:var(--secondary-text,#52634e)}
+@media(max-width:550px){
+  .skill-map .connection,.skill-map.compact .connection{opacity:.08;stroke-width:1.25}
+  .skill-map.show-connections .connection,.skill-map.compact.show-connections .connection{opacity:.38}
+  .skill-map .connection.related,.skill-map.compact .connection.related{opacity:.7;stroke-width:2}
 }

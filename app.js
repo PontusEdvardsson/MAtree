@@ -5,9 +5,13 @@
   const $ = selector => document.querySelector(selector);
   let mapMode='groups',currentMapNodes=[],displayedQuiz=null,endedControl=null;
   let treeFullscreen=false,fullscreenOrigin=null,ownsFullscreen=false,fullscreenRequest=0;
-  function showMapFilters(show){
+  const mobileMap=matchMedia('(max-width:550px)'),filterVisibility={mobile:false,desktop:true,mobileFullscreen:false,desktopFullscreen:true};
+  const filterContext=()=>(mobileMap.matches?'mobile':'desktop')+(treeFullscreen?'Fullscreen':'');
+  let connectionAnchor=null;
+  function showMapFilters(show,remember=false){
+    if(remember)filterVisibility[filterContext()]=show;
     $('#map-filter-panel').hidden=!show;
-    $('#map-filter-toggle').textContent=show?'Dölj filter':'Visa filter';
+    $('#map-filter-toggle').textContent=show?'Dölj filter':'Filter och sök';
     $('#map-filter-toggle').setAttribute('aria-expanded',String(show));
     if(!show)$('#map-tools').open=false;
   }
@@ -16,11 +20,12 @@
     $('#tree-fullscreen').setAttribute('aria-pressed',String(treeFullscreen));
     $('#tree-fullscreen').textContent=treeFullscreen?'⛶ Avsluta fullskärm':'⛶ Fullskärm';
     $('#fullscreen-profile').hidden=!treeFullscreen;
+    $('#fullscreen-theme').hidden=!treeFullscreen;
   }
   function leaveTreeFullscreen() {
     if(!treeFullscreen)return;
     treeFullscreen=false;fullscreenRequest++;
-    showMapFilters(true);
+    showMapFilters(filterVisibility[filterContext()]);
     updateFullscreenButton();
     if(ownsFullscreen&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
     ownsFullscreen=false;
@@ -31,7 +36,7 @@
     const map=$('#map-scroll');
     fullscreenOrigin={left:map.scrollLeft,top:map.scrollTop,page:scrollY};
     treeFullscreen=true;updateFullscreenButton();
-    showMapFilters(innerWidth>550);
+    showMapFilters(filterVisibility[filterContext()]);
     const request=++fullscreenRequest;
     if(!document.fullscreenElement&&document.documentElement.requestFullscreen){
       try{await document.documentElement.requestFullscreen();if(request!==fullscreenRequest){if(document.fullscreenElement)await document.exitFullscreen();return;}ownsFullscreen=true;}
@@ -39,7 +44,8 @@
     }
   }
   $('#tree-fullscreen').addEventListener('click',()=>treeFullscreen?leaveTreeFullscreen():enterTreeFullscreen());
-  $('#map-filter-toggle').addEventListener('click',()=>showMapFilters($('#map-filter-panel').hidden));
+  $('#map-filter-toggle').addEventListener('click',()=>showMapFilters($('#map-filter-panel').hidden,true));
+  mobileMap.addEventListener('change',()=>showMapFilters(filterVisibility[filterContext()]));
   document.addEventListener('fullscreenchange',()=>{if(ownsFullscreen&&!document.fullscreenElement)leaveTreeFullscreen();});
   document.addEventListener('keydown',event=>{
     if(event.key!=='Escape'||document.querySelector('dialog[open]'))return;
@@ -202,6 +208,7 @@
     $('#tree-view').hidden = view !== 'tree'; $('#progress-view').hidden = view !== 'progress'; $('#np-view').hidden = view !== 'np';
     $('#breadcrumb').textContent = {tree:'Kunskapsträdet',progress:'Elevöversikt',np:'Inför NP'}[view];
     $('#page-title').textContent = { tree: 'Kunskapsträdet', np: 'Inför NP', progress: 'Elevöversikt' }[view];
+    $('#np-scope-note').hidden=view!=='np';
     $('#page-description').textContent = view === 'tree' ? 'Delområden och förkunskaper från årskurs 1 till 9.' : view === 'np' ? 'Kartlägg mot Genrepet och den gröna kursens bas vid slutet av nian.' : `Prövade kunskaper och förslag att följa upp för ${profile().name}.`;
     renderMap(); if (view === 'progress') renderProgress(); if (view === 'np') renderNP();
     document.dispatchEvent(new Event('matree-render'));
@@ -215,7 +222,9 @@
     document.querySelectorAll('[data-map-mode]').forEach(b=>{const effective=search||focused?'details':mapMode;b.classList.toggle('selected',b.dataset.mapMode===effective);b.setAttribute('aria-pressed',String(b.dataset.mapMode===effective));b.disabled=!!search||!!focused;});
     $('#focus-banner').hidden=!focusId;
     $('#focus-banner').innerHTML=focusId?'<div><strong>'+esc(byId(focusId).title)+'</strong><span>Alla '+ancestors(focusId).size+' förkunskaper samt nästa direkta steg. Filter pausas i fokusvyn.</span></div><button class="secondary-button" id="clear-focus">Tillbaka till urvalet ×</button>':'';
-    $('#map-title').textContent=(focusId?'Förkunskapskedjan':(search?'Sökresultat':category==='all'?'Alla områden':categories.find(c=>c.id===category).name)+(stage==='all'?' · alla år':stage==='0'?' · grunder'+(foundationBand==='all'?'':foundationBand==='1'?' åk 1–3':' åk 4–6'):' · åk '+stage))+(level==='core'?' · bas':level==='extension'?' · fördjupning':'');
+    $('#map-title').textContent=(focusId?'Förkunskapskedjan':(search?'Sökresultat · ':'')+(category==='all'?'Alla områden':categories.find(c=>c.id===category).name)+(stage==='all'?' · alla år':stage==='0'?' · grunder'+(foundationBand==='all'?'':foundationBand==='1'?' åk 1–3':' åk 4–6'):' · åk '+stage))+(level==='core'?' · bas':level==='extension'?' · fördjupning':' · alla moment');
+    $('#map-search-summary').textContent=search?'Sökning: '+search:'';
+    $('#map-search-summary').hidden=!search;
     $('#node-count').textContent=entries.length+' kort · '+visible.length+' delmoment · '+projection.rawEdgeCount+' kopplingar';
     const map=$('#skill-map');
     if(!visible.length){map.style.width='360px';map.style.height='360px';map.innerHTML='<div class="empty-map">Inga delmoment matchar filtret.<br><br>Prova ett annat sökord eller öppna ”Fler val” och välj ”Rensa filter”.</div>';applyZoom(360,360);return;}
@@ -239,7 +248,7 @@
     }
     const height=top;map.style.width=width+'px';map.style.height=height+'px';map.style.setProperty('--card-width',cardWidth+'px');
     map.classList.toggle('compact',compact);map.classList.toggle('show-connections',$('#map-connections').checked);
-    $('#map-connections-control').hidden=!compact;
+    $('#map-connections-control').hidden=false;
     $('#map-guidance').textContent=search?'Sökning visar enskilda delmoment. Rensa sökfältet för att återgå till '+(mapMode==='groups'?'grupper.':'alla delmoment.'):compact?'Öppna en grupp för att välja delmoment. Peka på ett kort för att se kopplingar.':'Pilarna visar förkunskaper. Avgränsa med område eller årskurs, eller öppna en förkunskapskedja. Dra för att flytta kartan.';
     const edges=projection.edges.map(edge=>{
       const from=positions.get(edge.from),to=positions.get(edge.to),x1=from.x+cardWidth,y1=from.y+56,x2=to.x,y2=to.y+56,bend=Math.max(20,(x2-x1)/2);
@@ -251,7 +260,7 @@
     const cards=entries.map(entry=>{
       const pos=positions.get(entry.id),cat=categories.find(c=>c.id===entry.category);
       const style=' style="left:'+pos.x+'px;top:'+pos.y+'px;--node-color:'+cat.color+';--node-bg:'+cat.bg+'"';
-      const head='<span class="node-port in"></span><span class="node-top"><span class="node-symbol">'+cat.symbol+'</span><span class="node-title">'+esc(entry.title)+'</span></span>';
+      const head='<span class="node-port in"></span><span class="node-top"><span class="node-symbol">'+M.renderMathText(cat.symbol)+'</span><span class="node-title">'+esc(entry.title)+'</span></span>';
       if(entry.groupId){
         const counts=evidenceCounts(entry.members),shown=counts.mastered,tried=entry.members.length-counts.untried,practice=counts.practice>0,partial=tried>0;
         const state=shown===entry.members.length?'mastered':practice?'practice':partial?'partial':entry.members.some(n=>status(n)==='available')?'available':'locked';
@@ -262,6 +271,7 @@
       return '<button class="skill-node '+state+(node.id===focusId?' focus-node':'')+'" data-node="'+node.id+'"'+style+' aria-label="'+esc(node.title)+', '+(node.grade?stageLabel(node.grade):'Grunder åk '+year)+', '+statusLabel(state)+'">'+head+'<span class="node-bottom"><span class="node-status"><i></i>'+(latest(node.id)||['supported','indirect'].includes(state)?statusLabel(state):'Inte prövad')+'</span><span>'+year+' '+(node.level==='extension'?'<b class="level-key">R</b>':node.npSource?'<b class="np-key">NP</b>':'')+'</span></span><span class="node-port out"></span></button>';
     }).join('');
     map.innerHTML='<svg class="connections" width="'+width+'" height="'+height+'" aria-hidden="true"><defs><marker id="arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="#a6b797"/></marker></defs>'+edges+'</svg>'+columns+labels+cards;
+    highlightConnections(null);
     applyZoom(width,height);
   }
   function openGroup(id) {
@@ -293,7 +303,7 @@
   }
   function reasonMarkup(from,to) {
     const target=byId(to);
-    return `<small class="connection-reason">${target.dependencyReview[from]?'<strong class="connection-review">Samband att granska</strong> ':''}${esc(target.dependencyReasons[from])}</small>`;
+    return `<small class="connection-reason">${target.dependencyReview[from]?'<strong class="connection-review">Samband att granska</strong> ':''}${window.MATREE.renderMathText(target.dependencyReasons[from])}</small>`;
   }
   function groupConnections(list) {
     const ids=new Set(list.map(n=>n.id)),incoming=[],outgoing=[],internal=[];
@@ -326,7 +336,7 @@
       node.retired?'<p class="muted">Utgånget moment · ingår inte i bedömningen. Sparat underlag finns kvar.</p>':`<div class="dialog-actions skill-start-actions"><button class="primary-button" data-start="${id}">${result?'Prova igen':'Prova förståelsen'} <span>↗</span></button></div><p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang.${profile().quiz?' En annan omgång är pausad; fortsätt eller avsluta den först.':''}</p>`,
       `<details class="book-sources"><summary>Underlag och hänvisningar</summary>${sourceLink(node.source)}${(node.mergedSources||[]).filter(s=>s.url!==node.source.url).map(sourceLink).join('')}${node.npSource&&node.source.book!=='np'?sourceLink(node.npSource):''}<p class="muted small">${node.source.kind==='curriculum'?'Kursplanen anger innehåll för stadiet. Delmomentet och frågorna är egna pedagogiska förslag.':'Sidhänvisningen visar var momentet behandlas. Beroendena är ett pedagogiskt förslag. Frågorna här är nyskrivna kontrollfrågor.'}</p></details>`,
       result?`<p class="muted small">Senaste kontroll: ${result.right??result.score} av ${result.total||3} rätt · ${result.pending?'Pågående kontroll':new Date(result.date).toLocaleDateString('sv-SE')}${result.adaptive?' · Automatiskt pass':''}</p>`:'',
-      result?.items?`<details class="answer-review"><summary>Se elevens svar i senaste kontrollen</summary>${result.items.map((item,i)=>`<div class="review-item"><strong>${i+1}. ${esc(item.prompt)}</strong>${window.MATREE.renderQuestionVisual(item)}<p>${item.correct?'✓':'↳'} Elevens svar: ${esc(item.skipped?'Jag vet inte':item.response?window.MATREE.answerText(item,item.response):'Svar saknas i äldre underlag')} ${esc(item.unit)}<br>Rätt svar: ${esc(window.MATREE.answerText(item))} ${esc(item.unit)}</p><p class="muted">${esc(item.explanation)}</p></div>`).join('')}</details>`:'',
+      result?.items?`<details class="answer-review"><summary>Se elevens svar i senaste kontrollen</summary>${result.items.map((item,i)=>`<div class="review-item"><strong>${i+1}. ${window.MATREE.renderMathText(item.prompt)}</strong>${window.MATREE.renderQuestionVisual(item)}<p>${item.correct?'✓':'↳'} Elevens svar: ${window.MATREE.renderMathText(item.skipped?'Jag vet inte':item.response?window.MATREE.answerText(item,item.response):'Svar saknas i äldre underlag')} ${esc(item.unit)}<br>Rätt svar: ${window.MATREE.renderMathText(window.MATREE.answerText(item))} ${esc(item.unit)}</p><p class="muted">${window.MATREE.renderMathText(item.explanation)}</p></div>`).join('')}</details>`:'',
       connectionNote,
       `<div class="dialog-section"><h3>Bygger på · ${node.deps.length}</h3>${node.deps.length?prerequisiteButtons(node.deps,node):'<p class="muted small">En grundläggande utgångspunkt i den här kartan.</p>'}<button class="secondary-button" data-focus="${node.id}">Visa hela förkunskapskedjan · ${prerequisiteCount} ${prerequisiteCount===1?'förkunskap':'förkunskaper'} ↗</button></div>`,
       `<div class="dialog-section"><h3>Leder vidare till · ${successors.length}</h3>${successors.length?prerequisiteButtons(successors.map(n=>n.id),null,node):'<p class="muted small">Inga efterföljande noder i detta urval.</p>'}</div>`,
@@ -334,7 +344,7 @@
     ].join('');
     $('#skill-dialog').scrollTop=0;
     const indirect = adaptive.indirect(profile()).filter(c=>c.targetId===id);
-    if(indirect.length) $('#skill-content').insertAdjacentHTML('beforeend', `<div class="dialog-section"><h3>Indirekt underlag · lärargranskning</h3><p class="muted small">Rätt svar på en senare uppgift ger en möjlighet att undersöka metoden. Bekräftelse ersätter inte en direkt kontroll.</p>${indirect.slice(-5).map(c=>{const confirmed=profile().adaptive.confirmations.some(k=>k.targetId===id&&k.sourceId===c.sourceId&&k.prompt===c.prompt&&k.sessionId===c.sessionId);return `<div class="review-item"><strong>${esc(byId(c.sourceId).title)}</strong><p>${esc(c.prompt)}</p>${window.MATREE.renderQuestionVisual(c)}<p>Elevens svar: ${esc(window.MATREE.answerText(c,c.response))}</p><p>${esc(c.reason)}</p>${confirmed?`<span>Metod bekräftad av lärare</span><button class="text-button" data-revoke-indirect="${id}" data-source="${c.sourceId}" data-session="${esc(c.sessionId)}" data-prompt="${esc(c.prompt)}">Ångra bekräftelse</button>`:`<button class="secondary-button" data-confirm-indirect="${id}" data-source="${c.sourceId}" data-session="${esc(c.sessionId)}" data-prompt="${esc(c.prompt)}">Bekräfta observerad metod</button>`}</div>`;}).join('')}</div>`);
+    if(indirect.length) $('#skill-content').insertAdjacentHTML('beforeend', `<div class="dialog-section"><h3>Indirekt underlag · lärargranskning</h3><p class="muted small">Rätt svar på en senare uppgift ger en möjlighet att undersöka metoden. Bekräftelse ersätter inte en direkt kontroll.</p>${indirect.slice(-5).map(c=>{const confirmed=profile().adaptive.confirmations.some(k=>k.targetId===id&&k.sourceId===c.sourceId&&k.prompt===c.prompt&&k.sessionId===c.sessionId);return `<div class="review-item"><strong>${esc(byId(c.sourceId).title)}</strong><p>${window.MATREE.renderMathText(c.prompt)}</p>${window.MATREE.renderQuestionVisual(c)}<p>Elevens svar: ${window.MATREE.renderMathText(window.MATREE.answerText(c,c.response))}</p><p>${window.MATREE.renderMathText(c.reason)}</p>${confirmed?`<span>Metod bekräftad av lärare</span><button class="text-button" data-revoke-indirect="${id}" data-source="${c.sourceId}" data-session="${esc(c.sessionId)}" data-prompt="${esc(c.prompt)}">Ångra bekräftelse</button>`:`<button class="secondary-button" data-confirm-indirect="${id}" data-source="${c.sourceId}" data-session="${esc(c.sessionId)}" data-prompt="${esc(c.prompt)}">Bekräfta observerad metod</button>`}</div>`;}).join('')}</div>`);
   }
   function startQuiz(id) {
     id=window.MATREE.resolveSkillId(id);
@@ -349,12 +359,14 @@
   function renderQuiz() {
     const quiz = profile().quiz, node = byId(quiz.nodeId), q = quiz.questions[quiz.index], answered = quiz.answers.length > quiz.index;
     displayedQuiz=quiz;
-    $('#skill-content').innerHTML = `<div class="dialog-top"><div><div class="eyebrow">KUNSKAPSKONTROLL · ${quiz.index + 1} AV 3</div><h2 id="skill-dialog-title">${node.title}</h2></div><button class="icon-button" data-close="skill-dialog" aria-label="Avsluta och stäng kontrollen">×</button></div><div class="question-progress" aria-label="${quiz.answers.filter(Boolean).length} rätt hittills">${[0, 1, 2].map(i => `<span class="${i < quiz.answers.length ? quiz.answers[i] ? 'correct' : 'incorrect' : i === quiz.index ? 'current' : ''}"></span>`).join('')}</div><h3 class="question-text" id="manual-question-title" tabindex="-1">${esc(window.MATREE.questionStem(q))}</h3>${window.MATREE.renderQuestionVisual(q)}${answered ? `<div class="feedback ${quiz.answers[quiz.index] ? '' : 'wrong'}" role="status"><p class="manual-submitted-answer">Elevens svar: <strong>${quiz.responses?.[quiz.index]?esc(window.MATREE.answerText(q,quiz.responses[quiz.index]))+(q.unit?' '+esc(q.unit):''):'Svar saknas i äldre underlag'}</strong></p><strong>${quiz.answers[quiz.index] ? 'Rätt svar.' : `Inte riktigt. Svaret är ${esc(window.MATREE.answerText(q))}${q.unit ? ` ${esc(q.unit)}` : ''}.`}</strong><p>${esc(q.explanation)}</p></div><div class="dialog-actions"><button class="primary-button" id="next-question">${quiz.index === 2 ? 'Se resultatet' : 'Nästa fråga'} <span>→</span></button></div>` : `<form id="answer-form">${window.MATREE.renderAnswerFields(q,'answer')}<p class="answer-help" id="answer-help"></p><p id="answer-error" role="alert" class="small"></p></form>`}<div class="dialog-actions"><button class="text-button" data-pause-manual>Pausa och fortsätt senare</button><button class="text-button" id="abandon-quiz">Avsluta omgången</button></div>`;
+    $('#skill-content').innerHTML = `<div class="dialog-top"><div><div class="eyebrow">KUNSKAPSKONTROLL · ${quiz.index + 1} AV 3</div><h2 id="skill-dialog-title">${node.title}</h2></div><button class="icon-button" data-close="skill-dialog" aria-label="Avsluta och stäng kontrollen">×</button></div><div class="question-progress" aria-label="${quiz.answers.filter(Boolean).length} rätt hittills">${[0, 1, 2].map(i => `<span class="${i < quiz.answers.length ? quiz.answers[i] ? 'correct' : 'incorrect' : i === quiz.index ? 'current' : ''}"></span>`).join('')}</div><h3 class="question-text" id="manual-question-title" tabindex="-1">${window.MATREE.renderMathText(window.MATREE.questionStem(q))}</h3>${window.MATREE.renderQuestionVisual(q)}${answered ? `<div class="feedback ${quiz.answers[quiz.index] ? '' : 'wrong'}" role="status"><p class="manual-submitted-answer">Elevens svar: <strong>${quiz.responses?.[quiz.index]?window.MATREE.renderMathText(window.MATREE.answerText(q,quiz.responses[quiz.index]))+(q.unit?' '+esc(q.unit):''):'Svar saknas i äldre underlag'}</strong></p><strong>${quiz.answers[quiz.index] ? 'Rätt svar.' : `Inte riktigt. Svaret är ${window.MATREE.renderMathText(window.MATREE.answerText(q))}${q.unit ? ` ${esc(q.unit)}` : ''}.`}</strong><p>${window.MATREE.renderMathText(q.explanation)}</p></div><div class="dialog-actions"><button class="primary-button" id="next-question">${quiz.index === 2 ? 'Se resultatet' : 'Nästa fråga'} <span>→</span></button></div>` : `<form id="answer-form">${window.MATREE.renderAnswerFields(q,'answer')}<p class="answer-help" id="answer-help"></p><p id="answer-error" role="alert" class="small"></p></form>`}<div class="dialog-actions"><button class="text-button" data-pause-manual>Pausa och fortsätt senare</button><button class="text-button" id="abandon-quiz">Avsluta omgången</button></div>`;
     if (!answered) {
       $('#answer-help').textContent=window.MATREE.questionAnswerHint(q)+(q.unit&&!q.options?` Skriv svaret utan enheten ${q.unit}.`: '');
       if (q.answer !== 0 && Math.abs(q.answer)<.01) $('#answer-help').textContent = 'Skriv detta lilla tal utan avrundning, med decimaler eller som ett exakt bråk. Exempel: 0,000002 eller 2/1000000.';
+      $('#answer-help').innerHTML=window.MATREE.renderInputHint($('#answer-help').textContent);
       window.MATREE.restoreDraft(q,quiz.draft,'answer');
-      (q.options||q.visual?$('#manual-question-title'):$('#answer')).focus({preventScroll:true}); $('#skill-dialog').scrollTop=0;
+      if(q.options||q.visual)$('#manual-question-title').focus({preventScroll:true});else window.MATREE.focusAnswer('answer');
+      $('#skill-dialog').scrollTop=0;
     } else $('#next-question').focus();
     document.dispatchEvent(new CustomEvent('matree-control-render',{detail:{id:node.id,kind:'quiz'}}));
   }
@@ -428,7 +440,7 @@
       '<button id="manual-history-return" class="text-button">← Tillbaka till kontrollhistoriken</button>'+
       '<p class="report-meta"><strong>'+esc(profile().name)+'</strong> · '+new Date(record.date).toLocaleString('sv-SE',{dateStyle:'short',timeStyle:'short'})+'</p>'+
       '<p class="pass-outcome manual-record-outcome">'+record.score+'/'+(record.total||3)+' rätt · '+(record.total<3?'Begränsat underlag · Avslutad i förtid':record.score===3?'Visad i denna kontroll':'Behöver följas upp i denna kontroll')+'</p>'+
-      '<section class="manual-record-answers" aria-label="Sparade svar i vald kontroll">'+(record.items?record.items.map((item,i)=>'<details class="answer-review"><summary>'+(i+1)+'. '+(item.correct?'Rätt':'Fel')+'</summary><p class="review-prompt">'+esc(M.questionStem(item))+'</p>'+M.renderQuestionVisual(item)+'<div class="review-answer-values"><p><span>Elevens svar</span><strong>'+esc(item.response?M.answerText(item,item.response):'Svar saknas i äldre underlag')+(item.response&&item.unit?' '+esc(item.unit):'')+'</strong></p><p><span>Rätt svar</span><strong>'+esc(M.answerText(item))+' '+esc(item.unit)+'</strong></p></div>'+(item.options?'<details class="option-review"><summary>Visa de sparade svarsalternativen</summary><ol>'+item.options.map(o=>'<li>'+esc(o)+'</li>').join('')+'</ol></details>':'')+'<p>'+esc(item.explanation)+'</p></details>').join(''):'<p class="muted">Endast poäng och datum finns sparade. Svar saknas i äldre underlag.</p>')+'</section>'+
+      '<section class="manual-record-answers" aria-label="Sparade svar i vald kontroll">'+(record.items?record.items.map((item,i)=>'<details class="answer-review"><summary>'+(i+1)+'. '+(item.correct?'Rätt':'Fel')+'</summary><p class="review-prompt">'+M.renderMathText(M.questionStem(item))+'</p>'+M.renderQuestionVisual(item)+'<div class="review-answer-values"><p><span>Elevens svar</span><strong>'+M.renderMathText(item.response?M.answerText(item,item.response):'Svar saknas i äldre underlag')+(item.response&&item.unit?' '+esc(item.unit):'')+'</strong></p><p><span>Rätt svar</span><strong>'+M.renderMathText(M.answerText(item))+' '+esc(item.unit)+'</strong></p></div>'+(item.options?'<details class="option-review"><summary>Visa de sparade svarsalternativen</summary><ol>'+item.options.map(o=>'<li>'+M.renderMathText(o)+'</li>').join('')+'</ol></details>':'')+'<p>'+window.MATREE.renderMathText(item.explanation)+'</p></details>').join(''):'<p class="muted">Endast poäng och datum finns sparade. Svar saknas i äldre underlag.</p>')+'</section>'+
       '<div class="dialog-actions"><button class="secondary-button" data-open="'+node.id+'">Öppna senaste samlade underlaget</button></div>';
     $('#skill-dialog').scrollTop=0;
   }
@@ -563,12 +575,15 @@
     event.preventDefault();
     event.stopPropagation();
   }, true);
-  function highlightConnections(node) {
+  function highlightConnections(node,pin=false) {
     const id=node&&(node.dataset.node||'group:'+node.dataset.group);
-    document.querySelectorAll('.connection').forEach(edge=>edge.classList.toggle('related',!!id&&(edge.dataset.from===id||edge.dataset.to===id)));
+    if(pin&&id)connectionAnchor=id;
+    const active=id||connectionAnchor;
+    document.querySelectorAll('.connection').forEach(edge=>edge.classList.toggle('related',!!active&&(edge.dataset.from===active||edge.dataset.to===active)));
   }
+  $('#skill-map').addEventListener('pointerdown',event=>highlightConnections(event.target.closest('[data-node],[data-group]'),true));
   $('#skill-map').addEventListener('pointerover',event=>{if(!event.target.closest('.connection'))highlightConnections(event.target.closest('[data-node],[data-group]'));});
-  $('#skill-map').addEventListener('focusin',event=>highlightConnections(event.target.closest('[data-node],[data-group]')));
+  $('#skill-map').addEventListener('focusin',event=>highlightConnections(event.target.closest('[data-node],[data-group]'),true));
   $('#skill-map').addEventListener('pointerleave',()=>highlightConnections(null));
   $('#skill-map').addEventListener('focusout',event=>highlightConnections(event.relatedTarget?.closest?.('[data-node],[data-group]')));
   $('#skill-dialog').addEventListener('cancel',event=>{event.preventDefault();closeManualControl();});
@@ -598,5 +613,6 @@
     if (event.key === key) { storageOK = false; $('#save-status').textContent = '⚠ Profiler har ändrats i en annan flik · Ladda om eller exportera'; toast('En annan flik har ändrat profilerna. Exportera eventuellt arbete här och ladda sedan om.'); }
   });
   window.MATREE_APP={profile,profileCounts,evidenceCounts,save,render,startQuiz,endManualControl,announceControlEnd,categoryScope:()=>view==='tree'&&category!=='all'?category:null,yearScope:()=>view!=='tree'||stage==='all'?null:stage==='0'?(foundationBand==='2'?'4-6':'1-3'):stage,openSkill,openGroup,esc,latest,storageOK:()=>storageOK,showProgress:()=>{view='progress';render();}};
+  showMapFilters(filterVisibility[filterContext()]);
   save(); render(); if (loadWarning) toast(loadWarning);
 })();

@@ -60,6 +60,7 @@ try:
             browser.call('Page.handleJavaScriptDialog', {'accept': accepted})
     browser.on_event = handle_event
     browser.call('Page.enable')
+    browser.call('Emulation.setFocusEmulationEnabled', {'enabled': True})
     browser.call('Page.setDownloadBehavior', {'behavior': 'deny'})
 
     def evaluate(expression):

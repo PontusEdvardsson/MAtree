@@ -1,0 +1,14 @@
+{
+  "baselineQuestions": 15,
+  "coverage": "large/small/empty/all",
+  "groups": "current selection, mixed evidence",
+  "filteredGroup": {
+    "id": "numbers",
+    "scope": "7",
+    "count": 2,
+    "total": 7
+  },
+  "nextCheck": "ekvation-add",
+  "legacy": "history, report, both paused drafts and export exact",
+  "parser": "unchanged"
+}

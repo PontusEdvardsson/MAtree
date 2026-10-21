@@ -1,0 +1,79 @@
+{
+  "theme": "light",
+  "state": "fraction presentation",
+  "rows": [
+    {
+      "selector": "#skill-content .math-fraction",
+      "text": "1/2",
+      "color": "rgb(45, 67, 54)",
+      "background": [
+        251,
+        252,
+        248
+      ],
+      "contrast": 10.3579748262412,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(45, 67, 54) none 3px",
+      "border": "rgb(45, 67, 54)"
+    },
+    {
+      "selector": "#skill-content .math-fraction",
+      "text": "1/4",
+      "color": "rgb(45, 67, 54)",
+      "background": [
+        251,
+        252,
+        248
+      ],
+      "contrast": 10.3579748262412,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(45, 67, 54) none 3px",
+      "border": "rgb(45, 67, 54)"
+    },
+    {
+      "selector": "#answer-help",
+      "text": "Skriv bråket med snedstreck, till exempel 1/2. Du ser det uppställt under svarsfältet.",
+      "color": "rgb(100, 116, 91)",
+      "background": [
+        251,
+        252,
+        248
+      ],
+      "contrast": 4.863050142974794,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(100, 116, 91) none 3px",
+      "border": "rgb(100, 116, 91)"
+    },
+    {
+      "selector": "#answer",
+      "text": "",
+      "color": "rgb(48, 69, 53)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 10.353331040197514,
+      "placeholderContrast": 6.454556774544441,
+      "disabled": false,
+      "opacity": "1",
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(82, 119, 62) solid 3px",
+      "border": "rgb(120, 135, 111)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

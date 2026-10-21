@@ -1,0 +1,79 @@
+{
+  "theme": "dark",
+  "state": "fraction presentation",
+  "rows": [
+    {
+      "selector": "#skill-content .math-fraction",
+      "text": "1/2",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(227, 234, 228) none 3px",
+      "border": "rgb(227, 234, 228)"
+    },
+    {
+      "selector": "#skill-content .math-fraction",
+      "text": "1/4",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(227, 234, 228) none 3px",
+      "border": "rgb(227, 234, 228)"
+    },
+    {
+      "selector": "#answer-help",
+      "text": "Skriv bråket med snedstreck, till exempel 1/2. Du ser det uppställt under svarsfältet.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": "#answer",
+      "text": "",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": 7.87559356569436,
+      "disabled": false,
+      "opacity": "1",
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(182, 213, 156) solid 3px",
+      "border": "rgb(113, 135, 120)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

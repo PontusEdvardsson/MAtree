@@ -6,6 +6,10 @@ En körbar prototyp för kartläggning av matematikkunskaper hos högstadieeleve
 
 Växla mellan **Mörkt tema** och **Ljust tema** med sol-/månknappen uppe till höger, även i elevläget. På mobil visas bara ikonen. Sidan följer datorns tema tills du väljer själv; ditt val sparas i webbläsaren separat från elevprofilerna. Kartan, uppgiftsbilderna och sammanställningarna följer samma tema.
 
+På mobil är kartans filter hopfällda från början. Urval och aktiv sökning syns ovanför kartan; **Filter och sök** öppnar kontrollerna. Tryck på eller fokusera ett kort för att markera dess kopplingar. **Fler val → Visa alla kopplingar** visar samtliga linjer. Normalvy och fullskärm behåller separata visningsval under den öppna sidan.
+
+Bråk i frågor, alternativ och rapporter visas med täljaren över nämnaren. Eleven skriver exempelvis `1/2` i ett enda svarsfält och får en uppställd förhandsvisning. Sparade frågor, svar och utkast behåller sina exakta strängar. Se [andra förbättringsomgången](FORBATTRINGAR_ANDRA_OMGANGEN.md) för verifiering, bokjämförelse och kvarstående innehållsförslag samt [fortsättningsprompten](FORTSATT_HELHETSGRANSKNING_PROMPT.md).
+
 Sidan kan också publiceras på GitHub Pages. Se [GITHUB_PAGES.md](GITHUB_PAGES.md) för uppladdning till PontusEdvardsson/MAtree, PDF-filer och flytt av elevprofiler. `python tests/build_pages.py` skapar ett paket med appen och dess länkade bokfiler.
 
 ## Vad som går att göra

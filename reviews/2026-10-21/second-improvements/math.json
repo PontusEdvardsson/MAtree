@@ -1,0 +1,105 @@
+{
+  "cases": [
+    {
+      "raw": "1/2",
+      "fractions": [
+        [
+          "1",
+          "2"
+        ]
+      ]
+    },
+    {
+      "raw": "−3/4",
+      "fractions": [
+        [
+          "−3",
+          "4"
+        ]
+      ]
+    },
+    {
+      "raw": "0/7",
+      "fractions": [
+        [
+          "0",
+          "7"
+        ]
+      ]
+    },
+    {
+      "raw": "1,5/2",
+      "fractions": [
+        [
+          "1,5",
+          "2"
+        ]
+      ]
+    },
+    {
+      "raw": "□/5",
+      "fractions": [
+        [
+          "□",
+          "5"
+        ]
+      ]
+    },
+    {
+      "raw": "3/□",
+      "fractions": [
+        [
+          "3",
+          "□"
+        ]
+      ]
+    },
+    {
+      "raw": "(x + 1)/5 − x/4",
+      "fractions": [
+        [
+          "(x + 1)",
+          "5"
+        ],
+        [
+          "x",
+          "4"
+        ]
+      ]
+    },
+    {
+      "raw": "2 × 3/(4 × 5)",
+      "fractions": [
+        [
+          "2 × 3",
+          "(4 × 5)"
+        ]
+      ]
+    },
+    {
+      "raw": "förändring i y/förändring i x",
+      "fractions": [
+        [
+          "förändring i y",
+          "förändring i x"
+        ]
+      ]
+    },
+    {
+      "raw": "½ + ¾",
+      "fractions": [
+        [
+          "1",
+          "2"
+        ],
+        [
+          "3",
+          "4"
+        ]
+      ]
+    }
+  ],
+  "unitsAndLegacySyntax": "unchanged",
+  "svgFractions": 6,
+  "storedQuestion": "unchanged"
+}

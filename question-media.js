@@ -3,6 +3,45 @@
   const M=window.MATREE,esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const integer=(x,a,b)=>Number.isInteger(x)&&x>=a&&x<=b;
 
+  // Presentation only: original strings remain available for copy, drafts and archives.
+  const vulgar={'½':['1','2'],'¼':['1','4'],'¾':['3','4'],'⅓':['1','3'],'⅔':['2','3'],'⅕':['1','5'],'⅖':['2','5'],'⅗':['3','5'],'⅘':['4','5'],'⅙':['1','6'],'⅚':['5','6'],'⅛':['1','8'],'⅜':['3','8'],'⅝':['5','8'],'⅞':['7','8']};
+  const phrase='(?:förändring i [xy]|nya antalet|gamla antalet|nytt värde|basytans area|motstående katet|närliggande katet)';
+  const atom='(?:'+phrase+'|\\([^()\\n]{1,90}\\)|[+−-]?(?:\\d+(?:[,.]\\d+)?(?:[a-zA-Z²³]+)?|[a-zA-ZåäöÅÄÖ]+[²³]?|□)(?:\\^\\(?[−-]?\\d+\\)?)?)';
+  const operand=atom+'(?:\\s*[×·*]\\s*'+atom+')*';
+  const fractionRE=new RegExp('(?<![\\p{L}\\p{N}_/:])('+operand+')\\s*/\\s*('+atom+')(?![\\p{L}\\p{N}_/])|['+Object.keys(vulgar).join('')+']','gu');
+  const mathParts=value=>{
+    const text=String(value),parts=[];let last=0;
+    // Preserve spreadsheet syntax in legacy digital questions.
+    if(/^=/.test(text)&&/\b[A-Z]\d/.test(text))return [{raw:text}];
+    for(const m of text.matchAll(fractionRE)){
+      if(/^(?:km\/h|m\/s|g\/cm³|g\/l|kr\/st)$/i.test(m[0]))continue;
+      parts.push({raw:text.slice(last,m.index)});
+      const [numerator,denominator]=vulgar[m[0]]||[m[1].trim(),m[2].trim()];
+      parts.push({raw:m[0],numerator,denominator});last=m.index+m[0].length;
+    }
+    parts.push({raw:text.slice(last)});return parts;
+  };
+  M.renderMathText=value=>mathParts(value).map(p=>p.numerator===undefined?esc(p.raw):
+    '<span class="math-fraction" role="math" aria-label="'+esc(p.numerator+' genom '+p.denominator)+'" data-numerator="'+esc(p.numerator)+'" data-denominator="'+esc(p.denominator)+'"><span class="math-fraction-source" aria-hidden="true">'+esc(p.raw)+'</span></span>').join('');
+  // Input instructions show the literal keys to type; mathematical content is stacked.
+  M.renderInputHint=value=>esc(value).replace(/\b\d+(?:[,.]\d+)?\/\d+\b/g,'<code>$&</code>');
+  M.renderSVGMathText=(x,y,value)=>{
+    const parts=mathParts(value);if(!parts.some(p=>p.numerator!==undefined))return '<text x="'+x+'" y="'+y+'" text-anchor="middle">'+esc(value)+'</text>';
+    const widths=parts.map(p=>p.numerator===undefined?p.raw.length*8:Math.max(p.numerator.length,p.denominator.length)*7+10),width=widths.reduce((a,b)=>a+b,0);let left=x-width/2;
+    const content=parts.map((p,i)=>{const start=left;left+=widths[i];return p.numerator===undefined?'<text x="'+start+'" y="'+y+'" text-anchor="start">'+esc(p.raw)+'</text>':
+      '<g class="math-svg-fraction"><text x="'+(start+widths[i]/2)+'" y="'+(y-8)+'" text-anchor="middle" style="font-size:12px">'+esc(p.numerator)+'</text><line x1="'+start+'" x2="'+left+'" y1="'+(y-3)+'" y2="'+(y-3)+'" style="stroke:currentColor;stroke-width:1.2"/><text x="'+(start+widths[i]/2)+'" y="'+(y+11)+'" text-anchor="middle" style="font-size:12px">'+esc(p.denominator)+'</text></g>';}).join('');
+    return '<g class="math-svg-text" role="math" aria-label="'+esc(value)+'"><rect class="math-svg-background" x="'+(x-width/2-3)+'" y="'+(y-22)+'" width="'+(width+6)+'" height="36" stroke="none"/><g aria-hidden="true">'+content+'</g></g>';
+  };
+
+  M.syncFractionInput=inputId=>{
+    const input=document.getElementById(inputId),preview=document.querySelector('[data-fraction-preview="'+inputId+'"]');if(!preview)return;
+    const raw=input.value.trim(),fraction=/^[+−-]?\d+(?:[,.]\d+)?\s*\/\s*[+−-]?\d+(?:[,.]\d+)?$/.test(raw);
+    preview.hidden=!fraction;
+    preview.innerHTML=fraction?'Så ser ditt svar ut: '+M.renderMathText(raw):'';
+  };
+  M.focusAnswer=inputId=>document.getElementById(inputId)?.focus({preventScroll:true});
+  document.addEventListener('input',event=>{if(event.target.matches('input[data-math-preview]'))M.syncFractionInput(event.target.id);});
+
   M.draftQuestionKey=q=>JSON.stringify([q.prompt,q.answer,q.unit,q.answerKind||null,q.options||null,q.optionValues||null,q.visual||null,...(q.responseFormat?[q.responseFormat]:[])]);
   M.validateDraft=(q,draft)=>{
     if(draft===undefined||draft===null)return null;
@@ -15,13 +54,14 @@
   M.restoreDraft=(q,draft,inputId)=>{
     const saved=M.validateDraft(q,draft),input=document.getElementById(inputId);if(!saved||!input)return;
     input.value=saved.value;
+    M.syncFractionInput(inputId);
     if(q.options){const form=input.closest('form');form.querySelectorAll('[data-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.choice===saved.value)));form.querySelector('.choice-submit').disabled=!saved.value;}
   };
 
   M.questionAnswerHint=q=>{
     if(q.options)return 'Välj ett av svarsalternativen.';
     if(q.answerKind==='choice'||q.prompt.includes('alternativets nummer'))return 'Skriv alternativets nummer.';
-    if(q.answerKind==='fraction')return 'Skriv ett bråk med snedstreck, till exempel 1/2.';
+    if(q.answerKind==='fraction')return 'Skriv bråket med snedstreck, till exempel 1/2. Du ser det uppställt under svarsfältet.';
     if(/^Avrunda .+ till heltal\./.test(q.prompt))return 'Skriv ett heltal utan mellanslag.';
     if(q.answerKind==='decimal'||/decimalform/.test(q.prompt)){
       const small=q.answer!==0&&Math.abs(q.answer)<.01,finite=Math.abs(q.answer-Number(q.answer.toFixed(9)))<=1e-12*Math.max(1e-9,Math.abs(q.answer));
@@ -75,13 +115,17 @@
     }
     return out;
   };
-  M.renderAnswerFields=(q,inputId)=>q.options?`<fieldset class="choice-answers"><legend>Välj ett svar${q.unit?` (${esc(q.unit)})`:''}</legend><input id="${inputId}" type="hidden" value=""><div class="choice-grid">${q.options.map((text,i)=>`<button type="button" class="choice-button" data-choice="${i+1}" aria-pressed="false"><span class="choice-letter" aria-hidden="true"></span><span>${esc(text)}</span></button>`).join('')}</div><button class="primary-button choice-submit" disabled>Svara →</button></fieldset>`:`<label class="answer-label" for="${inputId}">Ditt svar${q.unit?` (${esc(q.unit)})`:''}</label><div class="input-row"><input id="${inputId}" type="text" autocomplete="off" maxlength="60" placeholder="Skriv ditt svar…" aria-describedby="${inputId==='answer'?'answer-help answer-error':'adaptive-hint adaptive-error'}"><button class="primary-button">Svara →</button></div>`;
+  M.renderAnswerFields=(q,inputId)=>{
+    if(q.options)return `<fieldset class="choice-answers"><legend>Välj ett svar${q.unit?` (${M.renderMathText(q.unit)})`:''}</legend><input id="${inputId}" type="hidden" value=""><div class="choice-grid">${q.options.map((text,i)=>`<button type="button" class="choice-button" data-choice="${i+1}" aria-pressed="false"><span class="choice-letter" aria-hidden="true"></span><span>${M.renderMathText(text)}</span></button>`).join('')}</div><button class="primary-button choice-submit" disabled>Svara →</button></fieldset>`;
+    const described=inputId==='answer'?'answer-help answer-error':'adaptive-hint adaptive-error';
+    return `<label class="answer-label" for="${inputId}">Ditt svar${q.unit?` (${M.renderMathText(q.unit)})`:''}</label><div class="input-row"><input id="${inputId}" type="text" data-math-preview autocomplete="off" maxlength="60" placeholder="Skriv ditt svar…" aria-describedby="${described}"><button class="primary-button">Svara →</button></div><p class="fraction-preview" data-fraction-preview="${inputId}" aria-live="polite" aria-atomic="true" hidden></p>`;
+  };
   document.addEventListener('click',event=>{const button=event.target.closest('[data-choice]');if(!button)return;const form=button.closest('form');if(!form)return;form.querySelector('input').value=button.dataset.choice;form.querySelectorAll('[data-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));form.querySelector('.choice-submit').disabled=false;form.dispatchEvent(new Event('matree-answer-change',{bubbles:true}));});
   M.renderQuestionVisual=q=>{
     const v=M.questionExtras(q).visual;if(!v)return '';
     if(v.type==='table')return `<div class="question-visual"><table><caption>Observationer</caption><thead><tr><th>Värde eller kategori</th><th>Antal</th></tr></thead><tbody>${v.labels.map((l,i)=>`<tr><th scope="row">${esc(l)}</th><td>${M.fmt(v.values[i])}</td></tr>`).join('')}</tbody></table></div>`;
     if(v.type==='xytable')return `<div class="question-visual"><table><caption>Samband mellan x och y</caption><thead><tr><th>x</th><th>y</th></tr></thead><tbody>${v.points.map(([x,y])=>`<tr><td>${M.fmt(x)}</td><td>${M.fmt(y)}</td></tr>`).join('')}</tbody></table></div>`;
-    const text=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle">${esc(s)}</text>`,line=(x,y,X,Y)=>`<line x1="${x}" y1="${y}" x2="${X}" y2="${Y}"/>`;
+    const text=(x,y,s)=>M.renderSVGMathText(x,y,s),line=(x,y,X,Y)=>`<line x1="${x}" y1="${y}" x2="${X}" y2="${Y}"/>`;
     let content='',height=200,viewWidth=340,alt='Matematisk figur';
     if(v.type==='fraction'){const w=300/v.parts;for(let i=0;i<v.parts;i++)content+=`<rect x="${20+i*w}" y="50" width="${w}" height="65" fill="${i<v.shaded?'#799b61':'#fff'}"/>`;alt=`En helhet med ${v.parts} lika delar, ${v.shaded} är färgade.`;height=150;}
     if(v.type==='numberline'){content=line(20,90,320,90)+text(20,130,'0')+text(320,130,'1');for(let i=0;i<=v.parts;i++)content+=line(20+300*i/v.parts,80,20+300*i/v.parts,100);content+=`<circle cx="${20+300*v.mark/v.parts}" cy="90" r="6" fill="#285a44"/>`+text(20+300*v.mark/v.parts,65,'A');alt=`Tallinje från 0 till 1 i ${v.parts} lika steg. A är vid steg ${v.mark}.`;height=160;}
@@ -102,14 +146,14 @@
     if(v.type==='venn'){height=220;content='<rect x="10" y="10" width="320" height="180" fill="#fff"/><ellipse cx="125" cy="95" rx="82" ry="65" fill="#eef4e8"/><ellipse cx="215" cy="95" rx="82" ry="65" fill="#eef4e8" fill-opacity=".65"/>'+text(95,105,v.left)+text(170,105,v.both)+text(245,105,v.right)+text(310,178,v.outside)+text(95,50,'A')+text(245,50,'B');alt=`Venndiagram. Bara A: ${v.left}, både A och B: ${v.both}, bara B: ${v.right}, utanför båda: ${v.outside}.`;}
     if(v.type==='tree'){
       height=310;viewWidth=400;content=text(23,154,'Start');
-      const probability=(x,y,s)=>'<text x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:15px;paint-order:stroke;stroke:#fff;stroke-width:5px;fill:#263e30">'+esc(s)+'</text>';
+      const probability=(x,y,s)=>s.includes('/')?M.renderSVGMathText(x,y,s):'<text x="'+x+'" y="'+y+'" text-anchor="middle" style="font-size:15px;paint-order:stroke;stroke:#fff;stroke-width:5px;fill:#263e30">'+esc(s)+'</text>';
       content+=probability(105,18,'Första draget')+probability(255,18,'Andra draget');
       for(let i=0;i<2;i++){
         const y=i===0?70:215;
         content+=line(45,150,150,y)+probability(95,i===0?95:205,(i===0?'V':'S')+': '+v.first[i]);
         for(let j=0;j<2;j++){
           const end=y+(j===0?-40:40);
-          content+=line(150,y,310,end)+probability(238,(y+end)/2+(j===0?-15:20),(j===0?'V':'S')+': '+v.next[i][j])+text(350,end+5,(i===0?'V':'S')+(j===0?'V':'S'));
+          content+=line(150,y,310,end)+probability(238,(y+end)/2+(j===0?0:20),(j===0?'V':'S')+': '+v.next[i][j])+text(350,end+5,(i===0?'V':'S')+(j===0?'V':'S'));
         }
       }
       content+=probability(200,294,'V = vit kula, S = svart kula');

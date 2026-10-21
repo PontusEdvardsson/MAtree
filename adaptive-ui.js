@@ -71,7 +71,8 @@
     $('#adaptive-selection-info').textContent=selection.length?A.scopeLabel({scope,category})+' · '+selection.length+' delmoment'+(all?' inklusive fördjupning':' i basen'):!all&&A.estimateAll(scope,category).skills?'Det finns inga basmoment i detta urval. Välj Testa alla för att ta med fördjupning.':'Inga delmoment finns i detta urval. Välj ett annat område eller en annan årskurs.';
     if(all&&!retest.disabled){retest.dataset.previous=String(retest.checked);retest.checked=true;retest.disabled=true;}
     if(!all&&retest.disabled){retest.disabled=false;retest.checked=retest.dataset.previous==='true';}
-    box.hidden=!all;$('#adaptive-session-help').hidden=all;$('#adaptive-session-help').textContent='En uppgift i taget. Alla delmoment i urvalet undersöks, men högst '+limit.value+' uppgifter.';
+    box.hidden=!all;$('#adaptive-session-help').hidden=all;
+    $('#adaptive-session-help').textContent=selection.length&&!all?'Urvalet innehåller '+selection.length+' delmoment. Passet fortsätter inom urvalet tills delarna har prövats eller gränsen '+limit.value+' svar nås. Flera frågor kan användas per delmoment; ett kort pass kan lämna delar oprövade.':'';
     if(all){
       const e=A.estimateAll(scope,category);
       box.innerHTML='<strong>Testa alla · '+e.skills+' delmoment · '+esc(A.scopeLabel({scope,category}))+'</strong>'+

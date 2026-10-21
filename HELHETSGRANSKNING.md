@@ -2,6 +2,8 @@
 
 2026-10-21 · granskad version `45c362e` · fem separata granskarinstanser och en sammanvägning.
 
+**Uppföljning:** Den första förbättringsomgångens sex beställda ändringar är nu genomförda och verifierade. Se [före/efter och kvarstående arbete](FORBATTRINGAR_FORSTA_OMGANGEN.md). Granskningen nedan och originalrapporterna beskriver fortfarande versionen som faktiskt granskades; deras observationer har inte skrivits om retroaktivt.
+
 MAtree har en tydlig kärna: en karta över delmoment, en lugn arbetsyta där eleven besvarar en fråga i taget och rapporter som låter läraren granska det faktiska underlaget. Det som främst behöver förbättras är **hur läraren hittar rätt, hur begränsat underlaget kommuniceras och hur frågornas olika representationer ger jämförbar information**. Det finns också konkreta fel i en förklaring och konkreta kontrastproblem. Underlaget talar för avgränsade förbättringar, inte för att bygga om hela appen eller byta bedömningsmodell på en gång.
 
 Detta är simulerad expertgranskning. Fem instanser av en språkmodell är inte fem lärare eller elever, och deras samstämmighet är ingen användarstatistik. Inga verkliga elevprofiler användes. Ingen produktkod ändrades under granskningen.

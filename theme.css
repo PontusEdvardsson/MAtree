@@ -1,5 +1,5 @@
 /* Theme controls stay available in both the teacher and pupil workspaces. */
-:root { color-scheme: light; }
+:root { color-scheme: light; --secondary-text:#52634e;--input-border:#78876f;--focus-ring:#52773e; }
 .topbar-actions,.student-header-actions { display:flex;align-items:center;gap:12px; }
 .topbar-actions>.save-status { padding:0;color:inherit; }
 .theme-toggle { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;font-size:13px;white-space:nowrap;flex-shrink:0; }
@@ -14,6 +14,9 @@
 
 :root[data-theme="dark"] {
   color-scheme:dark;
+  --secondary-text:var(--muted);
+  --input-border:#718778;
+  --focus-ring:#b6d59c;
   --page:#111b17;
   --surface:#1b2822;
   --raised:#25362c;
@@ -108,3 +111,9 @@
 [data-theme="dark"] .question-visual svg [style*="fill:#8a5730"] { fill:#e9b780!important; }
 [data-theme="dark"] .question-visual svg [style*="fill:#575199"] { fill:#c2b6f4!important; }
 [data-theme="dark"] .question-visual svg path[fill="#799b61"]+text { fill:#162416; }
+
+/* Secondary information remains readable on the actual light/dark surfaces. */
+:is(.progress-panel>p,.progress-empty,.progress-skill>span,.answer-label,.page-footer,.topbar .save-status,.next-control-reason) { color:var(--secondary-text); }
+:is(#answer,#adaptive-answer):not([type="hidden"]) { border-color:var(--input-border); }
+:is(#answer,#adaptive-answer)::placeholder { color:var(--secondary-text);opacity:1; }
+:is(#answer,#adaptive-answer,.choice-button):focus-visible { outline:3px solid var(--focus-ring);outline-offset:3px; }

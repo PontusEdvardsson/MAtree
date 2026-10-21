@@ -1,0 +1,269 @@
+{
+  "version": "9fde562",
+  "kind": "Technical generator baseline, no real profile data",
+  "cases": [
+    {
+      "id": "brak-heltal-mult",
+      "variant": 0,
+      "seed": 1847,
+      "question": {
+        "prompt": "Beräkna 9/9 × 5. Svara med ett bråk.",
+        "answer": 5,
+        "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-heltal-mult:0",
+        "facet": 0
+      }
+    },
+    {
+      "id": "brak-heltal-mult",
+      "variant": 1,
+      "seed": 1848,
+      "question": {
+        "prompt": "9/10 × □ = 27/10. Vilket tal saknas? Svara med ett bråk.",
+        "answer": 3,
+        "explanation": "Använd den omvända operationen för att finna den saknade faktorn eller divisorn.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-heltal-mult:1",
+        "facet": 1
+      }
+    },
+    {
+      "id": "brak-heltal-mult",
+      "variant": 2,
+      "seed": 1849,
+      "question": {
+        "prompt": "Vilken beräkning är likvärdig med 9/10 × 8?\n\n1. 92/10\n2. 9 × 8 / (10 × 1)\n3. (9 × 8 / (10 × 1)) × 2\n4. 82/10\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Multiplicera täljare och nämnare; invertera divisorn vid division.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "brak-heltal-mult:2",
+        "facet": 2,
+        "options": [
+          "92/10",
+          "9 × 8 / (10 × 1)",
+          "(9 × 8 / (10 × 1)) × 2",
+          "82/10"
+        ]
+      }
+    },
+    {
+      "id": "brak-multiplikation",
+      "variant": 0,
+      "seed": 1850,
+      "question": {
+        "prompt": "Beräkna 9/2 × 6/3. Svara med ett bråk.",
+        "answer": 9,
+        "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-multiplikation:0",
+        "facet": 0
+      }
+    },
+    {
+      "id": "brak-multiplikation",
+      "variant": 1,
+      "seed": 1851,
+      "question": {
+        "prompt": "9/3 × □ = 27/9. Vilket tal saknas? Svara med ett bråk.",
+        "answer": 1,
+        "explanation": "Använd den omvända operationen för att finna den saknade faktorn eller divisorn.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-multiplikation:1",
+        "facet": 1
+      }
+    },
+    {
+      "id": "brak-multiplikation",
+      "variant": 2,
+      "seed": 1852,
+      "question": {
+        "prompt": "Vilken beräkning är likvärdig med 9/4 × 9/3?\n\n1. 9 × 9 / (4 × 3)\n2. (9 × 9 / (4 × 3)) × 2\n3. 93/12\n4. 105/12\n\nVälj ett svar.",
+        "answer": 1,
+        "explanation": "Multiplicera täljare och nämnare; invertera divisorn vid division.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "brak-multiplikation:2",
+        "facet": 2,
+        "options": [
+          "9 × 9 / (4 × 3)",
+          "(9 × 9 / (4 × 3)) × 2",
+          "93/12",
+          "105/12"
+        ]
+      }
+    },
+    {
+      "id": "brak-division",
+      "variant": 0,
+      "seed": 1853,
+      "question": {
+        "prompt": "Beräkna 9/5 ÷ 6/4. Svara med ett bråk.",
+        "answer": 1.2,
+        "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-division:0",
+        "facet": 0
+      }
+    },
+    {
+      "id": "brak-division",
+      "variant": 1,
+      "seed": 1854,
+      "question": {
+        "prompt": "9/5 ÷ □ = 36/20. Vilket tal saknas? Svara med ett bråk.",
+        "answer": 1,
+        "explanation": "Använd den omvända operationen för att finna den saknade faktorn eller divisorn.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-division:1",
+        "facet": 1
+      }
+    },
+    {
+      "id": "brak-division",
+      "variant": 2,
+      "seed": 1855,
+      "question": {
+        "prompt": "Vilken beräkning är likvärdig med 9/6 ÷ 9/4?\n\n1. 90/54\n2. 144/54\n3. 9 × 4 / (6 × 9)\n4. (9 × 4 / (6 × 9)) × 2\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Multiplicera täljare och nämnare; invertera divisorn vid division.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "brak-division:2",
+        "facet": 2,
+        "options": [
+          "90/54",
+          "144/54",
+          "9 × 4 / (6 × 9)",
+          "(9 × 4 / (6 × 9)) × 2"
+        ]
+      }
+    },
+    {
+      "id": "brak-korsforkorta",
+      "variant": 0,
+      "seed": 1856,
+      "question": {
+        "prompt": "Beräkna 20/12 × 8/15. Förkorta gärna före multiplikationen. Svara med ett bråk.",
+        "answer": 0.8888888888888888,
+        "explanation": "En gemensam faktor i en täljare och en nämnare kan förkortas.",
+        "unit": "",
+        "answerKind": "fraction",
+        "templateId": "brak-korsforkorta:0",
+        "facet": 0
+      }
+    },
+    {
+      "id": "brak-korsforkorta",
+      "variant": 1,
+      "seed": 1857,
+      "question": {
+        "prompt": "I 10/16 × 4/10 vill du förkorta första täljaren och andra nämnaren. Vilken är den största gemensamma faktorn du kan dela båda med?",
+        "answer": 10,
+        "explanation": "Sök största gemensamma delaren till den första täljaren och den andra nämnaren.",
+        "unit": "",
+        "answerKind": "integer",
+        "templateId": "brak-korsforkorta:1",
+        "facet": 1
+      }
+    },
+    {
+      "id": "brak-korsforkorta",
+      "variant": 2,
+      "seed": 1858,
+      "question": {
+        "prompt": "Vilken omskrivning av 5/20 × 20/30 har förkortats korrekt före multiplikationen?\n\n1. (1/1 × 1/6) × 2\n2. 5/1 × 20/30\n3. 1/1 × 1/6\n4. 1/20 × 20/30\n\nVälj ett svar.",
+        "answer": 3,
+        "explanation": "Varje förkortning måste dela både en täljare och en nämnare med samma faktor.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "brak-korsforkorta:2",
+        "facet": 2,
+        "options": [
+          "(1/1 × 1/6) × 2",
+          "5/1 × 20/30",
+          "1/1 × 1/6",
+          "1/20 × 20/30"
+        ]
+      }
+    },
+    {
+      "id": "brak-del-hel",
+      "variant": 0,
+      "seed": 1859,
+      "question": {
+        "prompt": "Hur stor andel av figuren är färgad?\n\n1. 9/5\n2. 9/10\n3. 1/10\n4. 9/20\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Täljaren anger färgade delar och nämnaren alla lika stora delar.",
+        "unit": "",
+        "answerKind": "choice",
+        "visual": {
+          "type": "fraction",
+          "parts": 10,
+          "shaded": 9
+        },
+        "templateId": "brak-del-hel:0",
+        "facet": 0,
+        "options": [
+          "9/5",
+          "9/10",
+          "1/10",
+          "9/20"
+        ],
+        "optionValues": [
+          1.8,
+          0.9,
+          0.09999999999999998,
+          0.45
+        ]
+      }
+    },
+    {
+      "id": "brak-del-hel",
+      "variant": 1,
+      "seed": 1860,
+      "question": {
+        "prompt": "En helhet har 10 lika stora delar, varav 9 är färgade. Skriv den färgade andelen som ett bråk utan att förkorta det. Vilken är nämnaren?\n\n1. 20\n2. 10\n3. 1\n4. 5\n\nVälj ett svar.",
+        "answer": 2,
+        "explanation": "Utan förkortning anger nämnaren alla delar i den ursprungliga indelningen.",
+        "unit": "",
+        "answerKind": "choice",
+        "templateId": "brak-del-hel:1",
+        "facet": 1,
+        "options": [
+          "20",
+          "10",
+          "1",
+          "5"
+        ],
+        "optionValues": [
+          20,
+          10,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "brak-del-hel",
+      "variant": 2,
+      "seed": 1861,
+      "question": {
+        "prompt": "Bråket 1/10 beskriver en del av en helhet. Hur många lika stora delar är markerade?",
+        "answer": 1,
+        "explanation": "Täljaren anger antalet valda delar.",
+        "unit": "",
+        "answerKind": "integer",
+        "templateId": "brak-del-hel:2",
+        "facet": 2
+      }
+    }
+  ]
+}

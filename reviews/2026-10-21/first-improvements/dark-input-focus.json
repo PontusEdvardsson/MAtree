@@ -1,0 +1,25 @@
+{
+  "theme": "dark",
+  "state": "input after real click and key",
+  "rows": [
+    {
+      "selector": "#answer",
+      "text": "",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": 7.87559356569436,
+      "disabled": false,
+      "opacity": "1",
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(182, 213, 156) solid 3px",
+      "border": "rgb(113, 135, 120)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

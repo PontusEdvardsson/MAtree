@@ -1,0 +1,3 @@
+[
+  {"script":"tests/first-improvements-tests.js","eval":"await verifyFirstImprovements()","json_output":"first-improvements-ui.json"}
+]

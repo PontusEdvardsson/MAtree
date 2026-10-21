@@ -1,0 +1,43 @@
+{
+  "theme": "light",
+  "state": "automatic pupil question",
+  "rows": [
+    {
+      "selector": ".student-question .answer-label",
+      "text": "Ditt svar",
+      "color": "rgb(82, 99, 78)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 6.454556774544441,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(82, 99, 78) none 3px",
+      "border": "rgb(82, 99, 78)"
+    },
+    {
+      "selector": "#adaptive-hint",
+      "text": "Skriv ett heltal utan mellanslag. Tryck Enter eller Svara när du är klar.",
+      "color": "rgb(100, 116, 91)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 5.01063246410781,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(100, 116, 91) none 3px",
+      "border": "rgb(100, 116, 91)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

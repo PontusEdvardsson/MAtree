@@ -93,7 +93,7 @@
   // Bråk: bilder, andelar och beräkningar. Omskrivning får kontrollera båda delarna.
   add('f-half brak-del-hel',[
     id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q('Hur stor andel av figuren är färgad? Svara med ett bråk.',n/d,'Täljaren anger färgade delar och nämnaren alla lika stora delar.','','fraction',fraction(d,n));},
-    id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q(`En helhet har ${d} lika stora delar, varav ${n} är ${n===1?'färgad':'färgade'}. Skriv den färgade andelen som ett bråk utan att förkorta det. Vilken är nämnaren?`,d,'Utan förkortning anger nämnaren alla delar i den ursprungliga indelningen.');},
+    id=>{const d=id==='f-half'?pick([2,4]):r(3,10),n=r(1,d-1);return q(`En helhet har ${d} lika stora delar, varav ${n} är ${n===1?'färgad':'färgade'}. Om du skriver andelen som ett bråk utan att förkorta, vilket tal står i nämnaren?`,d,'Utan förkortning anger nämnaren alla delar i den ursprungliga indelningen.');},
     id=>{const d=id==='f-half'?4:r(3,10),n=r(1,d-1);return q(`Bråket ${n}/${d} beskriver en del av en helhet. Hur många lika stora delar är markerade?`,n,'Täljaren anger antalet valda delar.');}
   ]);
   add('f-fraction-count brak-del-antal brak',[

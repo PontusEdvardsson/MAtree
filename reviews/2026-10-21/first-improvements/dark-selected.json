@@ -1,0 +1,97 @@
+{
+  "theme": "dark",
+  "state": "selected and keyboard focus",
+  "rows": [
+    {
+      "selector": ".choice-button",
+      "text": "10",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        49,
+        77,
+        53
+      ],
+      "contrast": 7.64661915865985,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(227, 234, 228) none 3px",
+      "border": "rgb(113, 135, 120)"
+    },
+    {
+      "selector": ".choice-button",
+      "text": "9",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(182, 213, 156) solid 3px",
+      "border": "rgb(113, 135, 120)"
+    },
+    {
+      "selector": ".choice-button",
+      "text": "1",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(227, 234, 228) none 3px",
+      "border": "rgb(113, 135, 120)"
+    },
+    {
+      "selector": ".choice-button",
+      "text": "18",
+      "color": "rgb(227, 234, 228)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 12.49298890864256,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(227, 234, 228) none 3px",
+      "border": "rgb(113, 135, 120)"
+    },
+    {
+      "selector": ".choice-submit",
+      "text": "Svara →",
+      "color": "rgb(16, 39, 26)",
+      "background": [
+        168,
+        210,
+        174
+      ],
+      "contrast": 9.414722217874031,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(16, 39, 26) none 3px",
+      "border": "rgb(16, 39, 26)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

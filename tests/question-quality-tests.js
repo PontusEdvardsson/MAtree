@@ -15,7 +15,7 @@ window.verifyQuestionQuality=()=>{
   check(M.answerText({answer:1/3,answerKind:'fraction'})==='1/3','Fraction answer key is exact, not a rounded decimal');
   check(M.generateReviewed('sortera-tal',1).prompt.includes(';'),'Decimal lists use unambiguous separators');
   check(!M.questionAnswerHint({prompt:'Skriv 1/1000 i decimalform.',answer:.001,answerKind:'decimal'}).includes('bråk'),'Small decimal-form questions do not suggest fraction notation');
-  check(M.questionAnswerHint(M.generateReviewed('avrunda-decimal',0))==='Skriv ett heltal.','Integer rounding uses the matching answer hint');
+  check(M.questionAnswerHint(M.generateReviewed('avrunda-decimal',0))==='Skriv ett heltal utan mellanslag.','Integer rounding uses the matching answer hint and spacing guidance');
   const conversion=M.generateReviewed('brak-decimal',2),fraction=conversion.prompt.match(/\d+\/\d+/)[0],older={...conversion};delete older.responseFormat;
   check(conversion.responseFormat==='decimal'&&!M.responseAllowed(conversion,fraction),'New decimal conversions require conversion instead of copying the given fraction');
   check(M.responseAllowed(conversion,M.fmt(conversion.answer)),'Decimal conversion accepts Swedish decimal notation');

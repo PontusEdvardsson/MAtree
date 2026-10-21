@@ -1,0 +1,223 @@
+{
+  "theme": "dark",
+  "state": "overview",
+  "rows": [
+    {
+      "selector": ".progress-panel>p",
+      "text": "Inga avslutade automatiska pass ännu.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-panel>p",
+      "text": "En allmän startpunkt för fortsatt kartläggning, inte en slutsats från det senaste svaret. Öppna det ",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-panel>p",
+      "text": "Senaste omgången hade färre än tre rätt.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-panel>p",
+      "text": "Manuellt: 3/3. Automatiskt: minst tre rätt och högst ett fel.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-panel>p",
+      "text": "Det finns inskickade svar, men de räcker inte för ett samlat utfall.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-panel>p",
+      "text": "Upp till 20 senaste manuella omgångarna. Automatiska pass finns i sammanställningarna ovan.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-empty",
+      "text": "Inga resultat här ännu.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-empty",
+      "text": "Inga resultat här ännu.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-empty",
+      "text": "Inga resultat här ännu.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".progress-empty",
+      "text": "Inga manuella kontroller är sparade för den här eleven.",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        27,
+        40,
+        34
+      ],
+      "contrast": 7.87559356569436,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".topbar .save-status",
+      "text": "Sparas på den här enheten",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        17,
+        27,
+        23
+      ],
+      "contrast": 9.065455656406616,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(178, 189, 178)"
+    },
+    {
+      "selector": ".page-footer",
+      "text": "MAtree\nMatte Direkt 7–9 · Grön kurs, Genrepet och fördjupning",
+      "color": "rgb(178, 189, 178)",
+      "background": [
+        17,
+        27,
+        23
+      ],
+      "contrast": 9.065455656406616,
+      "placeholderContrast": null,
+      "disabled": false,
+      "opacity": "1",
+      "focused": false,
+      "focusVisible": false,
+      "outline": "rgb(178, 189, 178) none 3px",
+      "border": "rgb(64, 82, 73) rgb(178, 189, 178) rgb(178, 189, 178)"
+    }
+  ],
+  "note": "Solid CSS color spot checks; no full WCAG claim. Disabled controls recorded, not thresholded."
+}

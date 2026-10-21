@@ -154,17 +154,21 @@
     clearTimeout(toastTimer); $('#toast').textContent = message; $('#toast').hidden = false;
     toastTimer = setTimeout(() => { $('#toast').hidden = true; }, 6000);
   }
-  function nextSkill() {
-    if (profile().quiz) return byId(profile().quiz.nodeId);
+  function nextControl() {
+    if (profile().quiz) return {node:byId(profile().quiz.nodeId),kind:'resume',reason:'En pågående omgång är sparad. Fortsätt från samma fråga.'};
     const needs = detailNodes.filter(n => n.level === 'core' && status(n) === 'practice');
     for (const node of needs) {
       const untested = node.deps.map(byId).find(n => !latest(n.id));
-      if (untested) return untested;
+      if (untested) return {node:untested,kind:'prerequisite',reason:'En oprövad förkunskap till '+node.title+'. Undersök den separat; förslaget avgör inte orsaken till svårigheterna.'};
     }
     const entryPoints = ['brak-del-hel', 'ekvation-add', 'procent-begrepp', 'area-rektangel', 'sannolikhet-skala'];
     const entry = entryPoints.map(byId).find(n => !latest(n.id));
-    return entry || needs[0] || detailNodes.find(n => n.level === 'core' && status(n) === 'available') || detailNodes.find(n => n.level === 'core' && !latest(n.id)) || byId('funktionsvarde');
+    if(entry)return {node:entry,kind:'breadth',reason:'En allmän startpunkt för fortsatt kartläggning, inte en slutsats från det senaste svaret. Öppna det senast prövade momentet för att välja bland dess förkunskaper.'};
+    if(needs[0])return {node:needs[0],kind:'followup',reason:'Här finns svar som behöver följas upp. Undersök fler uppgifter och elevens resonemang.'};
+    const node=detailNodes.find(n => n.level === 'core' && status(n) === 'available') || detailNodes.find(n => n.level === 'core' && !latest(n.id)) || byId('funktionsvarde');
+    return {node,kind:'breadth',reason:'Ett annat delmoment för att bredda kartläggningen. Förslaget är inte en slutsats från det senaste svaret.'};
   }
+  const nextSkill=()=>nextControl().node;
   function render() {
     $('#control-end-status').hidden=!endedControl||endedControl.profileId!==profile().id;
     if(view!=='tree'&&treeFullscreen)leaveTreeFullscreen();
@@ -249,9 +253,10 @@
       const style=' style="left:'+pos.x+'px;top:'+pos.y+'px;--node-color:'+cat.color+';--node-bg:'+cat.bg+'"';
       const head='<span class="node-port in"></span><span class="node-top"><span class="node-symbol">'+cat.symbol+'</span><span class="node-title">'+esc(entry.title)+'</span></span>';
       if(entry.groupId){
-        const shown=entry.members.filter(n=>latest(n.id)?.score===3).length,practice=entry.members.some(n=>status(n)==='practice'),partial=entry.members.some(n=>latest(n.id));
+        const counts=evidenceCounts(entry.members),shown=counts.mastered,tried=entry.members.length-counts.untried,practice=counts.practice>0,partial=tried>0;
         const state=shown===entry.members.length?'mastered':practice?'practice':partial?'partial':entry.members.some(n=>status(n)==='available')?'available':'locked';
-        return '<button class="skill-node skill-group '+state+'" data-group="'+entry.groupId+'"'+style+' aria-label="'+esc(entry.title)+', visad kunskap i '+shown+' av '+entry.members.length+' delmoment. Öppna delmoment.">'+head+'<span class="node-bottom"><span class="node-status"><i></i>Visad kunskap: '+shown+'/'+entry.members.length+'</span><span class="group-open">Öppna →</span></span><span class="node-port out"></span></button>';
+        const summary=tried?shown+' '+(shown===1?'visat':'visade')+' · '+tried+'/'+entry.members.length+' prövade':'Inte prövat · '+entry.members.length+' delmoment';
+        return '<button class="skill-node skill-group '+state+'" data-group="'+entry.groupId+'"'+style+' aria-label="'+esc(entry.title)+', '+esc(summary)+'. Öppna delmoment.">'+head+'<span class="node-bottom"><span class="node-status"><i></i>'+summary+'</span><span class="group-open">Öppna →</span></span><span class="node-port out"></span></button>';
       }
       const node=entry.members[0],state=status(node),year=node.grade|| (node.foundationBand===1?'1–3':'4–6');
       return '<button class="skill-node '+state+(node.id===focusId?' focus-node':'')+'" data-node="'+node.id+'"'+style+' aria-label="'+esc(node.title)+', '+(node.grade?stageLabel(node.grade):'Grunder åk '+year)+', '+statusLabel(state)+'">'+head+'<span class="node-bottom"><span class="node-status"><i></i>'+(latest(node.id)||['supported','indirect'].includes(state)?statusLabel(state):'Inte prövad')+'</span><span>'+year+' '+(node.level==='extension'?'<b class="level-key">R</b>':node.npSource?'<b class="np-key">NP</b>':'')+'</span></span><span class="node-port out"></span></button>';
@@ -408,7 +413,8 @@
   function finishQuiz() {
     const {node,score}=archiveQuiz(profile(),profile().quiz);render();
     const unresolved = node.deps.filter(id => latest(id)?.score !== 3);
-    $('#skill-content').innerHTML = `<div class="dialog-top"><div class="eyebrow">${node.title.toUpperCase()}</div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div><div class="result-hero"><span>${score === 3 ? '✧' : '↟'}</span><h3 id="skill-dialog-title">${score === 3 ? 'Visad kunskap' : 'Behöver följas upp'}</h3><p>${score} av 3 rätt i den här omgången</p></div><p>${score === 3 ? 'Färdigheten markeras som visad kunskap i trädet. Förkunskaperna behåller sina egna resultat och kan undersökas separat.' : 'Svaren visar att den här färdigheten behöver undersökas vidare. Pröva en förkunskap eller träna på förklaringarna och gör en ny omgång.'}</p>${score < 3 && unresolved.length ? `<div class="dialog-section"><h3>Förslag: undersök förkunskaperna</h3>${prerequisiteButtons(unresolved,node)}<p class="muted small">Detta är möjliga nästa kontroller. Ett fel avgör inte vilken förkunskap som saknas.</p></div>` : ''}<p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang och fler uppgifter för en säkrare bedömning.</p><div class="dialog-actions"><button class="secondary-button" data-start="${node.id}">Prova igen</button><button class="primary-button" data-open="${nextSkill().id}">Nästa steg →</button></div>`;
+    const next=nextControl();
+    $('#skill-content').innerHTML = `<div class="dialog-top"><div class="eyebrow">${node.title.toUpperCase()}</div><button class="icon-button" data-close="skill-dialog" aria-label="Stäng">×</button></div><div class="result-hero"><span>${score === 3 ? '✧' : '↟'}</span><h3 id="skill-dialog-title">${score === 3 ? 'Visad kunskap' : 'Behöver följas upp'}</h3><p>${score} av 3 rätt i den här omgången</p></div><p>${score === 3 ? 'Färdigheten markeras som visad kunskap i trädet. Förkunskaperna behåller sina egna resultat och kan undersökas separat.' : 'Svaren visar att den här färdigheten behöver undersökas vidare. Pröva en förkunskap eller träna på förklaringarna och gör en ny omgång.'}</p>${score < 3 && unresolved.length ? `<div class="dialog-section"><h3>Förslag: undersök förkunskaperna</h3>${prerequisiteButtons(unresolved,node)}<p class="muted small">Detta är möjliga nästa kontroller. Ett fel avgör inte vilken förkunskap som saknas.</p></div>` : ''}<p class="muted small">Tre frågor ger en första indikation. Komplettera med elevens resonemang och fler uppgifter för en säkrare bedömning.</p><section class="dialog-section next-control" data-next-kind="${next.kind}"><h3>Nästa kontroll: ${esc(next.node.title)}</h3><p class="next-control-reason">${esc(next.reason)}</p></section><div class="dialog-actions"><button class="secondary-button" data-start="${node.id}">Prova igen</button><button class="primary-button" data-open="${next.node.id}">Öppna nästa kontroll →</button></div>`;
     document.dispatchEvent(new CustomEvent('matree-control-render',{detail:{id:node.id,kind:'result'}}));
   }
 
@@ -432,11 +438,11 @@
   }
 
   function renderProgress() {
-    const needs=detailNodes.filter(n=>evidenceKind(latest(n.id))==='practice'),mastered=detailNodes.filter(n=>evidenceKind(latest(n.id))==='mastered'),partial=detailNodes.filter(n=>evidenceKind(latest(n.id))==='partial'),next=nextSkill();
+    const needs=detailNodes.filter(n=>evidenceKind(latest(n.id))==='practice'),mastered=detailNodes.filter(n=>evidenceKind(latest(n.id))==='mastered'),partial=detailNodes.filter(n=>evidenceKind(latest(n.id))==='partial'),nextSuggestion=nextControl(),next=nextSuggestion.node;
     const rows=list=>list.length?list.map(n=>'<button class="progress-skill" data-open="'+n.id+'">'+esc(n.title)+'<span>'+esc(evidenceText(n.id,true))+' ↗</span></button>').join(''):'<div class="progress-empty">Inga resultat här ännu.</div>';
     const history = nodes.flatMap(n=>window.MATREE.skillIds(n.id).flatMap(id=>(profile().results[id]?.history||[]).map(r=>({...r,record:r,node:n,ownerId:profile().id})))).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,20);
     manualHistoryRows=history;
-    $('#progress-view').innerHTML = `<div class="progress-panel"><div class="eyebrow">FÖRSLAG PÅ NÄSTA KONTROLL</div><h2>${next.title}</h2><p>${profile().quiz ? 'En pågående omgång är sparad. Fortsätt från samma fråga.' : needs.some(n => n.deps.includes(next.id)) ? 'En oprövad förkunskap till en färdighet där eleven behöver uppföljning. Kontrollera den för att se om den behöver tränas.' : 'En allmän startpunkt för fortsatt kartläggning, inte en slutsats från det senaste svaret. Öppna det senast prövade momentet för att välja bland dess förkunskaper.'}</p><button class="primary-button" data-open="${next.id}">Öppna färdigheten ↗</button></div><div class="progress-grid"><div class="progress-panel"><h2>Att undersöka vidare</h2><p>Senaste omgången hade färre än tre rätt.</p>${rows(needs)}</div><div class="progress-panel"><h2>Visad kunskap</h2><p>Manuellt: 3/3. Automatiskt: minst tre rätt och högst ett fel.</p>${rows(mastered)}</div><div class="progress-panel"><h2>Begränsat underlag</h2><p>Det finns inskickade svar, men de räcker inte för ett samlat utfall.</p>${rows(partial)}</div></div><div class="progress-panel"><h2>Senaste manuella kontrollerna</h2><p>Upp till 20 senaste manuella omgångarna. Automatiska pass finns i sammanställningarna ovan.</p>${history.length ? history.map((r,index) => `<button class="progress-skill" data-manual-record="${index}">${r.node.title}<span>${r.score}/${r.total||3} · ${r.total<3?'Avslutad i förtid · ':''}${new Date(r.date).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' })}</span></button>`).join('') : '<div class="progress-empty">Inga manuella kontroller är sparade för den här eleven.</div>'}</div>`;
+    $('#progress-view').innerHTML = `<div class="progress-panel"><div class="eyebrow">FÖRSLAG PÅ NÄSTA KONTROLL</div><h2>${next.title}</h2><p>${esc(nextSuggestion.reason)}</p><button class="primary-button" data-open="${next.id}">Öppna färdigheten ↗</button></div><div class="progress-grid"><div class="progress-panel"><h2>Att undersöka vidare</h2><p>Senaste omgången hade färre än tre rätt.</p>${rows(needs)}</div><div class="progress-panel"><h2>Visad kunskap</h2><p>Manuellt: 3/3. Automatiskt: minst tre rätt och högst ett fel.</p>${rows(mastered)}</div><div class="progress-panel"><h2>Begränsat underlag</h2><p>Det finns inskickade svar, men de räcker inte för ett samlat utfall.</p>${rows(partial)}</div></div><div class="progress-panel"><h2>Senaste manuella kontrollerna</h2><p>Upp till 20 senaste manuella omgångarna. Automatiska pass finns i sammanställningarna ovan.</p>${history.length ? history.map((r,index) => `<button class="progress-skill" data-manual-record="${index}">${r.node.title}<span>${r.score}/${r.total||3} · ${r.total<3?'Avslutad i förtid · ':''}${new Date(r.date).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' })}</span></button>`).join('') : '<div class="progress-empty">Inga manuella kontroller är sparade för den här eleven.</div>'}</div>`;
   }
   function renderNP() {
     const core=detailNodes.filter(n=>n.level==='core'),np=core.filter(n=>n.npSource),coreCounts=evidenceCounts(core),shown=coreCounts.mastered;

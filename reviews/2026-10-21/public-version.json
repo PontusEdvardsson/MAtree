@@ -1,0 +1,32 @@
+[
+  {
+    "file": "index.html",
+    "sameNormalizedText": true,
+    "sha256Published": "e4c2434a28987910960d7c3c7ea5a0cedb284e7850ade4680759f5bc0fce35fc"
+  },
+  {
+    "file": "styles.css",
+    "sameNormalizedText": true,
+    "sha256Published": "dfa35afa3c1b04aa00d39de854d78124ce23e9a53876879aacb6ff5ba6d8cecc"
+  },
+  {
+    "file": "theme.css",
+    "sameNormalizedText": true,
+    "sha256Published": "c63f1b4f7e6c837dcf532abcfca317ba7268b8d07d274b4a2cb2f1ac454078f8"
+  },
+  {
+    "file": "adaptive.js",
+    "sameNormalizedText": true,
+    "sha256Published": "bcdf361a7e5afaf496edd9bf848565f31b97f3ee329c11158d4db39c2a7fbe21"
+  },
+  {
+    "file": "adaptive-ui.js",
+    "sameNormalizedText": true,
+    "sha256Published": "a31103a03b045ef05bb634fc4998706d07380d56da3d7746111ff5cdab19c417"
+  },
+  {
+    "file": "question-media.js",
+    "sameNormalizedText": true,
+    "sha256Published": "f76633f23b80d2402b7686ef38d5f8bc001faeabf2f89dd77f4aa3221e7b9e02"
+  }
+]

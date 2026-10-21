@@ -1,0 +1,194 @@
+{
+  "details": 249,
+  "groups": 56,
+  "categories": [
+    {
+      "id": "tal",
+      "name": "Tal",
+      "color": "#738f5e",
+      "bg": "#edf3e5",
+      "symbol": "÷"
+    },
+    {
+      "id": "brak",
+      "name": "Bråk",
+      "color": "#638d83",
+      "bg": "#e7f2ed",
+      "symbol": "½"
+    },
+    {
+      "id": "algebra",
+      "name": "Algebra",
+      "color": "#9382b3",
+      "bg": "#f0ecf7",
+      "symbol": "x"
+    },
+    {
+      "id": "geometri",
+      "name": "Geometri",
+      "color": "#bb9761",
+      "bg": "#faf1e3",
+      "symbol": "△"
+    },
+    {
+      "id": "samband",
+      "name": "Samband & funktioner",
+      "color": "#6b87b0",
+      "bg": "#edf1f9",
+      "symbol": "ƒ"
+    },
+    {
+      "id": "procent",
+      "name": "Procent",
+      "color": "#b78c65",
+      "bg": "#f9eee3",
+      "symbol": "%"
+    },
+    {
+      "id": "statistik",
+      "name": "Statistik",
+      "color": "#68959d",
+      "bg": "#e9f2f3",
+      "symbol": "▥"
+    },
+    {
+      "id": "sannolikhet",
+      "name": "Sannolikhet",
+      "color": "#ab8098",
+      "bg": "#f5eaf0",
+      "symbol": "⚄"
+    },
+    {
+      "id": "problem",
+      "name": "Problemlösning",
+      "color": "#938b5c",
+      "bg": "#f2f0e4",
+      "symbol": "⌘"
+    }
+  ],
+  "scopes": [
+    {
+      "scope": "7",
+      "areas": [
+        {
+          "id": "tal",
+          "count": 17
+        },
+        {
+          "id": "brak",
+          "count": 14
+        },
+        {
+          "id": "algebra",
+          "count": 15
+        },
+        {
+          "id": "geometri",
+          "count": 16
+        },
+        {
+          "id": "samband",
+          "count": 0
+        },
+        {
+          "id": "procent",
+          "count": 7
+        },
+        {
+          "id": "statistik",
+          "count": 10
+        },
+        {
+          "id": "sannolikhet",
+          "count": 0
+        },
+        {
+          "id": "problem",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "scope": "8",
+      "areas": [
+        {
+          "id": "tal",
+          "count": 8
+        },
+        {
+          "id": "brak",
+          "count": 3
+        },
+        {
+          "id": "algebra",
+          "count": 4
+        },
+        {
+          "id": "geometri",
+          "count": 13
+        },
+        {
+          "id": "samband",
+          "count": 8
+        },
+        {
+          "id": "procent",
+          "count": 4
+        },
+        {
+          "id": "statistik",
+          "count": 1
+        },
+        {
+          "id": "sannolikhet",
+          "count": 11
+        },
+        {
+          "id": "problem",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "scope": "9",
+      "areas": [
+        {
+          "id": "tal",
+          "count": 15
+        },
+        {
+          "id": "brak",
+          "count": 0
+        },
+        {
+          "id": "algebra",
+          "count": 0
+        },
+        {
+          "id": "geometri",
+          "count": 15
+        },
+        {
+          "id": "samband",
+          "count": 12
+        },
+        {
+          "id": "procent",
+          "count": 6
+        },
+        {
+          "id": "statistik",
+          "count": 6
+        },
+        {
+          "id": "sannolikhet",
+          "count": 0
+        },
+        {
+          "id": "problem",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

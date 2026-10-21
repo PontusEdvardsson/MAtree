@@ -1,0 +1,239 @@
+{
+  "theme": "light",
+  "rows": [
+    {
+      "selector": ".workspace-label",
+      "text": "KARTLÄGGNING",
+      "fontSize": "11px",
+      "fg": "rgb(133, 149, 138)",
+      "bg": [
+        20,
+        35,
+        30
+      ],
+      "ratio": 5.169725278675342,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".workspace-label",
+      "text": "MATEMATIKENS OMRÅDEN",
+      "fontSize": "11px",
+      "fg": "rgb(133, 149, 138)",
+      "bg": [
+        20,
+        35,
+        30
+      ],
+      "ratio": 5.169725278675342,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".category-button",
+      "text": "Alla områden\n249",
+      "fontSize": "14px",
+      "fg": "rgb(255, 255, 255)",
+      "bg": [
+        43,
+        58,
+        48
+      ],
+      "ratio": 11.995745009034216,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".category-button",
+      "text": "Tal\n53",
+      "fontSize": "14px",
+      "fg": "rgb(174, 189, 177)",
+      "bg": [
+        20,
+        35,
+        30
+      ],
+      "ratio": 8.312203086166422,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".category-button",
+      "text": "Bråk\n21",
+      "fontSize": "14px",
+      "fg": "rgb(174, 189, 177)",
+      "bg": [
+        20,
+        35,
+        30
+      ],
+      "ratio": 8.312203086166422,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-title",
+      "text": "Taluppfattning",
+      "fontSize": "15px",
+      "fg": "rgb(36, 58, 51)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 12.152501456527279,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-title",
+      "text": "Addition och subtraktion",
+      "fontSize": "15px",
+      "fg": "rgb(36, 58, 51)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 12.152501456527279,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-title",
+      "text": "Multiplikation och division",
+      "fontSize": "15px",
+      "fg": "rgb(36, 58, 51)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 12.152501456527279,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-bottom>span:first-child",
+      "text": "Visad kunskap: 0/7",
+      "fontSize": "12px",
+      "fg": "rgb(101, 115, 93)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.043595259336482,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-bottom>span:first-child",
+      "text": "Visad kunskap: 0/5",
+      "fontSize": "12px",
+      "fg": "rgb(101, 115, 93)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.043595259336482,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".node-bottom>span:first-child",
+      "text": "Visad kunskap: 0/5",
+      "fontSize": "12px",
+      "fg": "rgb(101, 115, 93)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.043595259336482,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".group-open",
+      "text": "Öppna →",
+      "fontSize": "11px",
+      "fg": "rgb(66, 98, 59)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.903633297387474,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".group-open",
+      "text": "Öppna →",
+      "fontSize": "11px",
+      "fg": "rgb(66, 98, 59)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.903633297387474,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".group-open",
+      "text": "Öppna →",
+      "fontSize": "11px",
+      "fg": "rgb(66, 98, 59)",
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.903633297387474,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": "#node-count",
+      "text": "62 kort · 249 delmoment · 481 kopplingar",
+      "fontSize": "12px",
+      "fg": "rgb(99, 114, 90)",
+      "bg": [
+        246,
+        247,
+        243
+      ],
+      "ratio": 4.777636130396912,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": "#map-title",
+      "text": "Alla områden · alla år",
+      "fontSize": "14px",
+      "fg": "rgb(36, 58, 51)",
+      "bg": [
+        246,
+        247,
+        243
+      ],
+      "ratio": 11.294352402616727,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".save-status",
+      "text": "Sparas på den här enheten",
+      "fontSize": "11px",
+      "fg": "rgb(138, 146, 139)",
+      "bg": [
+        246,
+        247,
+        243
+      ],
+      "ratio": 2.972888334895081,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    },
+    {
+      "selector": ".page-footer",
+      "text": "MAtree\nMatte Direkt 7–9 · Grön kurs, Genrepet och fördjupning",
+      "fontSize": "12px",
+      "fg": "rgb(153, 161, 143)",
+      "bg": [
+        246,
+        247,
+        243
+      ],
+      "ratio": 2.4865560947157106,
+      "note": "Solid background approximation; no opacity/gradient or complete accessibility audit"
+    }
+  ]
+}

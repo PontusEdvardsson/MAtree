@@ -1,0 +1,193 @@
+{
+  "date": "2026-10-21",
+  "reviewedCommit": "45c362e",
+  "independentAgents": 5,
+  "independence": "Fresh contexts; no previous reports or other reviewers findings; different role emphasis; same model family, app and browser helper; two waves.",
+  "agents": [
+    {
+      "id": "A",
+      "role": "new teacher workflow",
+      "answered": 6,
+      "areas": [
+        "tal",
+        "geometri",
+        "brak"
+      ],
+      "report": "A.md"
+    },
+    {
+      "id": "B",
+      "role": "uncertain pupil and new teacher",
+      "answered": 7,
+      "areas": [
+        "tal",
+        "brak",
+        "geometri"
+      ],
+      "answerNameExposure": 1,
+      "report": "B.md"
+    },
+    {
+      "id": "C",
+      "role": "visual hierarchy and accessibility",
+      "answered": 9,
+      "areas": [
+        "geometri",
+        "tal",
+        "statistik"
+      ],
+      "report": "C.md"
+    },
+    {
+      "id": "D",
+      "role": "teacher interpretation",
+      "answered": 9,
+      "areas": [
+        "geometri",
+        "tal",
+        "brak"
+      ],
+      "report": "D.md"
+    },
+    {
+      "id": "E",
+      "role": "new teacher selecting a check",
+      "answered": 6,
+      "areas": [
+        "geometri",
+        "tal",
+        "procent"
+      ],
+      "report": "E.md"
+    }
+  ],
+  "answeredTotal": 37,
+  "sampleAreas": [
+    "brak",
+    "geometri",
+    "procent",
+    "statistik",
+    "tal"
+  ],
+  "uniqueQuestionsCounted": false,
+  "intentionalWrongAnswerSeries": false,
+  "fullAutomaticPassCompleted": false,
+  "productFilesChanged": false,
+  "findings": [
+    {
+      "id": "H1",
+      "topic": "Coverage promise exceeds question cap",
+      "evidence": [
+        "C1",
+        "E1",
+        "adaptive-ui.js:74"
+      ],
+      "phase": "first"
+    },
+    {
+      "id": "H2",
+      "topic": "Wrong operation in fraction multiplication explanation",
+      "evidence": [
+        "fraction-explanations.json"
+      ],
+      "origin": "previously known, reverified by synthesizer",
+      "phase": "first"
+    },
+    {
+      "id": "H3",
+      "topic": "Specific low-contrast light text",
+      "evidence": [
+        "B1",
+        "C2",
+        "contrast-light.json"
+      ],
+      "phase": "first"
+    },
+    {
+      "id": "H4",
+      "topic": "Grouped integer rejected without useful format help",
+      "evidence": [
+        "D1",
+        "number-parser.json"
+      ],
+      "phase": "first: guidance; grouping separately"
+    },
+    {
+      "id": "H5",
+      "topic": "Untried grouped skills labelled only 0/N shown",
+      "evidence": [
+        "A1",
+        "B3",
+        "D3",
+        "E2"
+      ],
+      "phase": "first"
+    },
+    {
+      "id": "H6",
+      "topic": "Generic next check appears individually derived",
+      "evidence": [
+        "D2",
+        "app.js:157",
+        "app.js:411"
+      ],
+      "phase": "first"
+    },
+    {
+      "id": "H7",
+      "topic": "Multiple instructions in denominator question",
+      "evidence": [
+        "D4"
+      ],
+      "phase": "first"
+    },
+    {
+      "id": "H8",
+      "topic": "Mobile vertical hierarchy and connection dominance",
+      "evidence": [
+        "A2",
+        "C3",
+        "E3"
+      ],
+      "phase": "next"
+    },
+    {
+      "id": "H9",
+      "topic": "Accessible name reveals counting answer",
+      "evidence": [
+        "B2",
+        "question-media.js:88"
+      ],
+      "phase": "design and accessibility pilot"
+    },
+    {
+      "id": "H10",
+      "topic": "Narrow question coverage and course-year difficulty",
+      "evidence": [
+        "A3",
+        "C4",
+        "E question sample"
+      ],
+      "phase": "bounded content review"
+    },
+    {
+      "id": "H11",
+      "topic": "NP limitation text below first mobile viewport",
+      "evidence": [
+        "E4"
+      ],
+      "phase": "next"
+    }
+  ],
+  "externalReferences": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+  ],
+  "limitations": [
+    "Simulated reviewers, not real users",
+    "No whole-bank or textbook validation",
+    "No physical mobile or real screen-reader test",
+    "Most negative and persistence paths not retested"
+  ]
+}

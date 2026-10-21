@@ -1,0 +1,27 @@
+[
+  {
+    "input": "13 089 000",
+    "finite": false,
+    "parsed": null
+  },
+  {
+    "input": "13 089 000",
+    "finite": false,
+    "parsed": null
+  },
+  {
+    "input": "13089000",
+    "finite": true,
+    "parsed": 13089000
+  },
+  {
+    "input": "6,5",
+    "finite": true,
+    "parsed": 6.5
+  },
+  {
+    "input": "0",
+    "finite": true,
+    "parsed": 0
+  }
+]

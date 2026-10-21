@@ -147,6 +147,8 @@ Boklänkarna utgår från projektets egna mappar `7/Matte Direkt 7 v3`, `8/Matte
 
 ## Verifiering
 
+[HELHETSGRANSKNING.md](HELHETSGRANSKNING.md) sammanväger fem oberoende AI-granskares UX-, fråge-, metod- och färggranskning den 21 oktober 2026. Originalrapporter och utvalda bevis finns under [reviews/2026-10-21](reviews/2026-10-21/). [Fortsättningsprompt](FORTSATT_HELHETSGRANSKNING_PROMPT.md) avgränsar första förbättringsomgången. Det är kvalitativ expertgranskning, inte en användarstudie eller pedagogisk validering.
+
 [ANVANDARTEST.md](ANVANDARTEST.md) sammanfattar två separata oinsatta granskaragenters lärar- och elevflöden, ett frågestickprov och prioriterade förbättringsförslag. Det är simulerad granskning och ersätter inte test med faktiska användare.
 
 [ANVANDARTEST_TRE_OMGANGAR.md](ANVANDARTEST_TRE_OMGANGAR.md) följer tre ytterligare omgångar med nya lärar- och elevgranskare, ändringar mellan versionerna och verifiering.

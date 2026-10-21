@@ -1,0 +1,50 @@
+[
+  {
+    "id": "brak-heltal-mult",
+    "question": {
+      "prompt": "Beräkna 9/6 × 9. Svara med ett bråk.",
+      "answer": 13.5,
+      "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+      "unit": "",
+      "answerKind": "fraction",
+      "templateId": "brak-heltal-mult:0",
+      "facet": 0
+    }
+  },
+  {
+    "id": "brak-multiplikation",
+    "question": {
+      "prompt": "Beräkna 3/9 × 4/7. Svara med ett bråk.",
+      "answer": 0.19047619047619047,
+      "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+      "unit": "",
+      "answerKind": "fraction",
+      "templateId": "brak-multiplikation:0",
+      "facet": 0
+    }
+  },
+  {
+    "id": "brak-division",
+    "question": {
+      "prompt": "Beräkna 2/2 ÷ 8/4. Svara med ett bråk.",
+      "answer": 0.5,
+      "explanation": "Vid division multipliceras med det andra bråkets invers. Förkorta gemensamma faktorer före eller efter multiplikation.",
+      "unit": "",
+      "answerKind": "fraction",
+      "templateId": "brak-division:0",
+      "facet": 0
+    }
+  },
+  {
+    "id": "brak-korsforkorta",
+    "question": {
+      "prompt": "Beräkna 12/20 × 5/12. Förkorta gärna före multiplikationen. Svara med ett bråk.",
+      "answer": 0.25,
+      "explanation": "En gemensam faktor i en täljare och en nämnare kan förkortas.",
+      "unit": "",
+      "answerKind": "fraction",
+      "templateId": "brak-korsforkorta:0",
+      "facet": 0
+    }
+  }
+]
